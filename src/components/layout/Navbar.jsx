@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Instagram, Youtube, Facebook, Twitter } from "lucide-react";
+import { Instagram, Youtube, Twitter, MessageCircle } from "lucide-react";
 
 const Navbar = () => {
   const navbarRef = useRef(null);
@@ -92,17 +92,19 @@ const Navbar = () => {
 
       {/* Social icons — only visible inside the mobile drawer */}
       <div className="drawer-socials">
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Instagram size={16} /></a>
-        <a href="https://youtube.com"   target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Youtube   size={16} /></a>
-        <a href="https://facebook.com"  target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Facebook  size={16} /></a>
+        <a href="https://instagram.com/geo_jainism"                    target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Instagram     size={16} /></a>
+        <a href="https://www.youtube.com/@geo_jainism"                target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Youtube       size={16} /></a>
+        <a href="https://x.com/geo_jainism"                           target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Twitter       size={16} /></a>
+        <a href="https://chat.whatsapp.com/EnHCodUJre9AlzFO9LRx5j"   target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><MessageCircle size={16} /></a>
       </div>
 
     </div>
 
       <div className="nav-socials desktop-socials">
-        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={18} /></a>
-        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="social-icon"><Youtube size={18} /></a>
-        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon"><Facebook size={18} /></a>
+        <a href="https://instagram.com/geo_jainism"                  target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram     size={18} /></a>
+        <a href="https://www.youtube.com/@geo_jainism"              target="_blank" rel="noopener noreferrer" className="social-icon"><Youtube       size={18} /></a>
+        <a href="https://x.com/geo_jainism"                         target="_blank" rel="noopener noreferrer" className="social-icon"><Twitter       size={18} /></a>
+        <a href="https://chat.whatsapp.com/EnHCodUJre9AlzFO9LRx5j" target="_blank" rel="noopener noreferrer" className="social-icon"><MessageCircle size={18} /></a>
       </div>
     </nav>
   );
