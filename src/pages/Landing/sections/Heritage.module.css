@@ -1,0 +1,298 @@
+.heritageSection {
+  background: var(--cream);
+  padding: 80px 60px 140px;
+}
+
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.headerFrom {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 42px;
+  color: var(--deep-brown);
+  font-weight: 300;
+  line-height: 1;
+}
+
+.headerTitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 64px;
+  color: var(--deep-brown);
+  margin: 10px 0 30px;
+  font-weight: 400;
+  line-height: 73.6px;
+  letter-spacing: 0%;
+}
+
+.headerDesc {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+  letter-spacing: 0.8px;
+  text-align: center;
+  color: var(--saffron);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.mainTimeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.verticalLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: var(--saffron);
+  opacity: 0.35;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+.timelineRow {
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+  align-items: center;
+  margin-bottom: 100px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Explicit Grid Row 1 for all children to ensure horizontal alignment */
+.timelineRow > div {
+  grid-row: 1;
+}
+
+/* LEFT Side Layout (Text Left, Image Right) */
+.timelineRow.rowLeft .contentCard { grid-column: 1; justify-self: end; }
+.timelineRow.rowLeft .dotBox     { grid-column: 2; justify-self: center; }
+.timelineRow.rowLeft .imageBox   { grid-column: 3; justify-self: start; }
+
+/* RIGHT Side Layout (Image Left, Text Right) */
+.timelineRow.rowRight .contentCard { grid-column: 3; justify-self: start; }
+.timelineRow.rowRight .dotBox      { grid-column: 2; justify-self: center; }
+.timelineRow.rowRight .imageBox    { grid-column: 1; justify-self: end; }
+
+/* Content Card Styling */
+.contentCard {
+  background: #fff;
+  padding: 28px;
+  border-radius: 12px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.03);
+  border: 1px solid rgba(244,165,53,0.08);
+  width: 590px;
+  max-width: 100%;
+}
+
+.cardEyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 9px;
+  line-height: 14.4px;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  color: var(--sandstone);
+  opacity: 1;
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  letter-spacing: 0;
+  color: var(--deep-brown);
+  margin-bottom: 18px;
+}
+
+.cardBody {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 24.5px;
+  letter-spacing: 0;
+  color: var(--deep-brown);
+  opacity: 0.85;
+}
+
+/* Image Box Styling */
+.imageBox {
+  background: #fff;
+  padding: 12px;
+  border-radius: 14px;
+  box-shadow: 0 15px 50px rgba(0,0,0,0.03);
+  border: 1px solid rgba(244,165,53,0.08);
+  max-width: 540px;
+  width: 100%;
+}
+
+.imageFrame {
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.imageFrame img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  display: block;
+}
+
+.imageCaption {
+  padding: 15px 10px 5px;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  color: var(--sandstone);
+  letter-spacing: 1px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Central Dot Styling */
+.dotBox {
+  width: 30px;
+  height: 30px;
+  background: var(--cream);
+  border: 1px solid rgba(244,165,53,0.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.centralDot {
+  width: 10px;
+  height: 10px;
+  background: var(--saffron);
+  border-radius: 50%;
+}
+
+/* Footer Section */
+.footer {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.knowMoreBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.knowMoreBtn span {
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--deep-brown);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.logoCircle {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--tulsi-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 26px;
+  font-weight: 700;
+  box-shadow: 0 6px 20px rgba(125,175,110,0.3);
+}
+
+/* Dark Mode Overrides */
+:global(.landing-root[data-theme="dark"]) .contentCard,
+:global(.landing-root[data-theme="dark"]) .imageBox {
+  background: rgba(42,26,14,0.75);
+  border-color: rgba(244,165,53,0.35);
+  color: var(--text-main);
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .timelineRow {
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .heritageSection { padding: 80px 24px; }
+  .verticalLine { left: 25px; }
+
+  .timelineRow,
+  .timelineRow.rowLeft,
+  .timelineRow.rowRight {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 60px;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+
+  .timelineRow > div {
+    grid-row: auto;
+  }
+
+  .contentCard,
+  .imageBox {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .dotBox {
+    position: absolute;
+    left: 25px;
+    top: 40px;
+    transform: translateX(-50%);
+  }
+
+  .headerTitle { font-size: 48px; line-height: 1.2; }
+  .headerFrom { font-size: 32px; }
+  .sectionHeader { margin-bottom: 60px; }
+}
+
+@media (max-width: 600px) {
+  .heritageSection { padding: 60px 20px 80px; }
+  .headerTitle { font-size: 38px; line-height: 1.2; }
+  .headerFrom { font-size: 26px; }
+  .headerDesc { font-size: 14px; letter-spacing: 0.4px; }
+  .sectionHeader { margin-bottom: 48px; }
+}
+
+@media (max-width: 480px) {
+  .heritageSection { padding: 50px 16px 70px; }
+  .headerTitle { font-size: 30px; line-height: 1.25; }
+  .headerFrom { font-size: 22px; }
+  .headerDesc { font-size: 13px; }
+  .sectionHeader { margin-bottom: 40px; }
+  .timelineRow, .timelineRow.rowLeft, .timelineRow.rowRight {
+    padding-left: 44px;
+  }
+  .verticalLine { left: 14px; }
+  .dotBox {
+    left: 14px;
+    width: 24px;
+    height: 24px;
+  }
+}

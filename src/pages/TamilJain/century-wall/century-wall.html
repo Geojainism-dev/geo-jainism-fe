@@ -1,0 +1,109 @@
+<section id="story" class="century-wall-section">
+  <div class="century-wall-inner">
+    <!-- Title -->
+    <div class="century-wall-header">
+      <p class="century-wall-eyebrow">
+        Historical Journey
+      </p>
+      <h2 class="century-wall-title">
+        2,000 Years of Jain Presence in Tamil Nadu
+      </h2>
+    </div>
+
+    <!-- Timeline row: text | line | image -->
+    <div class="timeline-row">
+      <!-- Left copy -->
+      <div class="timeline-left">
+        <p class="timeline-century">
+          {{ currentSlide().century }}
+        </p>
+        <p class="timeline-subtitle">
+          {{ currentSlide().subtitle }}
+        </p>
+        @for (paragraph of currentSlide().paragraphs; track $index) {
+          <p class="timeline-p">{{ paragraph }}</p>
+        }
+
+        <!-- Mobile timeline hint -->
+        <div class="mobile-timeline">
+          <div class="mobile-timeline-rail-wrapper" aria-hidden="true">
+            <span class="mobile-timeline-dot"></span>
+            <span class="mobile-timeline-line"></span>
+          </div>
+          <div class="mobile-progress-wrapper" aria-hidden="true">
+            <div
+              class="mobile-progress-bar"
+              [style.width.%]="mobileProgressPct()"></div>
+          </div>
+        </div>
+
+        <!-- Mobile / tablet stepping controls -->
+        <div class="mobile-controls" aria-label="Timeline controls">
+          <button
+            type="button"
+            class="timeline-step-btn"
+            [disabled]="slideIndex() === 0"
+            (click)="slideUp()"
+            aria-label="Earlier period">
+            <svg class="step-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7" />
+            </svg>
+          </button>
+          <span class="timeline-status-text">
+            {{ slideIndex() + 1 }} / {{ slides.length }}
+          </span>
+          <button
+            type="button"
+            class="timeline-step-btn"
+            [disabled]="slideIndex() === maxIndex()"
+            (click)="slideDown()"
+            aria-label="Later period">
+            <svg class="step-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Center timeline (desktop): drag or scroll to change era -->
+      <div
+        #timelineTrack
+        class="century-timeline-track"
+        tabindex="0"
+        role="slider"
+        [attr.aria-valuenow]="slideIndex() + 1"
+        [attr.aria-valuemin]="1"
+        [attr.aria-valuemax]="slides.length"
+        [attr.aria-valuetext]="currentSlide().century"
+        aria-label="Scroll or drag to move through Jain history timelines"
+        (keydown)="onTimelineKey($event)"
+        (pointerdown)="onTrackPointerDown($event)"
+        (pointermove)="onTrackPointerMove($event)"
+        (pointerup)="onTrackPointerEnd($event)"
+        (pointercancel)="onTrackPointerEnd($event)">
+        <div class="timeline-rail-inner timeline-rail-bg">
+          <span class="timeline-rail-line" aria-hidden="true"></span>
+          <span
+            class="timeline-handle"
+            [class.timeline-handle--dragging]="dragging()"
+            [style.transition-duration]="(dragging() ? '0ms' : '340ms')"
+            [style.top.%]="handlePositionPct()"
+            aria-hidden="true"></span>
+        </div>
+      </div>
+
+      <!-- Right image -->
+      <div class="timeline-right">
+        <figure class="timeline-slide-figure group">
+          <img
+            [ngSrc]="currentSlide().imageSrc"
+            [alt]="currentSlide().imageAlt"
+            fill
+            class="timeline-slide-img"
+            [style.transition-duration]="dragging() ? '140ms' : '420ms'"
+            [class.opacity-90]="dragging()" />
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>

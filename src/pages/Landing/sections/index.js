@@ -1,0 +1,15 @@
+export { default as Hero } from "./Hero";
+export { default as ScreeningAnnouncement } from "./ScreeningAnnouncement";
+export { default as Story } from "./Story";
+export { default as Stats } from "./Stats";
+export { default as Heritage } from "./Heritage";
+export { default as Challenges } from "./Challenges";
+export { default as Shooting } from "./Shooting";
+export { default as Courses } from "./Courses";
+export { default as PostProduction } from "./PostProduction";
+export { default as JourneyCarousel } from "./JourneyCarousel";
+export { default as Trailer } from "./Trailer";
+export { default as Support } from "./Support";
+export { default as Release } from "./Release";
+export { default as Blogs } from "./Blogs";
+export { default as About } from "./About";
