@@ -1398,7 +1398,7 @@ html { scroll-behavior: smooth; }
   .landing-root .hero-title { text-align: center; font-size: clamp(48px, 10vw, 90px); }
   .landing-root .hero-tagline { border-left: none; border-top: 1px solid rgba(244,165,53,0.3); padding-left: 0; padding-top: 20px; margin: 30px auto 0; }
   .landing-root .hero-subtitle::before, .landing-root .hero-subtitle::after { flex: 0 0 16px; }
-  .landing-root .hero-right { height: auto; min-height: 420px; }
+  .landing-root .hero-right { height: auto; min-height: 420px; order: -1; }
   .landing-root .blogs-grid { grid-template-columns: 1fr 1fr; }
   .landing-root .blog-card.featured { grid-row: auto; grid-column: span 2; }
 
@@ -1406,7 +1406,7 @@ html { scroll-behavior: smooth; }
   .landing-root .tirthankar-wrap,
   .landing-root[data-theme="dark"] .tirthankar-wrap {
     margin-left: 0;
-    width: 75%;
+    width: 100%;
     height: auto;
     min-height: unset;
   }

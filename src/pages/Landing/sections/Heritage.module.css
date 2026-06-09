@@ -227,6 +227,18 @@
   color: var(--text-main);
 }
 
+:global(.landing-root[data-theme="dark"]) .cardEyebrow {
+  color: rgba(244,165,53,0.65);
+}
+
+:global(.landing-root[data-theme="dark"]) .cardTitle {
+  color: var(--text-strong);
+}
+
+:global(.landing-root[data-theme="dark"]) .cardBody {
+  color: var(--text-main);
+}
+
 /* Responsive Overrides */
 @media (max-width: 1024px) {
   .timelineRow {

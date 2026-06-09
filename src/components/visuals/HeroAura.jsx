@@ -27,7 +27,7 @@ const HeroAura = () => {
 
     const group = new THREE.Group();
     scene.add(group);
-    group.position.y = isMobile() ? 0 : 1.2;
+    group.position.y = isMobile() ? 1.0 : 1.2;
 
     /* Aura layered rings */
     const auraRings = [];
@@ -221,15 +221,22 @@ const HeroAura = () => {
       camera.position.z = getCameraZ();
       camera.updateProjectionMatrix();
       renderer.setSize(width, height);
-      group.position.y = isMobile() ? 0 : 1.2;
+      group.position.y = isMobile() ? 1.0 : 1.2;
     };
     window.addEventListener("resize", onResize);
+
+    // Fire onResize when the parent changes size (e.g. when the idol image loads
+    // on mobile where tirthankar-wrap has height:auto — the canvas initialises
+    // with height 0 without this observer).
+    const ro = new ResizeObserver(onResize);
+    ro.observe(parent);
 
     return () => {
       cancelAnimationFrame(rafId);
       window.removeEventListener("resize", onResize);
       document.removeEventListener("visibilitychange", onVisibility);
       io.disconnect();
+      ro.disconnect();
       renderer.dispose();
     };
   }, []);

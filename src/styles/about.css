@@ -31,6 +31,12 @@
   50%       { box-shadow: 0 0 28px rgba(244,165,53,0.42), 0 0 60px rgba(244,165,53,0.12); }
 }
 
+/* ── Root overflow guard (prevents Framer Motion initial-x offsets and
+       negative-margin helpers from creating a horizontal scrollbar) ── */
+.about-page-root {
+  overflow-x: hidden;
+}
+
 /* ── Full-page scroll progress bar ── */
 .abt-scroll-bar {
   position: fixed;
@@ -187,15 +193,17 @@
    NAVBAR — always readable on About page
 ══════════════════════════════════════ */
 
-.about-page-root #navbar {
-  background: rgba(253,248,240,0.92) !important;
+.about-page-root #navbar,
+.about-page-root #navbar.scrolled {
+  background: rgba(253,248,240,0.95) !important;
   backdrop-filter: blur(18px) !important;
   -webkit-backdrop-filter: blur(18px) !important;
   border-bottom: 1px solid rgba(244,165,53,0.12) !important;
   box-shadow: 0 2px 20px rgba(0,0,0,0.06) !important;
 }
-[data-theme="dark"] .about-page-root #navbar {
-  background: rgba(6,13,8,0.92) !important;
+[data-theme="dark"] .about-page-root #navbar,
+[data-theme="dark"] .about-page-root #navbar.scrolled {
+  background: rgba(6,13,8,0.95) !important;
   border-bottom: 1px solid rgba(244,165,53,0.18) !important;
   box-shadow: 0 2px 20px rgba(0,0,0,0.28) !important;
 }

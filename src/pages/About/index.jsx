@@ -7,7 +7,7 @@ import {
 } from "framer-motion";
 import {
   ChevronDown, Film, MapPin, BookOpen, Globe, Users,
-  Phone, Mail, Instagram, Youtube, Facebook, Twitter,
+  Phone, Mail, Instagram, Youtube, Twitter, MessageCircle,
   Sun, Moon,
 } from "lucide-react";
 import { useLenis, useTheme } from "@/hooks";
@@ -232,10 +232,10 @@ const FUTURE  = [
   "Deeper field research into unexplored Jain cave sites & remote temples",
 ];
 const SOCIALS = [
-  { label:"Instagram", handle:"@geo_jainism", href:"https://instagram.com/geo_jainism", Icon:Instagram, accent:"#E8909F" },
-  { label:"YouTube",   handle:"GEO JAINISM",  href:"https://youtube.com",               Icon:Youtube,   accent:"#F4A535" },
-  { label:"Facebook",  handle:"GEO JAINISM",  href:"https://facebook.com",              Icon:Facebook,  accent:"#7DAF6E" },
-  { label:"Twitter/X", handle:"@geo_jainism", href:"https://twitter.com",               Icon:Twitter,   accent:"#D8EEF5" },
+  { label:"Instagram", handle:"@geo_jainism", href:"https://instagram.com/geo_jainism",                  Icon:Instagram,     accent:"#E8909F" },
+  { label:"YouTube",   handle:"@geo_jainism", href:"https://www.youtube.com/@geo_jainism",               Icon:Youtube,       accent:"#F4A535" },
+  { label:"Twitter/X", handle:"@geo_jainism", href:"https://x.com/geo_jainism",                          Icon:Twitter,       accent:"#D8EEF5" },
+  { label:"WhatsApp",  handle:"Join Group",   href:"https://chat.whatsapp.com/EnHCodUJre9AlzFO9LRx5j",  Icon:MessageCircle, accent:"#7DAF6E" },
 ];
 
 /* ══════════════════════════════════════════
