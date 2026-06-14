@@ -1,56 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useDarkMode } from "@/hooks";
 
 const CARDS = [
   {
-    badge: "FEATURED",
-    date:  "JAN · 2026",
+    // badge: "FEATURED",
+    date:  "JAN · 2025",
     title: "The Legacy of Jainism in the Lalitpur District Of Uttar Pradesh",
     body:  "Documenting forgotten Jain heritage, ancient temples, and hidden stories from the historic heartland of Central India.",
-    img:   "/journey/01-rock-sculpture.jpg",
+    img:   "/ground-documentation/Lalitpur.jpg",
   },
   {
-    badge: "RESEARCH",
-    date:  "DEC · 2025",
+    // badge: "RESEARCH",
+    date:  "MAR · 2025",
     title: "The Lost Jain Temples of Gulbarga — On Camera for the First Time",
     body:  "Exploring the forgotten Jain monuments of Karnataka — ancient structures that have waited centuries for the world to notice them. Captured on camera for the very first time.",
-    img:   "/journey/02-temple-hill.jpg",
+    img:   "/ground-documentation/GULBARGA.JPG",
   },
   {
-    badge: "HERITAGE",
-    date:  "NOV · 2025",
+    // badge: "HERITAGE",
+    date:  "OCT · 2025",
     title: "Jain Heritage in Bihar – The Birth Place of Bhagwan Mahavir",
     body:  "Tracing the sacred roots of Jain history across ancient pilgrimage sites, archaeological remains, and timeless traditions.",
-    img:   "/journey/07-stone-carving.jpg",
+    img:   "/ground-documentation/BIHAR.jpg",
   },
   {
-    badge: "HERITAGE",
-    date:  "NOV · 2025",
+    // badge: "HERITAGE",
+    date:  "JAN · 2026",
     title: "Tamil Jains – Minority within in Minority",
     body:  "In the heart of Tamil Nadu, carved into ancient rock faces and scattered across jungle-covered hills, lies one of the world's oldest yet most overlooked spiritual traditions — Tamil Jainism.",
-    img:   "/journey/09-temple.jpg",
+    img:   "/ground-documentation/TAMIL NADU.JPG",
   },
 ];
 
-/* Watches data-theme on <html> so the section reacts to the global toggle */
-const useDarkMode = () => {
-  const [isDark, setIsDark] = useState(
-    () => document.documentElement.getAttribute("data-theme") === "dark"
-  );
-  useEffect(() => {
-    const obs = new MutationObserver(() =>
-      setIsDark(document.documentElement.getAttribute("data-theme") === "dark")
-    );
-    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-    return () => obs.disconnect();
-  }, []);
-  return isDark;
-};
 
 const ChallengeCard = ({ item, isDark }) => {
   const T = {
     cardBg:     isDark ? "rgba(42,26,14,0.88)"      : "#FDF8F0",
-    cardBorder: isDark ? "rgba(244,165,53,0.35)"     : "rgba(244,165,53,0.22)",
-    cardShadow: isDark ? "0 4px 24px rgba(0,0,0,0.3)" : "0 4px 24px rgba(61,35,20,0.06)",
+    cardBorder: isDark ? "rgba(232,144,159,0.30)"     : "rgba(242,196,206,0.55)",
+    cardShadow: isDark ? "0 4px 24px rgba(0,0,0,0.3)" : "0 4px 24px rgba(232,144,159,0.08)",
     title:      isDark ? "#FAF0D9"                   : "#3D2314",
     body:       isDark ? "#E8DFCE"                   : "#2A1A0E",
     saffron:    "#F4A535",
@@ -74,7 +61,7 @@ const ChallengeCard = ({ item, isDark }) => {
       }}
       onMouseEnter={e => {
         e.currentTarget.style.transform = "translateY(-6px)";
-        e.currentTarget.style.boxShadow = "0 24px 50px rgba(61,35,20,0.18)";
+        e.currentTarget.style.boxShadow = "0 24px 50px rgba(232,144,159,0.22)";
       }}
       onMouseLeave={e => {
         e.currentTarget.style.transform = "translateY(0)";
@@ -89,16 +76,6 @@ const ChallengeCard = ({ item, isDark }) => {
           loading="lazy"
           style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 1s ease" }}
         />
-        <span style={{
-          position: "absolute", top: "14px", left: "14px",
-          fontFamily: T.cinzel, fontSize: "9px", letterSpacing: "2.5px",
-          padding: "5px 12px", borderRadius: "20px",
-          background: "rgba(20,10,4,0.55)", backdropFilter: "blur(6px)",
-          color: T.saffron, textTransform: "uppercase",
-          border: "1px solid rgba(244,165,53,0.4)",
-        }}>
-          {item.badge}
-        </span>
       </div>
 
       {/* Body */}
@@ -132,14 +109,14 @@ const ChallengeCard = ({ item, isDark }) => {
           {item.body}
         </p>
 
-        <div style={{
+        {/* <div style={{
           display: "flex", justifyContent: "center", alignItems: "center",
           gap: "6px", paddingTop: "12px", marginTop: "auto",
           fontFamily: T.cinzel, fontSize: "10px", letterSpacing: "2.5px",
           color: T.saffron, textTransform: "uppercase",
         }}>
           Read Article <span>→</span>
-        </div>
+        </div> */}
       </div>
     </div>
   );
@@ -148,9 +125,11 @@ const ChallengeCard = ({ item, isDark }) => {
 const Challenges = () => {
   const isDark = useDarkMode();
 
-  const sectionBg  = isDark ? "rgba(255,159,237,0.04)" : "rgba(255,159,237,0.14)";
-  const descCol    = "#F4A535";
-  const saffron    = "#F4A535";
+  const sectionBg = isDark
+    ? "linear-gradient(155deg,#130508 0%,#1A0B0F 45%,#0F0A0C 100%)"
+    : "linear-gradient(155deg,#F2C4CE 0%,#FDF8F0 42%,#F5EBD8 72%,#EBDFC4 100%)";
+  const descCol   = "#F4A535";
+  const saffron   = "#F4A535";
 
   return (
     <section
@@ -158,7 +137,25 @@ const Challenges = () => {
       className="challenges-section reveal"
       style={{ background: sectionBg, padding: "96px 0", position: "relative", overflow: "hidden" }}
     >
-      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 clamp(16px, 4vw, 40px)" }}>
+      {/* Lotus atmospheric glows */}
+      <div aria-hidden="true" style={{
+        position: "absolute", top: "40%", left: "15%", transform: "translate(-50%,-50%)",
+        width: "600px", height: "500px", borderRadius: "50%",
+        background: isDark
+          ? "radial-gradient(ellipse,rgba(232,144,159,0.07) 0%,transparent 65%)"
+          : "radial-gradient(ellipse,rgba(242,196,206,0.45) 0%,transparent 65%)",
+        pointerEvents: "none",
+      }} />
+      <div aria-hidden="true" style={{
+        position: "absolute", top: "55%", left: "85%", transform: "translate(-50%,-50%)",
+        width: "500px", height: "450px", borderRadius: "50%",
+        background: isDark
+          ? "radial-gradient(ellipse,rgba(232,144,159,0.05) 0%,transparent 65%)"
+          : "radial-gradient(ellipse,rgba(232,144,159,0.25) 0%,transparent 65%)",
+        pointerEvents: "none",
+      }} />
+
+      <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 clamp(16px, 4vw, 40px)", position: "relative", zIndex: 1 }}>
 
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: "64px" }}>

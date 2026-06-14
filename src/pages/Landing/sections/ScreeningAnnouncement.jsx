@@ -1,18 +1,5 @@
-import React, { useState, useEffect } from "react";
-
-const useDarkMode = () => {
-  const [isDark, setIsDark] = useState(
-    () => document.documentElement.getAttribute("data-theme") === "dark"
-  );
-  useEffect(() => {
-    const obs = new MutationObserver(() =>
-      setIsDark(document.documentElement.getAttribute("data-theme") === "dark")
-    );
-    obs.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
-    return () => obs.disconnect();
-  }, []);
-  return isDark;
-};
+import React from "react";
+import { useDarkMode } from "@/hooks";
 
 /* 42 particles — spread across palette colours for variety */
 const PARTICLE_COLORS = ["#F4A535", "#F7D580", "#7DAF6E", "#E8909F"];
@@ -28,27 +15,17 @@ const PARTICLES = Array.from({ length: 42 }, (_, i) => ({
           :               "0 0 7px rgba(232,144,159,0.8),0 0 15px rgba(232,144,159,0.35)",
 }));
 
-const STATS = [
-  { num: "111", label: "Monuments\nDocumented", color: "#F4A535" },
-  { num: "50+", label: "Hill\nExpeditions",    color: "#7DAF6E" },
-  { num: "10+", label: "Sites\nUncovered",     color: "#E8909F" },
-  { num: "50+", label: "Tamil\nVoices",        color: "#F4A535" },
-];
 
 export default function ScreeningAnnouncement() {
   const isDark = useDarkMode();
 
   const bg        = isDark ? "linear-gradient(145deg,#060D08 0%,#0E0804 45%,#08100A 100%)"
                            : "linear-gradient(145deg,#EBDFC4 0%,#FDF8F0 48%,#E8F0E4 100%)";
-  const titleCol  = isDark ? "#FAF0D9"                    : "#2A1A0E";
   const labelCol  = isDark ? "rgba(200,223,192,0.45)"     : "rgba(42,26,14,0.38)";
   const subCol    = isDark ? "rgba(200,223,192,0.58)"     : "rgba(42,26,14,0.50)";
-  const ruleGold  = isDark ? "rgba(244,165,53,0.22)"      : "rgba(244,165,53,0.28)";
-  const ruleTulsi = isDark ? "rgba(125,175,110,0.22)"     : "rgba(125,175,110,0.30)";
   const divV      = isDark ? "rgba(200,223,192,0.14)"     : "rgba(42,26,14,0.10)";
   const bandBg    = isDark ? "rgba(125,175,110,0.06)"     : "rgba(125,175,110,0.08)";
   const bandBdr   = isDark ? "rgba(125,175,110,0.20)"     : "rgba(125,175,110,0.25)";
-  const tagCol    = isDark ? "rgba(240,223,180,0.55)"     : "rgba(42,26,14,0.48)";
   const contactC  = isDark ? "rgba(200,223,192,0.38)"     : "rgba(42,26,14,0.35)";
 
   return (
@@ -76,14 +53,11 @@ export default function ScreeningAnnouncement() {
         marginBottom: "80px",
         backdropFilter: "blur(6px)",
       }}>
-        {/* film perforations — left */}
         <div style={{ display:"flex", gap:"6px", opacity:0.35 }}>
           {[...Array(6)].map((_,i) => (
-            <div key={i} style={{ width:8, height:14, borderRadius:2,
-              background: isDark ? "#7DAF6E" : "#7DAF6E", opacity: 0.7 }}/>
+            <div key={i} style={{ width:8, height:14, borderRadius:2, background:"#7DAF6E", opacity:0.7 }}/>
           ))}
         </div>
-
         <span style={{
           fontFamily: "'Cinzel', serif",
           fontSize: "clamp(10px, 1.6vw, 15px)",
@@ -95,9 +69,7 @@ export default function ScreeningAnnouncement() {
         }}>
           Coming to Screens
         </span>
-
         <span style={{ color: isDark ? "rgba(125,175,110,0.35)" : "rgba(90,152,80,0.35)", fontSize:18 }}>✦</span>
-
         <span style={{
           fontFamily: "'Playfair Display', serif",
           fontSize: "clamp(12px, 1.8vw, 18px)",
@@ -108,12 +80,9 @@ export default function ScreeningAnnouncement() {
         }}>
           August 2026
         </span>
-
-        {/* film perforations — right */}
         <div style={{ display:"flex", gap:"6px", opacity:0.35 }}>
           {[...Array(6)].map((_,i) => (
-            <div key={i} style={{ width:8, height:14, borderRadius:2,
-              background: isDark ? "#7DAF6E" : "#7DAF6E", opacity: 0.7 }}/>
+            <div key={i} style={{ width:8, height:14, borderRadius:2, background:"#7DAF6E", opacity:0.7 }}/>
           ))}
         </div>
       </div>
@@ -183,100 +152,6 @@ export default function ScreeningAnnouncement() {
         textAlign:"center",
       }}>
 
-        {/* Main title */}
-        <h2 style={{
-          fontFamily:"'Playfair Display',serif",
-          fontSize:"clamp(64px,13vw,158px)",
-          fontWeight:300, lineHeight:0.88,
-          letterSpacing:"-3px",
-          color:titleCol, margin:"0 0 20px",
-        }}>
-          Tamil{" "}
-          <em style={{ fontStyle:"italic", color:"#F4A535" }}>Jain</em>
-        </h2>
-
-        {/* Subtitle — lotus-deep accent */}
-        <div style={{ display:"flex", alignItems:"center", justifyContent:"center", gap:"14px", marginBottom:"38px" }}>
-          <div style={{ height:"1px", flex:"0 1 52px", background:"linear-gradient(to left,rgba(232,144,159,0.45),transparent)" }}/>
-          <span style={{
-            fontFamily:"'Cinzel',serif", fontSize:"clamp(8px,1.1vw,11px)",
-            letterSpacing:"5px",
-            color: isDark ? "rgba(232,144,159,0.60)" : "#C8607A",
-            textTransform:"uppercase", whiteSpace:"nowrap",
-          }}>
-            Minority Within a Minority
-          </span>
-          <div style={{ height:"1px", flex:"0 1 52px", background:"linear-gradient(to right,rgba(232,144,159,0.45),transparent)" }}/>
-        </div>
-
-        {/* ── Documentary tagline ── */}
-        <p style={{
-          fontFamily:"'Cormorant Garamond', serif",
-          fontSize:"clamp(16px,2.2vw,22px)",
-          fontStyle:"italic",
-          fontWeight:300,
-          lineHeight:1.75,
-          color:tagCol,
-          maxWidth:"580px",
-          margin:"0 auto 18px",
-          letterSpacing:"0.2px",
-        }}>
-          "Carved into ancient stone, silenced for two millennia —<br/>
-          the story of Tamil Jainism is finally being told."
-        </p>
-        <p style={{
-          fontFamily:"'DM Sans', sans-serif",
-          fontSize:"clamp(11px,1.3vw,13px)",
-          fontWeight:300,
-          lineHeight:1.85,
-          color: isDark ? "rgba(200,223,192,0.45)" : "rgba(42,26,14,0.38)",
-          maxWidth:"520px",
-          margin:"0 auto 68px",
-          letterSpacing:"0.5px",
-        }}>
-          A 4K documentary expedition across 111 historical sites,<br/>
-          50+ remote hill shrines and centuries of forgotten heritage.
-        </p>
-
-        {/* Stats — filmstrip */}
-        <div style={{
-          display:"flex", justifyContent:"center",
-          alignItems:"stretch", flexWrap:"wrap",
-          gap:0, marginBottom:"64px",
-        }}>
-          {STATS.map((s, i) => (
-            <React.Fragment key={s.label}>
-              <div style={{ textAlign:"center", padding:"0 clamp(16px,3.5vw,44px)" }}>
-                <div style={{
-                  fontFamily:"'Playfair Display',serif",
-                  fontSize:"clamp(44px,7vw,74px)",
-                  fontWeight:300, lineHeight:1,
-                  color:s.color, marginBottom:"10px",
-                }}>{s.num}</div>
-                <div style={{
-                  fontFamily:"'Cinzel',serif",
-                  fontSize:"clamp(7.5px,0.85vw,9.5px)",
-                  letterSpacing:"2px", color:labelCol,
-                  textTransform:"uppercase", lineHeight:1.7,
-                  whiteSpace:"pre-line",
-                }}>{s.label}</div>
-              </div>
-              {i < STATS.length - 1 && (
-                <div style={{ width:"1px", alignSelf:"stretch", background:divV, margin:"6px 0", flexShrink:0 }}/>
-              )}
-            </React.Fragment>
-          ))}
-        </div>
-
-        {/* Triple-dot ornament */}
-        <div style={{ display:"flex", alignItems:"center", justifyContent:"center", gap:"12px", marginBottom:"52px" }}>
-          <div style={{ flex:1, height:"1px", background:`linear-gradient(to right,transparent,${ruleTulsi})` }}/>
-          <div style={{ width:5, height:5, borderRadius:"50%", background:"#F4A535",  boxShadow:"0 0 8px rgba(244,165,53,0.65)" }}/>
-          <div style={{ width:5, height:5, borderRadius:"50%", background:"#E8909F", boxShadow:"0 0 8px rgba(232,144,159,0.55)" }}/>
-          <div style={{ width:5, height:5, borderRadius:"50%", background:"#7DAF6E", boxShadow:"0 0 8px rgba(125,175,110,0.55)" }}/>
-          <div style={{ flex:1, height:"1px", background:`linear-gradient(to left,transparent,${ruleGold})` }}/>
-        </div>
-
         {/* Releasing label */}
         <p style={{
           fontFamily:"'Cinzel',serif",
@@ -341,7 +216,6 @@ export default function ScreeningAnnouncement() {
             marginBottom: "22px",
             letterSpacing: "0.15px",
           }}>
-            This two-hour expedition through time — captured in <strong style={{ fontWeight:500, color: isDark ? "#7DAF6E" : "#4A8A3A" }}>4K resolution</strong> — traces the arc from antiquity to the present day, bearing witness to the <strong style={{ fontWeight:500, color: isDark ? "#F7D580" : "#8B5E12" }}>30,000 Tamil Jains</strong> who quietly carry forward a tradition spanning millennia.
           </p>
 
           <p style={{
@@ -472,9 +346,9 @@ export default function ScreeningAnnouncement() {
           display:"flex", justifyContent:"center", alignItems:"center",
           flexWrap:"wrap", gap:"8px 18px", marginBottom:"40px",
         }}>
-          <span style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"11px", letterSpacing:"1.8px", color:labelCol, textTransform:"uppercase" }}>
+          {/* <span style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"11px", letterSpacing:"1.8px", color:labelCol, textTransform:"uppercase" }}>
             With Arham Dhyan Yog
-          </span>
+          </span> */}
         </div>
 
         {/* Contact */}

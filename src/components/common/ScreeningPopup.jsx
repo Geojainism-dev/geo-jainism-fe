@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-export default function ScreeningPopup() {
+export default function ScreeningPopup({ onDismiss }) {
   const [open, setOpen] = useState(false);
 
-  // Slight delay so the page loads before the popup appears
   useEffect(() => {
     const t = setTimeout(() => setOpen(true), 400);
     return () => clearTimeout(t);
@@ -11,12 +10,17 @@ export default function ScreeningPopup() {
 
   if (!open) return null;
 
+  const close = () => {
+    setOpen(false);
+    onDismiss?.();
+  };
+
   return (
     <div
       role="dialog"
       aria-modal="true"
       aria-label="Screening announcement"
-      onClick={() => setOpen(false)}
+      onClick={(e) => e.target === e.currentTarget && close()}
       style={{
         position: "fixed",
         inset: 0,
@@ -30,7 +34,6 @@ export default function ScreeningPopup() {
         animation: "spFadeIn 0.35s ease",
       }}
     >
-      {/* Modal — stop propagation so clicking image doesn't close */}
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
@@ -40,7 +43,6 @@ export default function ScreeningPopup() {
           animation: "spSlideUp 0.38s cubic-bezier(0.22,0.9,0.32,1)",
         }}
       >
-        {/* Poster image */}
         <img
           src="/Screening.png"
           alt="Screening announcement"
@@ -55,9 +57,8 @@ export default function ScreeningPopup() {
           }}
         />
 
-        {/* Close button */}
         <button
-          onClick={() => setOpen(false)}
+          onClick={close}
           aria-label="Close"
           style={{
             position: "absolute",
@@ -94,18 +95,8 @@ export default function ScreeningPopup() {
       </div>
 
       <style>{`
-        @keyframes spFadeIn {
-          from { opacity: 0; }
-          to   { opacity: 1; }
-        }
-        @keyframes spSlideUp {
-          from { opacity: 0; transform: translateY(24px) scale(0.97); }
-          to   { opacity: 1; transform: translateY(0)    scale(1); }
-        }
-        /* Mobile: reduce button size offset on very small screens */
-        @media (max-width: 480px) {
-          .sp-close-btn { top: 8px !important; right: 8px !important; }
-        }
+        @keyframes spFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes spSlideUp { from { opacity: 0; transform: translateY(24px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
       `}</style>
     </div>
   );

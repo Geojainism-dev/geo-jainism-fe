@@ -54,7 +54,7 @@ const Heritage = () => {
       {/* FOOTER */}
       <div className={`${styles.footer} reveal`}>
         <div className={styles.knowMoreBtn}>
-          <span>Know More</span>
+          {/* <span>Know More</span>s */}
           
         </div>
       </div>

@@ -8,9 +8,6 @@ const Support = () => {
       <p style={{ fontFamily: "'Cormorant Garamond',serif", fontWeight: 500, fontStyle: "italic", fontSize: "20px", lineHeight: "32px", letterSpacing: 0, color: "var(--saffron)", marginBottom: 16 }} className="reveal">Your support is essential</p>
       <p className="donate-body reveal">Be a part of this cultural yagna. Every contribution helps us explore ancient Jain sites, document hidden histories, preserve cultural heritage, and bring untold stories to life through research and documentation.</p>
 
-      <div className="budget-bar reveal" style={{ marginBottom: 48 }}>
-        <div className="budget-fill"></div>
-      </div>
 
 
       <div className="donate-cards reveal">
@@ -34,8 +31,8 @@ const Support = () => {
           <span className="donate-card-icon">📧</span>
           <div className="donate-card-title">Contact Us</div>
           <div className="donate-card-val">
-            <span style={{ fontFamily: "'Lato',sans-serif", fontWeight: 300, fontSize: "13px", lineHeight: "22.1px", letterSpacing: 0, color: "#DD9F3F", display: "block" }}>goldeneraofjainism@gmail.com</span>
-            <span style={{ fontFamily: "'Lato',sans-serif", fontWeight: 300, fontSize: "13px", lineHeight: "22.1px", letterSpacing: 0, color: "#5C3D1E", display: "block" }}>+91-6261820815</span>
+            <span style={{ fontFamily: "'Lato',sans-serif", fontWeight: 300, fontSize: "13px", lineHeight: "22.1px", letterSpacing: 0, color: "var(--saffron)", display: "block" }}>goldeneraofjainism@gmail.com</span>
+            <span style={{ fontFamily: "'Lato',sans-serif", fontWeight: 300, fontSize: "13px", lineHeight: "22.1px", letterSpacing: 0, color: "var(--deep-brown)", display: "block" }}>+91-6261820815</span>
           </div>
         </div>
       </div>

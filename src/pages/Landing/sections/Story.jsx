@@ -32,7 +32,7 @@ const Story = () => {
               <div className="story-stat-label">Jain Sites Covered</div>
             </div>
             <div className="story-stat-card story-stat-pink">
-              <div className="story-stat-num" style={{ color: "var(--lotus-deep)" }}>50+</div>
+              <div className="story-stat-num" style={{ color: "var(--lotus-deep)" }}>100+</div>
               <div className="story-stat-label">Volunteers</div>
             </div>
           </div>

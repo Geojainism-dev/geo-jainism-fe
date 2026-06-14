@@ -65,8 +65,8 @@ export const COURSES = [
   {
     tag: "Tamil Nadu",
     title: "Tamil Jain Heritage: A 2,000-Year Journey",
-    desc: "Trace the evolution of Jainism in Tamil Nadu from the 3rd century BCE Brahmi inscriptions through the Sangam golden age to modern times — including 111 documented sites.",
-    meta: "10 Episodes · 4K",
+    desc: " Dive deeper into the rich, often-overlooked world of Jain history, literature, and culture — through structured, research-based series crafted by GEO Jainism.",
+    // meta: "10 Episodes · 4K",
     cta: "Start Learning",
     img: "/journey/01-rock-sculpture.jpg",
   },
@@ -143,40 +143,40 @@ export const TIMELINE_ITEMS = [
     title: "Naladiyar",
     body: "A timeless Tamil classic composed of 400 moral verses by Jain monks, teaching wisdom, discipline, humility, and the deeper values of human life.",
     img: "/journey/01-rock-sculpture.jpg",
-    alt: "Rock-cut Tirthankara sculpture",
-    caption: "Rock-cut Tirthankara sculpture"
+    // alt: "Rock-cut Tirthankara sculpture",
+    // caption: "Rock-cut Tirthankara sculpture"
   },
   {
     eyebrow: "DISCOVER THE LEGACY OF ONE OF INDIA'S OLDEST LITERARY MASTERPIECES.",
     title: "Silappatikaram",
     body: "One of the greatest Tamil epics, narrating the powerful story of Kannagi — a symbol of justice, truth, and devotion. The text offers a vivid glimpse into the culture, trade, cities, and spiritual life of ancient Tamilakam.",
     img: "/journey/05-rock-carvings.jpg",
-    alt: "Ancient Jain cave carvings",
-    caption: "Ancient carvings, Madurai region"
+    // alt: "Ancient Jain cave carvings",
+    // caption: "Ancient carvings, Madurai region"
   },
   {
     eyebrow: "STEP INTO A WORLD WHERE LITERATURE MEETS SPIRITUAL WISDOM.",
     title: "Jivaka Chintamani",
     body: "A celebrated Jain Tamil epic blending philosophy, poetry, romance, and spirituality. It reflects the richness of medieval Tamil literature and the influence of Jain thought on art and storytelling.",
     img: "/journey/04-hillside.jpg",
-    alt: "Hillside carvings",
-    caption: "Ancient Jain temple, Tamil Nadu"
+    // alt: "Hillside carvings",
+    // caption: "Ancient Jain temple, Tamil Nadu"
   },
   {
     eyebrow: "EXPLORE THE VOICE THAT CARRIED JAIN PHILOSOPHY ACROSS GENERATIONS.",
     title: "Ratnakaravarni",
     body: "A renowned Kannada Jain poet and scholar known for preserving spiritual traditions through literature. His works beautifully combine devotion, philosophy, and poetic excellence, leaving a lasting mark on Karnataka's literary heritage.",
     img: "/journey/09-temple.jpg",
-    alt: "Rock cave shrine",
-    caption: "Rock cave shrine, Vijayanagara period"
+    // alt: "Rock cave shrine",
+    // caption: "Rock cave shrine, Vijayanagara period"
   },
   {
     eyebrow: "THE UNTOLD STORY OF INDIA'S LONGEST-REIGNING JAIN QUEEN.",
     title: "Rani Chennabhairadevi: The Pepper Queen",
     body: "The fearless ruler of Gerusoppa who led one of the most prosperous kingdoms of the western coast, strengthening trade, culture, and Jain heritage during the 16th century. Remembered as the \"Pepper Queen,\" she became a symbol of power, resilience, and devotion to Jain traditions.",
     img: "/journey/08-community.jpg",
-    alt: "Tamil Jain heritage",
-    caption: "Tamil Jain community elders"
+    // alt: "Tamil Jain heritage",
+    // caption: "Tamil Jain community elders"
   },
 ];
 

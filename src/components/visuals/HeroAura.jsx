@@ -97,6 +97,83 @@ const HeroAura = () => {
     const halo3 = createHaloSprite(0xFDECC8, 3.2, 0.55);
     group.add(halo3);
 
+    /* Divine light cones — DISABLED */
+    // const innerCone = new THREE.Mesh(
+    //   new THREE.ConeGeometry(1.4, 7, 32, 1, true, 0, Math.PI * 2),
+    //   new THREE.MeshBasicMaterial({
+    //     color: 0xF4A535,
+    //     transparent: true,
+    //     opacity: 0.08,
+    //     wireframe: false,
+    //     side: THREE.DoubleSide,
+    //     blending: THREE.AdditiveBlending,
+    //   })
+    // );
+    // innerCone.position.z = -0.5;
+    // innerCone.position.y = 0.2;
+    // group.add(innerCone);
+
+    // const outerCone = new THREE.Mesh(
+    //   new THREE.ConeGeometry(2.8, 7, 32, 1, true, 0, Math.PI * 2),
+    //   new THREE.MeshBasicMaterial({
+    //     color: 0xF7D580,
+    //     transparent: true,
+    //     opacity: 0.05,
+    //     wireframe: false,
+    //     side: THREE.DoubleSide,
+    //     blending: THREE.AdditiveBlending,
+    //   })
+    // );
+    // outerCone.position.z = -0.8;
+    // outerCone.position.y = 0.3;
+    // group.add(outerCone);
+
+    /* Rising sparks */
+    const sparkCount = 80;
+    const sparkGeo = new THREE.BufferGeometry();
+    const sparkPos = new Float32Array(sparkCount * 3);
+    const sparkData = [];
+    for (let i = 0; i < sparkCount; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const r = 0.2 + Math.random() * 0.8;
+      sparkPos[i * 3] = Math.cos(a) * r;
+      sparkPos[i * 3 + 1] = -2 + Math.random() * 0.5;
+      sparkPos[i * 3 + 2] = Math.sin(a) * r * 0.3;
+      sparkData.push({
+        x: sparkPos[i * 3],
+        y: sparkPos[i * 3 + 1],
+        z: sparkPos[i * 3 + 2],
+        speed: 0.004 + Math.random() * 0.008,
+        driftX: (Math.random() - 0.5) * 0.0018,
+        driftY: 0,
+        driftZ: (Math.random() - 0.5) * 0.0018,
+      });
+    }
+    sparkGeo.setAttribute("position", new THREE.BufferAttribute(sparkPos, 3));
+
+    const sparkDotC = document.createElement("canvas");
+    sparkDotC.width = 32; sparkDotC.height = 32;
+    const sdctx = sparkDotC.getContext("2d");
+    const sdg = sdctx.createRadialGradient(16, 16, 0, 16, 16, 16);
+    sdg.addColorStop(0, "rgba(255,220,140,1)");
+    sdg.addColorStop(0.5, "rgba(244,165,53,0.6)");
+    sdg.addColorStop(1, "rgba(244,165,53,0)");
+    sdctx.fillStyle = sdg;
+    sdctx.fillRect(0, 0, 32, 32);
+    const sparkDotTex = new THREE.CanvasTexture(sparkDotC);
+
+    const sparkMat = new THREE.PointsMaterial({
+      size: 0.08,
+      map: sparkDotTex,
+      transparent: true,
+      opacity: 0.8,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      sizeAttenuation: true,
+    });
+    const sparks = new THREE.Points(sparkGeo, sparkMat);
+    group.add(sparks);
+
     /* Particles */
     const partCount = 320;
     const partGeo = new THREE.BufferGeometry();
@@ -165,6 +242,9 @@ const HeroAura = () => {
     }
     group.add(lotus);
 
+    /* Cone pulse animations — DISABLED */
+    // gsap.to(innerCone.material, { opacity: 0.12, duration: 3.5, yoyo: true, repeat: -1, ease: "sine.inOut" });
+    // gsap.to(outerCone.material, { opacity: 0.08, duration: 4, yoyo: true, repeat: -1, ease: "sine.inOut" });
     gsap.to(group.scale, { x: 1.05, y: 1.05, z: 1.05, duration: 6, yoyo: true, repeat: -1, ease: "sine.inOut" });
     gsap.to(halo1.material, { opacity: 0.55, duration: 5, yoyo: true, repeat: -1, ease: "sine.inOut" });
     gsap.to(halo2.material, { opacity: 0.7, duration: 4, yoyo: true, repeat: -1, ease: "sine.inOut" });
@@ -196,6 +276,23 @@ const HeroAura = () => {
       depthTorus.rotation.y = Math.sin(t * 0.4) * 0.3;
       depthTorus2.rotation.z -= 0.0015;
       depthTorus2.rotation.x = -Math.PI / 4 + Math.cos(t * 0.3) * 0.2;
+
+      /* Update sparks rising */
+      const sparkPos = sparks.geometry.attributes.position;
+      for (let i = 0; i < sparkCount; i++) {
+        sparkData[i].y += sparkData[i].speed;
+        sparkData[i].x += sparkData[i].driftX;
+        sparkData[i].z += sparkData[i].driftZ;
+        if (sparkData[i].y > 4.0) {
+          sparkData[i].y = -2 + Math.random() * 0.5;
+          sparkData[i].x = (Math.random() - 0.5) * 1.6;
+          sparkData[i].z = (Math.random() - 0.5) * 0.6;
+        }
+        sparkPos.array[i * 3] = sparkData[i].x;
+        sparkPos.array[i * 3 + 1] = sparkData[i].y;
+        sparkPos.array[i * 3 + 2] = sparkData[i].z;
+      }
+      sparkPos.needsUpdate = true;
 
       const pos = points.geometry.attributes.position;
       for (let i = 0; i < partCount; i++) {
@@ -237,6 +334,10 @@ const HeroAura = () => {
       document.removeEventListener("visibilitychange", onVisibility);
       io.disconnect();
       ro.disconnect();
+      // innerCone.geometry.dispose();
+      // outerCone.geometry.dispose();
+      sparkGeo.dispose();
+      partGeo.dispose();
       renderer.dispose();
     };
   }, []);

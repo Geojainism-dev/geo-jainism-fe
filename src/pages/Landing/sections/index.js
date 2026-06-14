@@ -4,6 +4,7 @@ export { default as Story } from "./Story";
 export { default as Stats } from "./Stats";
 export { default as Heritage } from "./Heritage";
 export { default as Challenges } from "./Challenges";
+export { default as Pakistan } from "./Pakistan";
 export { default as Shooting } from "./Shooting";
 export { default as Courses } from "./Courses";
 export { default as PostProduction } from "./PostProduction";

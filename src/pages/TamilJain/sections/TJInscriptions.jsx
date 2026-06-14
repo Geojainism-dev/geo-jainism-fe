@@ -203,7 +203,7 @@ export default function TJInscriptions() {
                   animate={isIntroInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.7, delay: 0.65 }}
                 >
-                  2000+ Years of Heritage
+                  2300+ Years of Heritage
                 </motion.div>
               </div>
             </motion.div>
