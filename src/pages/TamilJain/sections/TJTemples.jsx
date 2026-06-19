@@ -10,6 +10,9 @@ const TEMPLES = [
   { title: "Tirupparankuram Cave",        tag: "Converted", period: "3rd BCE", img: "/journey/05-rock-carvings.jpg",  desc: "An ancient Jain cave shrine whose Tirthankara images were later adapted to other traditions." },
   { title: "Madurai Hill Shelters",       tag: "Rock-Cut",  period: "3rd BCE", img: "/journey/04-hillside.jpg",       desc: "Tamil Brahmi inscriptions prove Jain ascetics inhabited these hills over 2,300 years ago." },
   { title: "Tirthankar Temple, Vellore",  tag: "Active",    period: "12th CE", img: "/journey/07-stone-carving.jpg",  desc: "An active Jain temple preserving original stone sculptures and medieval craftsmanship." },
+  { title: "Sittanavasal Cave Temple",    tag: "Converted", period: "2nd CE",  img: "/journey/09-temple.jpg",         desc: "Famed for its exquisite Jain fresco paintings, later adapted, yet still preserving Jain artistic legacy." },
+  { title: "Anaimalai Rock Shelter",      tag: "Rock-Cut",  period: "3rd BCE", img: "/journey/02-temple-hill.jpg",    desc: "Rock-cut beds and Tamil-Brahmi inscriptions attest to early Jain monastic activity in this region." },
+  { title: "Mel Sithamur Jain Math",      tag: "Converted", period: "5th CE",  img: "/journey/07-stone-carving.jpg",  desc: "An ancient Jain math that evolved over centuries, now a centre of spiritual learning and heritage." },
 ];
 
 const TAG_STYLE = {
@@ -23,12 +26,11 @@ export default function TJTemples() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [filter, setFilter] = useState("All");
 
-  const visible = filter === "All" ? TEMPLES : TEMPLES.filter(t => t.tag === filter);
+  const visible = (filter === "All" ? TEMPLES : TEMPLES.filter(t => t.tag === filter)).slice(0, 3);
 
   return (
     <section ref={ref} className="tj-section tj-temples-section" id="temples">
 
-      {/* Ghost background word */}
       <div className="tj-temples-bg-word" aria-hidden="true">TEMPLE</div>
 
       <div className="tj-temples-inner">
@@ -73,7 +75,7 @@ export default function TJTemples() {
           ))}
         </motion.div>
 
-        {/* Poster grid */}
+        {/* 3-card grid */}
         <motion.div layout className="tj-temples-grid">
           <AnimatePresence mode="popLayout">
             {visible.map((t, i) => {
@@ -88,24 +90,18 @@ export default function TJTemples() {
                   transition={{ duration: 0.55, delay: i * 0.08 }}
                   className="tj-temple-card"
                 >
-                  {/* Full-bleed image */}
                   <div className="tj-temple-img-wrap">
                     <img src={t.img} alt={t.title} loading="lazy" />
                     <div className="tj-temple-img-overlay" />
                   </div>
 
-                  {/* Top bar: number + tag */}
                   <div className="tj-temple-top">
                     <span className="tj-temple-num">0{i + 1}</span>
-                    <span
-                      className="tj-temple-tag"
-                      style={{ borderColor: ts.border, color: ts.color }}
-                    >
+                    <span className="tj-temple-tag" style={{ borderColor: ts.border, color: ts.color }}>
                       {t.tag}
                     </span>
                   </div>
 
-                  {/* Bottom text — always visible, desc reveals on hover */}
                   <div className="tj-temple-body">
                     <p className="tj-temple-period">{t.period}</p>
                     <h3 className="tj-temple-name">{t.title}</h3>
@@ -116,6 +112,7 @@ export default function TJTemples() {
             })}
           </AnimatePresence>
         </motion.div>
+
       </div>
     </section>
   );

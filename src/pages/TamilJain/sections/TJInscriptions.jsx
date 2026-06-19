@@ -1,40 +1,5 @@
-import React, { useRef, useState, useEffect, useCallback } from "react";
-import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
-
-// Ancient Brahmi + Tamil chars for the scramble effect
-const ANCIENT = '𑀤𑀩𑀦𑀓𑀘𑀪𑀰𑀅𑀖𑀢வடலசோழர்ன𑀬𑀭𑀯';
-
-function useTextScramble(target, active, duration = 1050) {
-  const [text, setText] = useState(target);
-  const raf = useRef(null);
-
-  useEffect(() => {
-    if (!active) return;
-    cancelAnimationFrame(raf.current);
-    let start = null;
-
-    const tick = (ts) => {
-      if (!start) start = ts;
-      const p = Math.min((ts - start) / duration, 1);
-      const revealed = Math.floor(target.length * Math.pow(p, 0.5));
-
-      setText(
-        Array.from(target).map((ch, i) => {
-          if (/[\s\+\–\-\/]/.test(ch)) return ch;
-          if (i < revealed) return ch;
-          return ANCIENT[Math.floor(Math.random() * ANCIENT.length)];
-        }).join('')
-      );
-
-      if (p < 1) raf.current = requestAnimationFrame(tick);
-    };
-
-    raf.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf.current);
-  }, [active, target, duration]);
-
-  return text;
-}
+import React, { useRef, useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
 
 function useCountUp(target, active, duration = 1350) {
   const num = parseInt(target.replace(/\D/g, ''), 10);
@@ -45,16 +10,13 @@ function useCountUp(target, active, duration = 1350) {
     if (!active || isNaN(num)) return;
     cancelAnimationFrame(raf.current);
     let start = null;
-
     const tick = (ts) => {
       if (!start) start = ts;
       const p = Math.min((ts - start) / duration, 1);
       const eased = 1 - Math.pow(1 - p, 3);
-      const current = Math.floor(eased * num);
-      setVal(p >= 1 ? target : String(current));
+      setVal(p >= 1 ? target : String(Math.floor(eased * num)));
       if (p < 1) raf.current = requestAnimationFrame(tick);
     };
-
     raf.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf.current);
   }, [active, num, target, duration]);
@@ -66,295 +28,179 @@ const inscriptionsData = [
   {
     id: "brahmi",
     title: "Tamil-Brahmi",
-    subtitle: "Early Origins",
     era: "3rd BCE – 3rd CE",
-    text: "Early inscriptions found in rock shelters and Jain beds, often recording donations made to Jain ascetics. These are the earliest written records of the Tamil language, marking the dawn of Jain literary culture.",
-    image: "/journey/07-stone-carving.jpg",
-    palette: "cream",
+    text: "Early inscriptions found in rock shelters and Jain beds, often recording donations made to Jain ascetics. These are the earliest written records of the Tamil language.",
     stat: "600+",
     statLabel: "Known inscriptions identified",
-    glyphs: [
-      { char: "𑀤", top: "12%", left: "70%" },
-      { char: "𑀩", top: "62%", left: "78%" },
-      { char: "𑀦", top: "80%", left: "62%" }
-    ]
+    image: "/journey/07-stone-carving.jpg",
   },
   {
     id: "vatteluttu",
     title: "Vatteluttu",
-    subtitle: "Sacred Records",
-    era: "Early Medieval",
-    text: "Records of grants, charitable donations, Jain monasteries (pallis), and religious activities. This cursive script reflects the administrative flourishing and the deep community integration of Jain centers.",
-    image: "/journey/01-rock-sculpture.jpg",
-    palette: "alt",
+    era: "Early Medieval Period",
+    text: "Records of grants, charitable donations, Jain monasteries (pallis), and religious activities — reflecting the administrative flourishing of Jain centers.",
     stat: "82",
     statLabel: "Documented pallis & monasteries",
-    glyphs: [
-      { char: "வ", top: "16%", left: "8%" },
-      { char: "ட", top: "62%", left: "12%" },
-      { char: "ல", top: "40%", left: "4%" }
-    ]
+    image: "/journey/05-rock-carvings.jpg",
   },
   {
     id: "grantha",
-    title: "Chola–Pandya",
-    subtitle: "Golden Era",
+    title: "Grantha · Chola–Pandya",
     era: "Classical Period",
-    text: "Documenting temple endowments, land grants, image installations, and tax exemptions. They highlight the significant socio-economic role of Jain communities during this majestic period of South Indian history.",
-    image: "/journey/06-sheep-site.jpg",
-    palette: "tulsi",
+    text: "Inscriptions documenting temple endowments, land grants, image installations, tax exemptions, and the socio-economic role of Jain communities during the golden era of South Indian Jain history.",
     stat: "200+",
     statLabel: "Royal temple endowments recorded",
-    glyphs: [
-      { char: "சோ", top: "14%", left: "74%" },
-      { char: "ழர்", top: "68%", left: "66%" },
-      { char: "ன", top: "42%", left: "82%" }
-    ]
-  }
+    image: "/journey/01-rock-sculpture.jpg",
+  },
 ];
 
-export default function TJInscriptions() {
-  const sectionRef = useRef(null);
-  const introRef = useRef(null);
-  const typesRef = useRef(null);
-  const isIntroInView = useInView(introRef, { once: true, margin: "-5% 0px" });
-  const isTypesInView = useInView(typesRef, { once: true, margin: "-8% 0px" });
-  const shouldReduce = useReducedMotion();
+/* Root at TOP (y=18), trunk grows DOWN to junction (y=90),
+   branches curve further DOWN to card tops (y=196) */
+const BRANCHES = [
+  { d: "M 500 90 C 460 130, 260 165, 160 196", x: 160 },
+  { d: "M 500 90 C 500 120, 500 160, 500 196",  x: 500 },
+  { d: "M 500 90 C 540 130, 740 165, 840 196",  x: 840 },
+];
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end end"]
-  });
-
-  const introImgY = useTransform(scrollYProgress, [0, 0.5], shouldReduce ? ["0%", "0%"] : ["0%", "18%"]);
+function TreeCard({ data: d, index: i, inView }) {
+  const statVal = useCountUp(d.stat, inView, 1400);
 
   return (
-    <section ref={sectionRef} className="tj-insc-section">
-      <div className="tj-beds-stone-texture" style={{ opacity: 0.07 }} />
-      <div className="tj-beds-dust-overlay" style={{ opacity: 0.2 }} />
-
-      {/* ── INTRO PANEL ── */}
-      <div ref={introRef} className="tj-insc-intro">
-        <div className="tj-insc-wrap">
-          <div className="tj-insc-intro-grid">
-
-            <motion.div
-              className="tj-insc-intro-text"
-              initial={{ opacity: 0, x: shouldReduce ? 0 : -52 }}
-              animate={isIntroInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="tj-eyebrow-row">
-                <div className="tj-eyebrow-line" />
-                <span className="tj-eyebrow-label">Historical Epigraphy</span>
-              </div>
-
-              <h2 className="tj-insc-heading">
-                Sacred <br /><em>Inscriptions</em>
-              </h2>
-
-              <p className="tj-insc-intro-body">
-                Jain inscriptions in Tamil Nadu are among the most valuable historical sources
-                for understanding the spread, patronage, and development of Jainism in South India.
-                They provide firsthand evidence about Jain monks, donors, religious institutions,
-                and local rulers, helping reconstruct over two millennia of Tamil Jain heritage.
-              </p>
-
-              <div className="tj-beds-rough-divider" />
-
-              <motion.div
-                className="tj-insc-scroll-cue"
-                initial={{ opacity: 0, y: 12 }}
-                animate={isIntroInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.7, delay: 0.85 }}
-              >
-                <div className="tj-insc-cue-line" />
-                <span>Three Inscription Traditions</span>
-                <div className="tj-insc-cue-line" />
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              className="tj-insc-intro-visual"
-              initial={{ opacity: 0, x: shouldReduce ? 0 : 52, scale: shouldReduce ? 1 : 0.97 }}
-              animate={isIntroInView ? { opacity: 1, x: 0, scale: 1 } : {}}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
-            >
-              <div className="tj-insc-intro-frame">
-                <div className="tj-corner-ornament tl" />
-                <div className="tj-corner-ornament br" />
-                <div className="tj-insc-frame-inner">
-                  <motion.img
-                    src="/journey/05-rock-carvings.jpg"
-                    alt="Ancient Inscriptions"
-                    className="tj-insc-intro-img"
-                    style={{ y: introImgY }}
-                  />
-                  <div className="tj-insc-intro-overlay">
-                    <blockquote className="tj-insc-intro-quote">
-                      "Firsthand evidence carved in stone — monks, donors, and rulers speak across millennia."
-                    </blockquote>
-                  </div>
-                </div>
-
-                <motion.div
-                  className="tj-insc-badge"
-                  initial={{ opacity: 0, y: shouldReduce ? 0 : 16 }}
-                  animate={isIntroInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.7, delay: 0.65 }}
-                >
-                  2300+ Years of Heritage
-                </motion.div>
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
+    <motion.div
+      className="tj-insc-card-3d"
+      initial={{ opacity: 0, rotateY: 28, y: 44 }}
+      animate={inView ? { opacity: 1, rotateY: 0, y: 0 } : {}}
+      transition={{ duration: 0.88, delay: 0.9 + i * 0.18, ease: [0.16, 1, 0.3, 1] }}
+      whileHover={{ rotateY: -7, scale: 1.03, transition: { duration: 0.32 } }}
+      style={{ transformPerspective: 1100, transformStyle: "preserve-3d" }}
+    >
+      {/* Clear image — top half */}
+      <div className="tj-insc-card-img-wrap">
+        <img
+          className="tj-insc-card-img"
+          src={d.image}
+          alt={d.title}
+          loading="lazy"
+        />
       </div>
 
-      {/* ── ORNAMENTAL DIVIDER ── */}
-      <motion.div
-        className="tj-insc-ornament-divider"
-        initial={{ opacity: 0, scaleX: shouldReduce ? 1 : 0 }}
-        animate={isIntroInView ? { opacity: 1, scaleX: 1 } : {}}
-        transition={{ duration: 1.1, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
-      >
-        <div className="tj-insc-div-line" />
-        <div className="tj-insc-div-center">
-          <span className="tj-insc-div-glyph">𑀤</span>
-          <span className="tj-insc-div-label">Three Traditions of Stone</span>
-          <span className="tj-insc-div-glyph">𑀦</span>
-        </div>
-        <div className="tj-insc-div-line" />
-      </motion.div>
+      {/* Saffron divider bar */}
+      <div className="tj-insc-card-bar" />
 
-      {/* ── THREE TYPES ── */}
-      <div ref={typesRef} className="tj-insc-types">
-        <div className="tj-insc-wrap">
-          <div className="tj-insc-cards-grid">
-            {inscriptionsData.map((item, index) => (
-              <InscriptionCard
-                key={item.id}
-                item={item}
-                index={index}
-                isParentInView={isTypesInView}
-                shouldReduce={shouldReduce}
-              />
-            ))}
-          </div>
+      {/* Text panel — bottom half */}
+      <div className="tj-insc-card-body">
+        <span className="tj-insc-era-pill">{d.era}</span>
+        <h3 className="tj-insc-card-title">{d.title}</h3>
+        <div className="tj-insc-card-divider" />
+        <p className="tj-insc-card-desc">{d.text}</p>
+        <div className="tj-insc-card-stat">
+          <span className="tj-insc-stat-num">{inView ? statVal : "0"}</span>
+          <span className="tj-insc-stat-label">{d.statLabel}</span>
         </div>
       </div>
-
-    </section>
+    </motion.div>
   );
 }
 
-function InscriptionCard({ item, index, isParentInView, shouldReduce }) {
-  const outerRef = useRef(null);
-  const [tilt, setTilt] = useState({ rx: 0, ry: 0 });
-  const isResting = tilt.rx === 0 && tilt.ry === 0;
-
-  const isInView = useInView(outerRef, { once: true, margin: "-10% 0px" });
-
-  // Effect 1: era badge scrambles through ancient Brahmi chars
-  const displayEra = useTextScramble(item.era, isInView && !shouldReduce, 1100);
-  // Effect 2 (bonus): stat number counts up from 0
-  const displayStat = useCountUp(item.stat, isInView, 1400);
-
-  const { scrollYProgress } = useScroll({
-    target: outerRef,
-    offset: ["start end", "end start"]
-  });
-  const imgY = useTransform(scrollYProgress, [0, 1], shouldReduce ? ["0%", "0%"] : ["8%", "-8%"]);
-
-  // Effect 3: 3D perspective tilt on mouse move (like holding a stone tablet)
-  const handleMouseMove = useCallback((e) => {
-    if (shouldReduce || !outerRef.current) return;
-    const r = outerRef.current.getBoundingClientRect();
-    const nx = (e.clientX - r.left) / r.width - 0.5;
-    const ny = (e.clientY - r.top) / r.height - 0.5;
-    setTilt({ rx: ny * -9, ry: nx * 13 });
-  }, [shouldReduce]);
-
-  const handleMouseLeave = useCallback(() => setTilt({ rx: 0, ry: 0 }), []);
+export default function TJInscriptions() {
+  const sectionRef = useRef(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <div
-      ref={outerRef}
-      className="tj-insc-card-perspective"
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={shouldReduce ? {} : {
-        transform: `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)`,
-        transition: isResting
-          ? 'transform 0.65s cubic-bezier(0.16,1,0.3,1)'
-          : 'transform 0.07s linear',
-      }}
-    >
-      <motion.div
-        className={`tj-insc-card${isInView ? ' tj-insc-card--lit' : ''}`}
-        data-palette={item.palette}
-        initial={{ opacity: 0, y: shouldReduce ? 0 : 64 }}
-        animate={isParentInView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: index * 0.18 }}
-      >
-        {/* Image panel */}
-        <div className="tj-insc-card-visual">
-          <div className="tj-insc-card-frame">
-            <motion.img
-              src={item.image}
-              alt={item.title}
-              className="tj-insc-card-img"
-              style={{ y: imgY }}
+    <section ref={sectionRef} className="tj-insc-section">
+
+      {/* Header — this IS the root of the tree visually */}
+      <div className="tj-insc-header">
+        <div className="tj-eyebrow-row" style={{ marginBottom: "14px", justifyContent: "center" }}>
+          <div className="tj-eyebrow-line" style={{ background: "linear-gradient(to right, transparent, var(--saffron))" }} />
+          <span className="tj-eyebrow-label">Historical Epigraphy</span>
+          <div className="tj-eyebrow-line" style={{ background: "linear-gradient(to left, transparent, var(--saffron))" }} />
+        </div>
+        <h2 className="tj-insc-cinema-title">Sacred <em>Inscriptions</em></h2>
+        <p className="tj-insc-intro-para">
+          Jain inscriptions in Tamil Nadu are among the most valuable historical sources
+          for understanding the spread, patronage, and development of Jainism in South India.
+          They provide firsthand evidence about Jain monks, donors, religious institutions,
+          and local rulers, helping reconstruct over two millennia of Tamil Jain heritage.
+        </p>
+      </div>
+
+      {/* SVG tree: root at top → trunk → 3 branches curving DOWN to cards */}
+      <div className="tj-insc-tree-wrap" aria-hidden="true">
+        <svg
+          className="tj-insc-tree-svg"
+          viewBox="0 0 1000 210"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          {/* Root emblem — outer glow ring */}
+          <motion.circle
+            cx="500" cy="18" r="16"
+            className="tj-tree-root-ring"
+            initial={{ scale: 0, opacity: 0 }}
+            animate={inView ? { scale: 1, opacity: 1 } : {}}
+            transition={{ duration: 0.5 }}
+          />
+          {/* Root emblem — inner halo */}
+          <motion.circle
+            cx="500" cy="18" r="9"
+            className="tj-tree-root-halo"
+            initial={{ scale: 0 }}
+            animate={inView ? { scale: 1 } : {}}
+            transition={{ duration: 0.35, delay: 0.15 }}
+          />
+          {/* Root emblem — solid core */}
+          <motion.circle
+            cx="500" cy="18" r="5"
+            className="tj-tree-root-core"
+            initial={{ scale: 0 }}
+            animate={inView ? { scale: 1 } : {}}
+            transition={{ duration: 0.28, delay: 0.26 }}
+          />
+
+          {/* Trunk: grows downward from root to junction */}
+          <motion.line
+            x1="500" y1="34" x2="500" y2="90"
+            className="tj-tree-trunk"
+            initial={{ pathLength: 0 }}
+            animate={inView ? { pathLength: 1 } : {}}
+            transition={{ duration: 0.42, delay: 0.38, ease: "easeOut" }}
+          />
+
+          {/* 3 organic branches curving downward to card tops */}
+          {BRANCHES.map((b, i) => (
+            <motion.path
+              key={i}
+              d={b.d}
+              className="tj-tree-branch"
+              initial={{ pathLength: 0 }}
+              animate={inView ? { pathLength: 1 } : {}}
+              transition={{ duration: 0.85, delay: 0.75 + i * 0.10, ease: [0.4, 0, 0.2, 1] }}
             />
-            <div className="tj-insc-card-img-vignette" />
-          </div>
+          ))}
 
-          {/* Era scramble lives here */}
-          <div className="tj-insc-card-era-badge">{displayEra}</div>
+          {/* Glowing dots at branch tips — where branches meet card tops */}
+          {BRANCHES.map((b, i) => (
+            <motion.circle
+              key={i}
+              cx={b.x} cy="196" r="7"
+              className="tj-tree-tip-dot"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={inView ? { scale: 1, opacity: 1 } : {}}
+              transition={{ duration: 0.38, delay: 1.45 + i * 0.10 }}
+            />
+          ))}
+        </svg>
+      </div>
 
-          <div className="tj-insc-card-index">0{index + 1}</div>
+      {/* 3 split image+text cards hang below the branches */}
+      <div className="tj-insc-cards-grid">
+        {inscriptionsData.map((d, i) => (
+          <TreeCard key={d.id} data={d} index={i} inView={inView} />
+        ))}
+      </div>
 
-          {/* Glyphs move opposite to tilt — creating depth illusion */}
-          <div className="tj-insc-card-glyphs">
-            {item.glyphs.map((g, i) => (
-              <span
-                key={i}
-                className="tj-glyph-char"
-                style={{
-                  top: g.top,
-                  left: g.left,
-                  animationDelay: `${i * 2.2}s`,
-                  ...(shouldReduce ? {} : {
-                    transform: `translate(${tilt.ry * 2.2}px, ${tilt.rx * 2.2}px)`,
-                    transition: isResting ? 'transform 0.65s ease' : 'transform 0.07s linear',
-                  }),
-                }}
-              >
-                {g.char}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Content panel */}
-        <div className="tj-insc-card-body">
-          <div className="tj-insc-card-header">
-            <h3 className="tj-insc-card-title">{item.title}</h3>
-            <span className="tj-insc-card-subtitle">{item.subtitle}</span>
-          </div>
-
-          <div className="tj-insc-card-rule" />
-
-          <p className="tj-insc-card-text">{item.text}</p>
-
-          <div className="tj-insc-card-stat">
-            <span className="tj-insc-stat-num">{displayStat}</span>
-            <div className="tj-c-meta-div" />
-            <span className="tj-insc-stat-label">{item.statLabel}</span>
-          </div>
-        </div>
-      </motion.div>
-    </div>
+    </section>
   );
 }

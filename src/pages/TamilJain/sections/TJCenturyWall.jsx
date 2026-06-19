@@ -1,134 +1,93 @@
-import React, { useState, useRef, useCallback, useEffect } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-const SLIDES = [
+const ERAS = [
   {
-    century: "3RD CENTURY BCE",
-    subtitle: "Tamil Brahmi Inscriptions",
-    paragraphs: [
-      "The earliest evidence of Jainism in Tamil Nadu comes from Tamil-Brahmi inscriptions found in natural caverns. These caves served as monsoon shelters for Jain monks and bear witness to a vibrant ascetic tradition on this soil.",
-      "Scholars connect these engravings with the spread of Śramaṇa thought across ancient Tamilakam, tying together language, archaeology, and the enduring Jain presence across the peninsula.",
-    ],
+    icon: "🏺",
+    period: "3rd Century BCE",
+    shortPeriod: "3rd BCE",
     imageSrc: "/journey/01-rock-sculpture.jpg",
-    imageAlt: "Ancient Tamil Jain rock carving in a cavern",
+    title: "Stone Beds & Tamil-Brahmi Inscriptions",
+    desc: "Stone beds and Tamil-Brahmi inscriptions mark the beginning of a remarkable journey — Jain monks finding refuge in the granite hills of Tamil Nadu, leaving their stories etched in ancient script.",
   },
   {
-    century: "9TH CENTURY CE",
-    subtitle: "Rock-Cut Jain Sanctuaries",
-    paragraphs: [
-      "Across the Pudukottai plateau and Tiruchirappalli plains, Jain communities sponsored rock-cut shrines crowned with luminous plaster and painted ceilings that still whisper of manuscript schools.",
-      "Pilgrim routes braided village tanks with hillside caverns, translating patronage carved in stone into the seasonal rhythms of monsoon retreats.",
-    ],
+    icon: "⛰️",
+    period: "2nd Century BCE – 3rd Century CE",
+    shortPeriod: "2nd–3rd CE",
     imageSrc: "/journey/05-rock-carvings.jpg",
-    imageAlt: "Heritage rock-cut Jain sculptures",
+    title: "Hills Become Monasteries",
+    desc: "Jainism spreads across the Tamil landscape. Natural caves are carved into monasteries; hilltops are consecrated. A network of sacred sites stretches from the Kaveri delta to the far south.",
   },
   {
-    century: "16TH CENTURY CE",
-    subtitle: "Pandya & Vijayanagara Patronage",
-    paragraphs: [
-      "Later dynasties protected Jain bankers, composers, and temple stewards whose copper-plate charters record irrigation gifts and lamp-endowments along the Tambraparni and Vaigai basins.",
-      "The interplay of courtly Sanskrit and crystalline Tamil commentaries anchored a cosmopolitan Jain public sphere that still resonates in choral festivals.",
-    ],
+    icon: "📚",
+    period: "4th – 8th Century CE",
+    shortPeriod: "4–8th CE",
     imageSrc: "/journey/09-temple.jpg",
-    imageAlt: "Tamil Jain golden temple façade detail",
+    title: "Shaping Classical Tamil Culture",
+    desc: "Tamil Jain scholars contribute profoundly to the Sangam literary tradition. Works like Tirukkural, Silappatikaram, and Manimekalai emerge from a world deeply influenced by Jain ethics and philosophy.",
+  },
+  {
+    icon: "🛕",
+    period: "9th – 13th Century CE",
+    shortPeriod: "9–13th CE",
+    imageSrc: "/journey/01-rock-sculpture.jpg",
+    title: "Artistic Brilliance",
+    desc: "A period of artistic brilliance — rock-cut temples, monolithic sculptures, and intricate bas-reliefs flourish. Kalagumalai, Vallimalai, and Sittanavasal stand as masterpieces of this era.",
+  },
+  {
+    icon: "🍂",
+    period: "14th – 18th Century CE",
+    shortPeriod: "14–18th CE",
+    imageSrc: "/journey/05-rock-carvings.jpg",
+    title: "Preservation Through Change",
+    desc: "Political and religious transformations reshape the region. Jain communities adapt, many sites pass into other traditions, yet the monuments endure — silent witnesses to centuries of devotion.",
+  },
+  {
+    icon: "🔍",
+    period: "19th – 20th Century CE",
+    shortPeriod: "19–20th CE",
+    imageSrc: "/journey/09-temple.jpg",
+    title: "A Forgotten Chapter Rediscovered",
+    desc: "Ancient caves, sculptures, and inscriptions are rediscovered by epigraphers and archaeologists. A forgotten chapter of Tamil history begins to resurface, reclaiming its rightful place in the story of India.",
+  },
+  {
+    icon: "🌿",
+    period: "Today",
+    shortPeriod: "Today",
+    imageSrc: "/journey/01-rock-sculpture.jpg",
+    title: "2,000+ Years of Continuous History",
+    desc: "A living tradition that endures — communities, scholars, and pilgrims keeping the flame alive. Tamil Jainism's 2,000-year journey is not just history. It is heritage, still breathing.",
   },
 ];
 
-const MAX_IDX = SLIDES.length - 1;
+const bgVariants = {
+  enter:  { opacity: 0 },
+  center: { opacity: 1 },
+  exit:   { opacity: 0 },
+};
+
+const textVariants = {
+  enter:  (dir) => ({ x: dir > 0 ? 30 : -30, opacity: 0 }),
+  center:            { x: 0, opacity: 1 },
+  exit:   (dir) => ({ x: dir > 0 ? -30 : 30, opacity: 0 }),
+};
 
 export default function TJCenturyWall() {
-  const [slideIdx, setSlideIdx] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
+  const [activeIdx, setActiveIdx] = useState(0);
+  const dirRef = useRef(0);
 
-  const trackRef        = useRef(null);
-  const slideIdxRef     = useRef(0);
-  const draggingRef     = useRef(false);
-  const lastWheelRef    = useRef(0);
-  const pointerRafRef   = useRef(0);
-  const pendingYRef     = useRef(null);
+  const goTo = useCallback((idx) => {
+    dirRef.current = idx > activeIdx ? 1 : -1;
+    setActiveIdx(idx);
+  }, [activeIdx]);
 
-  // Keep ref in sync for use inside non-passive event listeners
-  useEffect(() => { slideIdxRef.current = slideIdx; }, [slideIdx]);
+  const onKeyDown = (ev) => {
+    if (ev.key === "ArrowLeft")  { ev.preventDefault(); goTo(Math.max(0, activeIdx - 1)); }
+    if (ev.key === "ArrowRight") { ev.preventDefault(); goTo(Math.min(ERAS.length - 1, activeIdx + 1)); }
+  };
 
-  const currentSlide = SLIDES[slideIdx];
-  const handlePct    = MAX_IDX > 0 ? (slideIdx / MAX_IDX) * 100 : 0;
-  const mobilePct    = MAX_IDX > 0 ? Math.max(8, (slideIdx / MAX_IDX) * 100) : 100;
-
-  const slideUp   = useCallback(() => setSlideIdx(i => Math.max(0, i - 1)), []);
-  const slideDown = useCallback(() => setSlideIdx(i => Math.min(MAX_IDX, i + 1)), []);
-
-  const updateFromPointer = useCallback((clientY) => {
-    const track = trackRef.current;
-    if (!track) return;
-    const rect = track.getBoundingClientRect();
-    if (rect.height <= 0) return;
-    const y   = Math.min(Math.max(clientY - rect.top, 0), rect.height);
-    const idx = Math.round((y / rect.height) * MAX_IDX);
-    setSlideIdx(Math.max(0, Math.min(MAX_IDX, idx)));
-  }, []);
-
-  // Non-passive wheel listener — must be attached via DOM API
-  useEffect(() => {
-    const track = trackRef.current;
-    if (!track) return;
-    const onWheel = (ev) => {
-      if (!(ev.target instanceof Node) || !track.contains(ev.target)) return;
-      if (Math.abs(ev.deltaY) < 20) return;
-      const dir = ev.deltaY > 0 ? 1 : -1;
-      const i   = slideIdxRef.current;
-      if ((dir > 0 && i >= MAX_IDX) || (dir < 0 && i <= 0)) return;
-      const now = performance.now();
-      if (now - lastWheelRef.current < 300) { ev.preventDefault(); return; }
-      ev.preventDefault();
-      lastWheelRef.current = now;
-      setSlideIdx(prev => dir > 0 ? Math.min(MAX_IDX, prev + 1) : Math.max(0, prev - 1));
-    };
-    track.addEventListener("wheel", onWheel, { passive: false });
-    return () => track.removeEventListener("wheel", onWheel);
-  }, []);
-
-  useEffect(() => () => {
-    if (pointerRafRef.current) cancelAnimationFrame(pointerRafRef.current);
-  }, []);
-
-  const onKeyDown = useCallback((ev) => {
-    if (ev.key === "ArrowUp"   || ev.key === "PageUp")   { ev.preventDefault(); slideUp();              return; }
-    if (ev.key === "ArrowDown" || ev.key === "PageDown") { ev.preventDefault(); slideDown();            return; }
-    if (ev.key === "Home")                               { ev.preventDefault(); setSlideIdx(0);         return; }
-    if (ev.key === "End")                                { ev.preventDefault(); setSlideIdx(MAX_IDX);          }
-  }, [slideUp, slideDown]);
-
-  const onPointerDown = useCallback((ev) => {
-    const el = ev.currentTarget;
-    el.focus({ preventScroll: true });
-    el.setPointerCapture(ev.pointerId);
-    draggingRef.current = true;
-    setIsDragging(true);
-    updateFromPointer(ev.clientY);
-  }, [updateFromPointer]);
-
-  const onPointerMove = useCallback((ev) => {
-    if (!draggingRef.current) return;
-    ev.preventDefault();
-    pendingYRef.current = ev.clientY;
-    if (pointerRafRef.current !== 0) return;
-    pointerRafRef.current = requestAnimationFrame(() => {
-      pointerRafRef.current = 0;
-      const y = pendingYRef.current;
-      pendingYRef.current = null;
-      if (y != null) updateFromPointer(y);
-    });
-  }, [updateFromPointer]);
-
-  const onPointerEnd = useCallback((ev) => {
-    draggingRef.current = false;
-    setIsDragging(false);
-    if (pointerRafRef.current !== 0) {
-      cancelAnimationFrame(pointerRafRef.current);
-      pointerRafRef.current = 0;
-    }
-    try { ev.currentTarget.releasePointerCapture(ev.pointerId); } catch { /* not captured */ }
-  }, []);
+  const era = ERAS[activeIdx];
+  const progressPct = (activeIdx / (ERAS.length - 1)) * 100;
 
   return (
     <section id="century-story" className="cw-section">
@@ -141,108 +100,112 @@ export default function TJCenturyWall() {
             <span className="tj-eyebrow-label">Historical Journey</span>
             <div className="tj-eyebrow-line" style={{ background: "linear-gradient(to left, transparent, var(--saffron))" }} />
           </div>
-          <h2 className="cw-title">2,000 Years of Jain Presence in Tamil Nadu</h2>
+          <h2 className="cw-title">Tamil Nadu Jainism: A Journey Through Time</h2>
         </div>
 
-        {/* Timeline row: text | track | image */}
-        <div className="cw-row">
+        {/* Cinematic panel */}
+        <div className="cw-panel-wrap">
 
-          {/* Left: copy */}
-          <div className="cw-left">
-            <p className="cw-century">{currentSlide.century}</p>
-            <p className="cw-subtitle">{currentSlide.subtitle}</p>
-            {currentSlide.paragraphs.map((p, i) => (
-              <p key={i} className="cw-p">{p}</p>
-            ))}
-
-            {/* Mobile progress indicator */}
-            <div className="cw-mobile-timeline">
-              <div className="cw-mobile-rail" aria-hidden="true">
-                <span className="cw-mobile-dot" />
-                <span className="cw-mobile-line" />
-              </div>
-              <div className="cw-mobile-progress" aria-hidden="true">
-                <div className="cw-mobile-bar" style={{ width: `${mobilePct}%` }} />
-              </div>
-            </div>
-
-            {/* Mobile step controls */}
-            <div className="cw-mobile-controls" aria-label="Timeline controls">
-              <button
-                type="button"
-                className="cw-step-btn"
-                disabled={slideIdx === 0}
-                onClick={slideUp}
-                aria-label="Earlier period"
-              >
-                <svg className="cw-step-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                </svg>
-              </button>
-              <span className="cw-status">{slideIdx + 1} / {SLIDES.length}</span>
-              <button
-                type="button"
-                className="cw-step-btn"
-                disabled={slideIdx === MAX_IDX}
-                onClick={slideDown}
-                aria-label="Later period"
-              >
-                <svg className="cw-step-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Center: drag/scroll track (desktop only) */}
-          <div
-            ref={trackRef}
-            className="cw-track"
-            tabIndex={0}
-            role="slider"
-            aria-valuenow={slideIdx + 1}
-            aria-valuemin={1}
-            aria-valuemax={SLIDES.length}
-            aria-valuetext={currentSlide.century}
-            aria-label="Scroll or drag to move through Jain history timelines"
-            onKeyDown={onKeyDown}
-            onPointerDown={onPointerDown}
-            onPointerMove={onPointerMove}
-            onPointerUp={onPointerEnd}
-            onPointerCancel={onPointerEnd}
-          >
-            <div className="cw-rail">
-              <span className="cw-rail-line" aria-hidden="true" />
-              <span
-                className={`cw-handle${isDragging ? " cw-handle--drag" : ""}`}
-                style={{
-                  top: `${handlePct}%`,
-                  transitionDuration: isDragging ? "0ms" : "340ms",
-                }}
+          {/* Layer 1: Full-bleed background — crossfades on era change */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`bg-${activeIdx}`}
+              className="cw-cinema-bg"
+              variants={bgVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.65 }}
+            >
+              <img
+                className="cw-cinema-img"
+                src={era.imageSrc}
+                alt=""
                 aria-hidden="true"
               />
-            </div>
-          </div>
+              <div className="cw-cinema-overlay" aria-hidden="true" />
+            </motion.div>
+          </AnimatePresence>
 
-          {/* Right: image */}
-          <div className="cw-right">
-            <figure className="cw-figure">
-              <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentSlide.imageSrc}
-                  src={currentSlide.imageSrc}
-                  alt={currentSlide.imageAlt}
-                  className="cw-img"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: isDragging ? 0.9 : 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: isDragging ? 0.14 : 0.42 }}
-                  loading="lazy"
-                />
-              </AnimatePresence>
-            </figure>
-          </div>
+          {/* Layer 2: Text content — slides directionally on era change */}
+          <AnimatePresence mode="wait" custom={dirRef.current}>
+            <motion.div
+              key={`text-${activeIdx}`}
+              className="cw-cinema-content"
+              custom={dirRef.current}
+              variants={textVariants}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className="cw-ghost-num" aria-hidden="true">
+                {String(activeIdx + 1).padStart(2, "0")}
+              </span>
+
+              <div className="cw-cinema-text">
+                <span className="cw-era-icon" aria-hidden="true">{era.icon}</span>
+                <span className="cw-era-period">{era.period}</span>
+                <div className="cw-era-divider" aria-hidden="true" />
+                <h3 className="cw-era-title">{era.title}</h3>
+                <p className="cw-era-desc">{era.desc}</p>
+              </div>
+
+              <div className="cw-panel-footer">
+                <span className="cw-panel-counter" aria-label={`Era ${activeIdx + 1} of ${ERAS.length}`}>
+                  {String(activeIdx + 1).padStart(2, "0")}
+                  <span className="cw-panel-counter-sep"> / </span>
+                  {String(ERAS.length).padStart(2, "0")}
+                </span>
+                <div className="cw-panel-arrows">
+                  <button
+                    type="button"
+                    className="cw-panel-arrow"
+                    onClick={() => goTo(Math.max(0, activeIdx - 1))}
+                    disabled={activeIdx === 0}
+                    aria-label="Previous era"
+                  >←</button>
+                  <button
+                    type="button"
+                    className="cw-panel-arrow"
+                    onClick={() => goTo(Math.min(ERAS.length - 1, activeIdx + 1))}
+                    disabled={activeIdx === ERAS.length - 1}
+                    aria-label="Next era"
+                  >→</button>
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
         </div>
+
+        {/* Horizontal era selector bar */}
+        <nav
+          className="cw-hbar"
+          aria-label="Era navigation"
+          onKeyDown={onKeyDown}
+          tabIndex={0}
+        >
+          <div className="cw-hbar-track" aria-hidden="true">
+            <div className="cw-hbar-spine" />
+            <div className="cw-hbar-fill" style={{ width: `${progressPct}%` }} />
+          </div>
+          {ERAS.map((e, i) => (
+            <button
+              key={i}
+              type="button"
+              className={`cw-hbar-node${i === activeIdx ? " cw-hbar-node--active" : ""}`}
+              onClick={() => goTo(i)}
+              aria-current={i === activeIdx ? "step" : undefined}
+              aria-label={e.period}
+            >
+              <span className="cw-hbar-icon" aria-hidden="true">{e.icon}</span>
+              <span className="cw-hbar-dot" aria-hidden="true" />
+              <span className="cw-hbar-label">{e.shortPeriod}</span>
+            </button>
+          ))}
+        </nav>
+
       </div>
     </section>
   );

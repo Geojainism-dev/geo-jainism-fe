@@ -105,7 +105,7 @@ export default function LandingPage() {
           <Stats />
           <Heritage />
           <Challenges />
-          <Shooting />
+          
           <Courses />
           <PostProduction />
           <Pakistan />

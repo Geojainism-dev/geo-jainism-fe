@@ -6,18 +6,17 @@ import mandalaImg from "@/assets/images/landing/mandala.png";
 
 import TJCinematicHero from "./sections/TJCinematicHero";
 import TJCenturyWall  from "./sections/TJCenturyWall";
-import TJTimeline      from "./sections/TJTimeline";
 import TJThingalur     from "./sections/TJThingalur";
 import TJInscriptions  from "./sections/TJInscriptions";
 import TJJainBeds      from "./sections/TJJainBeds";
 import TJRani          from "./sections/TJRani";
 import TJTemples       from "./sections/TJTemples";
 import TJSilence       from "./sections/TJSilence";
-import TJRestored      from "./sections/TJRestored";
-import TJDocumentary   from "./sections/TJDocumentary";
+import TJInfinityFilm  from "./sections/TJInfinityFilm";
 import TJNotify        from "./sections/TJNotify";
 import Navbar          from "@/components/layout/Navbar";
 import Footer          from "@/components/layout/Footer";
+import { Shooting } from "../Landing/sections";
 
 export default function TamilJainPage() {
   const { theme, toggleTheme } = useTheme();
@@ -79,7 +78,7 @@ export default function TamilJainPage() {
         }}
       />
 
-      <main style={{ position: "relative", zIndex: 1 }}>
+      <main style={{ position: "relative", zIndex: 1, isolation: "isolate" }}>
         {/* ── SKY ZONE (transparent — backdrop shows through) ── */}
         <TJCinematicHero />   {/* 100vh, transparent */}
         <TJCenturyWall />     {/* cream bg — interactive timeline slider */}
@@ -93,8 +92,8 @@ export default function TamilJainPage() {
         <TJRani />
         <TJTemples />
         <TJSilence />
-        <TJRestored />
-        <TJDocumentary />
+        <Shooting />
+        <TJInfinityFilm />
         <TJNotify />
       </main>
 

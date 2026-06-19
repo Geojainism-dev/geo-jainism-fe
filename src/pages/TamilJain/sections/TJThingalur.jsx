@@ -1,106 +1,214 @@
-import React, { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import React, { useRef, useState, useCallback } from "react";
+import { motion, useInView, useReducedMotion, AnimatePresence } from "framer-motion";
 
-const SLIDES = [
-  { src: "/journey/02-temple-hill.jpg",   label: "Hilltop Shrines",      num: "01" },
-  { src: "/journey/04-hillside.jpg",       label: "Sacred Hillsides",     num: "02" },
-  { src: "/journey/05-rock-carvings.jpg",  label: "Ancient Carvings",     num: "03" },
-  { src: "/journey/01-rock-sculpture.jpg", label: "Rock-Cut Sculptures",  num: "04" },
-  { src: "/journey/07-stone-carving.jpg",  label: "Stone Inscriptions",   num: "05" },
+const HILLS = [
+  {
+    src: "/TJpageCarousel/Samanar Malai.JPG",
+    name: "Samanar Malai",
+    region: "Madurai",
+    num: "01",
+    desc: "A magnificent Jain cave complex near Madurai, featuring ancient rock-cut beds, Tamil-Brahmi inscriptions, and exquisite stone sculptures carved over two millennia ago.",
+  },
+  {
+    src: "/TJpageCarousel/Vallimalai.jpg",
+    name: "Vallimalai",
+    region: "Vellore",
+    num: "02",
+    desc: "A sacred Jain hillock in the Vellore district, home to ancient cave shrines, rock-cut beds, and a revered Mahavira temple that continues to draw pilgrims today.",
+  },
+  {
+    src: "/TJpageCarousel/THIRUNATHAR KUNDRU .JPG",
+    name: "Thirunathar Kundru",
+    region: "Ariyalur",
+    num: "03",
+    desc: "An ancient Jain sacred hill bearing rock-cut monastic shelters and inscriptions that speak of a thriving Jain community that once called this hill home.",
+  },
+  {
+    src: "/TJpageCarousel/Azhgarmalai.JPG",
+    name: "Azhgarmalai",
+    region: "Karur",
+    num: "04",
+    desc: "A revered Jain hill site in the Karur region, featuring ancient caves, natural rock-cut beds, and monolithic sculptures that stand witness to centuries of devotion.",
+  },
+  {
+    src: "/TJpageCarousel/Kalagumalai.JPG",
+    name: "Kalagumalai",
+    region: "Thoothukudi",
+    num: "05",
+    desc: "Home to the iconic unfinished Jain rock sculpture and exquisite bas-reliefs, Kalagumalai stands as one of the finest examples of Jain artistic heritage in Tamil Nadu.",
+  },
 ];
 
+const bgVariants = {
+  enter:  { opacity: 0 },
+  center: { opacity: 1 },
+  exit:   { opacity: 0 },
+};
+
+const contentVariants = {
+  enter:  (dir) => ({ x: dir > 0 ? 24 : -24, opacity: 0 }),
+  center:            { x: 0, opacity: 1 },
+  exit:   (dir) => ({ x: dir > 0 ? -24 : 24, opacity: 0 }),
+};
+
 export default function TJThingalur() {
-  const ref     = useRef(null);
-  const inView  = useInView(ref, { once: true, margin: "-100px" });
+  const sectionRef  = useRef(null);
+  const dirRef      = useRef(0);
+  const pointerX    = useRef(null);
+  const inView      = useInView(sectionRef, { once: true, margin: "-100px" });
+  const shouldReduce = useReducedMotion();
+
   const [idx, setIdx] = useState(0);
 
-  const prev = () => setIdx(i => (i - 1 + SLIDES.length) % SLIDES.length);
-  const next = () => setIdx(i => (i + 1) % SLIDES.length);
+  const goTo = useCallback((i) => {
+    dirRef.current = i > idx ? 1 : -1;
+    setIdx(i);
+  }, [idx]);
+
+  const prev = () => goTo((idx - 1 + HILLS.length) % HILLS.length);
+  const next = () => goTo((idx + 1) % HILLS.length);
+
+  const onPointerDown = (e) => { pointerX.current = e.clientX; };
+  const onPointerUp   = (e) => {
+    if (pointerX.current === null) return;
+    const delta = e.clientX - pointerX.current;
+    if (Math.abs(delta) > 50) delta < 0 ? next() : prev();
+    pointerX.current = null;
+  };
+
+  const hill = HILLS[idx];
+  const progressPct = (idx / (HILLS.length - 1)) * 100;
 
   return (
-    <section ref={ref} className="tj-section tj-thingalur-section">
+    <section
+      ref={sectionRef}
+      className="tj-thingalur-section"
+      onPointerDown={onPointerDown}
+      onPointerUp={onPointerUp}
+    >
 
-      {/* Full bleed background from current slide */}
-      <div className="tj-thingalur-bg">
+      {/* LAYER 0 — Full-bleed background image with Ken Burns */}
+      <div className="tj-tng-bg" aria-hidden="true">
         <AnimatePresence mode="wait">
-          <motion.img
-            key={SLIDES[idx].src}
-            src={SLIDES[idx].src}
-            alt=""
-            aria-hidden="true"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.9 }}
-            style={{ width: "100%", height: "100%", objectFit: "cover",
-              filter: "brightness(0.82) saturate(1.0) sepia(0.10)" }}
-          />
+          <motion.div
+            key={`bg-${idx}`}
+            className="tj-tng-bg-layer"
+            variants={bgVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <img className="tj-tng-bg-img" src={hill.src} alt="" aria-hidden="true" />
+          </motion.div>
         </AnimatePresence>
-        {/* Left half — clear image with cream wash */}
-        <div className="tj-bg-half-clear" />
-        {/* Right half — frosted blur */}
-        <div className="tj-bg-half-blur" />
       </div>
 
-      {/* Content grid */}
-      <div className="tj-thingalur-inner">
+      {/* LAYER 1 — Vignette */}
+      <div className="tj-tng-vignette" aria-hidden="true" />
 
-        {/* Left — title + controls */}
-        <motion.div
-          className="tj-thingalur-left"
-          initial={{ opacity: 0, x: -50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 1 }}
-        >
-          <div className="tj-eyebrow-row" style={{ marginBottom: "20px" }}>
-            <div className="tj-eyebrow-line" />
-            <span className="tj-eyebrow-label">Sacred Landscapes</span>
-          </div>
+      {/* LAYER 2 — Bottom content panel */}
+      <motion.div
+        className="tj-tng-panel"
+        initial={shouldReduce ? false : { y: 40, opacity: 0 }}
+        animate={inView ? { y: 0, opacity: 1 } : {}}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+      >
+        {/* Ghost number watermark */}
+        <span className="tj-tng-ghost-num" aria-hidden="true">{hill.num}</span>
 
-          <h2 className="tj-thingalur-title">
-            Thingalur<br /><em style={{ fontStyle: "italic", color: "var(--saffron)" }}>Hills</em>
-          </h2>
+        {/* Left: region + title + desc */}
+        <AnimatePresence mode="wait" custom={dirRef.current}>
+          <motion.div
+            key={`content-${idx}`}
+            className="tj-tng-content"
+            custom={dirRef.current}
+            variants={contentVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="tj-tng-region">{hill.region}</span>
 
-          <p className="tj-thingalur-desc">
-            Sacred hilltops across Tamil Nadu — from Madurai to the distant heights of
-            Chithral and Kalugumalai — stood as strongholds of Jain faith for two millennia.
-            50+ hills documented in 4K.
-          </p>
+            <h2 className="tj-tng-title">
+              {(() => {
+                const words = hill.name.split(" ");
+                if (words.length === 1) return <em>{hill.name}</em>;
+                return (
+                  <>
+                    {words.slice(0, -1).join(" ")}<br />
+                    <em>{words[words.length - 1]}</em>
+                  </>
+                );
+              })()}
+            </h2>
 
-          {/* Navigation */}
-          <div className="tj-thingalur-nav">
-            <button className="tj-thingalur-nav-btn" onClick={prev} aria-label="Previous">←</button>
-            <button className="tj-thingalur-nav-btn" onClick={next} aria-label="Next">→</button>
-            <span className="tj-thingalur-num" style={{ marginLeft: "8px" }}>
-              {String(idx + 1).padStart(2, "0")} / {String(SLIDES.length).padStart(2, "0")}
+            <p className="tj-tng-desc">{hill.desc}</p>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Right: counter + arrows + dots */}
+        <div className="tj-tng-nav-col">
+          <div className="tj-tng-nav">
+            <button className="tj-tng-arrow" onClick={prev} aria-label="Previous site">←</button>
+            <span className="tj-tng-counter" aria-label={`Site ${idx + 1} of ${HILLS.length}`}>
+              <span className="tj-tng-counter-cur">{String(idx + 1).padStart(2, "0")}</span>
+              <span className="tj-tng-counter-sep"> / </span>
+              <span className="tj-tng-counter-tot">{String(HILLS.length).padStart(2, "0")}</span>
             </span>
+            <button className="tj-tng-arrow" onClick={next} aria-label="Next site">→</button>
           </div>
-        </motion.div>
 
-        {/* Right — thumbnail stack */}
-        <motion.div
-          className="tj-thingalur-right"
-          initial={{ opacity: 0, x: 50 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 1, delay: 0.2 }}
-        >
-          {SLIDES.map((s, i) => (
-            <div
-              key={i}
-              className={`tj-thumb-card${i === idx ? " active" : ""}`}
-              onClick={() => setIdx(i)}
-            >
-              <img src={s.src} alt={s.label} loading="lazy" />
-              <div className="tj-thumb-overlay">
-                <span className="tj-thumb-label">{s.label}</span>
-              </div>
+          <div className="tj-tng-dots" role="tablist" aria-label="Sites">
+            {HILLS.map((_, i) => (
+              <button
+                key={i}
+                className={`tj-tng-dot${i === idx ? " active" : ""}`}
+                onClick={() => goTo(i)}
+                aria-selected={i === idx}
+                aria-label={HILLS[i].name}
+                role="tab"
+              />
+            ))}
+          </div>
+        </div>
+      </motion.div>
+
+      {/* LAYER 3 — Right-edge thumbnail strip (desktop only) */}
+      <motion.div
+        className="tj-tng-thumbs"
+        aria-label="Site previews"
+        initial={shouldReduce ? false : { x: 80, opacity: 0 }}
+        animate={inView ? { x: 0, opacity: 1 } : {}}
+        transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+      >
+        {HILLS.map((h, i) => (
+          <motion.button
+            key={i}
+            className={`tj-tng-thumb${i === idx ? " active" : ""}`}
+            onClick={() => goTo(i)}
+            aria-label={h.name}
+            whileHover={{ scale: 1.04 }}
+            transition={{ duration: 0.3 }}
+          >
+            <img src={h.src} alt={h.name} loading="lazy" />
+            <div className="tj-tng-thumb-overlay">
+              <span className="tj-tng-thumb-label">{h.name}</span>
             </div>
-          ))}
-        </motion.div>
+          </motion.button>
+        ))}
+      </motion.div>
+
+      {/* LAYER 4 — Progress bar */}
+      <div className="tj-tng-progress-track" aria-hidden="true">
+        <motion.div
+          className="tj-tng-progress-fill"
+          animate={{ width: `${progressPct}%` }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        />
       </div>
 
-      {/* Large number */}
-      <div className="tj-thingalur-index">{SLIDES[idx].num}</div>
     </section>
   );
 }
