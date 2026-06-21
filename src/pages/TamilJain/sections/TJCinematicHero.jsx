@@ -111,7 +111,7 @@ export default function TJCinematicHero() {
               <img className="tj-mob-bird-r" src="/tamiljain/birds-new.png" aria-hidden="true" alt="" />
             </span>
           </h1>
-          <p className="tj-hero-sub">2,000 Years · Living Tradition</p>
+          <p className="tj-hero-sub">2,300+ Years · Living Tradition</p>
         </motion.div>
 
         {/* Scroll hint */}
