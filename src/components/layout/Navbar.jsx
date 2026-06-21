@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Instagram, Youtube, Twitter, MessageCircle } from "lucide-react";
+import { preloadRoute } from "@/lib/routePreloader";
 
 const Navbar = () => {
   const navbarRef = useRef(null);
@@ -21,12 +22,12 @@ const Navbar = () => {
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
-  
+
 
   return (
-    <nav 
-      id="navbar" 
-      ref={navbarRef} 
+    <nav
+      id="navbar"
+      ref={navbarRef}
       className={`${isMobileMenuOpen ? "mobile-menu-open" : ""} ${isTJPage ? "is-tj-page" : ""}`}
     >
       <div className="nav-logo">GEO JAINISM</div>
@@ -56,54 +57,54 @@ const Navbar = () => {
         )}
       </button>
 
-    <div className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
+      <div className={`nav-links ${isMobileMenuOpen ? "active" : ""}`}>
 
-      {/* Mobile-only: header + particles — conditional so animations re-fire every open */}
-      {isMobileMenuOpen && <>
-        <div className="drawer-particles" aria-hidden="true">
-          {[...Array(8)].map((_, i) => <span key={i} className={`drawer-particle dp-${i + 1}`} />)}
-        </div>
-        <div className="mobile-drawer-header">
-          <img src="/logo.png" alt="Geo Jainism" className="mobile-drawer-logo" />
-          <div className="mobile-drawer-salutation">जय जिनेन्द्र</div>
-          <p className="mobile-drawer-tagline">
-            Where ancient stone speaks —<br />
-            and a forgotten legacy finds its light.
-          </p>
-          <div className="mobile-drawer-rule">
-            <span className="mobile-drawer-dot" />
-            <span className="mobile-drawer-ornament">✦</span>
-            <span className="mobile-drawer-dot" />
+        {/* Mobile-only: header + particles — conditional so animations re-fire every open */}
+        {isMobileMenuOpen && <>
+          <div className="drawer-particles" aria-hidden="true">
+            {[...Array(8)].map((_, i) => <span key={i} className={`drawer-particle dp-${i + 1}`} />)}
           </div>
-        </div>
-      </>}
+          <div className="mobile-drawer-header">
+            <img src="/logo.png" alt="Geo Jainism" className="mobile-drawer-logo" />
+            <div className="mobile-drawer-salutation">जय जिनेन्द्र</div>
+            <p className="mobile-drawer-tagline">
+              Where ancient stone speaks —<br />
+              and a forgotten legacy finds its light.
+            </p>
+            <div className="mobile-drawer-rule">
+              <span className="mobile-drawer-dot" />
+              <span className="mobile-drawer-ornament">✦</span>
+              <span className="mobile-drawer-dot" />
+            </div>
+          </div>
+        </>}
 
-      {/* Always rendered — visible on desktop, animated inside drawer on mobile */}
-      <div className="mobile-drawer-links">
-        <strong><Link to="/" className={location.pathname === "/" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)}>Home</Link></strong>
-        <strong><Link to="/tamil-jain" className={location.pathname === "/tamil-jain" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)}>Tamil Jain</Link></strong>
-        <strong><a href="#heritage" onClick={() => setIsMobileMenuOpen(false)}>Heritage</a></strong>
+        {/* Always rendered — visible on desktop, animated inside drawer on mobile */}
+        <div className="mobile-drawer-links">
+          <strong><Link to="/" className={location.pathname === "/" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/")} onTouchStart={() => preloadRoute("/")}>Home</Link></strong>
+          <strong><Link to="/tamil-jain" className={location.pathname === "/tamil-jain" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/tamil-jain")} onTouchStart={() => preloadRoute("/tamil-jain")}>Tamil Jain</Link></strong>
+          {/* <strong><a href="#heritage" onClick={() => setIsMobileMenuOpen(false)}>Heritage</a></strong>
         <strong><a href="#journey" onClick={() => setIsMobileMenuOpen(false)}>Virasat</a></strong>
         <strong><a href="#courses" onClick={() => setIsMobileMenuOpen(false)}>Courses</a></strong>
         <strong><a href="#blogs" onClick={() => setIsMobileMenuOpen(false)}>Map</a></strong>
-        <strong><a href="#support" onClick={() => setIsMobileMenuOpen(false)}>Blogs</a></strong>
-        <strong><Link to="/about" className={location.pathname === "/about" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)}>About us</Link></strong>
-      </div>
+        <strong><a href="#support" onClick={() => setIsMobileMenuOpen(false)}>Blogs</a></strong> */}
+          <strong><Link to="/about" className={location.pathname === "/about" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/about")} onTouchStart={() => preloadRoute("/about")}>About us</Link></strong>
+        </div>
 
-      {/* Social icons — only visible inside the mobile drawer */}
-      <div className="drawer-socials">
-        <a href="https://instagram.com/geo_jainism"                    target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Instagram     size={16} /></a>
-        <a href="https://www.youtube.com/@geo_jainism"                target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Youtube       size={16} /></a>
-        <a href="https://x.com/geo_jainism"                           target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Twitter       size={16} /></a>
-        <a href="https://chat.whatsapp.com/EnHCodUJre9AlzFO9LRx5j"   target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><MessageCircle size={16} /></a>
-      </div>
+        {/* Social icons — only visible inside the mobile drawer */}
+        <div className="drawer-socials">
+          <a href="https://instagram.com/geo_jainism" target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Instagram size={16} /></a>
+          <a href="https://www.youtube.com/@geo_jainism" target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Youtube size={16} /></a>
+          <a href="https://x.com/geo_jainism" target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Twitter size={16} /></a>
+          <a href="https://chat.whatsapp.com/EnHCodUJre9AlzFO9LRx5j" target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><MessageCircle size={16} /></a>
+        </div>
 
-    </div>
+      </div>
 
       <div className="nav-socials desktop-socials">
-        <a href="https://instagram.com/geo_jainism"                  target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram     size={18} /></a>
-        <a href="https://www.youtube.com/@geo_jainism"              target="_blank" rel="noopener noreferrer" className="social-icon"><Youtube       size={18} /></a>
-        <a href="https://x.com/geo_jainism"                         target="_blank" rel="noopener noreferrer" className="social-icon"><Twitter       size={18} /></a>
+        <a href="https://instagram.com/geo_jainism" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={18} /></a>
+        <a href="https://www.youtube.com/@geo_jainism" target="_blank" rel="noopener noreferrer" className="social-icon"><Youtube size={18} /></a>
+        <a href="https://x.com/geo_jainism" target="_blank" rel="noopener noreferrer" className="social-icon"><Twitter size={18} /></a>
         <a href="https://chat.whatsapp.com/EnHCodUJre9AlzFO9LRx5j" target="_blank" rel="noopener noreferrer" className="social-icon"><MessageCircle size={18} /></a>
       </div>
     </nav>

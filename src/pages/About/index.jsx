@@ -356,16 +356,16 @@ function HeroSection({ isDark, grain }) {
   return (
     <section
       ref={heroRef}
-      style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", textAlign: "center", overflow: "hidden" }}
+      style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "flex-end", justifyContent: "center", textAlign: "center", overflow: "hidden", paddingBottom: "0" }}
     >
-      {/* Parallax BG */}
+      {/* Parallax BG — face pushed to top so text overlaps body, not face */}
       <motion.div style={{ position: "absolute", inset: "-12%", backgroundImage: "url('/hero-tirthankara.jpg')", backgroundSize: "cover", backgroundPosition: "center 15%", y: bgY, scale: bgScale, zIndex: 0 }} />
 
-      {/* Dark cinematic overlay — works in both light and dark mode */}
-      <div aria-hidden style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,0.65) 0%,rgba(0,0,0,0.60) 42%,rgba(0,0,0,0.80) 100%)", zIndex: 1 }} />
+      {/* Overlay — lighter than before */}
+      <div aria-hidden style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,0.12) 0%,rgba(0,0,0,0.08) 42%,rgba(0,0,0,0.28) 100%)", zIndex: 1 }} />
 
       {/* Vignette edges */}
-      <div aria-hidden style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0.70) 100%)", zIndex: 1 }} />
+      <div aria-hidden style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.08) 55%, rgba(0,0,0,0.28) 100%)", zIndex: 1 }} />
 
       {/* Film grain */}
       <div aria-hidden style={{ position: "absolute", inset: 0, opacity: 0.06, backgroundImage: grain, backgroundSize: "200px", pointerEvents: "none", zIndex: 1 }} />
@@ -387,7 +387,7 @@ function HeroSection({ isDark, grain }) {
           style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "18px", marginBottom: "44px" }}
         >
           <div style={{ width: "48px", height: "1px", background: "linear-gradient(to right,transparent,rgba(244,165,53,0.7))" }} />
-          <span className="abt-hero-eyebrow" style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7.5px,0.95vw,10px)", letterSpacing: "8px", color: "rgba(253,248,240,0.65)", textTransform: "uppercase" }}>Golden Era of Jainism</span>
+          <span className="abt-hero-eyebrow" style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7.5px,0.95vw,10px)", letterSpacing: "8px", color: "rgba(253,248,240,1)", textTransform: "uppercase" }}>Golden Era of Jainism</span>
           <div style={{ width: "48px", height: "1px", background: "linear-gradient(to left,transparent,rgba(244,165,53,0.7))" }} />
         </motion.div>
 
@@ -400,7 +400,7 @@ function HeroSection({ isDark, grain }) {
             className="abt-hero-title-ls"
             style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(72px,16vw,200px)", fontWeight: 300, color: "#FAF0D9", letterSpacing: "-5px", textShadow: "0 4px 80px rgba(0,0,0,0.50)" }}
           >
-            Geo
+            GEO
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 56, filter: "blur(16px)" }}

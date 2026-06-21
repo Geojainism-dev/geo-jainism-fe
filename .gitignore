@@ -21,3 +21,18 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# production build output
+/dist
+/build
+
+# firebase
+.firebase/
+.firebaserc
+
+# archives
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+

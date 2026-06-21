@@ -1,5 +1,8 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import imgTamilBrahmi from "@/assets/images/Inscription/TAMIL-BRAHMI .jpg";
+import imgVatteluttu from "@/assets/images/Inscription/Vatteluttu.jpg";
+import imgGrantha from "@/assets/images/Inscription/Granth.jpg";
 
 function useCountUp(target, active, duration = 1350) {
   const num = parseInt(target.replace(/\D/g, ''), 10);
@@ -32,7 +35,7 @@ const inscriptionsData = [
     text: "Early inscriptions found in rock shelters and Jain beds, often recording donations made to Jain ascetics. These are the earliest written records of the Tamil language.",
     stat: "600+",
     statLabel: "Known inscriptions identified",
-    image: "/journey/07-stone-carving.jpg",
+    image: imgTamilBrahmi,
   },
   {
     id: "vatteluttu",
@@ -41,16 +44,16 @@ const inscriptionsData = [
     text: "Records of grants, charitable donations, Jain monasteries (pallis), and religious activities — reflecting the administrative flourishing of Jain centers.",
     stat: "82",
     statLabel: "Documented pallis & monasteries",
-    image: "/journey/05-rock-carvings.jpg",
+    image: imgVatteluttu,
   },
   {
     id: "grantha",
-    title: "Grantha · Chola–Pandya",
+    title: "Grantha",
     era: "Classical Period",
     text: "Inscriptions documenting temple endowments, land grants, image installations, tax exemptions, and the socio-economic role of Jain communities during the golden era of South Indian Jain history.",
     stat: "200+",
     statLabel: "Royal temple endowments recorded",
-    image: "/journey/01-rock-sculpture.jpg",
+    image: imgGrantha,
   },
 ];
 

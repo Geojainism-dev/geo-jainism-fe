@@ -4,12 +4,12 @@ import Lenis from "@studio-freight/lenis";
 export const useLenis = () => {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.0,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
-      wheelMultiplier: 1.1,
-      touchMultiplier: 2.0,
-      normalizeWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 1.5,
+      normalizeWheel: false,
       infinite: false,
       orientation: "vertical",
       gestureOrientation: "vertical",

@@ -8,30 +8,29 @@ import { useLenis, useTheme, useScrollReveal } from "@/hooks";
 import { ErrorBoundary, ScreeningPopup } from "@/components/common";
 import { BackgroundScene } from "@/components/visuals";
 import { Navbar, Footer } from "@/components/layout";
-import Preloader from "@/components/Preloader";
 
-// Sections
-import {
-  Hero, ScreeningAnnouncement, Story, Stats, Heritage, Challenges, Pakistan, Shooting,
-  Courses, PostProduction, JourneyCarousel, Trailer,
-  Support, Release, Blogs, About,
-} from "./sections";
+import { lazy, Suspense } from "react";
+
+import Hero from "./sections/Hero";
+import ScreeningAnnouncement from "./sections/ScreeningAnnouncement";
+import Story from "./sections/Story";
+import Stats from "./sections/Stats";
+import Heritage from "./sections/Heritage";
+
+// Below-the-fold sections (lazy loaded)
+const Challenges = lazy(() => import("./sections/Challenges"));
+const Courses = lazy(() => import("./sections/Courses"));
+const PostProduction = lazy(() => import("./sections/PostProduction"));
+const Pakistan = lazy(() => import("./sections/Pakistan"));
+const JourneyCarousel = lazy(() => import("./sections/JourneyCarousel"));
+const Support = lazy(() => import("./sections/Support"));
 
 export default function LandingPage() {
   const { theme, toggleTheme } = useTheme();
   useLenis();
   useScrollReveal();
 
-  const [showPreloader, setShowPreloader] = useState(false);
-  const [heroReady, setHeroReady] = useState(false);
-
-  useEffect(() => {
-    console.log("Landing: showPreloader =", showPreloader);
-  }, [showPreloader]);
-
-  useEffect(() => {
-    console.log("Landing: heroReady =", heroReady);
-  }, [heroReady]);
+  const [heroReady, setHeroReady] = useState(true);
 
   /* ── Custom cursor ── */
   useEffect(() => {
@@ -76,11 +75,6 @@ export default function LandingPage() {
 
   return (
     <ErrorBoundary>
-      <Preloader startAnimation={showPreloader} onComplete={() => {
-        console.log("✅ Preloader onComplete fired → setting heroReady = true");
-        setHeroReady(true);
-      }} />
-
       <div className="landing-root" data-theme={theme}>
         {/* Custom cursor elements */}
         <div id="cursor-dot"  aria-hidden="true" />
@@ -90,10 +84,7 @@ export default function LandingPage() {
         <GlobalParticles />
         <BackgroundScene />
 
-        <ScreeningPopup onDismiss={() => {
-          console.log("🎬 Popup dismissed, setting showPreloader = true");
-          setShowPreloader(true);
-        }} />
+        <ScreeningPopup onDismiss={() => {}} />
         <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
         <Navbar />
 
@@ -104,17 +95,15 @@ export default function LandingPage() {
           <Story />
           <Stats />
           <Heritage />
-          <Challenges />
           
-          <Courses />
-          <PostProduction />
-          <Pakistan />
-          {/* <Trailer /> */}
-          {/* <Release /> */}
-          {/* <Blogs /> */}
-          <JourneyCarousel />
-          <Support />
-          {/* <About /> */}
+          <Suspense fallback={null}>
+            <Challenges />
+            <Courses />
+            <PostProduction />
+            <Pakistan />
+            <JourneyCarousel />
+            <Support />
+          </Suspense>
         </main>
 
         <Footer />
@@ -129,19 +118,26 @@ const ScrollProgress = () => {
   const progressRef = useRef(null);
 
   useEffect(() => {
+    let ticking = false;
     const onScroll = () => {
-      const scrollY    = window.scrollY;
-      const maxScroll  = document.body.scrollHeight - window.innerHeight;
-      const progress   = scrollY / Math.max(maxScroll, 1);
-      if (progressRef.current) {
-        progressRef.current.style.width = progress * 100 + "%";
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY    = window.scrollY;
+          const maxScroll  = document.body.scrollHeight - window.innerHeight;
+          const progress   = scrollY / Math.max(maxScroll, 1);
+          if (progressRef.current) {
+            progressRef.current.style.transform = `scaleX(${progress})`;
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return <div id="progress-bar" ref={progressRef} />;
+  return <div id="progress-bar" ref={progressRef} style={{ width: "100%", transformOrigin: "left", transform: "scaleX(0)", transition: "transform 0.1s" }} />;
 };
 
 const PARTICLES = Array.from({ length: 72 }, (_, i) => ({
