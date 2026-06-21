@@ -64,7 +64,7 @@ export const JOURNEY_SLIDES = [
 export const COURSES = [
   {
     tag: "Tamil Nadu",
-    title: "Tamil Jain Heritage: A 2,000-Year Journey",
+    title: "Revisit Jain History",
     desc: " Dive deeper into the rich, often-overlooked world of Jain history, literature, and culture — through structured, research-based series crafted by GEO Jainism.",
     // meta: "10 Episodes · 4K",
     cta: "Start Learning",

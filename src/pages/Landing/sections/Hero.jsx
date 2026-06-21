@@ -1,9 +1,16 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import mandalaImg from "@/assets/images/landing/mandala.png";
 
 const Hero = ({ heroReady }) => {
   const allCharsRef = useRef([]);
+  const imgRef = useRef(null);
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  /* ── Handle cached image (onLoad won't fire if already in cache) ── */
+  useEffect(() => {
+    if (imgRef.current?.complete) setImgLoaded(true);
+  }, []);
 
   /* ── Split title + hide all elements on mount ── */
   useEffect(() => {
@@ -33,68 +40,45 @@ const Hero = ({ heroReady }) => {
     allCharsRef.current = chars;
 
     gsap.set(title, { opacity: 1 });
-    gsap.set(chars, { opacity: 0, y: 72, skewY: 6 });
-
-    const heroRight = document.querySelector(".hero-right");
-    const eyebrow = document.querySelector(".hero-eyebrow");
-    const subtitle = document.querySelector(".hero-subtitle");
-    const tagline = document.querySelector(".hero-tagline");
-    const ctaRow = document.querySelector(".hero-cta-row");
-    const scrollHint = document.querySelector(".scroll-hint");
-
-    console.log("🔍 Element check:", {
-      heroRight: !!heroRight,
-      eyebrow: !!eyebrow,
-      subtitle: !!subtitle,
-      tagline: !!tagline,
-      ctaRow: !!ctaRow,
-      scrollHint: !!scrollHint,
-    });
+    gsap.set(chars, { opacity: 0, y: 48, skewY: 5, force3D: true });
 
     gsap.set(".hero-right", { opacity: 1 });
     gsap.set("#aura-canvas, .divine-rays", { opacity: 0 });
-    gsap.set(".tirthankar-img", { opacity: 0, scale: 0.96 });
+    gsap.set(".tirthankar-img", { opacity: 0, scale: 0.93, force3D: true });
     gsap.set([
       ".hero-eyebrow", ".hero-subtitle", ".hero-tagline",
       ".hero-cta-row", ".scroll-hint",
-    ], { opacity: 0, y: 28 });
-    gsap.set(".badge-item", { opacity: 0, y: 24, scale: 0.92 });
+    ], { opacity: 0, y: 20, force3D: true });
+    gsap.set(".badge-item", { opacity: 0, y: 18, scale: 0.94, force3D: true });
   }, []);
 
   /* ── Master hero timeline — fires when popup is dismissed ── */
   useEffect(() => {
-    if (!heroReady) {
-      console.log("❌ Hero: heroReady is false");
-      return;
-    }
+    if (!heroReady || !imgLoaded) return;
     const chars = allCharsRef.current;
-    if (!chars.length) {
-      console.log("❌ Hero: No chars found");
-      return;
-    }
+    if (!chars.length) return;
 
-    console.log("✅ Hero: Starting master timeline with", chars.length, "chars");
-    const tl = gsap.timeline({ delay: 0.15 });
+    const tl = gsap.timeline({ delay: 0.1 });
     tl.to("#aura-canvas, .divine-rays",
-        { opacity: 1, duration: 2.2, ease: "power1.out" })
+        { opacity: 1, duration: 2.5, ease: "power2.inOut" })
       .to(".tirthankar-img",
-        { opacity: 1, scale: 1, duration: 2.8, ease: "power1.inOut" }, "-=1.6")
+        { opacity: 1, scale: 1, duration: 2.6, ease: "power2.out", force3D: true }, "-=1.8")
       .to(".hero-eyebrow",
-        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" }, "-=1.8")
+        { opacity: 1, y: 0, duration: 0.7, ease: "power4.out" }, "-=2.0")
       .to(chars,
-        { opacity: 1, y: 0, skewY: 0, duration: 0.9, stagger: 0.055, ease: "expo.out" },
-        "-=0.2")
+        { opacity: 1, y: 0, skewY: 0, duration: 1.0, stagger: 0.048, ease: "expo.out", force3D: true },
+        "-=0.3")
       .to(".hero-subtitle",
-        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "-=0.35")
+        { opacity: 1, y: 0, duration: 0.6, ease: "power4.out" }, "-=0.4")
       .to(".hero-tagline",
-        { opacity: 1, y: 0, duration: 0.55, ease: "power3.out" }, "-=0.3")
+        { opacity: 1, y: 0, duration: 0.65, ease: "power4.out" }, "-=0.35")
       .to(".hero-cta-row",
-        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "-=0.25")
+        { opacity: 1, y: 0, duration: 0.55, ease: "power4.out" }, "-=0.3")
       .to(".scroll-hint",
-        { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, "-=0.1")
+        { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, "-=0.15")
       .to(".badge-item",
-        { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.1, ease: "back.out(1.4)" });
-  }, [heroReady]);
+        { opacity: 1, y: 0, scale: 1, duration: 0.55, stagger: 0.1, ease: "back.out(1.2)", force3D: true });
+  }, [heroReady, imgLoaded]);
 
   /* ── Mouse parallax on idol — replaces floatIdol CSS animation ── */
   useEffect(() => {
@@ -117,8 +101,8 @@ const Hero = ({ heroReady }) => {
     const onLeave = () => { targetX = 0; targetY = 0; };
 
     const tick = () => {
-      curX += (targetX - curX) * 0.05;
-      curY += (targetY - curY) * 0.05;
+      curX += (targetX - curX) * 0.06;
+      curY += (targetY - curY) * 0.06;
       const elapsed = (performance.now() - startTime) / 1000;
       const floatY  = Math.sin((elapsed / 5.5) * Math.PI * 2) * 20;
       wrap.style.transform =
@@ -193,20 +177,22 @@ const Hero = ({ heroReady }) => {
             <div className="aura-ray a8"></div>
           </div>
           <img
+            ref={imgRef}
             src="/mahavira.png"
             alt="Jain Tirthankar"
             className="tirthankar-img"
+            onLoad={() => setImgLoaded(true)}
           />
         </div>
       </div>
 
       <div className="hero-particles" aria-hidden="true">
-        {[...Array(140)].map((_, i) => (
+        {[...Array(70)].map((_, i) => (
           <span
             key={i}
             className="hero-particle"
             style={{
-              left: `${1 + i * 1.75}%`,
+              left: `${1 + i * 1.4}%`,
               width: `${2 + (i % 4)}px`,
               height: `${2 + (i % 4)}px`,
               animationDelay: `${(i * 0.3) % 14}s`,

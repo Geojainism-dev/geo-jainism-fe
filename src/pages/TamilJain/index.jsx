@@ -85,14 +85,12 @@ export default function TamilJainPage() {
         <Suspense fallback={null}>
           <TJCenturyWall />     {/* cream bg — interactive timeline slider */}
           {/* <TJTimeline />     */}
-              {/* cream bg — sky partially visible in transition */}
 
-          {/* ── SOLID SECTIONS (cover the fixed sky) ── */}
           <TJThingalur />
           <TJInscriptions />
           <TJJainBeds />
-          <TJRani />
-          <TJTemples />
+         {/* <TJRani /> */}
+          {/*<TJTemples /> */}
           <TJSilence />
           <Shooting />
           <TJInfinityFilm />

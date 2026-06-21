@@ -479,7 +479,7 @@ html { scroll-behavior: auto; }
 }
 .landing-root[data-theme="dark"] .tirthankar-wrap,
 .landing-root:not([data-theme="dark"]) .tirthankar-wrap {
-  margin: 0 -170px 0 auto;
+  margin: 16vh -170px 0 auto;
   height: 108vh;
   min-height: 860px;
   overflow: visible;
@@ -504,6 +504,17 @@ html { scroll-behavior: auto; }
 }
 .landing-root:not([data-theme="dark"]) .tirthankar-img {
   filter: none;
+}
+
+/* Light theme — soft glowing rays, not sharp */
+.landing-root:not([data-theme="dark"]) .aura-ray {
+  background: radial-gradient(ellipse at center,
+    rgba(210,130,0,0.50) 0%,
+    rgba(235,165,0,0.34) 28%,
+    rgba(210,130,0,0.16) 58%,
+    transparent 85%);
+  filter: blur(12px);
+  width: 26px;
 }
 
 /* Mantra quote below idol */

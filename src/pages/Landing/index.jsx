@@ -32,10 +32,6 @@ export default function LandingPage() {
 
   const [heroReady, setHeroReady] = useState(true);
 
-  useEffect(() => {
-    console.log("Landing: heroReady =", heroReady);
-  }, [heroReady]);
-
   /* ── Custom cursor ── */
   useEffect(() => {
     const dot  = document.getElementById("cursor-dot");
@@ -88,9 +84,7 @@ export default function LandingPage() {
         <GlobalParticles />
         <BackgroundScene />
 
-        <ScreeningPopup onDismiss={() => {
-          console.log("🎬 Popup dismissed");
-        }} />
+        <ScreeningPopup onDismiss={() => {}} />
         <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
         <Navbar />
 

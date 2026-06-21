@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import imgShayanika from "@/assets/images/Shayanika/TJPage Shayanika.jpg";
 
 const STATS = [
   { num: "2000+", label: "Years of Monastic History" },
@@ -28,7 +29,7 @@ export default function TJJainBeds() {
       {/* LEFT — full-bleed image */}
       <div className="tj-beds-v3-img-col" ref={imageRef}>
         <motion.img
-          src="/journey/04-hillside.jpg"
+          src={imgShayanika}
           alt="Jain rock-cut stone beds, Tamil Nadu"
           className="tj-beds-v3-img"
           style={{ y: imgY }}
