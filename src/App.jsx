@@ -1,5 +1,7 @@
 import { Suspense, lazy, useEffect } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import SEO from "@/components/common/SEO";
 import "@/styles/app.css";
 import "@/styles/navbar.css";
 import "./firebase";
@@ -27,18 +29,26 @@ const PageLoader = () => (
   </div>
 );
 
+function RouteSeo() {
+  const { pathname } = useLocation();
+  return <SEO pathname={pathname} />;
+}
+
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/tamil-jain" element={<TamilJainPage />} />
-          <Route path="/about" element={<AboutPage />} />
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <RouteSeo />
+        <ScrollToTop />
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/tamil-jain" element={<TamilJainPage />} />
+            <Route path="/about" element={<AboutPage />} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }
 
