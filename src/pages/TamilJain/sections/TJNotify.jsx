@@ -37,7 +37,7 @@ export default function TJNotify() {
 
           <p className="tj-notify-desc">
             Be among the first to watch the full documentary. Join thousands of heritage
-            enthusiasts waiting to uncover 2,000 years of Tamil Jain history.
+            enthusiasts waiting to uncover 2300+ years of Tamil Jain history.
           </p>
 
           {!sent ? (

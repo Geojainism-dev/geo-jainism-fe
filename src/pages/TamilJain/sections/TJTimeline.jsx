@@ -62,7 +62,7 @@ export default function TJTimeline() {
           </div>
           <p className="tj-timeline-subtitle">A Civilisation Carved in Stone</p>
           <h2 className="tj-timeline-heading">
-            2,000 Years of Jain<br />Presence in Tamil Nadu
+            2300+ Years of Jain<br />Presence in Tamil Nadu
           </h2>
         </motion.div>
 

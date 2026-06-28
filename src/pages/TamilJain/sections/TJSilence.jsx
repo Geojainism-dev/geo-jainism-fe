@@ -38,7 +38,7 @@ export default function TJSilence() {
 
           <h2 className="tj-silence-heading">
             The Tamil Jains —{" "}
-            <em>2,000 Years</em>
+            <em>2300+ Years</em>
             {" "}of Silence
           </h2>
 
