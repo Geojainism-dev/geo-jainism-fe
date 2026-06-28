@@ -178,8 +178,8 @@ export default function Pakistan() {
       style={{ background: bg, padding: "0 0 96px", position: "relative", overflow: "hidden", transition: "background 0.5s ease" }}
     >
       <style>{`
-        #pakistan .journey-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(232,144,159,0.30); }
-        #pakistan .journey-dot.active { width: 8px; height: 8px; border-radius: 50%; background: #E8909F; box-shadow: 0 0 10px rgba(232,144,159,0.7); }
+        #pakistan .journey-dot { width: 28px; height: 28px; border-radius: 50%; background: transparent; border: 1px solid rgba(232,144,159,0.30); color: rgba(232,144,159,0.55); font-family: 'Cinzel',serif; font-size: 10px; font-weight: 600; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s; }
+        #pakistan .journey-dot.active { background: #E8909F; border-color: #E8909F; color: #fff; box-shadow: 0 0 10px rgba(232,144,159,0.7); }
         @keyframes cf-shimmer {
           0%   { transform: translateX(-150%) skewX(-15deg); }
           100% { transform: translateX(400%) skewX(-15deg); }
@@ -329,14 +329,15 @@ export default function Pakistan() {
                             Video {String(i + 1).padStart(2, "0")}
                           </div>
                           <div style={{
-                            width: "60px", height: "60px", borderRadius: "50%",
+                            width: "clamp(40px,8vw,60px)", height: "clamp(40px,8vw,60px)", borderRadius: "50%",
                             background: "rgba(232,144,159,0.80)", backdropFilter: "blur(6px)",
                             border: "2px solid rgba(255,255,255,0.25)",
                             display: "flex", alignItems: "center", justifyContent: "center",
-                            marginBottom: "16px",
+                            flexShrink: 0,
+                            marginBottom: "clamp(8px,2vw,16px)",
                             boxShadow: "0 0 32px rgba(232,144,159,0.6)",
                           }}>
-                            <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+                            <svg style={{ width: "clamp(14px,3vw,22px)", height: "clamp(14px,3vw,22px)" }} viewBox="0 0 24 24" fill="white">
                               <path d="M8 5v14l11-7z" />
                             </svg>
                           </div>
@@ -477,7 +478,9 @@ export default function Pakistan() {
               className={`journey-dot${i === slideIdx ? " active" : ""}`}
               onClick={() => setSlideIdx(i)}
               aria-label={`Go to video ${i + 1}`}
-            />
+            >
+              {String(i + 1).padStart(2, "0")}
+            </button>
           ))}
         </div>
 
