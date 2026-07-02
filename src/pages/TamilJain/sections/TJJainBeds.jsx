@@ -4,7 +4,7 @@ import imgShayanika from "@/assets/images/Shayanika/TJPage Shayanika.jpg";
 
 const STATS = [
   { num: "2300+", label: "Years of Monastic History" },
-  { num: "40+",   label: "Rock-Bed Sites Documented" },
+  { num: "150+",   label: "Rock-Bed Sites Documented" },
   { num: "3rd BCE", label: "Earliest Recorded Evidence" },
 ];
 

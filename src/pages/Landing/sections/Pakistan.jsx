@@ -471,7 +471,7 @@ export default function Pakistan() {
         </div>
 
         {/* Indicators */}
-        <div className="journey-indicators" style={{ marginTop: "40px" }}>
+        {/* <div className="journey-indicators" style={{ marginTop: "40px" }}>
           {VIDEO_IDS.map((_, i) => (
             <button
               key={i}
@@ -482,7 +482,7 @@ export default function Pakistan() {
               {String(i + 1).padStart(2, "0")}
             </button>
           ))}
-        </div>
+        </div> */}
 
       </div>
     </section>

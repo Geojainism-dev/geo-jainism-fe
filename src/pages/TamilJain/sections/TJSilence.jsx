@@ -12,7 +12,7 @@ const STATS = [
   { num: "25K–35K", label: "Tamil Jains Remain" },
   { num: "450+",    label: "Jain Sites in Tamil Nadu" },
   { num: "2,300+",  label: "Years of Heritage" },
-  { num: "111",     label: "Sites Documented" },
+  { num: "462+",     label: "Sites Documented" },
 ];
 
 export default function TJSilence() {
