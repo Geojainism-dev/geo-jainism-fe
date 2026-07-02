@@ -1,5 +1,6 @@
 import React from "react";
 import { useDarkMode } from "@/hooks";
+import { useTranslation } from "react-i18next";
 
 /* 42 particles — spread across palette colours for variety */
 const PARTICLE_COLORS = ["#F4A535", "#F7D580", "#7DAF6E", "#E8909F"];
@@ -18,6 +19,7 @@ const PARTICLES = Array.from({ length: 42 }, (_, i) => ({
 
 export default function ScreeningAnnouncement() {
   const isDark = useDarkMode();
+  const { t } = useTranslation();
 
   const bg        = isDark ? "linear-gradient(145deg,#060D08 0%,#0E0804 45%,#08100A 100%)"
                            : "linear-gradient(145deg,#EBDFC4 0%,#FDF8F0 48%,#E8F0E4 100%)";
@@ -65,7 +67,7 @@ export default function ScreeningAnnouncement() {
           textTransform: "uppercase",
           whiteSpace: "nowrap",
         }}>
-          Coming to Screens
+          {t("screening.marqueeLabel")}
         </span>
         <span style={{ color: isDark ? "rgba(125,175,110,0.35)" : "rgba(90,152,80,0.35)", fontSize:18 }}>✦</span>
         <span style={{
@@ -76,7 +78,7 @@ export default function ScreeningAnnouncement() {
           whiteSpace: "nowrap",
           letterSpacing: "2px",
         }}>
-          August 2026
+          {t("screening.marqueeDate")}
         </span>
         <div style={{ display:"flex", gap:"6px", opacity:0.35 }}>
           {[...Array(6)].map((_,i) => (
@@ -156,7 +158,7 @@ export default function ScreeningAnnouncement() {
           fontSize:"clamp(9px,1.1vw,11px)",
           letterSpacing:"8px", color:subCol,
           textTransform:"uppercase", marginBottom:"14px",
-        }}>Releasing</p>
+        }}>{t("screening.releasing")}</p>
 
         {/* August 2026 — saffron → tulsi gradient */}
         <div style={{
@@ -168,7 +170,7 @@ export default function ScreeningAnnouncement() {
           backgroundClip:"text",
           marginBottom:"38px", letterSpacing:"1px",
         }}>
-          August 2026
+          {t("screening.date")}
         </div>
 
         {/* Narrative description */}
@@ -201,19 +203,7 @@ export default function ScreeningAnnouncement() {
             color: isDark ? "rgba(240,223,180,0.72)" : "rgba(42,26,14,0.65)",
             marginBottom: "22px",
             letterSpacing: "0.15px",
-          }}>
-            GEO JAINISM presents the <em style={{ fontStyle:"italic", color:"#F4A535" }}>Tamil Jains Documentary</em> — a sweeping cinematic record of a civilisation long hidden in plain sight. Our team traversed <strong style={{ fontWeight:500, color: isDark ? "#F7D580" : "#8B5E12" }}>111 ancient Jain sites</strong> across Tamil Nadu, scaling 50+ remote hillside shrines and uncovering 10+ sites that history had all but erased.
-          </p>
-
-          <p style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "clamp(14px, 1.9vw, 18px)",
-            fontWeight: 300,
-            lineHeight: 1.85,
-            color: isDark ? "rgba(200,223,192,0.62)" : "rgba(42,26,14,0.55)",
-            marginBottom: "22px",
-            letterSpacing: "0.15px",
-          }}>
+          }} dangerouslySetInnerHTML={{ __html: t("screening.narrative1") }}>
           </p>
 
           <p style={{
@@ -223,8 +213,7 @@ export default function ScreeningAnnouncement() {
             lineHeight: 1.75,
             color: isDark ? "rgba(200,223,192,0.42)" : "rgba(42,26,14,0.38)",
             letterSpacing: "0.3px",
-          }}>
-            In August 2026, the film will screen at <strong style={{ fontWeight:500 }}>100 curated venues</strong> across India — bringing this untold legacy to cities near and far.
+          }} dangerouslySetInnerHTML={{ __html: t("screening.narrative2") }}>
           </p>
         </div>
 
@@ -237,7 +226,7 @@ export default function ScreeningAnnouncement() {
             color: subCol,
             textTransform: "uppercase",
             marginBottom: "10px",
-          }}>Nationwide Screening</p>
+          }}>{t("screening.nationwideLabel")}</p>
 
           <div style={{
             fontFamily: "'Playfair Display', serif",
@@ -260,7 +249,7 @@ export default function ScreeningAnnouncement() {
             letterSpacing: "5px",
             color: isDark ? "rgba(200,223,192,0.50)" : "rgba(42,26,14,0.42)",
             textTransform: "uppercase",
-          }}>Curated Venues · Across India</p>
+          }}>{t("screening.venuesLabel")}</p>
         </div>
 
         {/* CTA — Register for Screening */}
@@ -320,7 +309,7 @@ export default function ScreeningAnnouncement() {
               <line x1="2"  y1="12" x2="5"  y2="12"/>
               <line x1="19" y1="12" x2="22" y2="12"/>
             </svg>
-            Register for Screening
+            {t("screening.btnRegister")}
             {/* arrow */}
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="#F4A535" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
               <path d="M3 8h10M9 4l4 4-4 4"/>
@@ -335,7 +324,7 @@ export default function ScreeningAnnouncement() {
             color: isDark ? "rgba(200,223,192,0.32)" : "rgba(42,26,14,0.28)",
             textTransform: "uppercase",
           }}>
-            Host a screening · Attend a show · Partner with us
+            {t("screening.btnSubtext")}
           </p>
         </div>
 
@@ -368,7 +357,7 @@ export default function ScreeningAnnouncement() {
               textTransform: "uppercase",
               margin: 0,
               textShadow: isDark ? "0 0 24px rgba(244,165,53,0.25)" : "none",
-            }}>Get in Touch</p>
+            }}>{t("screening.getInTouch")}</p>
             <span style={{ width:"28px", height:"1px", background: `linear-gradient(90deg, ${isDark ? "rgba(125,175,110,0.6)" : "rgba(125,175,110,0.7)"}, transparent)` }}/>
           </div>
 

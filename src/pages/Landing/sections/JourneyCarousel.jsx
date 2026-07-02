@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { JOURNEY_SLIDES } from "@/constants/landingData";
 import { useDarkMode } from "@/hooks";
+import { useTranslation } from "react-i18next";
 
 const ACCENT     = "#7DAF6E";
 const ACCENT_ALT = "#E8909F";
@@ -14,7 +15,7 @@ const PARTICLES = Array.from({ length: 32 }, (_, i) => ({
   color:    PARTICLE_COLORS[i % PARTICLE_COLORS.length],
   glow:     i % 4 === 0 ? "0 0 8px rgba(125,175,110,0.9),0 0 18px rgba(200,223,192,0.45)"
           : i % 4 === 1 ? "0 0 8px rgba(232,144,159,0.9),0 0 18px rgba(242,196,206,0.45)"
-          : i % 4 === 2 ? "0 0 7px rgba(125,175,110,0.8),0 0 15px rgba(125,175,110,0.35)"
+          : i % 4 === 2 ? "0 0 7px rgba(125,175,110,0.85),0 0 15px rgba(125,175,110,0.35)"
           :               "0 0 7px rgba(232,144,159,0.8),0 0 14px rgba(232,144,159,0.35)",
 }));
 
@@ -32,6 +33,7 @@ const JourneyCarousel = () => {
   const isDark      = useDarkMode();
   const carouselRef = useRef(null);
   const [slideIdx, setSlideIdx] = useState(0);
+  const { t } = useTranslation();
 
   const goPrev = () => setSlideIdx(i => (i - 1 + JOURNEY_SLIDES.length) % JOURNEY_SLIDES.length);
   const goNext = () => setSlideIdx(i => (i + 1) % JOURNEY_SLIDES.length);
@@ -78,6 +80,9 @@ const JourneyCarousel = () => {
   const bodyCol   = isDark ? "rgba(200,223,192,0.70)" : "rgba(42,61,30,0.65)";
 
   const slide = JOURNEY_SLIDES[slideIdx];
+  const localizedSlideTitle = t(`landingData.journey.${slideIdx}.title`, slide.title);
+  const localizedSlideCaption = t(`landingData.journey.${slideIdx}.caption`, slide.caption);
+  const localizedSlideNum = t(`landingData.journey.${slideIdx}.num`, slide.num);
 
   return (
     <section
@@ -142,13 +147,13 @@ const JourneyCarousel = () => {
           fontFamily: "'Cinzel', serif", fontSize: "clamp(10px,1.6vw,14px)",
           letterSpacing: "clamp(4px,1vw,8px)", fontWeight: 600,
           color: accentCol, textTransform: "uppercase", whiteSpace: "nowrap",
-        }}>Sacred Trails</span>
+        }}>{t("journey.sub")}</span>
         <span style={{ color: isDark ? "rgba(125,175,110,0.40)" : "rgba(90,148,72,0.40)", fontSize: 18 }}>✦</span>
         <span style={{
           fontFamily: "'Playfair Display', serif", fontSize: "clamp(12px,1.8vw,17px)",
           fontStyle: "italic", color: isDark ? ACCENT_ALT : "#C0607A",
           whiteSpace: "nowrap", letterSpacing: "2px",
-        }}>Jain India</span>
+        }}>{t("journey.brand")}</span>
         <div style={{ display: "flex", gap: "6px", opacity: 0.4 }}>
           {[...Array(5)].map((_, i) => (
             <div key={i} style={{ width: 8, height: 14, borderRadius: 2, background: ACCENT, opacity: 0.75 }} />
@@ -207,8 +212,8 @@ const JourneyCarousel = () => {
 
         {/* Header */}
         <div className="journey-header">
-          <div className="section-sub" style={{ color: accentCol }}>Sacred Trails</div>
-          <h2 className="section-title" style={{ color: titleCol }}>Journey Through GEO Jainism</h2>
+          <div className="section-sub" style={{ color: accentCol }}>{t("journey.sub")}</div>
+          <h2 className="section-title" style={{ color: titleCol }}>{t("journey.title")}</h2>
 
           {/* Quote */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "20px", margin: "28px auto 0", maxWidth: "680px" }}>
@@ -218,8 +223,7 @@ const JourneyCarousel = () => {
               fontSize: "clamp(15px,1.6vw,19px)", lineHeight: 1.8,
               color: bodyCol, margin: 0, textAlign: "center",
               letterSpacing: "0.3px",
-            }}>
-              " Tracing the Sacred Landscapes, Ancient Routes,<br/>and Hidden Heritage of Jain India. "
+            }} dangerouslySetInnerHTML={{ __html: t("journey.quote") }}>
             </p>
             <div style={{ flex: 1, height: "1px", background: isDark ? "rgba(125,175,110,0.25)" : "rgba(125,175,110,0.40)" }} />
           </div>
@@ -238,22 +242,25 @@ const JourneyCarousel = () => {
           }}
         >
           {/* Cross-fade images */}
-          {JOURNEY_SLIDES.map((s, i) => (
-            <img
-              key={s.img}
-              src={s.img}
-              alt={s.title}
-              loading={i === 0 ? "eager" : "lazy"}
-              style={{
-                position: "absolute", inset: 0,
-                width: "100%", height: "100%", objectFit: "cover",
-                opacity: i === slideIdx ? 1 : 0,
-                transform: i === slideIdx ? "scale(1.06)" : "scale(1.0)",
-                transition: "opacity 1.2s ease, transform 7s ease-out",
-                zIndex: 1,
-              }}
-            />
-          ))}
+          {JOURNEY_SLIDES.map((s, i) => {
+            const currentTitle = t(`landingData.journey.${i}.title`, s.title);
+            return (
+              <img
+                key={s.img}
+                src={s.img}
+                alt={currentTitle}
+                loading={i === 0 ? "eager" : "lazy"}
+                style={{
+                  position: "absolute", inset: 0,
+                  width: "100%", height: "100%", objectFit: "cover",
+                  opacity: i === slideIdx ? 1 : 0,
+                  transform: i === slideIdx ? "scale(1.06)" : "scale(1.0)",
+                  transition: "opacity 1.2s ease, transform 7s ease-out",
+                  zIndex: 1,
+                }}
+              />
+            );
+          })}
 
           {/* Letterbox bars */}
           <div aria-hidden="true" style={{ position: "absolute", top: 0, left: 0, right: 0, height: "56px", background: "rgba(0,0,0,0.80)", zIndex: 4 }} />
@@ -293,7 +300,7 @@ const JourneyCarousel = () => {
             fontFamily: "'Cinzel', serif", fontSize: "10px", letterSpacing: "3px",
             color: "rgba(125,175,110,0.80)", textTransform: "uppercase",
           }}>
-            {slide?.num?.split("·")[0].trim()}
+            {localizedSlideNum?.split("·")[0].trim()}
           </div>
 
           {/* Huge ghost chapter number — left side */}
@@ -330,7 +337,7 @@ const JourneyCarousel = () => {
                 fontFamily: "'Cinzel', serif", fontSize: "10px", letterSpacing: "4px",
                 color: ACCENT, textTransform: "uppercase",
               }}>
-                {slide?.num}
+                {localizedSlideNum}
               </div>
               <div className="jc-dots" style={{ display: "flex", gap: "6px" }}>
                 {JOURNEY_SLIDES.map((_, i) => (
@@ -368,7 +375,7 @@ const JourneyCarousel = () => {
                 animation: "jc-fadein 0.8s ease forwards",
               }}
             >
-              {slide?.title}
+              {localizedSlideTitle}
             </h3>
 
             {/* Caption + nav row */}
@@ -382,7 +389,7 @@ const JourneyCarousel = () => {
                   animation: "jc-fadein 0.9s 0.15s ease both",
                 }}
               >
-                {slide?.caption}
+                {localizedSlideCaption}
               </p>
 
               {/* Prev / Next */}
@@ -412,3 +419,4 @@ const JourneyCarousel = () => {
 };
 
 export default JourneyCarousel;
+

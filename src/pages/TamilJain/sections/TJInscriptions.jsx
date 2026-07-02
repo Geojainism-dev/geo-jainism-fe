@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import imgTamilBrahmi from "@/assets/images/Inscription/TAMIL-BRAHMI .jpg";
 import imgVatteluttu from "@/assets/images/Inscription/Vatteluttu.jpg";
 import imgGrantha from "@/assets/images/Inscription/Granth.jpg";
@@ -26,36 +27,6 @@ function useCountUp(target, active, duration = 1350) {
 
   return val;
 }
-
-const inscriptionsData = [
-  {
-    id: "brahmi",
-    title: "Tamil-Brahmi",
-    era: "3rd BCE – 3rd CE",
-    text: "Early inscriptions found in rock shelters and Jain beds, often recording donations made to Jain ascetics. These are the earliest written records of the Tamil language.",
-    stat: "580+",
-    statLabel: "Known inscriptions identified",
-    image: imgTamilBrahmi,
-  },
-  {
-    id: "vatteluttu",
-    title: "Vatteluttu",
-    era: "Early Medieval Period",
-    text: "Records of grants, charitable donations, Jain monasteries (pallis), and religious activities — reflecting the administrative flourishing of Jain centers.",
-    stat: "100+",
-    statLabel: "Documented pallis & monasteries",
-    image: imgVatteluttu,
-  },
-  {
-    id: "grantha",
-    title: "Grantha",
-    era: "Classical Period",
-    text: "Inscriptions documenting temple endowments, land grants, image installations, tax exemptions, and the socio-economic role of Jain communities during the golden era of South Indian Jain history.",
-    stat: "200+",
-    statLabel: "Royal temple endowments recorded",
-    image: imgGrantha,
-  },
-];
 
 /* Root at TOP (y=18), trunk grows DOWN to junction (y=90),
    branches curve further DOWN to card tops (y=196) */
@@ -108,6 +79,37 @@ function TreeCard({ data: d, index: i, inView }) {
 export default function TJInscriptions() {
   const sectionRef = useRef(null);
   const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const { t } = useTranslation();
+
+  const inscriptionsData = [
+    {
+      id: "brahmi",
+      title: t("tamilJain.inscriptions.cards.0.title", "Tamil-Brahmi"),
+      era: t("tamilJain.inscriptions.cards.0.era", "3rd BCE – 3rd CE"),
+      text: t("tamilJain.inscriptions.cards.0.text", "Early inscriptions found in rock shelters and Jain beds, often recording donations made to Jain ascetics. These are the earliest written records of the Tamil language."),
+      stat: "580+",
+      statLabel: t("tamilJain.inscriptions.cards.0.statLabel", "Known inscriptions identified"),
+      image: imgTamilBrahmi,
+    },
+    {
+      id: "vatteluttu",
+      title: t("tamilJain.inscriptions.cards.1.title", "Vatteluttu"),
+      era: t("tamilJain.inscriptions.cards.1.era", "Early Medieval Period"),
+      text: t("tamilJain.inscriptions.cards.1.text", "Records of grants, charitable donations, Jain monasteries (pallis), and religious activities — reflecting the administrative flourishing of Jain centers."),
+      stat: "100+",
+      statLabel: t("tamilJain.inscriptions.cards.1.statLabel", "Documented pallis & monasteries"),
+      image: imgVatteluttu,
+    },
+    {
+      id: "grantha",
+      title: t("tamilJain.inscriptions.cards.2.title", "Grantha"),
+      era: t("tamilJain.inscriptions.cards.2.era", "Classical Period"),
+      text: t("tamilJain.inscriptions.cards.2.text", "Inscriptions documenting temple endowments, land grants, image installations, tax exemptions, and the socio-economic role of Jain communities during the golden era of South Indian Jain history."),
+      stat: "200+",
+      statLabel: t("tamilJain.inscriptions.cards.2.statLabel", "Royal temple endowments recorded"),
+      image: imgGrantha,
+    },
+  ];
 
   return (
     <section ref={sectionRef} className="tj-insc-section">
@@ -116,15 +118,12 @@ export default function TJInscriptions() {
       <div className="tj-insc-header">
         <div className="tj-eyebrow-row" style={{ marginBottom: "14px", justifyContent: "center" }}>
           <div className="tj-eyebrow-line" style={{ background: "linear-gradient(to right, transparent, var(--saffron))" }} />
-          <span className="tj-eyebrow-label">Historical Epigraphy</span>
+          <span className="tj-eyebrow-label">{t("tamilJain.inscriptions.eyebrow")}</span>
           <div className="tj-eyebrow-line" style={{ background: "linear-gradient(to left, transparent, var(--saffron))" }} />
         </div>
-        <h2 className="tj-insc-cinema-title">Sacred <em>Inscriptions</em></h2>
+        <h2 className="tj-insc-cinema-title">{t("tamilJain.inscriptions.title1")}<em>{t("tamilJain.inscriptions.title2")}</em></h2>
         <p className="tj-insc-intro-para">
-          Jain inscriptions in Tamil Nadu are among the most valuable historical sources
-          for understanding the spread, patronage, and development of Jainism in South India.
-          They provide firsthand evidence about Jain monks, donors, religious institutions,
-          and local rulers, helping reconstruct over two millennia of Tamil Jain heritage.
+          {t("tamilJain.inscriptions.desc")}
         </p>
       </div>
 
@@ -207,3 +206,4 @@ export default function TJInscriptions() {
     </section>
   );
 }
+

@@ -6,11 +6,13 @@ import {
   useSpring,
   useReducedMotion,
 } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function TJCinematicHero() {
   const containerRef = useRef(null);
   const reduced      = useReducedMotion();
   const [m, setM]    = useState({ x: 0, y: 0 });
+  const { t }        = useTranslation();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -102,16 +104,16 @@ export default function TJCinematicHero() {
           className="tj-hero-overlay"
           style={{ opacity: textOpacity, y: textY }}
         >
-          <span className="tj-hero-eyebrow">Heritage of South India</span>
+          <span className="tj-hero-eyebrow">{t("tamilJain.hero.eyebrow")}</span>
           <h1 className="tj-hero-title">
-            Jainism In<br />
+            {t("tamilJain.hero.title1")}<br />
             <span className="tj-title-row2">
               <img className="tj-mob-bird-l" src="/tamiljain/birds-new.png" aria-hidden="true" alt="" />
-              <em>Tamil Nadu</em>
+              <em>{t("tamilJain.hero.title2")}</em>
               <img className="tj-mob-bird-r" src="/tamiljain/birds-new.png" aria-hidden="true" alt="" />
             </span>
           </h1>
-          <p className="tj-hero-sub">2300+ Years · Living Tradition</p>
+          <p className="tj-hero-sub">{t("tamilJain.hero.sub")}</p>
         </motion.div>
 
         {/* Scroll hint */}
@@ -124,8 +126,12 @@ export default function TJCinematicHero() {
             />
           </div>
           <span className="tj-scroll-text">
-            <span>S</span><em>·</em><span>C</span><em>·</em><span>R</span><em>·</em>
-            <span>O</span><em>·</em><span>L</span><em>·</em><span>L</span>
+            {t("tamilJain.hero.scrollCue", "SCROLL").split("").map((char, index, arr) => (
+              <React.Fragment key={index}>
+                <span>{char}</span>
+                {index < arr.length - 1 && <em>·</em>}
+              </React.Fragment>
+            ))}
           </span>
         </motion.div>
 
@@ -136,3 +142,4 @@ export default function TJCinematicHero() {
     </div>
   );
 }
+

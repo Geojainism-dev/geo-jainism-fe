@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDarkMode } from "@/hooks";
+import { useTranslation } from "react-i18next";
 
 const ACCENT = "#E8909F"; // lotus deep — replaces legacy crimson
 
@@ -36,6 +37,7 @@ export default function Pakistan() {
   const isDark       = useDarkMode();
   const carouselRef  = useRef(null);
   const playingIdRef = useRef(null);
+  const { t } = useTranslation();
 
   const [slideIdx,  setSlideIdx]  = useState(0);
   const [playingId, setPlayingId] = useState(null);
@@ -207,12 +209,12 @@ export default function Pakistan() {
           fontFamily: "'Cinzel', serif", fontSize: "clamp(10px,1.6vw,14px)",
           letterSpacing: "clamp(4px,1vw,8px)", fontWeight: 600,
           color: isDark ? ACCENT : "#C0607A", textTransform: "uppercase", whiteSpace: "nowrap",
-        }}>Field Research</span>
+        }}>{t("pakistan.sub")}</span>
         <span style={{ color: isDark ? "rgba(232,144,159,0.40)" : "rgba(192,96,122,0.38)", fontSize: 18 }}>✦</span>
         <span style={{
           fontFamily: "'Playfair Display', serif", fontSize: "clamp(12px,1.8vw,17px)",
           fontStyle: "italic", color: "#F4A535", whiteSpace: "nowrap", letterSpacing: "2px",
-        }}>On Camera</span>
+        }}>{t("pakistan.brand")}</span>
         <div style={{ display: "flex", gap: "6px", opacity: 0.35 }}>
           {[...Array(5)].map((_, i) => (
             <div key={i} style={{ width: 8, height: 14, borderRadius: 2, background: ACCENT, opacity: 0.75 }} />
@@ -267,11 +269,10 @@ export default function Pakistan() {
 
         {/* Header — extra bottom margin for breathing room */}
         <div className="journey-header" style={{ marginBottom: "64px" }}>
-          <div className="section-sub" style={{ color: ACCENT }}>GEO Jainism</div>
-          <h2 className="section-title" style={{ color: titleCol }}>Documenting the Untold</h2>
+          <div className="section-sub" style={{ color: ACCENT }}>{t("pakistan.brand")}</div>
+          <h2 className="section-title" style={{ color: titleCol }}>{t("pakistan.title")}</h2>
           <p className="journey-sub-desc" style={{ color: bodyCol }}>
-            Ancient sites. Forgotten histories. On-ground journeys across India and beyond —
-            GEO Jainism brings untold Jain stories to the world, one documentary at a time.
+            {t("pakistan.desc")}
           </p>
         </div>
 
@@ -326,7 +327,7 @@ export default function Pakistan() {
                           padding: "clamp(20px,3vw,48px) clamp(20px,4vw,54px)",
                         }}>
                           <div style={{ fontFamily: "'Cinzel',serif", fontSize: "11px", letterSpacing: "4px", color: ACCENT, textTransform: "uppercase", marginBottom: "10px" }}>
-                            Video {String(i + 1).padStart(2, "0")}
+                            {t("pakistan.video")} {String(i + 1).padStart(2, "0")}
                           </div>
                           <div style={{
                             width: "clamp(40px,8vw,60px)", height: "clamp(40px,8vw,60px)", borderRadius: "50%",
@@ -342,9 +343,9 @@ export default function Pakistan() {
                             </svg>
                           </div>
                           <h3 style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(20px,2.8vw,38px)", fontWeight: 400, color: "#FDF8F0", margin: 0, lineHeight: 1.2 }}>
-                            <em>GEO Jainism Originals</em>
+                            <em>{t("pakistan.originals")}</em>
                           </h3>
-                          <p style={{ fontSize: "13px", color: "rgba(253,248,240,0.7)", marginTop: "8px" }}>Click to play</p>
+                          <p style={{ fontSize: "13px", color: "rgba(253,248,240,0.7)", marginTop: "8px" }}>{t("pakistan.clickPlay")}</p>
 
                           {/* Progress bar */}
                           <div style={{
@@ -398,7 +399,7 @@ export default function Pakistan() {
             fontFamily: "'Cinzel',serif", fontSize: "10px",
             letterSpacing: "3px", fontWeight: 700, textTransform: "uppercase",
           }}>
-            GEO Originals
+            {t("pakistan.originalsBadge")}
           </div>
 
           {/* Video counter */}
@@ -408,7 +409,7 @@ export default function Pakistan() {
             color: isDark ? "rgba(220,180,170,0.55)" : "rgba(42,26,14,0.42)",
             margin: 0,
           }}>
-            Video{" "}
+            {t("pakistan.video")}{" "}
             <strong style={{ color: isDark ? "#FAF0D9" : "#3D2314" }}>
               {String(slideIdx + 1).padStart(2, "0")}
             </strong>
@@ -421,7 +422,7 @@ export default function Pakistan() {
             fontFamily: "'DM Sans',sans-serif", fontSize: "12px",
             color: isDark ? "rgba(240,223,180,0.50)" : "rgba(42,26,14,0.45)",
           }}>
-            {["Untold", "Ancient", "Sacred"].map((tag, idx, arr) => (
+            {[t("genres.untold"), t("genres.ancient"), t("genres.sacred")].map((tag, idx, arr) => (
               <React.Fragment key={tag}>
                 <span>{tag}</span>
                 {idx < arr.length - 1 && <span style={{ opacity: 0.4 }}>·</span>}
@@ -447,7 +448,7 @@ export default function Pakistan() {
               onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)";    e.currentTarget.style.boxShadow = "0 4px 20px rgba(232,144,159,0.45)"; }}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z" /></svg>
-              Play Now
+              {t("pakistan.playNow")}
             </button>
 
             <a
@@ -465,26 +466,15 @@ export default function Pakistan() {
                 transition: "border-color 0.2s",
               }}
             >
-              View Channel ↗
+              {t("pakistan.viewChannel")}
             </a>
+
           </div>
         </div>
 
-        {/* Indicators */}
-        {/* <div className="journey-indicators" style={{ marginTop: "40px" }}>
-          {VIDEO_IDS.map((_, i) => (
-            <button
-              key={i}
-              className={`journey-dot${i === slideIdx ? " active" : ""}`}
-              onClick={() => setSlideIdx(i)}
-              aria-label={`Go to video ${i + 1}`}
-            >
-              {String(i + 1).padStart(2, "0")}
-            </button>
-          ))}
-        </div> */}
 
       </div>
     </section>
+
   );
 }

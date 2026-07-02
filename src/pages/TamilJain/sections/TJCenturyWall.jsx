@@ -1,64 +1,6 @@
 import React, { useState, useRef, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-
-const ERAS = [
-  {
-    icon: "🏺",
-    period: "3rd Century BCE",
-    shortPeriod: "3rd BCE",
-    imageSrc: "/journey-throught-time/1 stone beds.jpg",
-    title: "Stone Beds & Tamil-Brahmi Inscriptions",
-    desc: "Stone beds and Tamil-Brahmi inscriptions mark the beginning of a remarkable journey — Jain monks finding refuge in the granite hills of Tamil Nadu, leaving their stories etched in ancient script.",
-  },
-  {
-    icon: "⛰️",
-    period: "2nd Century BCE – 3rd Century CE",
-    shortPeriod: "2nd–3rd CE",
-    imageSrc: "/journey-throught-time/2 hills become monastries.jpg",
-    title: "Hills Become Monasteries",
-    desc: "Jainism spreads across the Tamil landscape. Natural caves are carved into monasteries; hilltops are consecrated. A network of sacred sites stretches from the Kaveri delta to the far south.",
-  },
-  {
-    icon: "📚",
-    period: "4th – 8th Century CE",
-    shortPeriod: "4–8th CE",
-    imageSrc: "/journey-throught-time/3 shaping classic tamil culture.jpg",
-    title: "Shaping Classical Tamil Culture",
-    desc: "Tamil Jain scholars contribute profoundly to the Sangam literary tradition. Works like Tirukkural, Silappatikaram, and Manimekalai emerge from a world deeply influenced by Jain ethics and philosophy.",
-  },
-  {
-    icon: "🛕",
-    period: "9th – 13th Century CE",
-    shortPeriod: "9–13th CE",
-    imageSrc: "/journey-throught-time/4 artistic brilliance.jpg",
-    title: "Artistic Brilliance",
-    desc: "A period of artistic brilliance — rock-cut temples, monolithic sculptures, and intricate bas-reliefs flourish. Kalagumalai, Vallimalai, and Sittanavasal stand as masterpieces of this era.",
-  },
-  {
-    icon: "🍂",
-    period: "14th – 18th Century CE",
-    shortPeriod: "14–18th CE",
-    imageSrc: "/journey-throught-time/5 preservation through change.jpg",
-    title: "Preservation Through Change",
-    desc: "Political and religious transformations reshape the region. Jain communities adapt, many sites pass into other traditions, yet the monuments endure — silent witnesses to centuries of devotion.",
-  },
-  {
-    icon: "🔍",
-    period: "19th – 20th Century CE",
-    shortPeriod: "19–20th CE",
-    imageSrc: "/journey-throught-time/6- rediscovered .jpg",
-    title: "A Forgotten Chapter Rediscovered",
-    desc: "Ancient caves, sculptures, and inscriptions are rediscovered by epigraphers and archaeologists. A forgotten chapter of Tamil history begins to resurface, reclaiming its rightful place in the story of India.",
-  },
-  {
-    icon: "🌿",
-    period: "Today",
-    shortPeriod: "Today",
-    imageSrc: "/journey-throught-time/7 .jpg",
-    title: "2300+ Years of Continuous History",
-    desc: "A living tradition that endures — communities, scholars, and pilgrims keeping the flame alive. Tamil Jainism's 2300+ - year journey is not just history. It is heritage, still breathing.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const bgVariants = {
   enter:  { opacity: 0 },
@@ -73,8 +15,68 @@ const textVariants = {
 };
 
 export default function TJCenturyWall() {
+  const { t } = useTranslation();
   const [activeIdx, setActiveIdx] = useState(0);
   const dirRef = useRef(0);
+
+  const ERAS = [
+    {
+      icon: "🏺",
+      period: t("tamilJain.centuryWall.eras.0.period", "3rd Century BCE"),
+      shortPeriod: t("tamilJain.centuryWall.eras.0.shortPeriod", "3rd BCE"),
+      imageSrc: "/journey-throught-time/1 stone beds.jpg",
+      title: t("tamilJain.centuryWall.eras.0.title", "Stone Beds & Tamil-Brahmi Inscriptions"),
+      desc: t("tamilJain.centuryWall.eras.0.desc", "Stone beds and Tamil-Brahmi inscriptions mark the beginning of a remarkable journey — Jain monks finding refuge in the granite hills of Tamil Nadu, leaving their stories etched in ancient script."),
+    },
+    {
+      icon: "⛰️",
+      period: t("tamilJain.centuryWall.eras.1.period", "2nd Century BCE – 3rd Century CE"),
+      shortPeriod: t("tamilJain.centuryWall.eras.1.shortPeriod", "2nd–3rd CE"),
+      imageSrc: "/journey-throught-time/2 hills become monastries.jpg",
+      title: t("tamilJain.centuryWall.eras.1.title", "Hills Become Monasteries"),
+      desc: t("tamilJain.centuryWall.eras.1.desc", "Jainism spreads across the Tamil landscape. Natural caves are carved into monasteries; hilltops are consecrated. A network of sacred sites stretches from the Kaveri delta to the far south."),
+    },
+    {
+      icon: "📚",
+      period: t("tamilJain.centuryWall.eras.2.period", "4th – 8th Century CE"),
+      shortPeriod: t("tamilJain.centuryWall.eras.2.shortPeriod", "4–8th CE"),
+      imageSrc: "/journey-throught-time/3 shaping classic tamil culture.jpg",
+      title: t("tamilJain.centuryWall.eras.2.title", "Shaping Classical Tamil Culture"),
+      desc: t("tamilJain.centuryWall.eras.2.desc", "Tamil Jain scholars contribute profoundly to the Sangam literary tradition. Works like Tirukkural, Silappatikaram, and Manimekalai emerge from a world deeply influenced by Jain ethics and philosophy."),
+    },
+    {
+      icon: "🛕",
+      period: t("tamilJain.centuryWall.eras.3.period", "9th – 13th Century CE"),
+      shortPeriod: t("tamilJain.centuryWall.eras.3.shortPeriod", "9–13th CE"),
+      imageSrc: "/journey-throught-time/4 artistic brilliance.jpg",
+      title: t("tamilJain.centuryWall.eras.3.title", "Artistic Brilliance"),
+      desc: t("tamilJain.centuryWall.eras.3.desc", "A period of artistic brilliance — rock-cut temples, monolithic sculptures, and intricate bas-reliefs flourish. Kalagumalai, Vallimalai, and Sittanavasal stand as masterpieces of this era."),
+    },
+    {
+      icon: "🍂",
+      period: t("tamilJain.centuryWall.eras.4.period", "14th – 18th Century CE"),
+      shortPeriod: t("tamilJain.centuryWall.eras.4.shortPeriod", "14–18th CE"),
+      imageSrc: "/journey-throught-time/5 preservation through change.jpg",
+      title: t("tamilJain.centuryWall.eras.4.title", "Preservation Through Change"),
+      desc: t("tamilJain.centuryWall.eras.4.desc", "Political and religious transformations reshape the region. Jain communities adapt, many sites pass into other traditions, yet the monuments endure — silent witnesses to centuries of devotion."),
+    },
+    {
+      icon: "🔍",
+      period: t("tamilJain.centuryWall.eras.5.period", "19th – 20th Century CE"),
+      shortPeriod: t("tamilJain.centuryWall.eras.5.shortPeriod", "19–20th CE"),
+      imageSrc: "/journey-throught-time/6- rediscovered .jpg",
+      title: t("tamilJain.centuryWall.eras.5.title", "A Forgotten Chapter Rediscovered"),
+      desc: t("tamilJain.centuryWall.eras.5.desc", "Ancient caves, sculptures, and inscriptions are rediscovered by epigraphers and archaeologists. A forgotten chapter of Tamil history begins to resurface, reclaiming its rightful place in the story of India."),
+    },
+    {
+      icon: "🌿",
+      period: t("tamilJain.centuryWall.eras.6.period", "Today"),
+      shortPeriod: t("tamilJain.centuryWall.eras.6.shortPeriod", "Today"),
+      imageSrc: "/journey-throught-time/7 .jpg",
+      title: t("tamilJain.centuryWall.eras.6.title", "2300+ Years of Continuous History"),
+      desc: t("tamilJain.centuryWall.eras.6.desc", "A living tradition that endures — communities, scholars, and pilgrims keeping the flame alive. Tamil Jainism's 2300+ - year journey is not just history. It is heritage, still breathing."),
+    },
+  ];
 
   const goTo = useCallback((idx) => {
     dirRef.current = idx > activeIdx ? 1 : -1;
@@ -97,10 +99,10 @@ export default function TJCenturyWall() {
         <div className="cw-header">
           <div className="tj-eyebrow-row" style={{ justifyContent: "center", marginBottom: "14px" }}>
             <div className="tj-eyebrow-line" style={{ background: "linear-gradient(to right, transparent, var(--saffron))" }} />
-            <span className="tj-eyebrow-label">Historical Journey</span>
+            <span className="tj-eyebrow-label">{t("tamilJain.centuryWall.eyebrow")}</span>
             <div className="tj-eyebrow-line" style={{ background: "linear-gradient(to left, transparent, var(--saffron))" }} />
           </div>
-          <h2 className="cw-title">Tamil Nadu Jainism: A Journey Through Time</h2>
+          <h2 className="cw-title">{t("tamilJain.centuryWall.title")}</h2>
         </div>
 
         {/* Cinematic panel */}
@@ -163,14 +165,14 @@ export default function TJCenturyWall() {
                     className="cw-panel-arrow"
                     onClick={() => goTo(Math.max(0, activeIdx - 1))}
                     disabled={activeIdx === 0}
-                    aria-label="Previous era"
+                    aria-label={t("tamilJain.centuryWall.prevEra", "Previous era")}
                   >←</button>
                   <button
                     type="button"
                     className="cw-panel-arrow"
                     onClick={() => goTo(Math.min(ERAS.length - 1, activeIdx + 1))}
                     disabled={activeIdx === ERAS.length - 1}
-                    aria-label="Next era"
+                    aria-label={t("tamilJain.centuryWall.nextEra", "Next era")}
                   >→</button>
                 </div>
               </div>
@@ -210,3 +212,4 @@ export default function TJCenturyWall() {
     </section>
   );
 }
+

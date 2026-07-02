@@ -1,8 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import mandalaImg from "@/assets/images/landing/mandala.png";
+import { useTranslation } from "react-i18next";
 
 const Hero = ({ heroReady }) => {
+  const { t } = useTranslation();
   const allCharsRef = useRef([]);
   const imgRef = useRef(null);
   const [imgLoaded, setImgLoaded] = useState(false);
@@ -128,38 +130,37 @@ const Hero = ({ heroReady }) => {
       </div>
 
       <div className="hero-left">
-        <div className="hero-eyebrow">GEO Jainism — Presents</div>
-        <h1 className="hero-title">Tamil <span className="hero-jains">Jains</span></h1>
-        <div className="hero-subtitle">Minority Within A Minority</div>
+        <div className="hero-eyebrow">{t("hero.presents")}</div>
+        <h1 className="hero-title">{t("hero.title1")} <span className="hero-jains">{t("hero.title2")}</span></h1>
+        <div className="hero-subtitle">{t("hero.subtitle")}</div>
         <p className="hero-tagline">
-          A cinematic documentary unearthing 2300+ years of hidden Jain heritage
-          across Tamil Nadu — 111 ancient sites, 50+ hills, one mission.
+          {t("hero.tagline")}
         </p>
         <div className="hero-cta-row">
           <a href="#trailer" className="hero-btn-primary" data-testid="hero-watch-trailer">
-            ▶ Watch Trailer
+            {t("hero.watchTrailer")}
           </a>
           <a href="#support" className="hero-btn-ghost" data-testid="hero-support-btn">
-            Support the Film
+            {t("hero.supportFilm")}
           </a>
         </div>
 
         <div className="hero-badge">
           <div className="badge-item">
             <span className="badge-num">111</span>
-            <span className="badge-label">Ancient Sites</span>
+            <span className="badge-label">{t("hero.sites")}</span>
           </div>
           <div className="badge-item">
             <span className="badge-num">50+</span>
-            <span className="badge-label">Hills Climbed</span>
+            <span className="badge-label">{t("hero.hills")}</span>
           </div>
           <div className="badge-item">
             <span className="badge-num">4K</span>
-            <span className="badge-label">Documentation</span>
+            <span className="badge-label">{t("hero.documentation")}</span>
           </div>
           <div className="badge-item">
             <span className="badge-num">10+</span>
-            <span className="badge-label">Converted Sites</span>
+            <span className="badge-label">{t("hero.converted")}</span>
           </div>
         </div>
       </div>
@@ -203,7 +204,7 @@ const Hero = ({ heroReady }) => {
       </div>
 
       <div className="scroll-hint">
-        <span className="scroll-text">Scroll to explore</span>
+        <span className="scroll-text">{t("hero.scroll")}</span>
         <div className="scroll-line">
           <div className="scroll-dot"></div>
         </div>
@@ -216,3 +217,4 @@ const Hero = ({ heroReady }) => {
 };
 
 export default Hero;
+

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDarkMode } from "@/hooks";
 import { JOURNEY_SLIDES } from "@/constants/landingData";
+import { useTranslation } from "react-i18next";
 
 /* ── Secondary palette ─────────────────────────────────────────── */
 const LOTUS      = "#F2C4CE";
@@ -55,6 +56,7 @@ const KF = `
 
 export default function Trailer() {
   const isDark = useDarkMode();
+  const { t } = useTranslation();
   const [slideIdx, setSlideIdx] = useState(0);
   const [tilt,     setTilt]     = useState({ x: 0, y: 0 });
   const [revealed, setRevealed] = useState(false);
@@ -131,6 +133,9 @@ export default function Trailer() {
   const onTiltLeave = () => setTilt({ x: 0, y: 0 });
 
   const slide = JOURNEY_SLIDES[slideIdx];
+  const currentTitle = t(`landingData.journey.${slideIdx}.title`, slide.title);
+  const currentCaption = t(`landingData.journey.${slideIdx}.caption`, slide.caption);
+  const currentNum = t(`landingData.journey.${slideIdx}.num`, slide.num);
 
   /* Color tokens */
   const bg = isDark
@@ -239,7 +244,7 @@ export default function Trailer() {
             letterSpacing:"clamp(3px,1vw,7px)", fontWeight:600,
             color: isDark ? LOTUS : "#C0607A",
             textTransform:"uppercase", whiteSpace:"nowrap",
-          }}>Field Research</span>
+          }}>{t("trailer.marqueeFieldResearch")}</span>
           <span style={{
             width:"5px", height:"5px", borderRadius:"50%",
             background:`linear-gradient(135deg,${LOTUS_DEEP},${TULSI_DEEP})`,
@@ -249,7 +254,7 @@ export default function Trailer() {
             fontFamily:"'Playfair Display',serif", fontSize:"clamp(12px,1.8vw,17px)",
             fontStyle:"italic", color: isDark ? TULSI : TULSI_DEEP,
             whiteSpace:"nowrap", letterSpacing:"1.5px",
-          }}>On the Ground</span>
+          }}>{t("trailer.marqueeOnGround")}</span>
           <span style={{
             width:"5px", height:"5px", borderRadius:"50%",
             background:`linear-gradient(135deg,${TULSI_DEEP},${LOTUS_DEEP})`,
@@ -260,7 +265,7 @@ export default function Trailer() {
             letterSpacing:"clamp(3px,1vw,7px)", fontWeight:600,
             color: isDark ? TULSI : TULSI_DEEP,
             textTransform:"uppercase", whiteSpace:"nowrap",
-          }}>Documenting Heritage</span>
+          }}>{t("trailer.marqueeDocHeritage")}</span>
           {/* Right dashes */}
           <div style={{ display:"flex", gap:"5px", alignItems:"center" }}>
             {[10,24,10].map((w, i) => (
@@ -289,7 +294,7 @@ export default function Trailer() {
               fontFamily:"'Cinzel',serif", fontSize:"11px",
               letterSpacing:"4px", textTransform:"uppercase",
               color: isDark ? TULSI : TULSI_DEEP,
-            }}>Official Videos</span>
+            }}>{t("trailer.officialVideos")}</span>
             <div style={{
               width:"30px", height:"1px",
               background:`linear-gradient(90deg,${TULSI_DEEP},transparent)`, opacity:0.75,
@@ -299,14 +304,13 @@ export default function Trailer() {
             fontFamily:"'Cormorant Garamond',serif",
             fontSize:"clamp(38px,6vw,70px)", fontWeight:300,
             color:titleCol, lineHeight:1.1, margin:"0 0 18px",
-          }}>Journey Through GEO Jainism</h2>
+          }}>{t("trailer.title")}</h2>
           <p style={{
             fontFamily:"'DM Sans',sans-serif", fontWeight:300,
             fontSize:"15px", lineHeight:"27px",
             color:bodyCol, maxWidth:"550px", margin:"0 auto",
           }}>
-            A visual chronicle across ancient literature, forgotten temples,
-            and the living legacy of Jain civilization — documented on the ground.
+            {t("trailer.desc")}
           </p>
         </div>
 
@@ -362,7 +366,7 @@ export default function Trailer() {
             <img
               key={slideIdx}
               src={slide.img}
-              alt={slide.title}
+              alt={currentTitle}
               loading={slideIdx === 0 ? "eager" : "lazy"}
               style={{
                 width:"100%", height:"100%", objectFit:"cover", display:"block",
@@ -422,7 +426,7 @@ export default function Trailer() {
                 <span style={{
                   fontFamily:"'Cinzel',serif", fontSize:"10px",
                   letterSpacing:"4px", color:LOTUS_DEEP, textTransform:"uppercase",
-                }}>{slide.num}</span>
+                }}>{currentNum}</span>
               </div>
 
               {/* Title */}
@@ -430,7 +434,7 @@ export default function Trailer() {
                 fontFamily:"'Cormorant Garamond',serif",
                 fontSize:"clamp(20px,3.2vw,44px)", fontWeight:400,
                 color:"#FDF8F0", margin:"0 0 9px", lineHeight:1.2,
-              }}><em>{slide.title}</em></h3>
+              }}><em>{currentTitle}</em></h3>
 
               {/* Caption */}
               <p style={{
@@ -438,7 +442,7 @@ export default function Trailer() {
                 fontSize:"clamp(11px,1.1vw,13.5px)",
                 color:"rgba(253,248,240,0.70)", margin:0, lineHeight:1.7,
                 maxWidth:"600px",
-              }}>{slide.caption}</p>
+              }}>{currentCaption}</p>
 
               {/* Progress bar */}
               <div style={{
@@ -487,37 +491,40 @@ export default function Trailer() {
           display:"flex", gap:"10px", justifyContent:"center",
           flexWrap:"wrap", marginTop:"22px",
         }}>
-          {JOURNEY_SLIDES.map((s, i) => (
-            <button
-              key={i}
-              className="tr-thumb"
-              onClick={() => setSlideIdx(i)}
-              aria-label={`Chapter ${i + 1}: ${s.title}`}
-              style={{
-                width:"64px", height:"40px", borderRadius:"6px",
-                overflow:"hidden", padding:0, border:"none", cursor:"pointer",
-                flexShrink:0,
-                outline:       i === slideIdx ? `2px solid ${LOTUS_DEEP}` : "2px solid transparent",
-                outlineOffset: "2px",
-                transform:     i === slideIdx ? "scale(1.10)" : "scale(1)",
-                transition:    "transform 0.3s ease, outline 0.3s ease, box-shadow 0.3s ease",
-                boxShadow:     i === slideIdx
-                  ? `0 4px 18px rgba(232,144,159,0.52)`
-                  : "0 2px 8px rgba(0,0,0,0.18)",
-              }}
-            >
-              <img
-                src={s.img}
-                alt={s.title}
-                loading="lazy"
+          {JOURNEY_SLIDES.map((s, i) => {
+            const tempTitle = t(`landingData.journey.${i}.title`, s.title);
+            return (
+              <button
+                key={i}
+                className="tr-thumb"
+                onClick={() => setSlideIdx(i)}
+                aria-label={`Chapter ${i + 1}: ${tempTitle}`}
                 style={{
-                  width:"100%", height:"100%", objectFit:"cover", display:"block",
-                  filter: i === slideIdx ? "none" : "brightness(0.58) saturate(0.70)",
-                  transition:"filter 0.3s ease",
+                  width:"64px", height:"40px", borderRadius:"6px",
+                  overflow:"hidden", padding:0, border:"none", cursor:"pointer",
+                  flexShrink:0,
+                  outline:       i === slideIdx ? `2px solid ${LOTUS_DEEP}` : "2px solid transparent",
+                  outlineOffset: "2px",
+                  transform:     i === slideIdx ? "scale(1.10)" : "scale(1)",
+                  transition:    "transform 0.3s ease, outline 0.3s ease, box-shadow 0.3s ease",
+                  boxShadow:     i === slideIdx
+                    ? `0 4px 18px rgba(232,144,159,0.52)`
+                    : "0 2px 8px rgba(0,0,0,0.18)",
                 }}
-              />
-            </button>
-          ))}
+              >
+                <img
+                  src={s.img}
+                  alt={tempTitle}
+                  loading="lazy"
+                  style={{
+                    width:"100%", height:"100%", objectFit:"cover", display:"block",
+                    filter: i === slideIdx ? "none" : "brightness(0.58) saturate(0.70)",
+                    transition:"filter 0.3s ease",
+                  }}
+                />
+              </button>
+            );
+          })}
         </div>
 
         {/* Info panel */}
@@ -533,7 +540,7 @@ export default function Trailer() {
             fontFamily:"'Cinzel',serif", fontSize:"11px",
             letterSpacing:"3px", textTransform:"uppercase",
           }}>
-            <span style={{ color: isDark ? "rgba(240,223,180,0.42)" : "rgba(42,26,14,0.36)" }}>Chapter</span>
+            <span style={{ color: isDark ? "rgba(240,223,180,0.42)" : "rgba(42,26,14,0.36)" }}>{t("trailer.chapterWord")}</span>
             <strong style={{ fontSize:"20px", letterSpacing:"1px", fontWeight:600, color:LOTUS_DEEP }}>
               {String(slideIdx + 1).padStart(2, "0")}
             </strong>
@@ -545,9 +552,9 @@ export default function Trailer() {
           {/* Meta badges */}
           <div style={{ display:"flex", gap:"10px", flexWrap:"wrap", justifyContent:"center" }}>
             {[
-              { strong:"23 Days", sub:"In the Field",   accent:LOTUS_DEEP, bg: isDark?"rgba(242,196,206,0.10)":"rgba(242,196,206,0.24)", bdr:"rgba(232,144,159,0.22)" },
-              { strong:"4K",      sub:"Cinematic",       accent:TULSI_DEEP, bg: isDark?"rgba(200,223,192,0.10)":"rgba(200,223,192,0.28)", bdr:"rgba(125,175,110,0.22)" },
-              { strong:"50+",     sub:"Ancient Sites",   accent: isDark?"#C2DDE8":"#5B8EA6", bg: isDark?"rgba(216,238,245,0.08)":"rgba(216,238,245,0.42)", bdr:"rgba(91,142,166,0.20)" },
+              { strong:"23 Days", sub:t("trailer.badge1.sub"),   accent:LOTUS_DEEP, bg: isDark?"rgba(242,196,206,0.10)":"rgba(242,196,206,0.24)", bdr:"rgba(232,144,159,0.22)" },
+              { strong:"4K",      sub:t("trailer.badge2.sub"),   accent:TULSI_DEEP, bg: isDark?"rgba(200,223,192,0.10)":"rgba(200,223,192,0.28)", bdr:"rgba(125,175,110,0.22)" },
+              { strong:"50+",     sub:t("trailer.badge3.sub"),   accent: isDark?"#C2DDE8":"#5B8EA6", bg: isDark?"rgba(216,238,245,0.08)":"rgba(216,238,245,0.42)", bdr:"rgba(91,142,166,0.20)" },
             ].map(({ strong, sub, accent, bg: badgeBg, bdr }) => (
               <div key={strong} style={{
                 display:"flex", flexDirection:"column", alignItems:"center",
@@ -582,10 +589,10 @@ export default function Trailer() {
                 transition:"transform 0.2s, box-shadow 0.2s",
               }}
               onMouseEnter={e => { e.currentTarget.style.transform="scale(1.04)"; e.currentTarget.style.boxShadow=`0 6px 32px rgba(232,144,159,0.55),0 6px 32px rgba(125,175,110,0.28)`; }}
-              onMouseLeave={e => { e.currentTarget.style.transform="scale(1)"; e.currentTarget.style.boxShadow=`0 4px 22px rgba(232,144,159,0.38),0 4px 22px rgba(125,175,110,0.18)`; }}
+              onMouseLeave={e => { e.currentTarget.style.transform="scale(1)"; e.currentTarget.style.boxShadow=`0 4px 22px rgba(232,144,159,0.38), 0 4px 22px rgba(125,175,110,0.18)`; }}
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              View All on YouTube ↗
+              {t("trailer.btnYouTube")}
             </a>
             <a
               href="https://www.youtube.com/@geo_jainism"
@@ -601,7 +608,7 @@ export default function Trailer() {
                 backdropFilter:"blur(6px)", transition:"border-color 0.2s",
               }}
             >
-              Subscribe ↗
+              {t("trailer.btnSubscribe")}
             </a>
           </div>
         </div>
@@ -610,3 +617,4 @@ export default function Trailer() {
     </section>
   );
 }
+

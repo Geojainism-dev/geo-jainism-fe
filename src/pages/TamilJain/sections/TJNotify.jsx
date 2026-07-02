@@ -1,11 +1,13 @@
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 export default function TJNotify() {
   const ref    = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const [email, setEmail] = useState("");
   const [sent,  setSent]  = useState(false);
+  const { t } = useTranslation();
 
   return (
     <section ref={ref} className="tj-section tj-notify-section" id="notify">
@@ -28,16 +30,15 @@ export default function TJNotify() {
             fontFamily: "'Cinzel', serif", fontSize: "10px", letterSpacing: "5px",
             textTransform: "uppercase", color: "var(--saffron)", marginBottom: "16px",
           }}>
-            Coming Soon
+            {t("tamilJain.notify.eyebrow")}
           </p>
 
           <h2 className="tj-notify-heading">
-            Get Notified On <em>Launch</em>
+            {t("tamilJain.notify.title1")}<em>{t("tamilJain.notify.title2")}</em>
           </h2>
 
           <p className="tj-notify-desc">
-            Be among the first to watch the full documentary. Join thousands of heritage
-            enthusiasts waiting to uncover 2300+ years of Tamil Jain history.
+            {t("tamilJain.notify.desc")}
           </p>
 
           {!sent ? (
@@ -50,11 +51,11 @@ export default function TJNotify() {
                 type="email"
                 value={email}
                 onChange={e => setEmail(e.target.value)}
-                placeholder="Your email address"
+                placeholder={t("tamilJain.notify.placeholder", "Your email address")}
                 required
               />
               <button className="tj-notify-btn" type="submit">
-                Notify Me →
+                {t("tamilJain.notify.button")}
               </button>
             </form>
           ) : (
@@ -63,13 +64,14 @@ export default function TJNotify() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
             >
-              ✓ You're on the list
+              {t("tamilJain.notify.success")}
             </motion.div>
           )}
 
-          <p className="tj-notify-trust">No spam. Unsubscribe anytime.</p>
+          <p className="tj-notify-trust">{t("tamilJain.notify.trust")}</p>
         </motion.div>
       </div>
     </section>
   );
 }
+
