@@ -23,10 +23,8 @@ export default function ScreeningAnnouncement() {
                            : "linear-gradient(145deg,#EBDFC4 0%,#FDF8F0 48%,#E8F0E4 100%)";
   const labelCol  = isDark ? "rgba(200,223,192,0.45)"     : "rgba(42,26,14,0.38)";
   const subCol    = isDark ? "rgba(200,223,192,0.58)"     : "rgba(42,26,14,0.50)";
-  const divV      = isDark ? "rgba(200,223,192,0.14)"     : "rgba(42,26,14,0.10)";
   const bandBg    = isDark ? "rgba(125,175,110,0.06)"     : "rgba(125,175,110,0.08)";
   const bandBdr   = isDark ? "rgba(125,175,110,0.20)"     : "rgba(125,175,110,0.25)";
-  const contactC  = isDark ? "rgba(200,223,192,0.38)"     : "rgba(42,26,14,0.35)";
 
   return (
     <section
@@ -352,20 +350,108 @@ export default function ScreeningAnnouncement() {
         </div>
 
         {/* Contact */}
-        <div style={{ display:"flex", justifyContent:"center", alignItems:"center", flexWrap:"wrap", gap:"6px 24px" }}>
-          {["+91 63789 02642", "+91 72470 87515"].map(n => (
-            <a key={n} href={`tel:${n.replace(/\s/g,"")}`}
-              style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"12.5px", color:contactC, textDecoration:"none", transition:"color 0.2s" }}
-              onMouseEnter={e => e.currentTarget.style.color = "#7DAF6E"}
-              onMouseLeave={e => e.currentTarget.style.color = contactC}
-            >{n}</a>
-          ))}
-          <span style={{ color:divV, fontSize:14 }}>·</span>
-          <a href="mailto:goldeneraofjainsim@gmail.com"
-            style={{ fontFamily:"'DM Sans',sans-serif", fontSize:"12.5px", color:contactC, textDecoration:"none", transition:"color 0.2s" }}
-            onMouseEnter={e => e.currentTarget.style.color = "#7DAF6E"}
-            onMouseLeave={e => e.currentTarget.style.color = contactC}
-          >goldeneraofjainsim@gmail.com</a>
+        <div>
+          <div style={{
+            display:"inline-flex", alignItems:"center", gap:"14px",
+            marginBottom:"22px",
+          }}>
+            <span style={{ width:"28px", height:"1px", background: `linear-gradient(90deg, transparent, ${isDark ? "rgba(244,165,53,0.6)" : "rgba(244,165,53,0.7)"})` }}/>
+            <p style={{
+              fontFamily: "'Cinzel', serif",
+              fontSize: "clamp(13px, 1.8vw, 17px)",
+              fontWeight: 600,
+              letterSpacing: "5px",
+              background: "linear-gradient(120deg,#F4A535 0%,#F7D580 45%,#7DAF6E 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
+              textTransform: "uppercase",
+              margin: 0,
+              textShadow: isDark ? "0 0 24px rgba(244,165,53,0.25)" : "none",
+            }}>Get in Touch</p>
+            <span style={{ width:"28px", height:"1px", background: `linear-gradient(90deg, ${isDark ? "rgba(125,175,110,0.6)" : "rgba(125,175,110,0.7)"}, transparent)` }}/>
+          </div>
+
+          <div style={{
+            display:"flex", justifyContent:"center", alignItems:"center",
+            flexWrap:"wrap", gap:"12px 16px",
+          }}>
+            {["+91 63789 02642", "+91 72470 87515"].map(n => (
+              <a key={n} href={`tel:${n.replace(/\s/g,"")}`}
+                style={{
+                  display:"inline-flex", alignItems:"center", gap:"9px",
+                  padding:"13px 24px",
+                  fontFamily:"'DM Sans',sans-serif", fontSize:"15px", fontWeight:600,
+                  letterSpacing:"0.3px",
+                  color: isDark ? "#FAF0D9" : "#1A3512",
+                  background: isDark ? "rgba(125,175,110,0.20)" : "rgba(125,175,110,0.16)",
+                  border: `1.5px solid ${isDark ? "rgba(125,175,110,0.60)" : "rgba(125,175,110,0.65)"}`,
+                  borderRadius:"30px",
+                  textDecoration:"none",
+                  transition:"all 0.25s ease",
+                  boxShadow: isDark
+                    ? "0 0 20px rgba(125,175,110,0.18), inset 0 1px 0 rgba(200,223,192,0.10)"
+                    : "0 4px 18px rgba(125,175,110,0.22), inset 0 1px 0 rgba(255,255,255,0.30)",
+                }}
+                onMouseEnter={e => {
+                  e.currentTarget.style.borderColor = "#7DAF6E";
+                  e.currentTarget.style.background = isDark ? "rgba(125,175,110,0.32)" : "rgba(125,175,110,0.28)";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                  e.currentTarget.style.boxShadow = "0 0 30px rgba(125,175,110,0.35), inset 0 1px 0 rgba(255,255,255,0.25)";
+                }}
+                onMouseLeave={e => {
+                  e.currentTarget.style.borderColor = isDark ? "rgba(125,175,110,0.60)" : "rgba(125,175,110,0.65)";
+                  e.currentTarget.style.background = isDark ? "rgba(125,175,110,0.20)" : "rgba(125,175,110,0.16)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = isDark
+                    ? "0 0 20px rgba(125,175,110,0.18), inset 0 1px 0 rgba(200,223,192,0.10)"
+                    : "0 4px 18px rgba(125,175,110,0.22), inset 0 1px 0 rgba(255,255,255,0.30)";
+                }}
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7DAF6E" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+                {n}
+              </a>
+            ))}
+            <a href="mailto:goldeneraofjainsim@gmail.com"
+              style={{
+                display:"inline-flex", alignItems:"center", gap:"9px",
+                padding:"13px 24px",
+                fontFamily:"'DM Sans',sans-serif", fontSize:"15px", fontWeight:600,
+                letterSpacing:"0.3px",
+                color: isDark ? "#FAF0D9" : "#5C3A0A",
+                background: isDark ? "rgba(244,165,53,0.20)" : "rgba(244,165,53,0.16)",
+                border: `1.5px solid ${isDark ? "rgba(244,165,53,0.60)" : "rgba(244,165,53,0.65)"}`,
+                borderRadius:"30px",
+                textDecoration:"none",
+                transition:"all 0.25s ease",
+                boxShadow: isDark
+                  ? "0 0 20px rgba(244,165,53,0.18), inset 0 1px 0 rgba(247,213,128,0.10)"
+                  : "0 4px 18px rgba(244,165,53,0.22), inset 0 1px 0 rgba(255,255,255,0.30)",
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.borderColor = "#F4A535";
+                e.currentTarget.style.background = isDark ? "rgba(244,165,53,0.32)" : "rgba(244,165,53,0.28)";
+                e.currentTarget.style.transform = "translateY(-2px)";
+                e.currentTarget.style.boxShadow = "0 0 30px rgba(244,165,53,0.35), inset 0 1px 0 rgba(255,255,255,0.25)";
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.borderColor = isDark ? "rgba(244,165,53,0.60)" : "rgba(244,165,53,0.65)";
+                e.currentTarget.style.background = isDark ? "rgba(244,165,53,0.20)" : "rgba(244,165,53,0.16)";
+                e.currentTarget.style.transform = "translateY(0)";
+                e.currentTarget.style.boxShadow = isDark
+                  ? "0 0 20px rgba(244,165,53,0.18), inset 0 1px 0 rgba(247,213,128,0.10)"
+                  : "0 4px 18px rgba(244,165,53,0.22), inset 0 1px 0 rgba(255,255,255,0.30)";
+              }}
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#F4A535" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <path d="m22 6-10 7L2 6"/>
+              </svg>
+              goldeneraofjainsim@gmail.com
+            </a>
+          </div>
         </div>
 
       </div>

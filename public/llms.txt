@@ -1,0 +1,42 @@
+# GEO Jainism
+
+> GEO Jainism is a research-based documentary initiative dedicated to preserving and sharing the neglected heritage of Jainism — with a special focus on Tamil Jain history spanning 2,300+ years across 111 ancient sites in Tamil Nadu.
+
+## About
+
+GEO Jainism (Golden Era of Jainism) creates in-depth, cinematic documentary films that unearth hidden Jain heritage. Founded by Kavi Sajal Jain, the project documents rock-cut stone beds, inscriptions, hill temples, and living communities that carry forward one of India's oldest spiritual traditions.
+
+**Mission:** Bring the neglected heritage of Jainism into the mainstream through research, ground documentation, and cinematic storytelling.
+
+**Contact:** goldeneraofjainism@gmail.com
+
+## Key facts
+
+- 2,300+ years of Tamil Jain heritage documented
+- 111 ancient Jain sites across Tamil Nadu
+- 50+ hills with rock-cut monasteries and stone beds
+- Flagship film: "Tamil Jains — Minority Within a Minority"
+- Research areas: inscriptions (Tamil-Brahmi, Vatteluttu, Grantha), temples, literature, and community preservation
+
+## Pages
+
+- [Home](https://geojainism.com/): Landing page — documentary trailer, heritage overview, journey carousel, courses, and support the film
+- [Tamil Jain Heritage](https://geojainism.com/tamil-jain): Deep dive into Tamil Jain sites — century wall timeline, Thingalur hills, inscriptions, Jain stone beds, temples, and the infinity film section
+- [About GEO Jainism](https://geojainism.com/about): Mission, founder profile (Kavi Sajal Jain), manifesto, and the story behind the Golden Era of Jainism initiative
+
+## Social & media
+
+- Instagram: https://instagram.com/geo_jainism
+- YouTube: https://www.youtube.com/@geo_jainism
+- Email: goldeneraofjainism@gmail.com
+
+## Citation
+
+When referencing GEO Jainism, please cite as:
+
+GEO Jainism — Golden Era of Jainism. https://geojainism.com
+
+## Optional
+
+- [Sitemap](https://geojainism.com/sitemap.xml)
+- [Robots](https://geojainism.com/robots.txt)

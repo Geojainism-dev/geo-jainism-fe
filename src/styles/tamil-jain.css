@@ -946,25 +946,20 @@
   width: 100%; height: 100%;
   object-fit: cover; object-position: center;
   animation: tjKenBurns 9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  filter: brightness(0.90) saturate(1.05) sepia(0.06);
+  filter: brightness(1.02) saturate(1.05) sepia(0.06);
 }
 @keyframes tjKenBurns {
   from { transform: scale(1.07); }
   to   { transform: scale(1.00); }
 }
 
-/* LAYER 1: Vignette */
+/* LAYER 1: Vignette — none; darkening now lives only behind the text (panel) */
 .tj-tng-vignette {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background:
-    radial-gradient(ellipse 72% 65% at 38% 45%,
-      transparent 18%, rgba(0,0,0,0.38) 52%, rgba(0,0,0,0.72) 100%),
-    linear-gradient(to bottom,
-      rgba(0,0,0,0.52) 0%, transparent 28%,
-      transparent 46%, rgba(0,0,0,0.82) 100%);
+  background: none;
 }
 
-/* LAYER 2: Bottom content panel */
+/* LAYER 2: Bottom content panel — dark pool anchored under the text only */
 .tj-tng-panel {
   position: absolute;
   bottom: 0; left: 0; right: 0;
@@ -976,10 +971,10 @@
   padding: 0 clamp(28px, 5vw, 80px) clamp(28px, 4vh, 56px) clamp(28px, 5vw, 80px);
   /* Leave room for thumb strip on desktop */
   padding-right: calc(clamp(28px, 5vw, 80px) + 108px);
-  background: linear-gradient(to bottom,
-    transparent 0%,
-    rgba(8,4,0,0.62) 40%,
-    rgba(8,4,0,0.90) 100%);
+  background: radial-gradient(ellipse 620px 100% at 0% 100%,
+    rgba(8,4,0,0.88) 0%,
+    rgba(8,4,0,0.55) 45%,
+    transparent 75%);
 }
 
 /* Ghost number watermark */
@@ -1099,10 +1094,10 @@
 }
 .tj-tng-thumb img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  filter: brightness(0.78) saturate(0.90); transition: filter 0.3s;
+  filter: brightness(0.90) saturate(0.95); transition: filter 0.3s;
 }
 .tj-tng-thumb.active img,
-.tj-tng-thumb:hover img { filter: brightness(0.92) saturate(1.0); }
+.tj-tng-thumb:hover img { filter: brightness(1.02) saturate(1.05); }
 
 .tj-tng-thumb-overlay {
   position: absolute; inset: 0;

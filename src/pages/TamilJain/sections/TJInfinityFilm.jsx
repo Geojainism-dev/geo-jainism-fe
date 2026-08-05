@@ -554,7 +554,7 @@ export default function TJInfinityFilm() {
             animation: revealed ? "tjInfFadeUp 0.8s 1s ease both" : "none",
           }}
         >
-          <button
+          {/* <button
             onClick={handlePlay}
             style={{
               display:"flex", alignItems:"center", gap:"8px",
@@ -570,7 +570,7 @@ export default function TJInfinityFilm() {
           >
             <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
             Play Now
-          </button>
+          </button> */}
           <a
             href="https://www.youtube.com/@geo_jainism"
             target="_blank" rel="noreferrer"

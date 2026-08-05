@@ -55,8 +55,8 @@ const ERAS = [
     period: "Today",
     shortPeriod: "Today",
     imageSrc: "/journey-throught-time/7 .jpg",
-    title: "2,000+ Years of Continuous History",
-    desc: "A living tradition that endures — communities, scholars, and pilgrims keeping the flame alive. Tamil Jainism's 2,000-year journey is not just history. It is heritage, still breathing.",
+    title: "2300+ Years of Continuous History",
+    desc: "A living tradition that endures — communities, scholars, and pilgrims keeping the flame alive. Tamil Jainism's 2300+ - year journey is not just history. It is heritage, still breathing.",
   },
 ];
 

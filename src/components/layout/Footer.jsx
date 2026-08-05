@@ -5,8 +5,10 @@ const Footer = () => {
     <footer>
       <div className="footer-logo">GEO JAINISM · GOLDEN ERA OF JAINISM</div>
       <div className="footer-links">
-        <a href="https://instagram.com/geo_jainism" target="_blank" rel="noreferrer">Instagram</a>
-        <a href="https://youtube.com/@geo_jainism" target="_blank" rel="noreferrer">YouTube</a>
+        <a href="/about">About</a>
+        <a href="/tamil-jain">Tamil Jain</a>
+        <a href="https://instagram.com/geo_jainism" target="_blank" rel="noopener noreferrer">Instagram</a>
+        <a href="https://youtube.com/@geo_jainism" target="_blank" rel="noopener noreferrer">YouTube</a>
         <a href="mailto:goldeneraofjainism@gmail.com">Contact</a>
         <a href="#support">Donate</a>
       </div>
