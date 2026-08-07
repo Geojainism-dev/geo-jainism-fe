@@ -1,101 +1,104 @@
 # GEO Jainism — Frontend
 
-The public website and admin console for **GEO Jainism** ("Golden Era of Jainism"), a documentary and cultural-heritage project unearthing and documenting Jain history across India — including the Tamil Jain and Pakistan Jain heritage strands. Built as a React SPA with a prerendered marketing site and a full admin CMS for managing screenings, blog content, and registrations.
+This is the website (and admin panel) for **GEO Jainism** ("Golden Era of Jainism") — a documentary and cultural-heritage project that researches and shares Jain history across India, including the Tamil Jain and Pakistan Jain heritage stories.
+
+It's a website that has two parts:
+- **A public website** — visitors can read about the project, browse blog posts, see upcoming screenings/events, and register for them.
+- **An admin panel** — a private, login-protected area where the team manages blog posts, screenings, registrations, and user accounts.
 
 **Live site:** [geo-jainism-fe.netlify.app](https://geo-jainism-fe.netlify.app/)
 
-## Tech stack
+This is only the **frontend** (what you see and click on in the browser). It talks to a separate **backend** (a different project, not in this folder) which handles logins, saving data, etc.
 
-| Layer | Choice |
-|---|---|
-| Framework | React 19 + Vite 6 |
-| Routing | React Router 7 |
-| Styling | Tailwind CSS + hand-written CSS modules per page/section |
-| UI primitives | shadcn/ui on top of Radix UI |
-| Data fetching | TanStack Query + Axios |
-| Forms & validation | React Hook Form + Zod |
-| Animation / motion | Framer Motion, GSAP, Lenis (smooth scroll), Three.js |
-| Analytics | Firebase Analytics |
-| Prerendering | Puppeteer (`scripts/prerender.mjs`), run after `vite build` |
-| Deployment | Netlify / AWS Amplify (`amplify.yml`), or self-hosted via Docker + nginx |
+## What it's built with (in simple terms)
 
-The app talks to a separate backend API (not in this repo) for auth, screenings, blog, and registrations — configured via `VITE_API_BASE_URL`.
+| What | Tool used | What it's for |
+|---|---|---|
+| Main framework | React 19 + Vite | Builds the actual website/app, and makes development fast |
+| Page navigation | React Router | Lets you move between pages (Home, Blog, About...) without a full page reload |
+| Styling / design | Tailwind CSS | Makes the site look nice, styled quickly |
+| Ready-made UI pieces | shadcn/ui + Radix UI | Buttons, popups, dropdowns, etc. so we don't build every little thing from scratch |
+| Talking to the backend | TanStack Query + Axios | Fetches and updates data (blog posts, screenings, etc.) from the server |
+| Forms | React Hook Form + Zod | Handles forms (like registration) and checks the input is valid |
+| Animations | Framer Motion, GSAP, Lenis, Three.js | Smooth scrolling, motion effects, and visual flair |
+| Analytics | Firebase Analytics | Tracks visits/usage of the site |
+| SEO helper | Puppeteer (a prerender script) | Generates ready-made HTML snapshots of pages so search engines and social media previews work well |
+| Hosting | Netlify, AWS Amplify, or Docker | Different ways the site can be put online |
 
-## Project structure
+## How the code is organized
 
 ```
 src/
-├─ pages/            Route-level pages (Landing, TamilJain, About, Blog,
-│                     Screenings, Register, Admin/*)
-├─ features/          Domain logic — auth, blog, screenings, categories,
-│                     tags, users — each with its own hooks/queries
+├─ pages/           Each file here is basically one page of the site
+│                    (Home, About, Blog, Screenings, Register, and all Admin pages)
+├─ features/         Logic grouped by topic — auth (login), blog, screenings,
+│                    categories, tags, users
 ├─ components/
-│  ├─ layout/          Navbar, Footer, AdminLayout, AdminSidebar, AdminHeader
-│  ├─ ui/               shadcn/ui-based primitives (button, dialog, combobox…)
-│  ├─ visuals/          Background scenes / decorative visual effects
-│  └─ common/           Shared cross-page components (popups, SEO, etc.)
-├─ hooks/             Reusable hooks (Lenis smooth scroll, theme, scroll reveal…)
-├─ lib/               Axios instance, React Query client, timezone helpers
-├─ styles/            Global + per-page CSS (Tailwind base + custom design system)
-└─ constants/         Static content/config
+│  ├─ layout/         Repeating pieces like Navbar, Footer, and the Admin layout
+│  ├─ ui/              Small reusable UI building blocks (buttons, dialogs, etc.)
+│  ├─ visuals/         Decorative background effects
+│  └─ common/          Things shared across many pages (popups, SEO tags, etc.)
+├─ hooks/            Small reusable bits of logic (smooth scroll, dark/light theme, etc.)
+├─ lib/              Shared setup code (how we call the backend, timezones, etc.)
+├─ styles/           All the CSS / design styling
+└─ constants/        Fixed content/settings used across the app
 
-scripts/prerender.mjs   Headless-Chrome prerender pass over key routes post-build
-docker/nginx.conf       nginx config used by the production Docker image
+scripts/prerender.mjs   Script that generates pre-built HTML pages for SEO, after the build
+docker/nginx.conf       Server config used when running this via Docker
 ```
 
-### Routes at a glance
+### Pages on the site
 
-- **Public:** `/`, `/tamil-jain`, `/about`, `/blog`, `/blog/:slug`, `/events`, `/events/:id`, `/register`
-- **Admin auth:** `/admin/login`, `/admin/register`, `/admin/login/callback`, `/admin/pending`
-- **Admin console** (behind `ProtectedRoute`, role-gated): dashboard, profile, calendar, screenings CRUD, registrations, blog CRUD (posts/categories/tags), and a `SUPER_ADMIN`-only user management area
+- **Public pages anyone can visit:** Home, Tamil Jain page, About, Blog, single Blog post, Events, single Event, Register
+- **Admin login pages:** Login, Register, login callback, "pending approval" page
+- **Admin panel (only for logged-in staff):** dashboard, profile, calendar, manage screenings, view registrations, manage blog posts/categories/tags, and a user-management area (only for the top-level "Super Admin" role)
 
-## Getting started
+## How to run it on your own computer
 
-### Prerequisites
+### What you need first
+- Node.js version 20 or newer installed
+- The backend API running somewhere (or a URL pointing to one)
 
-- Node.js 20+
-- A running instance of the backend API (or a reachable URL for one)
-
-### Setup
+### Steps
 
 ```bash
 npm install
-cp .env.example .env.local   # then fill in VITE_API_BASE_URL
+cp .env.example .env.local   # then open .env.local and fill in VITE_API_BASE_URL
 npm run dev
 ```
 
-The dev server runs on Vite's default port and proxies nothing — the frontend talks directly to `VITE_API_BASE_URL`.
+After this, the site opens locally and refreshes automatically as you edit code. It talks directly to whatever backend URL you put in `.env.local`.
 
-### Environment variables
+### Settings file (`.env.local`)
 
-| Variable | Description |
+| Setting | What it means |
 |---|---|
-| `VITE_API_BASE_URL` | Base URL of the backend API (e.g. `http://localhost:3000` in development) |
+| `VITE_API_BASE_URL` | The web address of the backend server (e.g. `http://localhost:3000` while developing) |
 
-Vite inlines all `VITE_*` variables into the bundle **at build time** — there is no runtime configuration for the static build, so production values must be supplied when building, not just when serving.
+Important: this value gets "baked into" the site permanently when you build it — you can't change it later without rebuilding. So make sure it's set correctly *before* building for production.
 
-## Scripts
+## Common commands
 
-| Command | Description |
+| Command | What it does |
 |---|---|
-| `npm run dev` | Start the Vite dev server with HMR |
-| `npm run build` | Production build: `vite build`, then a Puppeteer-driven prerender pass over key routes for SEO/social previews |
-| `npm run build:spa` | Plain `vite build` without the prerender step |
-| `npm run preview` | Serve the built `dist/` locally to sanity-check a production build |
+| `npm run dev` | Starts the site locally for development, with live-reload |
+| `npm run build` | Builds the final, production-ready version of the site, plus generates SEO-friendly page snapshots |
+| `npm run build:spa` | Same build, but skips the SEO snapshot step (faster, simpler) |
+| `npm run preview` | Lets you preview the production build locally, as a final check before deploying |
 
-## Docker
+## Running it with Docker
 
-A two-stage Dockerfile builds the static bundle (including the Puppeteer prerender step) and serves it via nginx, running as an unprivileged user on port `8080`.
+There's a Dockerfile that packages the whole site into a container, which then serves it using nginx (a web server) on port `8080`.
 
 ```bash
 docker build --build-arg VITE_API_BASE_URL=https://api.example.com -t geo-jainism-fe .
 docker run -p 8080:8080 geo-jainism-fe
 ```
 
-`docker/nginx.conf` defines the serving config, including the `/health` endpoint used by the image's `HEALTHCHECK`.
+The `docker/nginx.conf` file controls how the server behaves, including a `/health` check used to confirm the container is running properly.
 
-## Deployment
+## Where it's deployed
 
-- **Netlify** — currently deployed at [geo-jainism-fe.netlify.app](https://geo-jainism-fe.netlify.app/).
-- **AWS Amplify** — `amplify.yml` installs dependencies, installs a Puppeteer-managed Chrome build, runs `yarn build`, and publishes `dist/`.
-- **Self-hosted** — build the Docker image above and run it behind any reverse proxy/load balancer.
+- **Netlify** — the current live version is hosted here: [geo-jainism-fe.netlify.app](https://geo-jainism-fe.netlify.app/)
+- **AWS Amplify** — an alternative hosting setup, configured in `amplify.yml`
+- **Self-hosted** — you can also just build the Docker image above and run it on your own server
