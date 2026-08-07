@@ -21,8 +21,16 @@ export const loadAbout = () => {
   return preloadPromises["/about"];
 };
 
+export const loadAtlas = () => {
+  if (!preloadPromises["/atlas"]) {
+    preloadPromises["/atlas"] = import("../pages/Atlas");
+  }
+  return preloadPromises["/atlas"];
+};
+
 export const preloadRoute = (path) => {
   if (path === "/") loadLanding();
   else if (path === "/tamil-jain") loadTamilJain();
+  else if (path === "/atlas") loadAtlas();
   else if (path === "/about") loadAbout();
 };

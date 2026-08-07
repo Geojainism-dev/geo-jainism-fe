@@ -33,6 +33,14 @@ export const SEO_ROUTES = {
     ogType: "website",
     jsonLd: ["organization", "breadcrumb", "webpage"],
   },
+  "/atlas": {
+    title: "Jain Atlas | GEO Jainism",
+    description:
+      "Explore Jain temples across India on an interactive map — Tamil Nadu live first, with more states coming soon.",
+    path: "/atlas",
+    ogType: "website",
+    jsonLd: ["organization", "breadcrumb", "webpage"],
+  },
   "/about": {
     title: "About GEO Jainism | Our Mission & Founder",
     description:

@@ -1,0 +1,943 @@
+/* =========================================================================
+   GEO Jainism — Jain Atlas
+   Uses live site design tokens (cream / saffron / ink + Cinzel / Playfair).
+   ========================================================================= */
+:root {
+  --marble: #FDF8F0;
+  --marble-2: #F5EBD8;
+  --ink: #2A1A0E;
+  --saffron: #F4A535;
+  --saffron-soft: #FDECC8;
+  --maroon: #7a1f2b;
+  --gold: #E8A820;
+  --green: #7DAF6E;
+  --muted: #8a8275;
+  --line: rgba(61, 35, 20, 0.12);
+  --shadow: 0 8px 28px rgba(61, 35, 20, 0.14);
+  --radius: 14px;
+  --deep-brown: #3D2314;
+  --pearl: #FAF6EF;
+}
+
+.atlas-root {
+  min-height: 100dvh;
+  background: var(--marble);
+}
+
+/* ---- Layout ------------------------------------------------------------- */
+.atlas-page {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  max-width: 100%;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  padding-top: 72px;
+  background: var(--marble);
+  color: var(--ink);
+  font-family: 'DM Sans', 'Raleway', system-ui, sans-serif;
+}
+.atlas-page.has-sidebar {
+  grid-template-columns: minmax(220px, 320px) minmax(0, 1fr);
+}
+.atlas-page.is-map-only { grid-template-columns: minmax(0, 1fr); }
+
+.atlas-map-area {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.atlas-leaflet {
+  height: 100%;
+  width: 100%;
+  background: var(--marble-2);
+}
+
+/* ---- Sidebar ------------------------------------------------------------ */
+.atlas-sidebar {
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(217, 119, 6, 0.10), transparent 34%),
+    linear-gradient(180deg, var(--marble) 0%, var(--marble-2) 100%);
+  overflow: hidden;
+  box-shadow: 12px 0 36px rgba(42, 33, 24, 0.10);
+  z-index: 2;
+}
+.atlas-sidebar__head {
+  padding: 20px 18px 14px;
+  border-bottom: 1px solid var(--line);
+}
+.atlas-brand {
+  padding: 0 4px 16px;
+}
+.atlas-brand__title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 1.62rem;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #2a2118;
+}
+.atlas-brand__subtitle {
+  margin-top: 5px;
+  color: var(--saffron);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.atlas-title-card {
+  margin-top: 4px;
+  padding: 18px 18px 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px 16px 0 0;
+  background: rgba(255, 255, 255, 0.52);
+}
+.atlas-title {
+  margin: 0 0 8px;
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.01em;
+  color: var(--maroon);
+}
+.atlas-breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.atlas-crumb {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--saffron);
+  cursor: pointer;
+  font: inherit;
+}
+.atlas-crumb:hover { text-decoration: underline; }
+.atlas-crumb.is-current { color: var(--ink); cursor: default; }
+
+.atlas-list-wrap { flex: 1; overflow-y: auto; padding: 10px; }
+.atlas-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+
+.atlas-row {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-left: 4px solid transparent;
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+.atlas-row:hover { box-shadow: 0 4px 14px rgba(42, 33, 24, 0.10); }
+.atlas-row:focus-visible { outline: 2px solid var(--saffron); outline-offset: 2px; }
+.atlas-row.is-visited { border-left-color: var(--saffron); }
+.atlas-row--temple.is-visited { border-left-color: var(--green); }
+.atlas-row__name { font-weight: 600; font-size: 0.95rem; }
+.atlas-row__meta { font-size: 0.78rem; color: var(--muted); }
+.atlas-muted { color: var(--muted); padding: 12px; }
+
+/* ---- Map markers -------------------------------------------------------- */
+.atlas-marker-wrap { background: none; border: none; }
+.atlas-marker { transform-origin: 50% 100%; animation: markerDrop 0.22s ease-out both; }
+.atlas-marker.is-visited svg { filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.3)); }
+
+/* ---- Animated route line ------------------------------------------------ */
+.route-path {
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  animation: drawRoute 0.7s ease-out forwards;
+}
+
+/* ---- Temple detail card ------------------------------------------------- */
+.temple-detail {
+  position: absolute;
+  z-index: 1000;
+  bottom: 18px;
+  left: 18px;
+  width: min(380px, calc(100% - 36px));
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 18px 16px;
+}
+.temple-detail__close {
+  position: absolute; top: 8px; right: 10px;
+  border: none; background: none; font-size: 1.5rem; line-height: 1;
+  color: var(--muted); cursor: pointer;
+}
+.temple-detail__badge {
+  display: inline-block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.06em; padding: 3px 8px; border-radius: 999px;
+  background: var(--marble-2); color: var(--muted);
+}
+.temple-detail__badge.is-visited { background: var(--saffron-soft); color: #6b3d05; }
+.temple-detail__name {
+  margin: 8px 0 10px; font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.25rem; color: var(--maroon);
+}
+.temple-detail__facts { margin: 0 0 8px; display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; font-size: 0.85rem; }
+.temple-detail__facts dt { color: var(--muted); }
+.temple-detail__facts dd { margin: 0; }
+.temple-detail__desc, .temple-detail__notes { font-size: 0.85rem; margin: 8px 0; }
+.temple-detail__notes { background: var(--marble); padding: 8px 10px; border-radius: 8px; }
+.temple-detail__route-info { font-size: 0.85rem; color: var(--green); font-weight: 600; margin: 8px 0 0; }
+.temple-detail__error { font-size: 0.82rem; color: var(--maroon); margin: 8px 0 0; }
+
+.temple-detail__actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+.btn {
+  font: inherit; font-size: 0.82rem; font-weight: 600; border-radius: 8px;
+  padding: 8px 12px; cursor: pointer; text-decoration: none; border: 1px solid transparent;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:disabled { opacity: 0.6; cursor: progress; transform: none; }
+.btn--primary { background: var(--saffron); color: #fff; }
+.btn--ghost { background: #fff; border-color: var(--line); color: var(--ink); }
+.btn:focus-visible { outline: 2px solid var(--maroon); outline-offset: 2px; }
+
+.atlas-banner {
+  position: absolute; z-index: 1000; top: 12px; left: 50%; transform: translateX(-50%);
+  background: var(--maroon); color: #fff; padding: 8px 14px; border-radius: 8px; font-size: 0.85rem;
+}
+
+/* Cluster unfurl chooser — nearby temples without endless zoom. */
+.cluster-chooser {
+  position: absolute;
+  z-index: 40;
+  left: 16px;
+  right: auto;
+  bottom: 18px;
+  width: min(320px, calc(100% - 28px));
+  max-height: min(42vh, 340px);
+  display: flex;
+  flex-direction: column;
+  padding: 14px 14px 12px;
+  border: 1px solid rgba(168, 115, 24, 0.22);
+  border-radius: 18px;
+  background:
+    linear-gradient(165deg, rgba(255, 252, 245, 0.98) 0%, rgba(250, 243, 230, 0.97) 100%);
+  box-shadow:
+    0 18px 40px rgba(67, 39, 20, 0.18),
+    0 2px 8px rgba(67, 39, 20, 0.08);
+  backdrop-filter: blur(12px) saturate(1.05);
+  -webkit-backdrop-filter: blur(12px) saturate(1.05);
+  animation: clusterChooserIn 220ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.cluster-chooser__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
+.cluster-chooser__eyebrow {
+  margin: 0;
+  font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #a87318;
+}
+.cluster-chooser__title {
+  margin: 4px 0 0;
+  font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.15rem;
+  line-height: 1.15;
+  color: #2a1a0e;
+  font-weight: 500;
+}
+.cluster-chooser__close {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #7a1f2b;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(67, 39, 20, 0.1);
+}
+.cluster-chooser__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.cluster-chooser__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid rgba(111, 67, 47, 0.12);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+}
+.cluster-chooser__item:hover {
+  transform: translateY(-1px);
+  border-color: rgba(168, 115, 24, 0.35);
+  box-shadow: 0 6px 16px rgba(67, 39, 20, 0.1);
+}
+.cluster-chooser__flag {
+  width: 18px;
+  height: 14px;
+  flex: 0 0 auto;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: linear-gradient(
+    to bottom,
+    #e30613 0% 20%,
+    #ffd100 20% 40%,
+    #ffffff 40% 60%,
+    #009639 60% 80%,
+    #000000 80% 100%
+  );
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+.cluster-chooser__name {
+  flex: 1;
+  min-width: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #2a1a0e;
+  line-height: 1.25;
+}
+.cluster-chooser__go {
+  color: #a87318;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+@keyframes clusterChooserIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cluster-chooser { animation: none; }
+}
+
+@media (max-width: 720px) {
+  .cluster-chooser {
+    left: 10px;
+    right: 10px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    width: auto;
+    max-height: min(38dvh, 280px);
+  }
+}
+
+/* ---- Keyframes ---------------------------------------------------------- */
+@keyframes drawRoute { to { stroke-dashoffset: 0; } }
+@keyframes markerDrop { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* =========================================================================
+   Responsive — tablet, mobile, landscape
+   Full app (map + overlays + sidebar + controls) must fit any screen.
+   ========================================================================= */
+@media (max-width: 1024px) {
+  .atlas-page.has-sidebar {
+    grid-template-columns: minmax(200px, 270px) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .atlas-page,
+  .atlas-page.has-sidebar {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: minmax(0, 1fr) auto;
+    width: 100%;
+    max-width: 100%;
+  }
+  .atlas-page.is-map-only { grid-template-rows: minmax(0, 1fr); }
+
+  /* Temple open: map fills the phone; sidebar list hides until sheet closes. */
+  .atlas-page.has-sidebar.has-temple-sheet {
+    grid-template-rows: minmax(0, 1fr);
+  }
+  .atlas-page.has-temple-sheet .atlas-sidebar {
+    display: none;
+  }
+
+  .atlas-map-area {
+    grid-row: 1;
+    min-width: 0;
+    min-height: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .atlas-sidebar {
+    grid-row: 2;
+    border-right: none;
+    border-top: 1px solid var(--line);
+    border-bottom: none;
+    max-height: min(38dvh, 320px);
+    min-height: 0;
+    overflow: hidden;
+    box-shadow: 0 -8px 28px rgba(42, 33, 24, 0.10);
+  }
+  .atlas-sidebar__head { padding: 12px 14px 10px; }
+  .atlas-brand { padding-bottom: 8px; }
+  .atlas-brand__title { font-size: 1.2rem; letter-spacing: 0.12em; }
+  .atlas-title-card { padding: 12px 14px 10px; }
+  .atlas-title { font-size: 1.15rem; margin-bottom: 4px; }
+  .atlas-list-wrap { padding: 8px; }
+
+  /* Compact bottom sheet — map stays mostly visible. */
+  .temple-detail {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-height: min(42dvh, 320px);
+    overflow: auto;
+    border-radius: 16px 16px 0 0;
+    padding: 0;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom));
+    box-shadow: 0 -10px 32px rgba(42, 33, 24, 0.18);
+  }
+  .temple-detail__handle {
+    display: block;
+    width: 40px;
+    height: 4px;
+    margin: 8px auto 0;
+    border-radius: 999px;
+    background: rgba(42, 33, 24, 0.18);
+  }
+  .temple-detail__media { height: 88px; }
+  .temple-detail__body { padding: 10px 14px 12px; }
+  .temple-detail__name { font-size: 1.05rem; margin: 4px 0 6px; }
+  .temple-detail__facts { font-size: 0.78rem; gap: 1px 10px; margin-bottom: 4px; }
+  .temple-detail__desc,
+  .temple-detail__notes { display: none; }
+  .temple-detail.is-expanded {
+    max-height: min(68dvh, 520px);
+  }
+  .temple-detail.is-expanded .temple-detail__desc,
+  .temple-detail.is-expanded .temple-detail__notes {
+    display: block;
+    font-size: 0.8rem;
+    margin: 6px 0;
+  }
+  .temple-detail__actions {
+    margin-top: 8px;
+    gap: 6px;
+  }
+  .temple-detail__actions .btn {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 10px 12px;
+    font-size: 0.84rem;
+  }
+
+  /* Zoom clear of compact sheet */
+  .atlas-page.has-temple-sheet .maplibregl-ctrl-top-right {
+    bottom: max(calc(42dvh + 10px), 210px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atlas-row,
+  .btn { transition: none; }
+  .atlas-marker { animation: none; }
+  .route-path { animation: none; stroke-dashoffset: 0; }
+}
+
+/* =========================================================================
+   v2 additions — map-first design
+   ========================================================================= */
+.atlas-subtitle { margin: 2px 0 0; font-size: 0.8rem; color: var(--muted); }
+.atlas-section-label {
+  margin: 4px 4px 10px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--muted);
+}
+
+/* Empty / hint state (India level) */
+.atlas-empty { text-align: center; padding: 36px 18px; color: var(--muted); }
+.atlas-empty__icon { font-size: 2rem; }
+.atlas-empty__title { margin: 10px 0 6px; font-weight: 600; color: var(--ink); }
+.atlas-empty__hint { font-size: 0.84rem; line-height: 1.5; margin: 0; }
+
+/* ---- Jain flag marker (5 stripes: red/yellow/white/green/black) ---------- */
+.jain-flag-wrap { background: none; border: none; }
+.jain-flag {
+  position: relative; width: 40px; height: 44px;
+  transform-origin: 0% 100%;
+  animation: flagDrop 0.2s ease-out both;
+  cursor: pointer;
+}
+.jain-flag__pole { position: absolute; left: 3px; top: 0; width: 2px; height: 44px; background: #6b4f2a; border-radius: 1px; }
+.jain-flag__cloth {
+  position: absolute; left: 5px; top: 2px; width: 30px; height: 21px;
+  display: flex; flex-direction: column; overflow: hidden;
+  border: 0.5px solid rgba(0, 0, 0, 0.2); border-radius: 1px 3px 3px 1px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  /* No infinite wave — continuous transform was costly on Safari/Mac. */
+}
+.jain-flag__cloth span { flex: 1; display: block; }
+.jain-flag__count {
+  position: absolute; left: 30px; top: -6px; background: var(--maroon); color: #fff;
+  font-size: 10px; font-weight: 700; min-width: 16px; height: 16px; line-height: 16px;
+  text-align: center; border-radius: 8px; padding: 0 3px;
+}
+@keyframes flagDrop { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .jain-flag { animation: none; }
+  .atlas-home-btn { transition: none; }
+}
+
+/* =========================================================================
+   Legacy leaflet helpers + temple media (kept for detail-card layout)
+   ========================================================================= */
+.atlas-leaflet { background: radial-gradient(120% 120% at 50% 0%, #f9f5ee 0%, #ece5d6 100%) !important; }
+.leaflet-container { background: transparent; }
+
+.atlas-label-wrap { background: none; border: none; }
+.atlas-state-label,
+.atlas-dist-label {
+  position: absolute; transform: translate(-50%, -50%); white-space: nowrap;
+  pointer-events: none; font-weight: 700; color: #5c4a2a;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.9), 0 0 4px rgba(255, 255, 255, 0.8);
+}
+.atlas-state-label { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+.atlas-dist-label { font-size: 10px; color: #6b3d05; }
+
+.temple-detail { padding: 0; overflow: hidden; }
+.temple-detail__handle { display: none; }
+.temple-detail__media { height: 150px; background: #efe9dd; position: relative; }
+.temple-detail__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.temple-art { width: 100%; height: 100%; display: block; }
+.temple-detail__body { padding: 14px 18px 16px; }
+.temple-detail__close {
+  background: rgba(255, 255, 255, 0.85); border-radius: 50%; width: 28px; height: 28px;
+  display: flex; align-items: center; justify-content: center; box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+}
+.temple-detail__name { margin-top: 6px; }
+.temple-detail__more { display: none; }
+
+@media (max-width: 720px) {
+  .temple-detail__more { display: inline-flex; }
+  .atlas-state-label { font-size: 10px; }
+}
+
+/* =========================================================================
+   MapLibre GL JS — warm full-colour atlas treatment
+   Single source of truth for map chrome (no duplicate conflicting rules).
+   Navigation, labels and data behaviour remain in React components.
+   ========================================================================= */
+.atlas-map-area { overflow: hidden; }
+
+.atlas-map-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  /* Warm parchment underlay — matches reference light atlas, not cool blue. */
+  background: #f0eae0;
+}
+
+.atlas-maplibre {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  background: #f0eae0;
+}
+
+/* Let MapLibre size the canvas via resize() — forcing CSS 100% breaks DPR/layout. */
+.atlas-maplibre .maplibregl-map {
+  width: 100%;
+  height: 100%;
+}
+
+/*
+  Heritage atlas canvas treatment aligned to the GEO Jainism light reference.
+  At Bharat zoom, Liberty is naturally lighter than a close topo view, so keep
+  saturation high enough that soft greens and blue water still read clearly.
+*/
+.atlas-maplibre .maplibregl-canvas {
+  /* Keep contrast a bit higher so thin rural roads don't vanish into parchment. */
+  filter: brightness(1.02) contrast(1.04) saturate(0.95) sepia(0.03);
+}
+
+/* Soft parchment edge wash — light enough not to bleach terrain greens. */
+.atlas-map-wash {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 92% 88% at 50% 48%,
+      transparent 42%,
+      rgba(240, 234, 224, 0.10) 70%,
+      rgba(240, 234, 224, 0.26) 100%
+    ),
+    linear-gradient(to bottom, rgba(240, 234, 224, 0.16) 0%, transparent 14%),
+    linear-gradient(to top, rgba(240, 234, 224, 0.12) 0%, transparent 12%);
+}
+
+/* Opening Bharat identity — top-left, non-interactive (reference: GEO Jainism). */
+.atlas-map-brand {
+  position: absolute;
+  top: 28px;
+  left: 34px;
+  z-index: 30;
+  pointer-events: none;
+  padding: 4px 0;
+  text-shadow: 0 1px 0 rgba(255, 252, 244, 0.85);
+}
+.atlas-map-brand__title {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: clamp(1.55rem, 2.4vw, 2.2rem);
+  line-height: 0.98;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #1c140c;
+}
+.atlas-map-brand__subtitle {
+  margin-top: 7px;
+  color: #a87318;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+}
+
+/* Persistent geography title + clickable breadcrumb — top-right. */
+.atlas-map-context {
+  position: absolute;
+  top: 24px;
+  right: 34px;
+  z-index: 30;
+  max-width: min(470px, calc(100% - 68px));
+  text-align: right;
+  pointer-events: auto;
+  padding: 6px 0 8px;
+  background: transparent;
+}
+.atlas-map-context__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(1.85rem, 3.1vw, 2.75rem);
+  line-height: 0.96;
+  color: #1c140c;
+  letter-spacing: 0.02em;
+  text-shadow: 0 1px 0 rgba(255, 252, 244, 0.9);
+}
+.atlas-map-trail {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 9px;
+  color: #7a6c59;
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+}
+.atlas-map-trail button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #9a640d;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+.atlas-map-trail button:hover { text-decoration: underline; }
+.atlas-map-trail button:focus-visible {
+  outline: 2px solid #c9891a;
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.atlas-map-trail__current {
+  color: #40362a;
+  font-weight: 700;
+}
+
+/* Bharat rollback — arrow-only control (state/district views only). */
+.atlas-home-btn {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  right: auto;
+  bottom: auto;
+  z-index: 35;
+  width: 48px;
+  height: 48px;
+  min-height: 48px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  border: 1px solid rgba(111, 67, 47, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.97);
+  color: #8b2635;
+  box-shadow:
+    0 10px 28px rgba(67, 39, 20, 0.17),
+    0 2px 7px rgba(67, 39, 20, 0.10);
+  backdrop-filter: blur(10px) saturate(1.08);
+  -webkit-backdrop-filter: blur(10px) saturate(1.08);
+  line-height: 1;
+  cursor: pointer;
+  transition: box-shadow 120ms ease, background-color 120ms ease;
+}
+.atlas-home-btn__icon {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.atlas-home-btn:hover {
+  background: #ffffff;
+  box-shadow:
+    0 10px 24px rgba(67, 39, 20, 0.16),
+    0 2px 6px rgba(67, 39, 20, 0.10);
+}
+.atlas-home-btn:active {
+  box-shadow:
+    0 6px 14px rgba(67, 39, 20, 0.14),
+    0 1px 4px rgba(67, 39, 20, 0.08);
+}
+.atlas-home-btn:focus-visible {
+  outline: 3px solid rgba(201, 137, 26, 0.72);
+  outline-offset: 3px;
+}
+
+/* MapLibre controls sit below the top-right context header. */
+.maplibregl-ctrl-top-right {
+  top: 118px !important;
+  right: 18px !important;
+  z-index: 20;
+}
+.maplibregl-ctrl-bottom-left {
+  left: 10px;
+  bottom: 10px;
+  z-index: 20;
+}
+.maplibregl-ctrl-bottom-right {
+  right: 10px;
+  bottom: 10px;
+  z-index: 20;
+}
+.maplibregl-ctrl-group {
+  overflow: hidden;
+  border: 1px solid rgba(139, 94, 10, 0.22) !important;
+  border-radius: 4px !important;
+  background: rgba(250, 247, 239, 0.92) !important;
+  box-shadow: 0 8px 26px rgba(64, 45, 17, 0.16) !important;
+  backdrop-filter: blur(12px);
+}
+.maplibregl-ctrl-group button {
+  width: 34px !important;
+  height: 34px !important;
+  border-bottom-color: rgba(139, 94, 10, 0.10) !important;
+}
+.maplibregl-ctrl-group button:hover {
+  background: rgba(180, 120, 20, 0.10) !important;
+}
+.maplibregl-ctrl-group button span {
+  filter: sepia(0.72) saturate(0.72) brightness(0.58);
+}
+.maplibregl-ctrl-scale {
+  padding: 3px 6px !important;
+  border: 1px solid rgba(139, 94, 10, 0.34) !important;
+  border-top-width: 2px !important;
+  border-radius: 0 0 3px 3px;
+  background: rgba(250, 247, 239, 0.84) !important;
+  color: #66553f !important;
+  font-size: 9px !important;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(8px);
+}
+/* Quiet always-expanded attribution (no ⓘ). Required by MapTiler / OSM. */
+.maplibregl-ctrl-bottom-right {
+  right: 8px;
+  bottom: 6px;
+  max-width: min(46vw, 280px);
+}
+.maplibregl-ctrl-attrib {
+  margin: 0 !important;
+  padding: 2px 6px !important;
+  border-radius: 3px !important;
+  background: rgba(255, 253, 248, 0.55) !important;
+  color: rgba(72, 58, 42, 0.55) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(6px);
+}
+.maplibregl-ctrl-attrib.maplibregl-compact,
+.maplibregl-ctrl-attrib.maplibregl-compact-show {
+  min-height: 0 !important;
+  padding: 2px 6px !important;
+}
+/* Hide the compact toggle button if the style ever forces compact mode. */
+.maplibregl-ctrl-attrib-button {
+  display: none !important;
+}
+.maplibregl-ctrl-attrib a,
+.maplibregl-ctrl-attrib-inner {
+  color: rgba(72, 58, 42, 0.58) !important;
+  font-size: 8px !important;
+  line-height: 1.25 !important;
+  white-space: normal !important;
+}
+
+.atlas-map-config-error {
+  position: absolute;
+  z-index: 980;
+  top: 50%;
+  left: 50%;
+  width: min(520px, calc(100% - 40px));
+  transform: translate(-50%, -50%);
+  display: grid;
+  gap: 8px;
+  padding: 18px 20px;
+  border: 1px solid rgba(122, 31, 43, 0.28);
+  border-radius: 14px;
+  background: rgba(255, 253, 248, 0.96);
+  box-shadow: var(--shadow);
+  color: var(--ink);
+  text-align: center;
+}
+.atlas-map-config-error strong { color: var(--maroon); }
+.atlas-map-config-error span { font-size: 0.9rem; line-height: 1.5; }
+
+@media (max-width: 1024px) {
+  .atlas-map-brand { top: 16px; left: 16px; }
+  .atlas-map-context { top: 14px; right: 16px; }
+  .maplibregl-ctrl-top-right { top: 96px !important; right: 10px !important; }
+}
+
+@media (max-width: 720px) {
+  .atlas-map-brand {
+    top: max(8px, env(safe-area-inset-top));
+    left: max(10px, env(safe-area-inset-left));
+    padding: 0;
+    max-width: 42%;
+  }
+  .atlas-map-brand__title {
+    font-size: clamp(0.78rem, 3.4vw, 0.95rem);
+    letter-spacing: 0.12em;
+    text-shadow:
+      0 1px 0 rgba(255, 252, 244, 0.95),
+      0 0 10px rgba(255, 252, 244, 0.85);
+  }
+
+  /* Avoid double “Bharat” stacking over Ladakh on narrow phones. */
+  .atlas-page.is-map-only .atlas-map-trail { display: none; }
+  .atlas-map-context {
+    top: max(8px, env(safe-area-inset-top));
+    right: max(10px, env(safe-area-inset-right));
+    max-width: min(48%, 200px);
+    padding: 0;
+  }
+  .atlas-map-context__title {
+    font-size: clamp(0.95rem, 4.5vw, 1.15rem);
+    text-shadow:
+      0 1px 0 rgba(255, 252, 244, 0.95),
+      0 0 10px rgba(255, 252, 244, 0.85);
+  }
+  .atlas-map-trail { margin-top: 3px; gap: 3px; font-size: 0.58rem; }
+
+  .atlas-home-btn {
+    top: max(10px, env(safe-area-inset-top));
+    left: max(10px, env(safe-area-inset-left));
+    width: 40px;
+    height: 40px;
+    min-height: 40px;
+    box-shadow:
+      0 6px 18px rgba(67, 39, 20, 0.14),
+      0 1px 4px rgba(67, 39, 20, 0.08);
+  }
+  .atlas-home-btn__icon { width: 18px; height: 18px; }
+
+  /* Larger touch targets for zoom on phones */
+  .maplibregl-ctrl-group button {
+    width: 40px !important;
+    height: 40px !important;
+  }
+  .maplibregl-ctrl-top-right {
+    top: auto !important;
+    bottom: max(52px, calc(env(safe-area-inset-bottom) + 44px)) !important;
+    right: max(8px, env(safe-area-inset-right)) !important;
+  }
+  .maplibregl-ctrl-bottom-left {
+    left: max(8px, env(safe-area-inset-left));
+    bottom: max(8px, env(safe-area-inset-bottom));
+  }
+  .maplibregl-ctrl-bottom-right {
+    right: max(8px, env(safe-area-inset-right));
+    bottom: max(8px, env(safe-area-inset-bottom));
+  }
+
+  .atlas-map-wash {
+    background:
+      radial-gradient(
+        ellipse 120% 108% at 50% 48%,
+        transparent 48%,
+        rgba(240, 234, 224, 0.12) 78%,
+        rgba(240, 234, 224, 0.24) 100%
+      );
+  }
+}
+
+@media (max-width: 380px) {
+  .atlas-map-context { max-width: 48%; }
+  .atlas-sidebar { max-height: min(34dvh, 260px); }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .atlas-page.has-sidebar {
+    grid-template-columns: minmax(180px, 240px) minmax(0, 1fr);
+    grid-template-rows: 1fr;
+  }
+  .atlas-map-area,
+  .atlas-sidebar {
+    grid-row: auto;
+    max-height: none;
+  }
+  .atlas-sidebar {
+    border-top: none;
+    border-right: 1px solid var(--line);
+  }
+  .atlas-home-btn { width: 36px; height: 36px; min-height: 36px; }
+  .atlas-map-context__title { font-size: 1.1rem; }
+  .maplibregl-ctrl-top-right {
+    top: 72px !important;
+    bottom: auto !important;
+  }
+}

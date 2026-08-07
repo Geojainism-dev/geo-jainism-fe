@@ -4,7 +4,8 @@ frontend:
     preBuild:
       commands:
         - nvm use 20
-        - yarn install --frozen-lockfile
+        # Fallback when yarn.lock is absent or out of date (Atlas adds maplibre-gl).
+        - yarn install --frozen-lockfile || yarn install
         - npx puppeteer browsers install chrome
     build:
       commands:

@@ -7,7 +7,7 @@ import { getSeoForPath, absoluteUrl } from "../src/config/seo.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.join(__dirname, "..", "dist");
-const ROUTES = ["/", "/tamil-jain", "/about"];
+const ROUTES = ["/", "/tamil-jain", "/atlas", "/about"];
 const PORT = 4173;
 
 function contentType(filePath) {
