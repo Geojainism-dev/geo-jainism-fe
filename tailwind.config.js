@@ -43,6 +43,29 @@ module.exports = {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
+  			success: {
+  				DEFAULT: 'hsl(var(--success))',
+  				foreground: 'hsl(var(--success-foreground))'
+  			},
+  			info: {
+  				DEFAULT: 'hsl(var(--info))',
+  				foreground: 'hsl(var(--info-foreground))'
+  			},
+  			lotus: {
+  				DEFAULT: 'hsl(var(--lotus))',
+  				deep: 'hsl(var(--lotus-deep))'
+  			},
+  			tulsi: {
+  				DEFAULT: 'hsl(var(--tulsi))',
+  				deep: 'hsl(var(--tulsi-deep))'
+  			},
+  			'sky-pale': 'hsl(var(--sky-pale))',
+  			'bg-alt': 'hsl(var(--bg-alt))',
+  			'bg-deep': 'hsl(var(--bg-deep))',
+  			sidebar: {
+  				DEFAULT: 'hsl(var(--sidebar))',
+  				foreground: 'hsl(var(--sidebar-foreground))'
+  			},
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',
@@ -78,5 +101,5 @@ module.exports = {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 };

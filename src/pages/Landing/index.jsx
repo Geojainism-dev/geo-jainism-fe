@@ -5,7 +5,7 @@ import "@/styles/landing.css";
 import { useLenis, useTheme, useScrollReveal } from "@/hooks";
 
 // Components
-import { ErrorBoundary, ScreeningPopup } from "@/components/common";
+import { ErrorBoundary, ScreeningPopup, UpcomingEventsPopup } from "@/components/common";
 import { BackgroundScene } from "@/components/visuals";
 import { Navbar, Footer } from "@/components/layout";
 
@@ -31,6 +31,7 @@ export default function LandingPage() {
   useScrollReveal();
 
   const [heroReady, setHeroReady] = useState(true);
+  const [showUpcomingEvents, setShowUpcomingEvents] = useState(false);
 
   /* ── Custom cursor ── */
   useEffect(() => {
@@ -84,7 +85,10 @@ export default function LandingPage() {
         <GlobalParticles />
         <BackgroundScene />
 
-        <ScreeningPopup onDismiss={() => {}} />
+        <ScreeningPopup onDismiss={() => setShowUpcomingEvents(true)} />
+        {showUpcomingEvents && (
+          <UpcomingEventsPopup onDismiss={() => setShowUpcomingEvents(false)} />
+        )}
         <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
         <Navbar />
 

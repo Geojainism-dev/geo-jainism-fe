@@ -83,7 +83,7 @@ const JourneyCarousel = () => {
     <section
       id="journey"
       style={{
-        background: bg, padding: "0 0 96px",
+        background: bg, padding: 0,
         position: "relative", overflow: "hidden",
         transition: "background 0.5s ease",
       }}

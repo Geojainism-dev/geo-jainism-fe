@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -5,11 +7,21 @@
 body {
     margin: 0;
     font-family:
-        -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-        "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-        sans-serif;
+        "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scoped to the admin dashboard + its auth pages (Login/Register/Pending) —
+   pulls in the landing page's brand type system (Playfair Display headings)
+   without touching the marketing site's own typography. */
+.admin-shell h1,
+.admin-shell h2,
+.admin-shell h3 {
+    font-family: "Playfair Display", serif;
+    letter-spacing: -0.01em;
 }
 
 code {
@@ -20,56 +32,90 @@ code {
 @layer base {
     :root {
         --background: 0 0% 100%;
-        --foreground: 0 0% 3.9%;
+        --foreground: 26 50% 11%;
         --card: 0 0% 100%;
-        --card-foreground: 0 0% 3.9%;
+        --card-foreground: 26 50% 11%;
         --popover: 0 0% 100%;
-        --popover-foreground: 0 0% 3.9%;
-        --primary: 0 0% 9%;
-        --primary-foreground: 0 0% 98%;
-        --secondary: 0 0% 96.1%;
-        --secondary-foreground: 0 0% 9%;
-        --muted: 0 0% 96.1%;
-        --muted-foreground: 0 0% 45.1%;
-        --accent: 0 0% 96.1%;
-        --accent-foreground: 0 0% 9%;
+        --popover-foreground: 26 50% 11%;
+        --primary: 35 90% 58%;
+        --primary-foreground: 22 51% 16%;
+        --secondary: 41 93% 89%;
+        --secondary-foreground: 22 51% 16%;
+        --muted: 40 45% 91%;
+        --muted-foreground: 25 30% 38%;
+        --accent: 41 93% 89%;
+        --accent-foreground: 22 51% 16%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 89.8%;
-        --input: 0 0% 89.8%;
-        --ring: 0 0% 3.9%;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
-        --radius: 0.5rem;
+        --border: 40 45% 85%;
+        --input: 40 45% 85%;
+        --ring: 35 90% 58%;
+        --chart-1: 35 90% 58%;
+        --chart-2: 16 50% 57%;
+        --chart-3: 41 81% 52%;
+        --chart-4: 22 51% 16%;
+        --chart-5: 43 88% 74%;
+        --radius: 0.75rem;
+
+        /* Secondary palette (lotus, tulsi, sky, bg-alt/deep) — same brand
+           colors defined in the landing page's own CSS, extended here as
+           semantic status colors for the admin panel. */
+        --lotus: 347 64% 86%;
+        --lotus-deep: 350 66% 74%;
+        --tulsi: 105 33% 81%;
+        --tulsi-deep: 106 29% 56%;
+        --sky-pale: 194 59% 90%;
+        --bg-alt: 39 59% 90%;
+        --bg-deep: 42 49% 85%;
+        --success: 106 29% 56%;
+        --success-foreground: 26 50% 11%;
+        --info: 194 59% 90%;
+        --info-foreground: 26 50% 11%;
+
+        /* Admin sidebar — Sky Pale from the secondary palette. */
+        --sidebar: 194 59% 90%;
+        --sidebar-foreground: 26 50% 11%;
     }
     .dark {
-        --background: 0 0% 3.9%;
-        --foreground: 0 0% 98%;
-        --card: 0 0% 3.9%;
-        --card-foreground: 0 0% 98%;
-        --popover: 0 0% 3.9%;
-        --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 0 0% 9%;
-        --secondary: 0 0% 14.9%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 0 0% 14.9%;
-        --muted-foreground: 0 0% 63.9%;
-        --accent: 0 0% 14.9%;
-        --accent-foreground: 0 0% 98%;
+        --background: 23 67% 5%;
+        --foreground: 39 36% 86%;
+        --card: 27 48% 8%;
+        --card-foreground: 39 36% 86%;
+        --popover: 27 48% 8%;
+        --popover-foreground: 39 36% 86%;
+        --primary: 35 90% 58%;
+        --primary-foreground: 22 58% 6%;
+        --secondary: 29 40% 21%;
+        --secondary-foreground: 42 77% 92%;
+        --muted: 27 36% 10%;
+        --muted-foreground: 39 25% 65%;
+        --accent: 29 40% 21%;
+        --accent-foreground: 42 77% 92%;
         --destructive: 0 62.8% 30.6%;
         --destructive-foreground: 0 0% 98%;
-        --border: 0 0% 14.9%;
-        --input: 0 0% 14.9%;
-        --ring: 0 0% 83.1%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
+        --border: 29 30% 18%;
+        --input: 29 30% 18%;
+        --ring: 35 90% 58%;
+        --chart-1: 35 90% 58%;
+        --chart-2: 16 50% 57%;
+        --chart-3: 41 81% 52%;
+        --chart-4: 42 77% 92%;
+        --chart-5: 43 88% 74%;
+
+        --lotus: 350 30% 25%;
+        --lotus-deep: 350 45% 55%;
+        --tulsi: 106 20% 22%;
+        --tulsi-deep: 106 35% 55%;
+        --sky-pale: 194 30% 20%;
+        --bg-alt: 39 20% 12%;
+        --bg-deep: 42 22% 16%;
+        --success: 106 30% 28%;
+        --success-foreground: 105 45% 88%;
+        --info: 194 35% 20%;
+        --info-foreground: 194 50% 85%;
+
+        --sidebar: 194 35% 20%;
+        --sidebar-foreground: 194 50% 85%;
     }
 }
 

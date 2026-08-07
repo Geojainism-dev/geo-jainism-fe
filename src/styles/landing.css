@@ -56,9 +56,6 @@
 .landing-root[data-theme="dark"] .about-section {
   background: var(--bg-alt);
 }
-.landing-root[data-theme="dark"] footer {
-  background: #0A0603;
-}
 .landing-root[data-theme="dark"] .timeline-section {
   background: linear-gradient(160deg, #1F140B 0%, #281B10 50%, #2F2015 100%);
 }
@@ -101,7 +98,7 @@
 }
 .landing-root[data-theme="dark"] #three-canvas { opacity: 0.95; }
 
-.landing-root * { margin:0; padding:0; box-sizing:border-box; }
+.landing-root :not(footer, footer *) { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: auto; }
 
 
@@ -1312,13 +1309,8 @@ html { scroll-behavior: auto; }
 .landing-root .coverage-title { font-size:13px; font-weight:500; color:var(--deep-brown); margin-bottom:4px; }
 .landing-root .coverage-body { font-size:11px; line-height:1.6; color:var(--ink); opacity:0.6; }
 
-/* ── FOOTER ── */
-.landing-root footer { background: var(--ink); padding:40px 60px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
-.landing-root .footer-logo { font-family:'Cinzel', serif; font-size:14px; letter-spacing:3px; color:rgba(253,248,240,0.6); }
-.landing-root .footer-links { display:flex; gap:24px; }
-.landing-root .footer-links a { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(253,248,240,0.35); text-decoration:none; transition:color 0.2s; }
-.landing-root .footer-links a:hover { color:var(--saffron); }
-.landing-root .footer-copy { font-size:11px; color:rgba(253,248,240,0.25); }
+/* ── FOOTER ── moved to src/styles/footer.css (global, unscoped — see that
+   file's header comment for why) ── */
 
 /* ── REVEAL ANIMATIONS ── */
 .landing-root .reveal { opacity:0; transform:translateY(40px); transition: opacity 0.9s ease, transform 0.9s ease; }
@@ -1404,7 +1396,6 @@ html { scroll-behavior: auto; }
   .landing-root .tl-content, .landing-root .tl-image { width:100%; max-width: 100%; }
   .landing-root .tl-spacer { display:none; }
   .landing-root .hero-badge { justify-content: center; margin-top: 40px; }
-  .landing-root footer { flex-direction:column; text-align:center; gap: 40px; }
   .landing-root .journey-carousel { padding: 0 20px; }
   .landing-root .journey-nav.prev { left: -6px; }
   .landing-root .journey-nav.next { right: -6px; }
@@ -1416,7 +1407,6 @@ html { scroll-behavior: auto; }
   /* Reduce oversized shooting title and donate section padding at tablet */
   .landing-root .shooting-section .section-title { font-size: 56px; line-height: 1.15; }
   .landing-root .donate-section { padding: 80px 24px; }
-  .landing-root footer { padding: 40px 24px; }
 }
 
 @media (max-width: 768px) {
@@ -1455,15 +1445,12 @@ html { scroll-behavior: auto; }
   .landing-root .shooting-section .section-title { font-size: 44px; line-height: 1.15; }
   .landing-root .journey-header .section-title { font-size: 38px; line-height: 1.2; }
   .landing-root .donate-section { padding: 60px 20px; }
-  .landing-root footer { padding: 30px 20px; }
   .landing-root .journey-overlay { padding: 24px 20px; }
-  .landing-root .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
 }
 
 @media (max-width: 480px) {
   .landing-root #navbar { padding: 0 16px; }
   .landing-root .section { padding: 60px 16px; }
-  .landing-root footer { padding: 24px 16px; }
   .landing-root[data-theme="dark"] .tirthankar-wrap,
   .landing-root:not([data-theme="dark"]) .tirthankar-wrap {
     height: clamp(200px, 36vh, 300px);

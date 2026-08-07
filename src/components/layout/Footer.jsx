@@ -11,6 +11,7 @@ const Footer = () => {
         <a href="https://youtube.com/@geo_jainism" target="_blank" rel="noopener noreferrer">YouTube</a>
         <a href="mailto:goldeneraofjainism@gmail.com">Contact</a>
         <a href="#support">Donate</a>
+        <a href="/admin/login">Admin</a>
       </div>
       <div className="footer-copy">© 2026 GEO Jainism · Concept by Kavi Sajal Jain · All Rights Reserved</div>
     </footer>

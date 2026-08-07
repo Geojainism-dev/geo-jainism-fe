@@ -1,0 +1,30 @@
+# Dependencies & build output — reinstalled/rebuilt inside the image
+node_modules
+dist
+build
+coverage
+
+# VCS / editor / OS cruft
+.git
+.gitignore
+.vscode
+.idea
+.DS_Store
+
+# Env files — secrets/local overrides shouldn't be baked into the image;
+# runtime config is passed via --build-arg (see Dockerfile)
+.env
+.env.*
+!.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker itself (nginx.conf under docker/ is still needed at build time —
+# only the top-level bookkeeping files are excluded)
+.dockerignore
+
+# Docs
+*.md

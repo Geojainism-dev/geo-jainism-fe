@@ -1,0 +1,29 @@
+/* ════════════════════════════════════════════════════════
+   FOOTER — Global, applies to every page
+   No page-wrapper scoping. Theme via [data-theme="dark"].
+   (Same convention as navbar.css — <Footer /> renders on pages
+   that never wrap in .landing-root, so these rules must not
+   depend on that ancestor.)
+════════════════════════════════════════════════════════ */
+
+footer { background: #2A1A0E; padding:40px 60px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
+.footer-logo { font-family:'Cinzel', serif; font-size:14px; letter-spacing:3px; color:rgba(253,248,240,0.6); }
+.footer-links { display:flex; gap:24px; }
+.footer-links a { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(253,248,240,0.35); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:#F4A535; }
+.footer-copy { font-size:11px; color:rgba(253,248,240,0.25); }
+
+[data-theme="dark"] footer { background: #0A0603; }
+
+@media (max-width: 900px) {
+  footer { flex-direction:column; text-align:center; gap: 40px; padding: 40px 24px; }
+}
+
+@media (max-width: 600px) {
+  footer { padding: 30px 20px; }
+  .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  footer { padding: 24px 16px; }
+}
