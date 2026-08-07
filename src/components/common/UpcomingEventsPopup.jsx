@@ -1,7 +1,131 @@
-import React, { useState, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
-import { X, CalendarDays, MapPin, Ticket } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { ArrowRight, CalendarDays, ChevronRight, Clapperboard, MapPin, Ticket } from "lucide-react";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { usePublicScreenings } from "@/features/publicScreenings/hooks";
+import { getAccent, REGISTER_GRADIENT, dateBadge, urgencyLabel } from "@/features/publicScreenings/display";
+
+function EventThumbnail({ screening, accent }) {
+  const badge = dateBadge(screening.localDate);
+  return (
+    <div
+      className="relative h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl sm:h-auto sm:w-full sm:aspect-[4/3] sm:rounded-none"
+      style={{ backgroundColor: accent.soft }}
+    >
+      {screening.image ? (
+        <img
+          src={screening.image}
+          alt={screening.title}
+          loading="lazy"
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+      ) : (
+        <div
+          className="flex h-full w-full items-center justify-center"
+          style={{
+            backgroundImage: `radial-gradient(${accent.dot} 1px, transparent 1px)`,
+            backgroundSize: "12px 12px",
+          }}
+        >
+          <div
+            className="flex h-9 w-9 items-center justify-center rounded-full bg-white shadow-sm sm:h-14 sm:w-14"
+            style={{ boxShadow: `0 1px 2px rgba(0,0,0,0.05), 0 0 0 1px ${accent.ring}` }}
+          >
+            <Clapperboard className="h-4 w-4 sm:h-6 sm:w-6" style={{ color: accent.to }} strokeWidth={1.75} />
+          </div>
+        </div>
+      )}
+
+      {badge && (
+        <div className="absolute left-1.5 top-1.5 hidden flex-col items-center overflow-hidden rounded-md bg-white shadow-md sm:flex">
+          <span
+            className="w-full px-2 pt-0.5 text-center text-[9px] font-bold uppercase tracking-wide text-white"
+            style={{ background: `linear-gradient(to right, ${accent.from}, ${accent.to})` }}
+          >
+            {badge.month}
+          </span>
+          <span className="px-2 pb-0.5 pt-0.5 text-center text-sm font-bold leading-none text-neutral-900">
+            {badge.day}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function EventRow({ screening, index, onSelect }) {
+  const accent = getAccent(index);
+  const urgency = urgencyLabel(screening.date);
+  return (
+    <motion.button
+      type="button"
+      initial={{ opacity: 0, y: 14 }}
+      animate={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -3 }}
+      transition={{ duration: 0.35, delay: index * 0.06, ease: "easeOut" }}
+      onClick={() => onSelect(screening)}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = accent.to;
+        e.currentTarget.style.boxShadow = `0 16px 32px -10px ${accent.to}55`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = "";
+        e.currentTarget.style.boxShadow = "";
+      }}
+      className="group flex items-stretch gap-3 rounded-2xl border border-neutral-200 bg-white p-2 text-left shadow-sm outline-none transition-colors duration-200 focus-visible:ring-2 focus-visible:ring-offset-2 sm:flex-col sm:gap-0 sm:overflow-hidden sm:p-0"
+      style={{ "--tw-ring-color": accent.to }}
+    >
+      <div className="relative">
+        <EventThumbnail screening={screening} accent={accent} />
+        {urgency && (
+          <span
+            className="absolute right-1.5 top-1.5 hidden rounded-full bg-white/95 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wide shadow-md sm:block"
+            style={{ color: accent.to }}
+          >
+            {urgency}
+          </span>
+        )}
+      </div>
+
+      <div className="flex min-w-0 flex-1 flex-col justify-center gap-1 py-0.5 pr-1 sm:justify-start sm:gap-2 sm:p-4">
+        <h3
+          style={{ fontFamily: "'Playfair Display', serif" }}
+          className="truncate text-[13px] font-semibold text-neutral-900 sm:whitespace-normal sm:text-base sm:leading-snug sm:line-clamp-2"
+        >
+          {screening.title}
+        </h3>
+
+        <div className="flex flex-col gap-1">
+          <div className="flex items-center gap-1.5 text-[11px] text-neutral-500 sm:text-xs">
+            <CalendarDays className="h-3 w-3 flex-shrink-0 sm:h-3.5 sm:w-3.5" style={{ color: accent.to }} />
+            <span className="truncate">
+              {urgency ? `${urgency} · ` : ""}
+              {screening.localDate}
+              {screening.localTime ? ` · ${screening.localTime}` : ""}
+            </span>
+          </div>
+          <div className="flex items-center gap-1.5 text-[11px] text-neutral-500 sm:text-xs">
+            <MapPin className="h-3 w-3 flex-shrink-0 sm:h-3.5 sm:w-3.5" style={{ color: accent.from }} />
+            <span className="truncate">
+              {screening.venue}
+              {screening.city ? `, ${screening.city}` : ""}
+            </span>
+          </div>
+        </div>
+
+        <span
+          className={`mt-2 hidden w-full items-center justify-center gap-1.5 rounded-full bg-gradient-to-r ${REGISTER_GRADIENT} px-4 py-2.5 text-[11px] font-bold uppercase tracking-wide text-white shadow-sm transition-shadow group-hover:shadow-md sm:inline-flex`}
+        >
+          <Ticket className="h-3.5 w-3.5" />
+          Register
+        </span>
+      </div>
+
+      <ChevronRight className="my-auto h-4 w-4 flex-shrink-0 text-neutral-300 transition-transform group-hover:translate-x-0.5 sm:hidden" />
+    </motion.button>
+  );
+}
 
 export default function UpcomingEventsPopup({ onDismiss }) {
   const [open, setOpen] = useState(false);
@@ -26,145 +150,67 @@ export default function UpcomingEventsPopup({ onDismiss }) {
       .slice(0, 9);
   }, [data]);
 
-  if (!open) return null;
-
-  const close = () => {
-    setOpen(false);
-    onDismiss?.();
+  const handleOpenChange = (next) => {
+    setOpen(next);
+    if (!next) onDismiss?.();
   };
 
-  const handleRegister = (screening) => {
+  // Clicking any event, or "View all events", both send the visitor to the
+  // full events page to pick which screening to register for — the modal
+  // itself never deep-links straight to a specific event's form.
+  const goToEvents = () => {
     setOpen(false);
     onDismiss?.();
-    navigate(`/register?screeningId=${screening.id}`);
+    navigate("/events");
   };
 
   return (
-    <div
-      role="dialog"
-      aria-modal="true"
-      aria-label="Upcoming events"
-      onClick={(e) => e.target === e.currentTarget && close()}
-      style={{
-        position: "fixed",
-        inset: 0,
-        zIndex: 99999,
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "20px",
-        background: "rgba(15,10,5,0.6)",
-        backdropFilter: "blur(4px)",
-        animation: "uepFadeIn 0.35s ease",
-      }}
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        style={{
-          position: "relative",
-          maxWidth: "min(960px, 95vw)",
-          width: "100%",
-          maxHeight: "90vh",
-          display: "flex",
-          flexDirection: "column",
-          borderRadius: "20px",
-          background: "var(--cream, #FDF8F0)",
-          border: "1px solid var(--card-border, rgba(244,165,53,0.25))",
-          boxShadow: "0 40px 100px rgba(0,0,0,0.45)",
-          animation: "uepSlideUp 0.38s cubic-bezier(0.22,0.9,0.32,1)",
-          overflow: "hidden",
-        }}
-      >
-        {/* Header */}
+    <Dialog open={open} onOpenChange={handleOpenChange}>
+      <DialogContent className="flex w-[94vw] max-w-2xl translate-x-[-50%] translate-y-[-50%] flex-col gap-0 overflow-hidden rounded-2xl border-none bg-white p-0 shadow-2xl sm:w-full sm:rounded-2xl">
         <div
+          className="relative flex flex-shrink-0 items-center gap-3 overflow-hidden border-b border-neutral-200 bg-gradient-to-br from-[#FDF8F0] to-[#EDF4E7] px-5 py-4 sm:px-8 sm:py-6"
           style={{
-            flexShrink: 0,
-            padding: "clamp(22px,3.5vw,32px) clamp(24px,4vw,40px) 20px",
-            borderBottom: "1px solid var(--card-border, rgba(244,165,53,0.18))",
-            background: "var(--bg-alt, var(--pearl, #FAF6EF))",
-            textAlign: "center",
-            position: "relative",
+            backgroundImage:
+              "radial-gradient(rgba(125,175,110,0.18) 1px, transparent 1px), linear-gradient(to bottom right, #FDF8F0, #EDF4E7)",
+            backgroundSize: "16px 16px, 100% 100%",
           }}
         >
-          <button
-            onClick={close}
-            aria-label="Close"
-            className="uep-close"
-            style={{
-              position: "absolute",
-              top: "16px",
-              right: "16px",
-              width: "36px",
-              height: "36px",
-              borderRadius: "50%",
-              border: "1px solid var(--card-border, rgba(61,35,20,0.15))",
-              background: "var(--cream, #FDF8F0)",
-              color: "var(--text-strong, #3D2314)",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              transition: "transform 0.2s, background 0.2s",
-            }}
-          >
-            <X size={16} />
-          </button>
-
-          <p
-            style={{
-              fontFamily: "'Cinzel', serif",
-              fontSize: "clamp(9px, 1.1vw, 11px)",
-              letterSpacing: "6px",
-              color: "var(--tulsi-deep, #7DAF6E)",
-              textTransform: "uppercase",
-              marginBottom: "8px",
-              fontWeight: 600,
-            }}
-          >
-            Join Us
-          </p>
           <div
-            style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: "clamp(24px, 4vw, 30px)",
-              fontWeight: 600,
-              lineHeight: 1.2,
-              color: "var(--text-strong, #3D2314)",
-            }}
+            className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br ${REGISTER_GRADIENT} shadow-sm sm:h-12 sm:w-12`}
           >
-            Upcoming Events
+            <Ticket className="h-4.5 w-4.5 text-white sm:h-5 sm:w-5" />
+          </div>
+          <div className="min-w-0">
+            <p className="mb-0.5 text-[10px] font-bold uppercase tracking-[3px] text-[#5C8F4E] sm:text-[11px] sm:tracking-[5px]">
+              Join Us
+            </p>
+            <DialogTitle
+              style={{
+                fontFamily: "'Playfair Display', serif",
+                backgroundImage: "linear-gradient(120deg, #4A7A3F, #7DAF6E, #4A7A3F)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+              className="truncate text-xl font-semibold sm:text-2xl"
+            >
+              Upcoming Events
+            </DialogTitle>
           </div>
         </div>
 
-        {/* Body */}
-        <div
-          style={{
-            overflowY: "auto",
-            padding: "clamp(20px,3vw,32px) clamp(24px,4vw,40px) clamp(28px,4vw,40px)",
-          }}
-        >
+        <div className="max-h-[65vh] overflow-y-auto px-5 py-5 sm:px-8 sm:py-6">
           {status === "pending" && (
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-                gap: "20px",
-              }}
-            >
+            <div className="flex flex-col gap-3 sm:grid sm:grid-cols-2 sm:gap-4">
               {[0, 1, 2].map((i) => (
                 <div
                   key={i}
-                  style={{
-                    borderRadius: "16px",
-                    overflow: "hidden",
-                    border: "1px solid var(--card-border, rgba(61,35,20,0.1))",
-                    background: "var(--card-bg, rgba(253,248,240,0.9))",
-                  }}
+                  className="flex gap-3 rounded-2xl border border-neutral-200 p-2 sm:flex-col sm:gap-0 sm:overflow-hidden sm:p-0"
                 >
-                  <div className="uep-shimmer" style={{ aspectRatio: "4 / 3" }} />
-                  <div style={{ padding: "14px" }}>
-                    <div className="uep-shimmer" style={{ height: "14px", borderRadius: "4px", marginBottom: "8px" }} />
-                    <div className="uep-shimmer" style={{ height: "10px", width: "70%", borderRadius: "4px" }} />
+                  <div className="h-20 w-20 flex-shrink-0 animate-pulse rounded-xl bg-neutral-100 sm:aspect-[4/3] sm:h-auto sm:w-full sm:rounded-none" />
+                  <div className="flex flex-1 flex-col justify-center gap-2 py-1 sm:p-4">
+                    <div className="h-3 w-3/4 animate-pulse rounded bg-neutral-100" />
+                    <div className="h-2.5 w-1/2 animate-pulse rounded bg-neutral-100" />
                   </div>
                 </div>
               ))}
@@ -172,25 +218,13 @@ export default function UpcomingEventsPopup({ onDismiss }) {
           )}
 
           {status === "error" && (
-            <div style={{ textAlign: "center", padding: "40px 0" }}>
-              <p style={{ color: "var(--lotus-deep, #E8909F)", fontSize: "14px", marginBottom: "14px", fontWeight: 600 }}>
-                Couldn't load events right now.
-              </p>
+            <div className="py-10 text-center">
+              <p className="mb-4 text-sm font-semibold text-rose-500">Couldn't load events right now.</p>
               <button
                 type="button"
                 onClick={() => refetch()}
                 disabled={isRefetching}
-                style={{
-                  padding: "9px 20px",
-                  fontSize: "12.5px",
-                  fontWeight: 700,
-                  color: "var(--text-strong, #3D2314)",
-                  background: "var(--saffron-light, #FDECC8)",
-                  border: "1px solid var(--saffron, #F4A535)",
-                  borderRadius: "8px",
-                  cursor: isRefetching ? "default" : "pointer",
-                  opacity: isRefetching ? 0.6 : 1,
-                }}
+                className="rounded-full border border-[#7DAF6E] bg-[#EDF4E7] px-5 py-2 text-xs font-bold text-neutral-800 transition-opacity disabled:opacity-60"
               >
                 {isRefetching ? "Retrying..." : "Try again"}
               </button>
@@ -198,170 +232,29 @@ export default function UpcomingEventsPopup({ onDismiss }) {
           )}
 
           {status === "success" && upcoming.length === 0 && (
-            <p
-              style={{
-                textAlign: "center",
-                color: "var(--text-main, #2A1A0E)",
-                opacity: 0.6,
-                fontSize: "14px",
-                padding: "40px 0",
-              }}
-            >
+            <p className="py-10 text-center text-sm text-neutral-500">
               No upcoming events right now — check back soon.
             </p>
           )}
 
           {status === "success" && upcoming.length > 0 && (
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
-                gap: "20px",
-              }}
-            >
-              {upcoming.map((screening) => (
-                <div key={screening.id} className="uep-card">
-                  <div className="uep-card-image">
-                    {screening.image ? (
-                      <img src={screening.image} alt={screening.title} loading="lazy" />
-                    ) : (
-                      <div className="uep-card-fallback" aria-hidden="true">
-                        🎬
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="uep-card-body">
-                    <p className="uep-card-title">{screening.title}</p>
-
-                    <div className="uep-card-meta">
-                      <CalendarDays size={13} style={{ flexShrink: 0 }} />
-                      <span>
-                        {screening.localDate}
-                        {screening.localTime ? ` · ${screening.localTime}` : ""}
-                      </span>
-                    </div>
-                    <div className="uep-card-meta">
-                      <MapPin size={13} style={{ flexShrink: 0 }} />
-                      <span>
-                        {screening.venue}
-                        {screening.city ? `, ${screening.city}` : ""}
-                      </span>
-                    </div>
-
-                    <button type="button" className="uep-card-register" onClick={() => handleRegister(screening)}>
-                      <Ticket size={14} />
-                      Register
-                    </button>
-                  </div>
-                </div>
+            <div className="flex flex-col gap-3 sm:grid sm:grid-cols-[repeat(auto-fit,minmax(220px,1fr))] sm:gap-4">
+              {upcoming.map((screening, i) => (
+                <EventRow key={screening.id} screening={screening} index={i} onSelect={goToEvents} />
               ))}
             </div>
           )}
         </div>
-      </div>
 
-      <style>{`
-        @keyframes uepFadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes uepSlideUp { from { opacity: 0; transform: translateY(24px) scale(0.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
-        @keyframes uepShimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-
-        .uep-close:hover { transform: rotate(90deg); background: var(--saffron-light, #FDECC8); }
-
-        .uep-shimmer {
-          background: linear-gradient(90deg, var(--card-border, rgba(61,35,20,0.08)) 25%, var(--saffron-light, rgba(244,165,53,0.15)) 50%, var(--card-border, rgba(61,35,20,0.08)) 75%);
-          background-size: 200% 100%;
-          animation: uepShimmer 1.4s ease-in-out infinite;
-        }
-
-        .uep-card {
-          display: flex;
-          flex-direction: column;
-          border-radius: 16px;
-          overflow: hidden;
-          background: var(--card-bg, rgba(253,248,240,0.9));
-          border: 1px solid var(--card-border, rgba(61,35,20,0.1));
-          box-shadow: 0 4px 14px rgba(20,10,4,0.06);
-          transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-        }
-        .uep-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 18px 40px rgba(20,10,4,0.16);
-          border-color: var(--saffron, #F4A535);
-        }
-
-        .uep-card-image {
-          position: relative;
-          aspect-ratio: 4 / 3;
-          overflow: hidden;
-          background: linear-gradient(160deg, var(--bg-alt, #F5EBD8), var(--card-border, #EBDFC4));
-        }
-        .uep-card-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-          transition: transform 0.4s ease;
-        }
-        .uep-card:hover .uep-card-image img { transform: scale(1.06); }
-        .uep-card-fallback {
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 32px;
-        }
-
-        .uep-card-body {
-          padding: 14px 14px 16px;
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-        }
-        .uep-card-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 15.5px;
-          font-weight: 600;
-          color: var(--text-strong, #3D2314);
-          margin-bottom: 8px;
-          line-height: 1.3;
-          display: -webkit-box;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-          overflow: hidden;
-        }
-        .uep-card-meta {
-          display: flex;
-          align-items: flex-start;
-          gap: 6px;
-          font-size: 11.5px;
-          color: var(--text-main, #2A1A0E);
-          opacity: 0.7;
-          line-height: 1.5;
-          margin-bottom: 4px;
-        }
-        .uep-card-register {
-          margin-top: 12px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 7px;
-          padding: 9px;
-          font-family: 'Cinzel', serif;
-          font-size: 11px;
-          font-weight: 600;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          color: #FAF0D9;
-          background: linear-gradient(135deg, var(--saffron, #F4A535), var(--tulsi-deep, #7DAF6E));
-          border: none;
-          border-radius: 8px;
-          cursor: pointer;
-          transition: filter 0.2s ease, transform 0.2s ease;
-        }
-        .uep-card-register:hover { filter: brightness(1.08); transform: translateY(-1px); }
-      `}</style>
-    </div>
+        <Link
+          to="/events"
+          onClick={goToEvents}
+          className="flex flex-shrink-0 items-center justify-center gap-1.5 border-t border-neutral-200 bg-neutral-50 py-3.5 text-xs font-semibold uppercase tracking-wide text-neutral-600 transition-colors hover:bg-neutral-100 hover:text-neutral-900"
+        >
+          View all events
+          <ArrowRight className="h-3.5 w-3.5" />
+        </Link>
+      </DialogContent>
+    </Dialog>
   );
 }

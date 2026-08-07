@@ -1,6 +1,8 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import FloatingDots from "@/features/auth/FloatingDots";
 
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -15,8 +17,34 @@ export default function AuthShell({
   promptTo,
   shake,
 }) {
+  const navigate = useNavigate();
+
+  // Prior screens in this flow (protected-route redirects, post-logout)
+  // navigate here with `replace: true` by design, so there's often no
+  // history entry to go back to — fall back to the homepage instead of
+  // relying on the browser's back button.
+  const handleBack = () => {
+    if (window.history.length > 2) {
+      navigate(-1);
+    } else {
+      navigate("/");
+    }
+  };
+
   return (
-    <div className="admin-shell flex min-h-screen items-center justify-center bg-[#1B1913] px-6 py-12">
+    <div className="admin-shell relative flex min-h-screen items-center justify-center overflow-hidden bg-[#1B1913] px-6 py-12">
+      <FloatingDots />
+
+      <button
+        type="button"
+        onClick={handleBack}
+        aria-label="Go back"
+        className="absolute left-5 top-5 z-10 flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-medium text-white/70 backdrop-blur-sm transition-colors hover:border-white/20 hover:bg-white/10 hover:text-white"
+      >
+        <ArrowLeft className="h-3.5 w-3.5" />
+        Back
+      </button>
+
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0, x: shake ? [0, -6, 5, -4, 3, 0] : 0 }}
@@ -25,7 +53,7 @@ export default function AuthShell({
           y: { duration: 0.6, ease: EASE },
           x: { duration: 0.42, ease: "easeInOut" },
         }}
-        className="flex w-full max-w-[1180px] flex-col overflow-hidden rounded-[24px] bg-white shadow-[0_40px_90px_rgba(0,0,0,0.4)] min-[860px]:flex-row min-[860px]:min-h-[680px]"
+        className="relative z-10 flex w-full max-w-[1180px] flex-col overflow-hidden rounded-[24px] bg-white shadow-[0_40px_90px_rgba(0,0,0,0.4)] min-[860px]:flex-row min-[860px]:min-h-[680px]"
       >
         <section className="box-border flex flex-col p-9 min-[860px]:w-[460px] min-[860px]:flex-none min-[860px]:p-16">
           <div className="mb-7 flex items-center gap-2.5">
