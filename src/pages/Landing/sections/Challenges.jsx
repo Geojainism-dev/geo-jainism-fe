@@ -1,30 +1,27 @@
 import React from "react";
 import { useDarkMode } from "@/hooks";
+import { useTranslation } from "react-i18next";
 
 const CARDS = [
   {
-    // badge: "FEATURED",
     date:  "JAN · 2025",
     title: "The Legacy of Jainism in the Lalitpur District Of Uttar Pradesh",
     body:  "Documenting forgotten Jain heritage, ancient temples, and hidden stories from the historic heartland of Central India.",
     img:   "/ground-documentation/Lalitpur.jpg",
   },
   {
-    // badge: "RESEARCH",
     date:  "MAR · 2025",
     title: "The Lost Jain Temples of Gulbarga — On Camera for the First Time",
     body:  "Exploring the forgotten Jain monuments of Karnataka — ancient structures that have waited centuries for the world to notice them. Captured on camera for the very first time.",
     img:   "/ground-documentation/GULBARGA.JPG",
   },
   {
-    // badge: "HERITAGE",
     date:  "OCT · 2025",
     title: "Jain Heritage in Bihar – The Birth Place of Bhagwan Mahavir",
     body:  "Tracing the sacred roots of Jain history across ancient pilgrimage sites, archaeological remains, and timeless traditions.",
     img:   "/ground-documentation/BIHAR.jpg",
   },
   {
-    // badge: "HERITAGE",
     date:  "JAN · 2026",
     title: "Tamil Jains – Minority within in Minority",
     body:  "In the heart of Tamil Nadu, carved into ancient rock faces and scattered across jungle-covered hills, lies one of the world's oldest yet most overlooked spiritual traditions — Tamil Jainism.",
@@ -33,7 +30,8 @@ const CARDS = [
 ];
 
 
-const ChallengeCard = ({ item, isDark }) => {
+const ChallengeCard = ({ item, isDark, index }) => {
+  const { t } = useTranslation();
   const T = {
     cardBg:     isDark ? "rgba(42,26,14,0.88)"      : "#FDF8F0",
     cardBorder: isDark ? "rgba(232,144,159,0.30)"     : "rgba(242,196,206,0.55)",
@@ -45,6 +43,9 @@ const ChallengeCard = ({ item, isDark }) => {
     cormorant:  "'Cormorant Garamond', serif",
     raleway:    "'Raleway', sans-serif",
   };
+
+  const localizedTitle = t(`landingData.challenges.${index}.title`, item.title);
+  const localizedBody = t(`landingData.challenges.${index}.body`, item.body);
 
   return (
     <div
@@ -72,7 +73,7 @@ const ChallengeCard = ({ item, isDark }) => {
       <div style={{ width: "100%", height: "220px", overflow: "hidden", position: "relative" }}>
         <img
           src={item.img}
-          alt={item.title}
+          alt={localizedTitle}
           loading="lazy"
           style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 1s ease" }}
         />
@@ -98,7 +99,7 @@ const ChallengeCard = ({ item, isDark }) => {
           fontFamily: "'Playfair Display', serif", fontWeight: 500, fontSize: "20px",
           lineHeight: "25.65px", letterSpacing: 0, color: T.title, margin: 0, textAlign: "center",
         }}>
-          {item.title}
+          {localizedTitle}
         </h3>
 
         <p style={{
@@ -106,17 +107,8 @@ const ChallengeCard = ({ item, isDark }) => {
           lineHeight: "22.75px", letterSpacing: 0,
           color: T.body, opacity: 0.7, margin: 0, flex: 1, textAlign: "center",
         }}>
-          {item.body}
+          {localizedBody}
         </p>
-
-        {/* <div style={{
-          display: "flex", justifyContent: "center", alignItems: "center",
-          gap: "6px", paddingTop: "12px", marginTop: "auto",
-          fontFamily: T.cinzel, fontSize: "10px", letterSpacing: "2.5px",
-          color: T.saffron, textTransform: "uppercase",
-        }}>
-          Read Article <span>→</span>
-        </div> */}
       </div>
     </div>
   );
@@ -124,6 +116,7 @@ const ChallengeCard = ({ item, isDark }) => {
 
 const Challenges = () => {
   const isDark = useDarkMode();
+  const { t } = useTranslation();
 
   const sectionBg = isDark
     ? "linear-gradient(155deg,#130508 0%,#1A0B0F 45%,#0F0A0C 100%)"
@@ -167,7 +160,7 @@ const Challenges = () => {
               lineHeight: "16px", letterSpacing: "2.2px", color: "#C8881A", textTransform: "uppercase",
               whiteSpace: "nowrap",
             }}>
-              HISTORICAL JOURNEY
+              {t("challenges.eyebrow")}
             </span>
             <div style={{ height: "1px", flex: "0 1 96px", minWidth: "20px", background: saffron, opacity: 0.3 }} />
           </div>
@@ -176,7 +169,7 @@ const Challenges = () => {
             fontFamily: "'Playfair Display', serif", fontWeight: 400, fontSize: "clamp(32px, 6.5vw, 64px)",
             lineHeight: "1.4", letterSpacing: 0, marginBottom: "20px",
           }}>
-            To Ground Documentation
+            {t("challenges.title")}
           </h2>
 
           <p style={{
@@ -191,8 +184,7 @@ const Challenges = () => {
             maxWidth: "560px",
             margin: "0 auto",
           }}>
-            Exploring ancient sites, documenting hidden heritage, and uncovering
-            history through on-ground research and real-world journeys.
+            {t("challenges.tagline")}
           </p>
 
         </div>
@@ -203,8 +195,8 @@ const Challenges = () => {
           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
           gap: "28px",
         }}>
-          {CARDS.map((item) => (
-            <ChallengeCard key={item.title} item={item} isDark={isDark} />
+          {CARDS.map((item, idx) => (
+            <ChallengeCard key={item.title} item={item} isDark={isDark} index={idx} />
           ))}
         </div>
 
@@ -214,3 +206,4 @@ const Challenges = () => {
 };
 
 export default Challenges;
+

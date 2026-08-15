@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const IMGS = [
   "/journey/03-team-group.jpg",
@@ -8,16 +9,17 @@ const IMGS = [
   "/journey/04-hillside.jpg",
 ];
 
-const STATS = [
-  { num: "25K–35K", label: "Tamil Jains Remain" },
-  { num: "450+",    label: "Jain Sites in Tamil Nadu" },
-  { num: "2,300+",  label: "Years of Heritage" },
-  { num: "462+",     label: "Sites Documented" },
-];
-
 export default function TJSilence() {
   const ref    = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const { t } = useTranslation();
+
+  const STATS = [
+    { num: t("tamilJain.silence.stats.0.num", "25K–35K"), label: t("tamilJain.silence.stats.0.label", "Tamil Jains Remain") },
+    { num: t("tamilJain.silence.stats.1.num", "450+"),    label: t("tamilJain.silence.stats.1.label", "Jain Sites in Tamil Nadu") },
+    { num: t("tamilJain.silence.stats.2.num", "2,300+"),  label: t("tamilJain.silence.stats.2.label", "Years of Heritage") },
+    { num: t("tamilJain.silence.stats.3.num", "462+"),     label: t("tamilJain.silence.stats.3.label", "Sites Documented") },
+  ];
 
   return (
     <section ref={ref} className="tj-section tj-silence-section">
@@ -33,28 +35,24 @@ export default function TJSilence() {
         >
           <div className="tj-eyebrow-row" style={{ marginBottom: "20px" }}>
             <div className="tj-eyebrow-line" />
-            <span className="tj-eyebrow-label">The Untold Story</span>
+            <span className="tj-eyebrow-label">{t("tamilJain.silence.eyebrow")}</span>
           </div>
 
           <h2 className="tj-silence-heading">
-            The Tamil Jains —{" "}
-            <em>2300+ Years</em>
-            {" "}of Silence
+            {t("tamilJain.silence.title1")}
+            <em>{t("tamilJain.silence.title2")}</em>
+            {t("tamilJain.silence.title3")}
           </h2>
 
           <p className="tj-silence-body">
-            Only 25,000–35,000 Tamil Jains remain. This ancient community — once the architects
-            of Tamil literature, sponsors of cave temples, and patrons of the arts — has reached
-            near-endangered status.
+            {t("tamilJain.silence.body1")}
           </p>
           <p className="tj-silence-body">
-            Most people — in India and abroad — are completely unaware that Jainism had a deep
-            and foundational presence in Tamil Nadu. A civilisation teetering on the edge of
-            extinction, invisible to the world.
+            {t("tamilJain.silence.body2")}
           </p>
 
           <a href="#notify" className="tj-btn-primary" style={{ marginTop: "12px" }}>
-            View Story →
+            {t("tamilJain.silence.cta")}
           </a>
         </motion.div>
 
@@ -94,3 +92,4 @@ export default function TJSilence() {
     </section>
   );
 }
+

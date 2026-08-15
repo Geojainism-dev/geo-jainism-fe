@@ -1,14 +1,28 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Instagram, Youtube, Twitter, MessageCircle } from "lucide-react";
+import { Instagram, Youtube, Twitter, MessageCircle, Globe, ChevronDown } from "lucide-react";
 import { preloadRoute } from "@/lib/routePreloader";
+import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
   const navbarRef = useRef(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
+  const langRef = useRef(null);
   const location = useLocation();
   const isTJPage = location.pathname === "/tamil-jain";
   const isEventsListPage = location.pathname === "/events";
+  const { t, i18n } = useTranslation();
+
+  const languages = [
+    { code: "en", name: "English" },
+    { code: "hi", name: "हिन्दी" },
+    { code: "ta", name: "தமிழ்" },
+    { code: "kn", name: "ಕನ್ನಡ" },
+    { code: "mr", name: "मराठी" }
+  ];
+
+  const currentLang = languages.find(l => l.code === i18n.language) || languages[0];
 
   useEffect(() => {
     const onScroll = () => {
@@ -20,10 +34,55 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (langRef.current && !langRef.current.contains(e.target)) {
+        setIsLangDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const changeLanguage = (lngCode) => {
+    i18n.changeLanguage(lngCode);
+    setIsLangDropdownOpen(false);
+  };
+
+  const LanguageSwitcher = ({ className = "" }) => (
+    <div className={`lang-switcher-wrapper ${className}`} ref={langRef}>
+      <button 
+        type="button"
+        className="lang-switcher-btn" 
+        onClick={() => setIsLangDropdownOpen(!isLangDropdownOpen)}
+        aria-expanded={isLangDropdownOpen}
+        aria-label={t("nav.language")}
+      >
+        <Globe size={15} className="lang-globe-icon" />
+        <span className="lang-current-name">{currentLang.name}</span>
+        <ChevronDown size={11} className={`lang-chevron-icon ${isLangDropdownOpen ? 'open' : ''}`} />
+      </button>
+      {isLangDropdownOpen && (
+        <ul className="lang-dropdown-menu">
+          {languages.map((lang) => (
+            <li key={lang.code}>
+              <button 
+                type="button"
+                className={`lang-option-btn ${i18n.language === lang.code ? 'active' : ''}`}
+                onClick={() => changeLanguage(lang.code)}
+              >
+                {lang.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
 
   return (
     <nav
@@ -47,7 +106,7 @@ const Navbar = () => {
               <circle cx="12" cy="24" r="1.2" fill="#F4A535" opacity="0.6" />
               <circle cx="24" cy="24" r="1.2" fill="#F4A535" opacity="0.6" />
             </svg>
-            <span className="mobile-close-label">CLOSE</span>
+            <span className="mobile-close-label">{t("nav.drawerClose")}</span>
           </div>
         ) : (
           <div className="hamburger">
@@ -67,10 +126,9 @@ const Navbar = () => {
           </div>
           <div className="mobile-drawer-header">
             <img src="/logo.png" alt="Geo Jainism" className="mobile-drawer-logo" />
-            <div className="mobile-drawer-salutation">जय जिनेन्द्र</div>
+            <div className="mobile-drawer-salutation">{t("nav.drawerSalutation")}</div>
             <p className="mobile-drawer-tagline">
-              Where ancient stone speaks —<br />
-              and a forgotten legacy finds its light.
+              {t("nav.drawerTagline")}
             </p>
             <div className="mobile-drawer-rule">
               <span className="mobile-drawer-dot" />
@@ -82,6 +140,9 @@ const Navbar = () => {
 
         {/* Always rendered — visible on desktop, animated inside drawer on mobile */}
         <div className="mobile-drawer-links">
+          <strong><Link to="/" className={location.pathname === "/" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/")} onTouchStart={() => preloadRoute("/")}>{t("nav.home")}</Link></strong>
+          <strong><Link to="/tamil-jain" className={location.pathname === "/tamil-jain" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/tamil-jain")} onTouchStart={() => preloadRoute("/tamil-jain")}>{t("nav.tamilJain")}</Link></strong>
+          <strong><Link to="/about" className={location.pathname === "/about" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/about")} onTouchStart={() => preloadRoute("/about")}>{t("nav.about")}</Link></strong>
           <strong><Link to="/" className={location.pathname === "/" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/")} onTouchStart={() => preloadRoute("/")}>Home</Link></strong>
           <strong><Link to="/tamil-jain" className={location.pathname === "/tamil-jain" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/tamil-jain")} onTouchStart={() => preloadRoute("/tamil-jain")}>Tamil Jain</Link></strong>
           <strong><Link to="/events" className={location.pathname.startsWith("/events") ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)}>Events</Link></strong>
@@ -93,6 +154,9 @@ const Navbar = () => {
           <strong><Link to="/about" className={location.pathname === "/about" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/about")} onTouchStart={() => preloadRoute("/about")}>About us</Link></strong>
         </div>
 
+        {/* Language selector in mobile drawer */}
+        {isMobileMenuOpen && <LanguageSwitcher className="mobile-lang" />}
+
         {/* Social icons — only visible inside the mobile drawer */}
         <div className="drawer-socials">
           <a href="https://instagram.com/geo_jainism" target="_blank" rel="noopener noreferrer" className="drawer-social-icon"><Instagram size={16} /></a>
@@ -103,15 +167,19 @@ const Navbar = () => {
 
       </div>
 
-      <div className="nav-socials desktop-socials">
-        <a href="https://instagram.com/geo_jainism" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={18} /></a>
-        <a href="https://www.youtube.com/@geo_jainism" target="_blank" rel="noopener noreferrer" className="social-icon"><Youtube size={18} /></a>
-        <a href="https://x.com/geo_jainism" target="_blank" rel="noopener noreferrer" className="social-icon"><Twitter size={18} /></a>
-        <a href="https://chat.whatsapp.com/EnHCodUJre9AlzFO9LRx5j" target="_blank" rel="noopener noreferrer" className="social-icon"><MessageCircle size={18} /></a>
+      <div className="nav-desktop-actions">
+        <LanguageSwitcher className="desktop-lang" />
+        <div className="nav-socials desktop-socials">
+          <a href="https://instagram.com/geo_jainism" target="_blank" rel="noopener noreferrer" className="social-icon"><Instagram size={18} /></a>
+          <a href="https://www.youtube.com/@geo_jainism" target="_blank" rel="noopener noreferrer" className="social-icon"><Youtube size={18} /></a>
+          <a href="https://x.com/geo_jainism" target="_blank" rel="noopener noreferrer" className="social-icon"><Twitter size={18} /></a>
+          <a href="https://chat.whatsapp.com/EnHCodUJre9AlzFO9LRx5j" target="_blank" rel="noopener noreferrer" className="social-icon"><MessageCircle size={18} /></a>
+        </div>
       </div>
     </nav>
   );
 };
 
 export default Navbar;
+
 

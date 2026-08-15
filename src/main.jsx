@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "@/styles/index.css";
 import App from "@/App";
+import "./i18n";
 
 // Register Service Worker in the browser background thread
 if ('serviceWorker' in navigator) {

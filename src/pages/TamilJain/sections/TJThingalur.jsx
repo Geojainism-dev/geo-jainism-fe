@@ -1,43 +1,6 @@
 import React, { useRef, useState, useCallback } from "react";
 import { motion, useInView, useReducedMotion, AnimatePresence } from "framer-motion";
-
-const HILLS = [
-  {
-    src: "/TJpageCarousel/Samanar Malai.JPG",
-    name: "Samanar Malai",
-    region: "Madurai",
-    num: "01",
-    desc: "A magnificent Jain cave complex near Madurai, featuring ancient rock-cut beds, Tamil-Brahmi inscriptions, and exquisite stone sculptures carved over two millennia ago.",
-  },
-  {
-    src: "/TJpageCarousel/Vallimalai.jpg",
-    name: "Vallimalai",
-    region: "Vellore",
-    num: "02",
-    desc: "A sacred Jain hillock in the Vellore district, home to ancient cave shrines, rock-cut beds, and a revered Mahavira temple that continues to draw pilgrims today.",
-  },
-  {
-    src: "/TJpageCarousel/THIRUNATHAR KUNDRU .JPG",
-    name: "Thirunathar Kundru",
-    region: "Ariyalur",
-    num: "03",
-    desc: "An ancient Jain sacred hill bearing rock-cut monastic shelters and inscriptions that speak of a thriving Jain community that once called this hill home.",
-  },
-  {
-    src: "/TJpageCarousel/Azhgarmalai.JPG",
-    name: "Azhgarmalai",
-    region: "Karur",
-    num: "04",
-    desc: "A revered Jain hill site in the Karur region, featuring ancient caves, natural rock-cut beds, and monolithic sculptures that stand witness to centuries of devotion.",
-  },
-  {
-    src: "/TJpageCarousel/Kalagumalai.JPG",
-    name: "Kalagumalai",
-    region: "Thoothukudi",
-    num: "05",
-    desc: "Home to the iconic unfinished Jain rock sculpture and exquisite bas-reliefs, Kalagumalai stands as one of the finest examples of Jain artistic heritage in Tamil Nadu.",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const bgVariants = {
   enter:  { opacity: 0 },
@@ -57,8 +20,47 @@ export default function TJThingalur() {
   const pointerX    = useRef(null);
   const inView      = useInView(sectionRef, { once: true, margin: "-100px" });
   const shouldReduce = useReducedMotion();
+  const { t } = useTranslation();
 
   const [idx, setIdx] = useState(0);
+
+  const HILLS = [
+    {
+      src: "/TJpageCarousel/Samanar Malai.JPG",
+      name: t("tamilJain.thingalur.hills.0.name", "Samanar Malai"),
+      region: t("regions.madurai", "Madurai"),
+      num: "01",
+      desc: t("tamilJain.thingalur.hills.0.desc", "A magnificent Jain cave complex near Madurai, featuring ancient rock-cut beds, Tamil-Brahmi inscriptions, and exquisite stone sculptures carved over two millennia ago."),
+    },
+    {
+      src: "/TJpageCarousel/Vallimalai.jpg",
+      name: t("tamilJain.thingalur.hills.1.name", "Vallimalai"),
+      region: t("regions.vellore", "Vellore"),
+      num: "02",
+      desc: t("tamilJain.thingalur.hills.1.desc", "A sacred Jain hillock in the Vellore district, home to ancient cave shrines, rock-cut beds, and a revered Mahavira temple that continues to draw pilgrims today."),
+    },
+    {
+      src: "/TJpageCarousel/THIRUNATHAR KUNDRU .JPG",
+      name: t("tamilJain.thingalur.hills.2.name", "Thirunathar Kundru"),
+      region: t("regions.ariyalur", "Ariyalur"),
+      num: "03",
+      desc: t("tamilJain.thingalur.hills.2.desc", "An ancient Jain sacred hill bearing rock-cut monastic shelters and inscriptions that speak of a thriving Jain community that once called this hill home."),
+    },
+    {
+      src: "/TJpageCarousel/Azhgarmalai.JPG",
+      name: t("tamilJain.thingalur.hills.3.name", "Azhgarmalai"),
+      region: t("regions.karur", "Karur"),
+      num: "04",
+      desc: t("tamilJain.thingalur.hills.3.desc", "A revered Jain hill site in the Karur region, featuring ancient caves, natural rock-cut beds, and monolithic sculptures that stand witness to centuries of devotion."),
+    },
+    {
+      src: "/TJpageCarousel/Kalagumalai.JPG",
+      name: t("tamilJain.thingalur.hills.4.name", "Kalagumalai"),
+      region: t("regions.thoothukudi", "Thoothukudi"),
+      num: "05",
+      desc: t("tamilJain.thingalur.hills.4.desc", "Home to the iconic unfinished Jain rock sculpture and exquisite bas-reliefs, Kalagumalai stands as one of the finest examples of Jain artistic heritage in Tamil Nadu."),
+    },
+  ];
 
   const goTo = useCallback((i) => {
     dirRef.current = i > idx ? 1 : -1;
@@ -151,13 +153,11 @@ export default function TJThingalur() {
         {/* Right: counter + arrows + dots */}
         <div className="tj-tng-nav-col">
           <div className="tj-tng-nav">
-            <button className="tj-tng-arrow" onClick={prev} aria-label="Previous site">←</button>
+            <button className="tj-tng-arrow" onClick={prev} aria-label={t("tamilJain.centuryWall.prevEra", "Previous site")}>←</button>
             <span className="tj-tng-counter" aria-label={`Site ${idx + 1} of ${HILLS.length}`}>
-              <span className="tj-tng-counter-cur">{String(idx + 1).padStart(2, "0")}</span>
-              <span className="tj-tng-counter-sep"> / </span>
-              <span className="tj-tng-counter-tot">{String(HILLS.length).padStart(2, "0")}</span>
+              <span className="tj-tng-counter-sep">{String(idx + 1).padStart(2, "0")} / {String(HILLS.length).padStart(2, "0")}</span>
             </span>
-            <button className="tj-tng-arrow" onClick={next} aria-label="Next site">→</button>
+            <button className="tj-tng-arrow" onClick={next} aria-label={t("tamilJain.centuryWall.nextEra", "Next site")}>→</button>
           </div>
 
           <div className="tj-tng-dots" role="tablist" aria-label="Sites">
@@ -212,3 +212,4 @@ export default function TJThingalur() {
     </section>
   );
 }
+
