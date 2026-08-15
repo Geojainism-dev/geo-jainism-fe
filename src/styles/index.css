@@ -14,6 +14,83 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* ── Sticky footer ──────────────────────────────────────────────────────
+   Every page renders <Navbar/><main>...</main><Footer/> (some wrapped in
+   .landing-root or .tj-page-wrapper). On short pages (e.g. an empty state)
+   the footer would otherwise sit right after the content instead of at the
+   bottom of the viewport, leaving a blank gap below it. Stretch #root (and
+   any page wrapper) to full height and let <main> absorb the extra space. */
+#root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+#root > main,
+#root > .landing-root,
+#root > .tj-page-wrapper,
+#root > .about-page-root {
+    flex: 1 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.landing-root > main,
+.tj-page-wrapper > main,
+.about-page-root > main {
+    flex: 1 0 auto;
+}
+
+/* flex-shrink defaults to 1, so on very tall pages (Landing runs ~12,000px)
+   the flex algorithm squeezes <footer> down to a sliver instead of letting
+   <main> absorb all the height, pushing footer content past the reachable
+   scroll area. Pin it to its natural content size. */
+#root > footer,
+.landing-root > footer,
+.tj-page-wrapper > footer,
+.about-page-root > footer {
+    flex-shrink: 0;
+}
+
+/* ── Theme toggle (light/dark FAB) ────────────────────────────────────────
+   Single shared button (components/common/ThemeToggle.jsx) used identically
+   across every page that supports theme switching, instead of each page
+   hand-rolling its own position/size/colors. */
+.theme-toggle {
+    position: fixed;
+    right: 20px;
+    bottom: 70px;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(253, 248, 240, 0.9);
+    border: 1px solid rgba(244, 165, 53, 0.25);
+    color: #F4A535;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 998;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 24px rgba(61, 35, 20, 0.18);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s, border-color 0.3s;
+}
+
+[data-theme="dark"] .theme-toggle {
+    background: rgba(42, 26, 14, 0.85);
+    border-color: rgba(244, 165, 53, 0.35);
+}
+
+.theme-toggle:hover {
+    transform: scale(1.08) rotate(20deg);
+    box-shadow: 0 12px 30px rgba(244, 165, 53, 0.4);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
 /* Scoped to the admin dashboard + its auth pages (Login/Register/Pending) —
    pulls in the landing page's brand type system (Playfair Display headings)
    without touching the marketing site's own typography. */

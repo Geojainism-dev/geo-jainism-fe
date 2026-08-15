@@ -2,6 +2,7 @@ import React from "react";
 import { COURSES } from "@/constants/landingData";
 import { useDarkMode } from "@/hooks";
 import { useTranslation } from "react-i18next";
+import styles from "./Courses.module.css";
 
 const PARTICLE_COLORS = ["#F4A535", "#F7D580", "#7DAF6E", "#A8D4A0"];
 const PARTICLES = Array.from({ length: 36 }, (_, i) => ({
@@ -47,7 +48,7 @@ const Courses = () => {
   return (
     <section
       id="courses"
-      className="section courses-section reveal"
+      className={`section ${styles.coursesSection} reveal`}
       style={{ background: bg, position: "relative", overflow: "hidden", padding: "0 0 96px", transition: "background 0.5s ease" }}
     >
       <style>{`
@@ -255,7 +256,7 @@ const Courses = () => {
                     fontFamily: "'DM Sans', sans-serif", fontSize: "9px",
                     fontWeight: 600, letterSpacing: "1.6px", textTransform: "uppercase",
                     color: isDark ? "rgba(200,223,192,0.50)" : "rgba(42,26,14,0.45)",
-                    textAlign: "center",
+                    textAlign: "center", marginTop: "12px",
                   }}>{s.label}</span>
                 </div>
               ))}

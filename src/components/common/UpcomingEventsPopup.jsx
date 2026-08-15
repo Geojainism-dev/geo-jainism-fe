@@ -134,7 +134,7 @@ export default function UpcomingEventsPopup({ onDismiss }) {
   // default retry has backoff gaps between attempts where isFetching is
   // briefly false but the query hasn't errored yet either — isLoading would
   // flicker to false in that gap and misrender the "no events" empty state.
-  const { data, status, refetch, isRefetching } = usePublicScreenings({ limit: 50 });
+  const { data, status } = usePublicScreenings({ limit: 50 });
 
   useEffect(() => {
     const t = setTimeout(() => setOpen(true), 50);
@@ -218,17 +218,9 @@ export default function UpcomingEventsPopup({ onDismiss }) {
           )}
 
           {status === "error" && (
-            <div className="py-10 text-center">
-              <p className="mb-4 text-sm font-semibold text-rose-500">Couldn't load events right now.</p>
-              <button
-                type="button"
-                onClick={() => refetch()}
-                disabled={isRefetching}
-                className="rounded-full border border-[#7DAF6E] bg-[#EDF4E7] px-5 py-2 text-xs font-bold text-neutral-800 transition-opacity disabled:opacity-60"
-              >
-                {isRefetching ? "Retrying..." : "Try again"}
-              </button>
-            </div>
+            <p className="py-10 text-center text-sm text-neutral-500">
+              No events to show right now — we're updating this, please check back soon!
+            </p>
           )}
 
           {status === "success" && upcoming.length === 0 && (

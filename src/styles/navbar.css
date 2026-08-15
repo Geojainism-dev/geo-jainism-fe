@@ -191,30 +191,33 @@
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
 }
 
-/* ── Events page: dark hero sits directly under the navbar, so before the
-   scroll state kicks in (own opaque background) the default dark-ink nav
-   text is invisible against it — force light text until then. ── */
-#navbar.is-events-page:not(.scrolled) .nav-logo,
-#navbar.is-events-page:not(.scrolled) .nav-links a,
-#navbar.is-events-page:not(.scrolled) .social-icon {
+/* ── Events page: when there are upcoming screenings, a dark hero carousel
+   sits directly under the navbar, so before the scroll state kicks in (own
+   opaque background) the default dark-ink nav text is invisible against it —
+   force light text until then. Gated on body.has-dark-hero (set by
+   ScreeningsListPage) since the hero only renders when there's upcoming
+   content; without it the page background is light and dark text is correct. ── */
+body.has-dark-hero #navbar.is-events-page:not(.scrolled) .nav-logo,
+body.has-dark-hero #navbar.is-events-page:not(.scrolled) .nav-links a,
+body.has-dark-hero #navbar.is-events-page:not(.scrolled) .social-icon {
   color: #FDF8F0;
 }
 
-#navbar.is-events-page:not(.scrolled) .nav-links a {
+body.has-dark-hero #navbar.is-events-page:not(.scrolled) .nav-links a {
   opacity: 0.85;
 }
 
-#navbar.is-events-page:not(.scrolled) .nav-links a:hover,
-#navbar.is-events-page:not(.scrolled) .nav-links a.active {
+body.has-dark-hero #navbar.is-events-page:not(.scrolled) .nav-links a:hover,
+body.has-dark-hero #navbar.is-events-page:not(.scrolled) .nav-links a.active {
   opacity: 1;
   color: #8DC17E;
 }
 
-#navbar.is-events-page:not(.scrolled) .nav-links a::after {
+body.has-dark-hero #navbar.is-events-page:not(.scrolled) .nav-links a::after {
   background: #8DC17E;
 }
 
-#navbar.is-events-page:not(.scrolled) .hamburger span {
+body.has-dark-hero #navbar.is-events-page:not(.scrolled) .hamburger span {
   background-color: #FDF8F0;
 }
 

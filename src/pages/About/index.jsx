@@ -8,13 +8,12 @@ import {
 import {
   ChevronDown, Film, MapPin, BookOpen, Globe, Users,
   Phone, Mail, Instagram, Youtube, Twitter, MessageCircle,
-  Sun, Moon,
 } from "lucide-react";
 import { useLenis, useTheme } from "@/hooks";
 import { useTranslation } from "react-i18next";
 import { Navbar, Footer } from "@/components/layout";
 
-import { ErrorBoundary } from "@/components/common";
+import { ErrorBoundary, ThemeToggle } from "@/components/common";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
@@ -152,35 +151,6 @@ function ScrollProgress() {
 }
 
 /* ── Dark / Light mode floating toggle ── */
-function DarkModeFAB({ isDark, onToggle }) {
-  return (
-    <button
-      className="abt-theme-fab"
-      onClick={onToggle}
-      style={{
-        background: isDark
-          ? "rgba(250,240,217,0.10)"
-          : "rgba(6,13,8,0.84)",
-        border: `1px solid ${isDark ? "rgba(244,165,53,0.38)" : "rgba(253,248,240,0.22)"}`,
-        boxShadow: isDark
-          ? "0 4px 24px rgba(244,165,53,0.16), inset 0 1px 0 rgba(244,165,53,0.08)"
-          : "0 4px 28px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.06)",
-      }}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-    >
-      <span
-        className="abt-theme-fab-icon"
-        style={{ display: "flex", transform: isDark ? "rotate(0deg)" : "rotate(-30deg)" }}
-      >
-        {isDark
-          ? <Sun  size={17} style={{ color: "#F4A535" }} />
-          : <Moon size={17} style={{ color: "#FAF0D9" }} />
-        }
-      </span>
-    </button>
-  );
-}
-
 /* ── Cinematic full-bleed parallax break ── */
 function CinematicBreak({ src, quote, sub }) {
   const ref = useRef(null);
@@ -299,7 +269,7 @@ export default function AboutPage() {
     <ErrorBoundary>
       <div className="about-page-root" data-theme={theme} style={{ background: C.bg, minHeight: "100vh", transition: "background 0.5s ease" }}>
         <ScrollProgress />
-        <DarkModeFAB isDark={isDark} onToggle={toggleTheme} />
+        <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
         <Navbar />
         <main style={{ paddingTop: "72px" }}>
 

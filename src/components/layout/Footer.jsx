@@ -5,7 +5,7 @@ const Footer = () => {
   const { t } = useTranslation();
   return (
     <footer>
-      <div className="footer-logo">{t("footer.logo")} · {t("aboutPage.heroEyebrow")}</div>
+      <div className="footer-logo">{t("footer.logo")}</div>
       <div className="footer-links">
         <a href="/about">{t("nav.about")}</a>
         <a href="/tamil-jain">{t("nav.tamilJain")}</a>

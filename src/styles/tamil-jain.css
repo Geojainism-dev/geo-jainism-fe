@@ -391,46 +391,6 @@
 }
 
 /* ══════════════════════════════════════════════════════════════
-   THEME TOGGLE BUTTON
-══════════════════════════════════════════════════════════════ */
-.tj-theme-toggle {
-  position: fixed;
-  right: 20px;
-  bottom: 70px;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: rgba(253, 248, 240, 0.85);
-  border: 1px solid rgba(244, 165, 53, 0.30);
-  color: var(--saffron);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9998;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 24px rgba(61, 35, 20, 0.18);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.tj-theme-toggle:hover {
-  transform: scale(1.08) rotate(20deg);
-  box-shadow: 0 12px 30px rgba(244, 165, 53, 0.40);
-}
-
-.tj-theme-toggle svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* Dark mode variant */
-.tj-page-wrapper[data-theme="dark"] .tj-theme-toggle {
-  background: rgba(26, 16, 8, 0.85);
-  border-color: rgba(244, 165, 53, 0.35);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.40);
-}
-
-/* ══════════════════════════════════════════════════════════════
    TOKENS
 ══════════════════════════════════════════════════════════════ */
 :root {
@@ -3494,56 +3454,6 @@
 }
 
 
-
-/* ═══════════════════════════════════════════════════
-   FOOTER — same style as landing page
-   ═══════════════════════════════════════════════════ */
-.tj-page-wrapper footer {
-  background: var(--ink);
-  padding: 40px 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.tj-page-wrapper .footer-logo {
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  letter-spacing: 3px;
-  color: rgba(253, 248, 240, 0.6);
-}
-
-.tj-page-wrapper .footer-links {
-  display: flex;
-  gap: 24px;
-}
-
-.tj-page-wrapper .footer-links a {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(253, 248, 240, 0.35);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.tj-page-wrapper .footer-links a:hover {
-  color: var(--saffron);
-}
-
-.tj-page-wrapper .footer-copy {
-  font-size: 11px;
-  color: rgba(253, 248, 240, 0.25);
-}
-
-@media (max-width: 768px) {
-  .tj-page-wrapper footer {
-    flex-direction: column;
-    text-align: center;
-  }
-}
 
 /* ══ JAIN BEDS v3: Cinematic Full-Bleed Split — Secondary Palette ══ */
 .tj-beds-v3-section {

@@ -51,19 +51,8 @@
   --card-border: rgba(244, 165, 53, 0.35);
 }
 
-.landing-root[data-theme="dark"] .story-section,
-.landing-root[data-theme="dark"] .post-section,
-.landing-root[data-theme="dark"] .about-section {
-  background: var(--bg-alt);
-}
-
-
 .landing-root[data-theme="dark"] .timeline-section {
   background: linear-gradient(160deg, #1F140B 0%, #281B10 50%, #2F2015 100%);
-}
-
-.landing-root[data-theme="dark"] .courses-section {
-  background: linear-gradient(160deg, #1F140B 0%, #28190D 50%, #2F2015 100%);
 }
 
 .landing-root[data-theme="dark"] .shooting-section {
@@ -75,33 +64,12 @@
 }
 
 .landing-root[data-theme="dark"] .feature-card,
-.landing-root[data-theme="dark"] .epoch-card,
-.landing-root[data-theme="dark"] .coverage-item,
-.landing-root[data-theme="dark"] .course-card,
 .landing-root[data-theme="dark"] .blog-card,
 .landing-root[data-theme="dark"] .donate-card,
 .landing-root[data-theme="dark"] .badge-item {
   background: rgba(42, 26, 14, 0.75);
   border-color: rgba(244, 165, 53, 0.35);
   color: var(--text-main);
-}
-
-.landing-root[data-theme="dark"] .stone-card {
-  background: linear-gradient(135deg, #3A2818, #2A1A0E);
-  border-color: rgba(244, 165, 53, 0.4);
-}
-
-.landing-root[data-theme="dark"] .stone-quote {
-  color: var(--marigold);
-}
-
-.landing-root[data-theme="dark"] .pill {
-  background: rgba(247, 213, 128, 0.12);
-  color: var(--marigold);
-}
-
-.landing-root[data-theme="dark"] .mandala-dot {
-  background: var(--marigold);
 }
 
 .landing-root[data-theme="dark"] .hero-right::before {
@@ -116,10 +84,21 @@
   opacity: 0.95;
 }
 
-.landing-root * {
+/* Previously `.landing-root * { margin:0; padding:0; box-sizing:border-box }`
+   — a blanket reset matching every descendant. box-sizing:border-box is
+   already global via Tailwind's preflight (@tailwind base), and margin/
+   padding on non-form elements is already explicitly set per-component
+   throughout this file, so the only real gap it was covering was browser
+   UA default padding on form controls (buttons/inputs) — Tailwind preflight
+   doesn't zero that. Narrowed to just those to stop it from silently
+   stripping padding off shared components (e.g. <footer>, popups) rendered
+   inside .landing-root that were never meant to be touched by this reset. */
+.landing-root button,
+.landing-root input,
+.landing-root select,
+.landing-root textarea {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html {
@@ -1084,158 +1063,6 @@ html {
 }
 
 /* ── MANDALA DIVIDER ── */
-.landing-root .mandala-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px 0;
-  gap: 20px;
-  opacity: 0.4;
-}
-
-.landing-root .mandala-line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, transparent, var(--saffron), transparent);
-}
-
-.landing-root .mandala-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--saffron);
-}
-
-/* ── STORY SECTION ── */
-.landing-root .story-section {
-  background: var(--pearl);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: start;
-  padding-top: 80px;
-  padding-bottom: 100px;
-}
-
-.landing-root .story-label {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 16px;
-  letter-spacing: 2.2px;
-  text-transform: uppercase;
-  color: var(--saffron);
-  margin-bottom: 12px;
-}
-
-.landing-root .story-heading {
-  font-family: 'Playfair Display', serif;
-  font-size: 52px;
-  font-weight: 500;
-  line-height: 57.2px;
-  letter-spacing: 0;
-  color: var(--deep-brown);
-  margin-bottom: 32px;
-}
-
-.landing-root .story-heading em {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 52px;
-  line-height: 57.2px;
-  letter-spacing: 0;
-  color: var(--saffron);
-}
-
-.landing-root .story-body {
-  font-family: 'DM Sans', sans-serif;
-  font-weight: 300;
-  font-size: 15px;
-  line-height: 27.75px;
-  letter-spacing: 0;
-  color: var(--ink);
-  opacity: 0.75;
-  max-width: 100%;
-}
-
-.landing-root .story-body+.story-body {
-  margin-top: 20px;
-}
-
-.landing-root .story-visual {
-  position: relative;
-}
-
-.landing-root .stone-card {
-  background: linear-gradient(135deg, var(--sandstone), var(--saffron-light));
-  border-radius: 20px;
-  padding: 40px 36px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  border: 1px solid rgba(244, 165, 53, 0.3);
-  box-shadow: 0 20px 60px rgba(61, 35, 20, 0.12);
-}
-
-.landing-root .stone-icon {
-  font-size: 56px;
-}
-
-.landing-root .stone-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 22px;
-  font-style: italic;
-  text-align: center;
-  color: var(--deep-brown);
-  line-height: 1.5;
-}
-
-.landing-root .stone-attr {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--terracotta);
-}
-
-.landing-root .story-stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 24px;
-}
-
-.landing-root .story-stat-card {
-  padding: 20px;
-  border-radius: 14px;
-  text-align: center;
-}
-
-.landing-root .story-stat-green {
-  background: rgba(200, 223, 192, 0.3);
-  border: 1px solid rgba(125, 175, 110, 0.3);
-}
-
-.landing-root .story-stat-pink {
-  background: rgba(242, 196, 206, 0.3);
-  border: 1px solid rgba(232, 144, 159, 0.3);
-}
-
-.landing-root .story-stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 32px;
-  font-weight: 600;
-}
-
-.landing-root .story-stat-label {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--deep-brown);
-  opacity: 0.6;
-  margin-top: 6px;
-}
 
 /* ── SHARED SECTION HEADINGS ── */
 .landing-root .section-header {
@@ -1320,48 +1147,6 @@ html {
   margin: 24px auto 0;
 }
 
-/* ── HERITAGE TIMELINE (Literature & Legacy) ── */
-/* ── STATS STRIP ── */
-.landing-root .stats-strip {
-  background: linear-gradient(135deg, #3D2314, #5A3020);
-  padding: 80px 60px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2px;
-}
-
-.landing-root .stat-card {
-  text-align: center;
-  padding: 40px 20px;
-  background: rgba(255, 255, 255, 0.04);
-  border-right: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.landing-root .stat-card:last-child {
-  border-right: none;
-}
-
-.landing-root .stat-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 64px;
-  font-weight: 300;
-  color: var(--marigold);
-  line-height: 1;
-}
-
-.landing-root .stat-unit {
-  font-size: 28px;
-  color: var(--saffron);
-}
-
-.landing-root .stat-label {
-  font-size: 11px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.5);
-  margin-top: 12px;
-}
-
 /* ── CHALLENGES ── */
 .landing-root .challenges-section {
   background: #1A0E07;
@@ -1429,70 +1214,6 @@ html {
   line-height: 24.5px;
   letter-spacing: 0;
   text-align: center;
-}
-
-/* ── POST PRODUCTION ── */
-.landing-root .post-section {
-  background: var(--pearl);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.landing-root .history-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 32px;
-}
-
-.landing-root .pill {
-  padding: 8px 20px;
-  border-radius: 30px;
-  background: rgba(247, 213, 128, 0.3);
-  border: 1px solid rgba(232, 168, 32, 0.4);
-  font-size: 12px;
-  letter-spacing: 1px;
-  color: var(--deep-brown);
-  font-family: 'Cormorant Garamond', serif;
-}
-
-.landing-root .post-visual {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.landing-root .epoch-card {
-  padding: 24px 28px;
-  border-radius: 14px;
-  border-left: 4px solid var(--saffron);
-  background: rgba(244, 165, 53, 0.06);
-}
-
-.landing-root .epoch-era {
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--saffron);
-  margin-bottom: 6px;
-}
-
-.landing-root .epoch-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--deep-brown);
-  margin-bottom: 8px;
-}
-
-.landing-root .epoch-body {
-  font-size: 13px;
-  line-height: 1.7;
-  color: var(--ink);
-  opacity: 0.65;
 }
 
 /* ── RELEASE SECTION ── */
@@ -1731,96 +1452,6 @@ html {
   }
 }
 
-/* ── ABOUT SECTION ── */
-.landing-root .about-section {
-  background: var(--cream);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-/* ── COURSES SECTION ── */
-.landing-root .courses-section {
-  background: linear-gradient(160deg, #FDF3E7 0%, #F5EDD8 50%, #F0E6D2 100%);
-}
-
-.landing-root .courses-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.landing-root .courses-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.landing-root .courses-split-left {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: center;
-  text-align: center;
-}
-
-.landing-root .courses-split-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 400;
-  font-size: 64px;
-  line-height: 69px;
-  letter-spacing: 0;
-  color: var(--deep-brown);
-  text-align: center;
-}
-
-.landing-root .courses-split-desc {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 27px;
-  letter-spacing: 0.7px;
-  text-align: center;
-  color: #DD9F3F;
-  max-width: 100%;
-}
-
-.landing-root .courses-split-stats {
-  display: flex;
-  gap: 32px;
-  margin-top: 8px;
-}
-
-.landing-root .courses-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.landing-root .courses-stat-num {
-  font-family: 'Playfair Display', serif;
-  font-size: 32px;
-  font-weight: 500;
-  color: var(--saffron);
-  line-height: 1;
-}
-
-.landing-root .courses-stat-label {
-  font-family: 'DM Sans', sans-serif;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--deep-brown);
-  opacity: 0.6;
-}
-
 @keyframes courses-pulse {
 
   0%,
@@ -1833,144 +1464,6 @@ html {
     opacity: 0.4;
     transform: scale(0.7);
   }
-}
-
-.landing-root .course-card-featured .course-img-wrap {
-  height: 280px;
-}
-
-@media (max-width:900px) {
-  .landing-root .courses-split {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
-}
-
-.landing-root .course-card {
-  position: relative;
-  border-radius: 20px;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  box-shadow: 0 8px 30px rgba(61, 35, 20, 0.07);
-  overflow: hidden;
-  transition: transform 0.4s cubic-bezier(0.22, 0.9, 0.32, 1), box-shadow 0.4s ease, border-color 0.4s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.landing-root .course-card:hover {
-  transform: translateY(-10px);
-  border-color: rgba(244, 165, 53, 0.6);
-  box-shadow: 0 28px 60px rgba(200, 120, 90, 0.22);
-}
-
-.landing-root .course-img-wrap {
-  position: relative;
-  height: 200px;
-  overflow: hidden;
-}
-
-.landing-root .course-img-wrap img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 1.2s cubic-bezier(0.22, 0.9, 0.32, 1);
-}
-
-.landing-root .course-card:hover .course-img-wrap img {
-  transform: scale(1.08);
-}
-
-.landing-root .course-img-wrap::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(42, 26, 14, 0.55) 100%);
-}
-
-.landing-root .course-img-tag {
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 2;
-  font-family: 'Cinzel', serif;
-  font-size: 10px;
-  letter-spacing: 2.5px;
-  padding: 6px 14px;
-  border-radius: 30px;
-  background: rgba(20, 10, 4, 0.55);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(244, 165, 53, 0.55);
-  color: var(--marigold);
-  text-transform: uppercase;
-}
-
-.landing-root .course-body {
-  padding: 28px 28px 30px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  flex: 1;
-}
-
-.landing-root .course-title {
-  font-family: 'Playfair Display', serif;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 25.65px;
-  letter-spacing: 0;
-  color: var(--text-strong);
-}
-
-.landing-root .course-desc {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 22.75px;
-  letter-spacing: 0;
-  color: var(--text-main);
-  opacity: 0.72;
-  flex: 1;
-}
-
-.landing-root .course-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--terracotta);
-  opacity: 0.85;
-  border-top: 1px dashed rgba(244, 165, 53, 0.35);
-  padding-top: 12px;
-  margin-top: 4px;
-}
-
-.landing-root[data-theme="dark"] .course-meta {
-  color: var(--marigold);
-}
-
-.landing-root .course-cta {
-  align-self: flex-start;
-  font-family: 'Cinzel', serif;
-  font-size: 11px;
-  letter-spacing: 2.5px;
-  padding: 11px 24px;
-  border-radius: 40px;
-  background: linear-gradient(135deg, var(--saffron), var(--marigold-deep));
-  color: #fff;
-  text-decoration: none;
-  text-transform: uppercase;
-  box-shadow: 0 6px 18px rgba(244, 165, 53, 0.35);
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  border: none;
-}
-
-.landing-root .course-cta:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 28px rgba(244, 165, 53, 0.55);
 }
 
 /* ── TIMELINE IMAGES ── */
@@ -2313,37 +1806,6 @@ html {
   justify-content: center !important;
 }
 
-/* ── THEME TOGGLE ── */
-.landing-root .theme-toggle {
-  position: fixed;
-  right: 20px;
-  bottom: 70px;
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  color: var(--saffron);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 998;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 8px 24px rgba(61, 35, 20, 0.18);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.landing-root .theme-toggle:hover {
-  transform: scale(1.08) rotate(20deg);
-  box-shadow: 0 12px 30px rgba(244, 165, 53, 0.4);
-}
-
-.landing-root .theme-toggle svg {
-  width: 20px;
-  height: 20px;
-}
-
 /* ── JOURNEY CAROUSEL ── */
 .landing-root .journey-section {
   background: linear-gradient(160deg, #2A1A0E 0%, #3D2314 50%, #5A3020 100%);
@@ -2563,132 +2025,6 @@ html {
   color: var(--saffron);
 }
 
-.landing-root .about-tag {
-  display: inline-block;
-  padding: 6px 18px;
-  border-radius: 20px;
-  background: rgba(200, 223, 192, 0.4);
-  border: 1px solid rgba(125, 175, 110, 0.4);
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--tulsi-deep);
-  margin-bottom: 20px;
-}
-
-.landing-root .about-founder {
-  margin-top: 32px;
-  padding: 24px;
-  border-radius: 14px;
-  background: rgba(244, 165, 53, 0.06);
-  border: 1px solid rgba(244, 165, 53, 0.2);
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.landing-root .founder-avatar {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--saffron), var(--marigold-deep));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Cinzel', serif;
-  font-size: 22px;
-  color: #fff;
-  font-weight: 600;
-  flex-shrink: 0;
-}
-
-.landing-root .founder-name {
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  color: var(--deep-brown);
-  margin-bottom: 4px;
-}
-
-.landing-root .founder-role {
-  font-size: 12px;
-  color: var(--saffron);
-  letter-spacing: 1px;
-}
-
-.landing-root .coverage-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-
-.landing-root .coverage-item {
-  padding: 20px;
-  border-radius: 12px;
-  background: rgba(253, 248, 240, 0.9);
-  border: 1px solid rgba(244, 165, 53, 0.2);
-}
-
-.landing-root .coverage-icon {
-  font-size: 20px;
-  margin-bottom: 8px;
-  display: block;
-}
-
-.landing-root .coverage-title {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--deep-brown);
-  margin-bottom: 4px;
-}
-
-.landing-root .coverage-body {
-  font-size: 11px;
-  line-height: 1.6;
-  color: var(--ink);
-  opacity: 0.6;
-}
-
-/* ── FOOTER ── */
-.landing-root footer {
-  background: var(--ink);
-  padding: 40px 60px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.landing-root .footer-logo {
-  font-family: 'Cinzel', serif;
-  font-size: 14px;
-  letter-spacing: 3px;
-  color: rgba(253, 248, 240, 0.6);
-}
-
-.landing-root .footer-links {
-  display: flex;
-  gap: 24px;
-}
-
-.landing-root .footer-links a {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: rgba(253, 248, 240, 0.35);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.landing-root .footer-links a:hover {
-  color: var(--saffron);
-}
-
-.landing-root .footer-copy {
-  font-size: 11px;
-  color: rgba(253, 248, 240, 0.25);
-}
-
 /* ── REVEAL ANIMATIONS ── */
 .landing-root .reveal {
   opacity: 0;
@@ -2864,20 +2200,7 @@ html {
 
 @media (max-width: 900px) {
 
-  .landing-root .story-section,
-  .landing-root .post-section,
-  .landing-root .about-section {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-
-  .landing-root .stats-strip {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 60px 30px;
-  }
-
-  .landing-root .features-grid,
-  .landing-root .courses-grid {
+  .landing-root .features-grid {
     grid-template-columns: 1fr;
     gap: 30px;
   }
@@ -2930,12 +2253,6 @@ html {
     margin-top: 40px;
   }
 
-  .landing-root footer {
-    flex-direction: column;
-    text-align: center;
-    gap: 40px;
-  }
-
   .landing-root .journey-carousel {
     padding: 0 20px;
   }
@@ -2961,15 +2278,6 @@ html {
     line-height: 1.2;
   }
 
-  .landing-root .story-heading {
-    font-size: 42px;
-    line-height: 1.2;
-  }
-
-  .landing-root .story-heading em {
-    font-size: 42px;
-  }
-
   /* Reduce oversized shooting title and donate section padding at tablet */
   .landing-root .shooting-section .section-title {
     font-size: 56px;
@@ -2978,10 +2286,6 @@ html {
 
   .landing-root .donate-section {
     padding: 80px 24px;
-  }
-
-  .landing-root footer {
-    padding: 40px 24px;
   }
 }
 
@@ -3003,11 +2307,6 @@ html {
     gap: 16px;
   }
 
-  .landing-root .story-section,
-  .landing-root .post-section {
-    gap: 40px;
-  }
-
   .landing-root .shooting-section .section-title {
     font-size: 52px;
     line-height: 1.15;
@@ -3016,26 +2315,9 @@ html {
   .landing-root .journey-header .section-title {
     font-size: 44px;
   }
-
-  .landing-root .courses-split-title {
-    font-size: 46px;
-  }
 }
 
 @media (max-width: 600px) {
-  .landing-root .stats-strip {
-    grid-template-columns: 1fr;
-  }
-
-  .landing-root .stat-card {
-    border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .landing-root .stat-card:last-child {
-    border-bottom: none;
-  }
-
   .landing-root .hero-title {
     font-size: clamp(32px, 10vw, 48px);
     white-space: normal;
@@ -3092,11 +2374,6 @@ html {
     line-height: 1.15;
   }
 
-  .landing-root .courses-split-title {
-    font-size: 42px;
-    line-height: 1.1;
-  }
-
   .landing-root .shooting-section .section-title {
     font-size: 44px;
     line-height: 1.15;
@@ -3111,18 +2388,8 @@ html {
     padding: 60px 20px;
   }
 
-  .landing-root footer {
-    padding: 30px 20px;
-  }
-
   .landing-root .journey-overlay {
     padding: 24px 20px;
-  }
-
-  .landing-root .footer-links {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
   }
 }
 
@@ -3133,10 +2400,6 @@ html {
 
   .landing-root .section {
     padding: 60px 16px;
-  }
-
-  .landing-root footer {
-    padding: 24px 16px;
   }
 
   .landing-root[data-theme="dark"] .tirthankar-wrap,
@@ -3165,33 +2428,12 @@ html {
     height: clamp(280px, 60vh, 420px);
   }
 
-  .landing-root .courses-split-stats {
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .landing-root .courses-split-title {
-    font-size: 36px;
-  }
-
-  .landing-root .story-heading {
-    font-size: 34px;
-  }
-
-  .landing-root .story-heading em {
-    font-size: 34px;
-  }
-
   .landing-root .section-title {
     font-size: clamp(30px, 8vw, 44px);
   }
 
   .landing-root .trailer-section {
     padding: 60px 16px;
-  }
-
-  .landing-root .stats-strip {
-    padding: 50px 16px;
   }
 
   .landing-root .journey-carousel {
@@ -3227,20 +2469,6 @@ html {
   }
 }
 
-/* ── ORNAMENT SVG decoration ── */
-.landing-root .om-decoration {
-  text-align: center;
-  font-size: 48px;
-  opacity: 0.08;
-  position: absolute;
-  right: 60px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Cormorant Garamond', serif;
-  color: var(--saffron);
-  pointer-events: none;
-}
-
 /* Scroll progress bar */
 .landing-root #progress-bar {
   position: fixed;
@@ -3262,6 +2490,31 @@ html {
 /* Restore padding zeroed by the `.landing-root *` reset */
 .landing-root .lang-switcher-btn {
   padding: 6px 14px !important;
+}
+
+/* Restore padding zeroed by the `.landing-root *` reset — footer.css's
+   base `footer { padding: 40px 60px }` loses to `.landing-root *`'s
+   `padding: 0` on specificity, so it needs a same-scope override here. */
+.landing-root footer {
+  padding: 40px 60px;
+}
+
+@media (max-width: 900px) {
+  .landing-root footer {
+    padding: 40px 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .landing-root footer {
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .landing-root footer {
+    padding: 24px 16px;
+  }
 }
 
 /* Unscrolled home page: transparent navbar over hero image.

@@ -143,15 +143,15 @@ const Navbar = () => {
           <strong><Link to="/" className={location.pathname === "/" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/")} onTouchStart={() => preloadRoute("/")}>{t("nav.home")}</Link></strong>
           <strong><Link to="/tamil-jain" className={location.pathname === "/tamil-jain" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/tamil-jain")} onTouchStart={() => preloadRoute("/tamil-jain")}>{t("nav.tamilJain")}</Link></strong>
           <strong><Link to="/about" className={location.pathname === "/about" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/about")} onTouchStart={() => preloadRoute("/about")}>{t("nav.about")}</Link></strong>
-          <strong><Link to="/" className={location.pathname === "/" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/")} onTouchStart={() => preloadRoute("/")}>Home</Link></strong>
-          <strong><Link to="/tamil-jain" className={location.pathname === "/tamil-jain" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/tamil-jain")} onTouchStart={() => preloadRoute("/tamil-jain")}>Tamil Jain</Link></strong>
-          <strong><Link to="/events" className={location.pathname.startsWith("/events") ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)}>Events</Link></strong>
+          {/* <strong><Link to="/" className={location.pathname === "/" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/")} onTouchStart={() => preloadRoute("/")}>Home</Link></strong> */}
+          {/* <strong><Link to="/tamil-jain" className={location.pathname === "/tamil-jain" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/tamil-jain")} onTouchStart={() => preloadRoute("/tamil-jain")}>Tamil Jain</Link></strong> */}
+          <strong><Link to="/events" className={location.pathname.startsWith("/events") ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/events")} onTouchStart={() => preloadRoute("/events")}>{t("nav.events")}</Link></strong>
           {/* <strong><a href="#heritage" onClick={() => setIsMobileMenuOpen(false)}>Heritage</a></strong>
         <strong><a href="#journey" onClick={() => setIsMobileMenuOpen(false)}>Virasat</a></strong>
         <strong><a href="#courses" onClick={() => setIsMobileMenuOpen(false)}>Courses</a></strong>
         <strong><a href="#blogs" onClick={() => setIsMobileMenuOpen(false)}>Map</a></strong>
         <strong><a href="#support" onClick={() => setIsMobileMenuOpen(false)}>Blogs</a></strong> */}
-          <strong><Link to="/about" className={location.pathname === "/about" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/about")} onTouchStart={() => preloadRoute("/about")}>About us</Link></strong>
+          {/* <strong><Link to="/about" className={location.pathname === "/about" ? "active" : ""} onClick={() => setIsMobileMenuOpen(false)} onMouseEnter={() => preloadRoute("/about")} onTouchStart={() => preloadRoute("/about")}>About us</Link></strong> */}
         </div>
 
         {/* Language selector in mobile drawer */}
