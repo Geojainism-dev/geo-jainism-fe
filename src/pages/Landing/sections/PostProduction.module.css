@@ -1,0 +1,90 @@
+.postSection {
+  background: var(--pearl);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+:global(.landing-root[data-theme="dark"]) .postSection {
+  background: var(--bg-alt);
+}
+
+.historyPills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.pill {
+  padding: 8px 20px;
+  border-radius: 30px;
+  background: rgba(247, 213, 128, 0.3);
+  border: 1px solid rgba(232, 168, 32, 0.4);
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--deep-brown);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+:global(.landing-root[data-theme="dark"]) .pill {
+  background: rgba(247, 213, 128, 0.12);
+  color: var(--marigold);
+}
+
+.postVisual {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.epochCard {
+  padding: 24px 28px;
+  border-radius: 14px;
+  border-left: 4px solid var(--saffron);
+  background: rgba(244, 165, 53, 0.06);
+}
+
+:global(.landing-root[data-theme="dark"]) .epochCard {
+  background: rgba(42, 26, 14, 0.75);
+  border-color: rgba(244, 165, 53, 0.35);
+  color: var(--text-main);
+}
+
+.epochEra {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 6px;
+}
+
+.epochTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--deep-brown);
+  margin-bottom: 8px;
+}
+
+.epochBody {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink);
+  opacity: 0.65;
+}
+
+@media (max-width: 900px) {
+  .postSection {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .postSection {
+    gap: 40px;
+  }
+}

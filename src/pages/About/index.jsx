@@ -8,11 +8,12 @@ import {
 import {
   ChevronDown, Film, MapPin, BookOpen, Globe, Users,
   Phone, Mail, Instagram, Youtube, Twitter, MessageCircle,
-  Sun, Moon,
 } from "lucide-react";
 import { useLenis, useTheme } from "@/hooks";
+import { useTranslation } from "react-i18next";
 import { Navbar, Footer } from "@/components/layout";
-import { ErrorBoundary } from "@/components/common";
+
+import { ErrorBoundary, ThemeToggle } from "@/components/common";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
@@ -150,35 +151,6 @@ function ScrollProgress() {
 }
 
 /* ── Dark / Light mode floating toggle ── */
-function DarkModeFAB({ isDark, onToggle }) {
-  return (
-    <button
-      className="abt-theme-fab"
-      onClick={onToggle}
-      style={{
-        background: isDark
-          ? "rgba(250,240,217,0.10)"
-          : "rgba(6,13,8,0.84)",
-        border: `1px solid ${isDark ? "rgba(244,165,53,0.38)" : "rgba(253,248,240,0.22)"}`,
-        boxShadow: isDark
-          ? "0 4px 24px rgba(244,165,53,0.16), inset 0 1px 0 rgba(244,165,53,0.08)"
-          : "0 4px 28px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.06)",
-      }}
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-    >
-      <span
-        className="abt-theme-fab-icon"
-        style={{ display: "flex", transform: isDark ? "rotate(0deg)" : "rotate(-30deg)" }}
-      >
-        {isDark
-          ? <Sun  size={17} style={{ color: "#F4A535" }} />
-          : <Moon size={17} style={{ color: "#FAF0D9" }} />
-        }
-      </span>
-    </button>
-  );
-}
-
 /* ── Cinematic full-bleed parallax break ── */
 function CinematicBreak({ src, quote, sub }) {
   const ref = useRef(null);
@@ -297,7 +269,7 @@ export default function AboutPage() {
     <ErrorBoundary>
       <div className="about-page-root" data-theme={theme} style={{ background: C.bg, minHeight: "100vh", transition: "background 0.5s ease" }}>
         <ScrollProgress />
-        <DarkModeFAB isDark={isDark} onToggle={toggleTheme} />
+        <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
         <Navbar />
         <main style={{ paddingTop: "72px" }}>
 
@@ -352,6 +324,7 @@ function HeroSection({ isDark, grain }) {
   const bgScale = useTransform(scrollYProgress, [0, 1], [1.0, 1.12]);
   const textY   = useTransform(scrollYProgress, [0, 1], ["0%", "22%"]);
   const textO   = useTransform(scrollYProgress, [0, 0.55], [1, 0]);
+  const { t } = useTranslation();
 
   return (
     <section
@@ -387,7 +360,7 @@ function HeroSection({ isDark, grain }) {
           style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "18px", marginBottom: "44px" }}
         >
           <div style={{ width: "48px", height: "1px", background: "linear-gradient(to right,transparent,rgba(244,165,53,0.7))" }} />
-          <span className="abt-hero-eyebrow" style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7.5px,0.95vw,10px)", letterSpacing: "8px", color: "rgba(253,248,240,1)", textTransform: "uppercase" }}>Golden Era of Jainism</span>
+          <span className="abt-hero-eyebrow" style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7.5px,0.95vw,10px)", letterSpacing: "8px", color: "rgba(253,248,240,1)", textTransform: "uppercase" }}>{t("about.hero.eyebrow")}</span>
           <div style={{ width: "48px", height: "1px", background: "linear-gradient(to left,transparent,rgba(244,165,53,0.7))" }} />
         </motion.div>
 
@@ -400,7 +373,7 @@ function HeroSection({ isDark, grain }) {
             className="abt-hero-title-ls"
             style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(72px,16vw,200px)", fontWeight: 300, color: "#FAF0D9", letterSpacing: "-5px", textShadow: "0 4px 80px rgba(0,0,0,0.50)" }}
           >
-            GEO
+            {t("about.hero.title1")}
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 56, filter: "blur(16px)" }}
@@ -409,7 +382,7 @@ function HeroSection({ isDark, grain }) {
             className="abt-hero-title-ls"
             style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(72px,16vw,200px)", fontWeight: 700, background: "linear-gradient(118deg,#F4A535 0%,#F7D580 40%,#E8A820 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", letterSpacing: "-5px" }}
           >
-            Jainism.
+            {t("about.hero.title2")}
           </motion.div>
         </h1>
 
@@ -421,8 +394,7 @@ function HeroSection({ isDark, grain }) {
           style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "20px", margin: "38px 0 0" }}
         >
           <div style={{ flex: "0 1 80px", height: "1px", background: "linear-gradient(to right,transparent,rgba(232,144,159,0.70))" }} />
-          <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(16px,2.4vw,24px)", fontStyle: "italic", fontWeight: 300, color: "rgba(253,248,240,0.90)", lineHeight: 1.6, margin: 0, maxWidth: "560px", textShadow: "0 2px 24px rgba(0,0,0,0.45)" }}>
-            Where every stone holds a story<br />two thousand years old.
+          <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(16px,2.4vw,24px)", fontStyle: "italic", fontWeight: 300, color: "rgba(253,248,240,0.90)", lineHeight: 1.6, margin: 0, maxWidth: "560px", textShadow: "0 2px 24px rgba(0,0,0,0.45)" }} dangerouslySetInnerHTML={{ __html: t("about.hero.quote") }}>
           </p>
           <div style={{ flex: "0 1 80px", height: "1px", background: "linear-gradient(to left,transparent,rgba(232,144,159,0.70))" }} />
         </motion.div>
@@ -435,7 +407,7 @@ function HeroSection({ isDark, grain }) {
           className="abt-hero-sublabel"
           style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7.5px,0.9vw,10px)", letterSpacing: "6px", color: "rgba(253,248,240,0.45)", marginTop: "22px", textTransform: "uppercase" }}
         >
-          Research · Documentation · Preservation
+          {t("about.hero.sublabel")}
         </motion.p>
 
         {/* Scroll cue */}
@@ -446,7 +418,7 @@ function HeroSection({ isDark, grain }) {
           className="abt-scroll-cue"
           style={{ marginTop: "72px", display: "flex", flexDirection: "column", alignItems: "center", gap: "8px" }}
         >
-          <span style={{ fontFamily: "'Cinzel',serif", fontSize: "6.5px", letterSpacing: "5px", color: "rgba(253,248,240,0.35)", textTransform: "uppercase" }}>Scroll</span>
+          <span style={{ fontFamily: "'Cinzel',serif", fontSize: "6.5px", letterSpacing: "5px", color: "rgba(253,248,240,0.35)", textTransform: "uppercase" }}>{t("about.hero.scrollCue")}</span>
           <ChevronDown size={15} style={{ color: "#F4A535", animation: "abtBounce 2.2s ease-in-out infinite" }} />
         </motion.div>
 
@@ -463,6 +435,7 @@ function HeroSection({ isDark, grain }) {
 ───────────────────────────────────────── */
 function ManifestoSection({ isDark, C, SP, MW, grain }) {
   const quoteRef = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     if (!quoteRef.current) return;
@@ -482,7 +455,7 @@ function ManifestoSection({ isDark, C, SP, MW, grain }) {
     return () => st.kill();
   }, []);
 
-  const quoteWords = "We don't just talk about history — we travel to ancient places, document hidden temples, and bring lost stories back to life.".split(" ");
+  const quoteWords = t("about.manifesto.quote", "We don't just talk about history — we travel to ancient places, document hidden temples, and bring lost stories back to life.").split(" ");
 
   /* Chapter label */
   const ChapterLabel = ({ n, text }) => (
@@ -502,7 +475,7 @@ function ManifestoSection({ isDark, C, SP, MW, grain }) {
 
       <div style={{ ...MW, textAlign: "center", position: "relative", zIndex: 1 }}>
         <R dir="up">
-          <ChapterLabel n="—" text="Our Purpose" />
+          <ChapterLabel n="—" text={t("about.manifesto.chapter")} />
         </R>
 
         {/* Huge GSAP quote */}
@@ -520,13 +493,14 @@ function ManifestoSection({ isDark, C, SP, MW, grain }) {
             {["#E8909F","#F4A535","#7DAF6E"].map(col => <div key={col} style={{ width: 5, height: 5, borderRadius: "50%", background: col, boxShadow: `0 0 10px ${col}` }} />)}
           </div>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(13px,1.6vw,17px)", fontWeight: 300, lineHeight: 1.95, color: C.body, maxWidth: "640px", margin: "0 auto" }}>
-            GEO Jainism is among the first dedicated content initiatives creating in-depth, research-based documentary films on the vast and rich history of Jainism. Our sole objective: to bring the neglected heritage of Jainism into the mainstream.
+            {t("about.manifesto.body")}
           </p>
         </R>
       </div>
     </section>
   );
 }
+
 
 /* ─────────────────────────────────────────
    STATS
@@ -537,12 +511,13 @@ function StatsSection({ isDark, C, SP, MW }) {
   const n1 = useCountUp(111, inView, 1900);
   const n2 = useCountUp(7,   inView, 1400);
   const n3 = useCountUp(50,  inView, 1700);
+  const { t } = useTranslation();
 
   const STATS = [
-    { display: "1.9M+", label: "Documentary\nViews",     color: "#F4A535", isStatic: true },
-    { display: n1,      label: "Jain Sites\nDocumented", color: "#7DAF6E", suffix: "" },
-    { display: n2,      label: "States &\nNations",      color: "#E8909F", suffix: "+" },
-    { display: n3,      label: "Tamil Voices\nCaptured", color: "#F4A535", suffix: "+" },
+    { display: t("about.stats.1.num", "1.9M+"), label: t("about.stats.1.label", "Documentary\nViews"),     color: "#F4A535", isStatic: true },
+    { display: n1,      label: t("about.stats.2.label", "Jain Sites\nDocumented"), color: "#7DAF6E", suffix: "" },
+    { display: n2,      label: t("about.stats.3.label", "States &\nNations"),      color: "#E8909F", suffix: "+" },
+    { display: n3,      label: t("about.stats.4.label", "Tamil Voices\nCaptured"), color: "#F4A535", suffix: "+" },
   ];
 
   return (
@@ -581,28 +556,37 @@ function StatsSection({ isDark, C, SP, MW }) {
    OUR WORK — three editorial cards
 ───────────────────────────────────────── */
 function WorkSection({ isDark, C, SP, MW }) {
+  const { t } = useTranslation();
   const TRIO = [
     {
-      num: "01", word: "Research",
-      stat: "111", statLabel: "Ancient Sites",
-      body: "Decades of on-ground scholarship — from Tamil cave temples to Bihar's forgotten rock inscriptions.",
+      num: "01", word: t("about.work.card1.word", "Research"),
+      stat: "111", statLabel: t("about.work.card1.statLabel", "Ancient Sites"),
+      body: t("about.work.card1.body", "Decades of on-ground scholarship — from Tamil cave temples to Bihar's forgotten rock inscriptions."),
       img: "/journey/01-rock-sculpture.jpg",
       accent: "#E8909F",
     },
     {
-      num: "02", word: "Document",
-      stat: "4K", statLabel: "Cinematic Coverage",
-      body: "Drone, ground and macro footage across India's most remote Jain heritage landscapes.",
+      num: "02", word: t("about.work.card2.word", "Document"),
+      stat: "4K", statLabel: t("about.work.card2.statLabel", "Cinematic Coverage"),
+      body: t("about.work.card2.body", "Drone, ground and macro footage across India's most remote Jain heritage landscapes."),
       img: "/journey/02-temple-hill.jpg",
       accent: "#F4A535",
     },
     {
-      num: "03", word: "Preserve",
-      stat: "10K", statLabel: "Years of History",
-      body: "So the children of Tamil Jains, a thousand years from now, know exactly who they were.",
+      num: "03", word: t("about.work.card3.word", "Preserve"),
+      stat: "10K", statLabel: t("about.work.card3.statLabel", "Years of History"),
+      body: t("about.work.card3.body", "So the children of Tamil Jains, a thousand years from now, know exactly who they were."),
       img: "/journey/05-rock-carvings.jpg",
       accent: "#7DAF6E",
     },
+  ];
+
+  const PILLARS_LOCAL = [
+    { Icon: Film,     label: t("about.work.pillars.0.label", "Documentary Filmmaking"), body: t("about.work.pillars.0.body", "Among the first dedicated initiatives creating in-depth, research-based films on the vast and rich history of Jainism."),                    accent: "#E8909F" },
+    { Icon: MapPin,   label: t("about.work.pillars.1.label", "Field Research"),         body: t("about.work.pillars.1.body", "Ancient Jain temples, remote cave sites, and neglected historical locations documented through rigorous on-ground work."),                    accent: "#7DAF6E" },
+    { Icon: BookOpen, label: t("about.work.pillars.2.label", "Rare Literature"),        body: t("about.work.pillars.2.body", "First-ever video coverage of Naldiyar, Silappadikaram, Ratnakar and other rare Jain texts and oral traditions."),                            accent: "#F4A535" },
+    { Icon: Globe,    label: t("about.work.pillars.3.label", "Regional Coverage"),      body: t("about.work.pillars.3.body", "Jain history across Pakistan, Andhra Pradesh, Kerala, Telangana, Tamil Nadu, Karnataka, Goa, Bihar and Lalitpur."),                          accent: "#7DAF6E" },
+    { Icon: Users,    label: t("about.work.pillars.4.label", "Inspiring Ancestors"),    body: t("about.work.pillars.4.body", "Documentaries on Chennabhairadevi, Rani Abbakka and other extraordinary Jain figures that history nearly forgot."),                          accent: "#E8909F" },
   ];
 
   return (
@@ -614,14 +598,14 @@ function WorkSection({ isDark, C, SP, MW }) {
           <div style={{ display: "flex", alignItems: "center", gap: "14px", justifyContent: "center", marginBottom: "18px" }}>
             <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "1px", color: isDark ? "rgba(244,165,53,0.55)" : "rgba(232,144,159,0.70)" }}>02 /</span>
             <div style={{ width: "40px", height: "1px", background: isDark ? "rgba(244,165,53,0.35)" : "rgba(232,144,159,0.50)" }} />
-            <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "7px", color: C.faint, textTransform: "uppercase" }}>What We Do</span>
+            <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "7px", color: C.faint, textTransform: "uppercase" }}>{t("about.work.chapter")}</span>
           </div>
           <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(32px,5.5vw,66px)", fontWeight: 300, color: C.title, lineHeight: 1.1, margin: 0, letterSpacing: "-1.5px" }}>
-            Research. Document.{" "}
-            <em style={{ fontStyle: "italic", color: C.rose }}>Preserve.</em>
+            {t("about.work.title1")}{" "}
+            <em style={{ fontStyle: "italic", color: C.rose }}>{t("about.work.title2")}</em>
           </h2>
           <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(14px,1.8vw,19px)", fontStyle: "italic", fontWeight: 300, color: C.faint, margin: "16px 0 0", lineHeight: 1.6 }}>
-            Through cameras, boots, and field notes — we ensure nothing is lost to time.
+            {t("about.work.desc")}
           </p>
         </R>
 
@@ -664,11 +648,11 @@ function WorkSection({ isDark, C, SP, MW }) {
         {/* Focus area chips */}
         <R dir="up" delay={200}>
           <div style={{ marginTop: "clamp(40px,6vw,64px)", paddingTop: "clamp(28px,4vw,40px)", borderTop: `1px solid ${C.border}` }}>
-            <p style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7.5px,0.9vw,9.5px)", letterSpacing: "5px", color: C.faint, textTransform: "uppercase", marginBottom: "20px", textAlign: "center" }}>Focus Areas</p>
+            <p style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7.5px,0.9vw,9.5px)", letterSpacing: "5px", color: C.faint, textTransform: "uppercase", marginBottom: "20px", textAlign: "center" }}>{t("about.work.focusAreas")}</p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", justifyContent: "center" }}>
-              {PILLARS.map((p) => (
+              {PILLARS_LOCAL.map((p) => (
                 <motion.div
-                  key={p.label}
+                   key={p.label}
                   whileHover={{ scale: 1.04, borderColor: p.accent }}
                   style={{ display: "flex", alignItems: "center", gap: "8px", padding: "9px 18px", background: C.cardBg, border: `1px solid ${C.cardBdr}`, borderRadius: "100px", backdropFilter: "blur(8px)", transition: "border-color 0.25s ease" }}
                 >
@@ -690,6 +674,7 @@ function WorkSection({ isDark, C, SP, MW }) {
 ───────────────────────────────────────── */
 function GalleryStrip({ isDark, C }) {
   const [paused, setPaused] = useState(false);
+  const { t } = useTranslation();
   const IMGS = [
     "/journey/01-rock-sculpture.jpg", "/journey/02-temple-hill.jpg",
     "/journey/03-team-group.jpg",     "/journey/04-hillside.jpg",
@@ -713,7 +698,7 @@ function GalleryStrip({ isDark, C }) {
 
       <div style={{ textAlign: "center", marginBottom: "16px", position: "relative", zIndex: 1 }}>
         <p style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7.5px,0.95vw,10px)", letterSpacing: "7px", color: C.faint, textTransform: "uppercase", margin: 0 }}>
-          111 Sites · 7 States · 50+ Hilltop Pilgrimages
+          {t("about.gallery.desc")}
         </p>
       </div>
 
@@ -740,7 +725,7 @@ function GalleryStrip({ isDark, C }) {
 
       {/* Touch hint — mobile only */}
       <p className="abt-gallery-touch-hint" style={{ color: C.faint, margin: "4px 0 0" }}>
-        touch to pause · swipe freely
+        {t("about.gallery.touchHint")}
       </p>
 
       {/* Film sprocket holes — bottom */}
@@ -757,6 +742,19 @@ function GalleryStrip({ isDark, C }) {
    REGIONS
 ───────────────────────────────────────── */
 function RegionsSection({ isDark, C, SP, MW }) {
+  const { t } = useTranslation();
+  const REGIONS_LOCAL = [
+    t("regions.tamilNadu", "Tamil Nadu"),
+    t("regions.karnataka", "Karnataka"),
+    t("regions.andhraPradesh", "Andhra Pradesh"),
+    t("regions.kerala", "Kerala"),
+    t("regions.telangana", "Telangana"),
+    t("regions.goa", "Goa"),
+    t("regions.bihar", "Bihar"),
+    t("regions.lalitpur", "Lalitpur"),
+    t("regions.pakistan", "Pakistan")
+  ];
+
   return (
     <section style={{ ...SP, background: C.altBg, borderBottom: `1px solid ${C.border}` }}>
       <div style={{ ...MW, textAlign: "center" }}>
@@ -764,18 +762,18 @@ function RegionsSection({ isDark, C, SP, MW }) {
           <div style={{ display: "flex", alignItems: "center", gap: "14px", justifyContent: "center", marginBottom: "18px" }}>
             <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "1px", color: isDark ? "rgba(244,165,53,0.55)" : "rgba(232,144,159,0.70)" }}>03 /</span>
             <div style={{ width: "40px", height: "1px", background: isDark ? "rgba(244,165,53,0.35)" : "rgba(232,144,159,0.50)" }} />
-            <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "7px", color: C.faint, textTransform: "uppercase" }}>Where We've Been</span>
+            <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "7px", color: C.faint, textTransform: "uppercase" }}>{t("about.regions.chapter")}</span>
           </div>
           <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(30px,5vw,58px)", fontWeight: 300, color: C.title, lineHeight: 1.18, margin: "0 0 16px", letterSpacing: "-0.8px" }}>
-            Jain Heritage Across{" "}
-            <em style={{ fontStyle: "italic", color: C.sage }}>Borders</em>
+            {t("about.regions.title1")}{" "}
+            <em style={{ fontStyle: "italic", color: C.sage }}>{t("about.regions.title2")}</em>
           </h2>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(12px,1.3vw,15px)", fontWeight: 300, color: C.faint, marginBottom: "52px" }}>
-            Field documentation spanning multiple states and nations
+            {t("about.regions.desc")}
           </p>
         </R>
         <div className="abt-regions-wrap" style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "12px 14px" }}>
-          {REGIONS.map((r, i) => (
+          {REGIONS_LOCAL.map((r, i) => (
             <R key={r} dir="up" delay={i * 55} style={{ display: "inline-block" }}>
               <span
                 style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8.5px,1vw,11px)", letterSpacing: "3px", color: C.tagTxt, background: C.tagBg, border: `1px solid ${C.tagBdr}`, padding: "11px 26px", borderRadius: "2px", textTransform: "uppercase", display: "block", transition: "all 0.3s ease", cursor: "default" }}
@@ -799,6 +797,7 @@ function FounderSection({ isDark, C, SP, grain }) {
   const photoRef = useRef(null);
   const { scrollYProgress: photoSP } = useScroll({ target: photoRef, offset: ["start end", "end start"] });
   const photoY = useTransform(photoSP, [0, 1], ["-10%", "10%"]);
+  const { t } = useTranslation();
 
   return (
     <section style={{ ...SP, position: "relative", overflow: "hidden" }}>
@@ -821,7 +820,7 @@ function FounderSection({ isDark, C, SP, grain }) {
             <div aria-hidden style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%)" }} />
             {/* Caption in photo */}
             <div style={{ position: "absolute", bottom: "20px", left: "20px", right: "20px" }}>
-              <p style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7px,0.85vw,9px)", letterSpacing: "4px", color: "rgba(253,248,240,0.65)", textTransform: "uppercase", margin: "0 0 4px" }}>Founder · Geo Jainism</p>
+              <p style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7px,0.85vw,9px)", letterSpacing: "4px", color: "rgba(253,248,240,0.65)", textTransform: "uppercase", margin: "0 0 4px" }}>{t("about.founder.photoLabel")}</p>
               <p style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(16px,2.2vw,24px)", fontWeight: 400, color: "#FAF0D9", margin: 0, letterSpacing: "0.5px" }}>Kavi Sajal Jain</p>
             </div>
             {/* Corner film brackets */}
@@ -837,7 +836,7 @@ function FounderSection({ isDark, C, SP, grain }) {
             <div style={{ display: "flex", alignItems: "center", gap: "14px", marginBottom: "32px" }}>
               <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "1px", color: isDark ? "rgba(244,165,53,0.55)" : "rgba(232,144,159,0.70)" }}>04 /</span>
               <div style={{ width: "40px", height: "1px", background: isDark ? "rgba(244,165,53,0.35)" : "rgba(232,144,159,0.50)" }} />
-              <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "7px", color: C.faint, textTransform: "uppercase" }}>The Voice Behind</span>
+              <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "7px", color: C.faint, textTransform: "uppercase" }}>{t("about.founder.chapter")}</span>
             </div>
           </R>
           <R dir="up" delay={100}>
@@ -845,7 +844,7 @@ function FounderSection({ isDark, C, SP, grain }) {
               Kavi Sajal Jain
             </div>
             <div style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "5px", color: isDark ? C.gold : C.rose, textTransform: "uppercase", marginBottom: "40px" }}>
-              Founder & Concept Director
+              {t("about.founder.role")}
             </div>
           </R>
           <R dir="up" delay={200}>
@@ -855,10 +854,10 @@ function FounderSection({ isDark, C, SP, grain }) {
               <div style={{ flex: 1, height: "1px", background: `linear-gradient(to left,transparent,${C.border})` }} />
             </div>
             <blockquote style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(20px,2.8vw,32px)", fontStyle: "italic", fontWeight: 300, lineHeight: 1.72, color: C.quote, margin: "0 0 26px", letterSpacing: "0.1px" }}>
-              "To bring the eternal Jain heritage into the light —<br />that is our foremost purpose."
+              {t("about.founder.quote")}
             </blockquote>
             <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(12px,1.3vw,15px)", fontWeight: 300, color: C.faint, lineHeight: 1.8 }}>
-              Researcher · Filmmaker · Cultural Documentarian
+              {t("about.founder.bio")}
             </p>
           </R>
         </div>
@@ -867,10 +866,18 @@ function FounderSection({ isDark, C, SP, grain }) {
   );
 }
 
+
 /* ─────────────────────────────────────────
    UPCOMING
 ───────────────────────────────────────── */
 function UpcomingSection({ isDark, C, SP, MW }) {
+  const { t } = useTranslation();
+  const FUTURE_LOCAL = [
+    t("about.upcoming.future.0", "Pan-India site mapping & geographical visual archive of Jainism's spread"),
+    t("about.upcoming.future.1", "Long-format documentary storytelling for global audiences"),
+    t("about.upcoming.future.2", "Deeper field research into unexplored Jain cave sites & remote temples"),
+  ];
+
   return (
     <section style={{ ...SP, background: C.altBg, borderTop: `1px solid ${C.border}` }}>
       <div style={MW}>
@@ -878,11 +885,11 @@ function UpcomingSection({ isDark, C, SP, MW }) {
           <div style={{ display: "flex", alignItems: "center", gap: "14px", justifyContent: "center", marginBottom: "18px" }}>
             <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "1px", color: isDark ? "rgba(244,165,53,0.55)" : "rgba(232,144,159,0.70)" }}>05 /</span>
             <div style={{ width: "40px", height: "1px", background: isDark ? "rgba(244,165,53,0.35)" : "rgba(232,144,159,0.50)" }} />
-            <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "7px", color: C.faint, textTransform: "uppercase" }}>What's Next</span>
+            <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "7px", color: C.faint, textTransform: "uppercase" }}>{t("about.upcoming.chapter")}</span>
           </div>
           <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(30px,5vw,58px)", fontWeight: 300, color: C.title, lineHeight: 1.18, margin: 0, letterSpacing: "-0.8px" }}>
-            Upcoming Work &{" "}
-            <em style={{ fontStyle: "italic", color: isDark ? C.gold : C.rose }}>Vision</em>
+            {t("about.upcoming.title1")}{" "}
+            <em style={{ fontStyle: "italic", color: isDark ? C.gold : C.rose }}>{t("about.upcoming.title2")}</em>
           </h2>
         </R>
 
@@ -899,21 +906,21 @@ function UpcomingSection({ isDark, C, SP, MW }) {
                   <div style={{ display: "flex", gap: "5px", marginBottom: "8px", opacity: 0.55 }}>
                     {[...Array(7)].map((_, i) => <div key={i} style={{ width: 7, height: 12, borderRadius: 2, background: isDark ? "#7DAF6E" : "#E8909F" }} />)}
                   </div>
-                  <p style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7px,0.9vw,9px)", letterSpacing: "5px", color: isDark ? "rgba(247,213,128,0.9)" : "rgba(253,248,240,0.9)", textTransform: "uppercase", margin: 0 }}>Now in Post-Production</p>
+                  <p style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(7px,0.9vw,9px)", letterSpacing: "5px", color: isDark ? "rgba(247,213,128,0.9)" : "rgba(253,248,240,0.9)", textTransform: "uppercase", margin: 0 }}>{t("about.upcoming.badge")}</p>
                 </div>
               </div>
               {/* Card body */}
               <div style={{ padding: "clamp(24px,3.5vw,40px)", position: "relative" }}>
                 <div aria-hidden style={{ position: "absolute", top: 0, left: 0, width: "80px", height: "100%", background: "linear-gradient(90deg,transparent,rgba(232,144,159,0.04),transparent)", animation: "abtShimmer 3.5s ease-out 1s infinite", pointerEvents: "none" }} />
                 <h3 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(22px,3vw,36px)", fontWeight: 400, color: C.title, lineHeight: 1.15, margin: "0 0 14px", letterSpacing: "-0.5px" }}>
-                  Tamil Jains Documentary
+                  {t("about.upcoming.docTitle")}
                 </h3>
                 <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(12px,1.3vw,14px)", fontWeight: 300, lineHeight: 1.88, color: C.body, margin: "0 0 24px" }}>
-                  On-ground shooting complete across 111 ancient Jain sites in Tamil Nadu — 4K footage, 50+ hilltop pilgrimages, and the living testimony of 30,000 Tamil Jains preserved forever on film.
+                  {t("about.upcoming.docDesc")}
                 </p>
                 <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                   <div style={{ width: 8, height: 8, borderRadius: "50%", background: isDark ? C.gold : C.rose, boxShadow: `0 0 12px ${isDark ? "rgba(244,165,53,0.9)" : "rgba(232,144,159,0.9)"}`, animation: "abtPulse 2.2s ease-in-out infinite" }} />
-                  <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "3.5px", color: isDark ? C.gold : C.rose, textTransform: "uppercase" }}>Releasing August 2026</span>
+                  <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "3.5px", color: isDark ? C.gold : C.rose, textTransform: "uppercase" }}>{t("about.upcoming.releasingLabel")}</span>
                 </div>
               </div>
             </div>
@@ -922,9 +929,9 @@ function UpcomingSection({ isDark, C, SP, MW }) {
           {/* Future plans */}
           <R dir="right">
             <div>
-              <p style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "5px", color: C.faint, textTransform: "uppercase", marginBottom: "32px" }}>On The Horizon</p>
+              <p style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "5px", color: C.faint, textTransform: "uppercase", marginBottom: "32px" }}>{t("about.upcoming.horizonLabel")}</p>
               <div style={{ display: "flex", flexDirection: "column", gap: "28px" }}>
-                {FUTURE.map((item, i) => (
+                {FUTURE_LOCAL.map((item, i) => (
                   <R key={i} dir="right" delay={i * 100}>
                     <div style={{ display: "flex", gap: "18px", alignItems: "flex-start" }}>
                       <div style={{ width: "26px", height: "26px", borderRadius: "50%", border: `1px solid ${isDark ? "rgba(125,175,110,0.40)" : "rgba(125,175,110,0.58)"}`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, marginTop: "1px" }}>
@@ -938,7 +945,7 @@ function UpcomingSection({ isDark, C, SP, MW }) {
               <R dir="up" delay={360}>
                 <div style={{ marginTop: "44px", padding: "20px 24px", background: C.greenTag, border: `1px solid ${C.greenBdr}`, borderRadius: "2px" }}>
                   <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(11px,1.2vw,13px)", fontWeight: 300, lineHeight: 1.78, color: C.greenTxt, margin: 0 }}>
-                    We warmly invite individuals, families, trusts and institutions to join us as supporters. Your contribution protects our ancient heritage.
+                    {t("about.upcoming.inviteText")}
                   </p>
                 </div>
               </R>
@@ -954,6 +961,14 @@ function UpcomingSection({ isDark, C, SP, MW }) {
    CONNECT
 ───────────────────────────────────────── */
 function ConnectSection({ isDark, C, SP, MW }) {
+  const { t } = useTranslation();
+  const SOCIALS_LOCAL = [
+    { label:"Instagram", handle:"@geo_jainism", href:"https://instagram.com/geo_jainism",                  Icon:Instagram,     accent:"#E8909F" },
+    { label:"YouTube",   handle:"@geo_jainism", href:"https://www.youtube.com/@geo_jainism",               Icon:Youtube,       accent:"#F4A535" },
+    { label:"Twitter/X", handle:"@geo_jainism", href:"https://x.com/geo_jainism",                          Icon:Twitter,       accent:"#D8EEF5" },
+    { label:"WhatsApp",  handle:t("about.connect.whatsappJoin", "Join Group"),   href:"https://chat.whatsapp.com/EnHCodUJre9AlzFO9LRx5j",  Icon:MessageCircle, accent:"#7DAF6E" },
+  ];
+
   return (
     <section style={{ ...SP, borderTop: `1px solid ${C.border}` }}>
       <div style={{ ...MW, textAlign: "center" }}>
@@ -961,19 +976,19 @@ function ConnectSection({ isDark, C, SP, MW }) {
           <div style={{ display: "flex", alignItems: "center", gap: "14px", justifyContent: "center", marginBottom: "18px" }}>
             <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "1px", color: isDark ? "rgba(244,165,53,0.55)" : "rgba(232,144,159,0.70)" }}>06 /</span>
             <div style={{ width: "40px", height: "1px", background: isDark ? "rgba(244,165,53,0.35)" : "rgba(232,144,159,0.50)" }} />
-            <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "7px", color: C.faint, textTransform: "uppercase" }}>Find Us</span>
+            <span style={{ fontFamily: "'Cinzel',serif", fontSize: "clamp(8px,1vw,10px)", letterSpacing: "7px", color: C.faint, textTransform: "uppercase" }}>{t("about.connect.chapter")}</span>
           </div>
           <h2 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(30px,5vw,58px)", fontWeight: 300, color: C.title, lineHeight: 1.18, margin: "0 0 12px", letterSpacing: "-0.8px" }}>
-            Stay{" "}
-            <em style={{ fontStyle: "italic", color: isDark ? C.gold : C.rose }}>Connected</em>
+            {t("about.connect.title1")}{" "}
+            <em style={{ fontStyle: "italic", color: isDark ? C.gold : C.rose }}>{t("about.connect.title2")}</em>
           </h2>
           <p style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "clamp(12px,1.4vw,15px)", fontWeight: 300, color: C.faint, marginBottom: "60px" }}>
-            Follow the journey — each frame is a discovery.
+            {t("about.connect.desc")}
           </p>
         </R>
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(4,1fr)", gap: "16px", marginBottom: "68px" }} className="abt-social-grid">
-          {SOCIALS.map((s, i) => (
+          {SOCIALS_LOCAL.map((s, i) => (
             <R key={s.label} dir="up" delay={i * 80}>
               <a
                 href={s.href} target="_blank" rel="noopener noreferrer"
@@ -1016,14 +1031,14 @@ function ConnectSection({ isDark, C, SP, MW }) {
         </R>
 
         <R dir="up" delay={200}>
-          <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(14px,1.8vw,20px)", fontStyle: "italic", fontWeight: 300, color: C.faint, marginTop: "52px", lineHeight: 1.7 }}>
-            Together, we can discover hidden sites, document ancient temples,<br />and pass this legacy on to future generations.
+          <p style={{ fontFamily: "'Cormorant Garamond',serif", fontSize: "clamp(14px,1.8vw,20px)", fontStyle: "italic", fontWeight: 300, color: C.faint, marginTop: "52px", lineHeight: 1.7 }} dangerouslySetInnerHTML={{ __html: t("about.connect.bottomQuote") }}>
           </p>
           <div style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(20px,3.5vw,44px)", fontWeight: 400, color: isDark ? C.gold : C.rose, marginTop: "32px", letterSpacing: "2px", opacity: 0.85 }}>
-            जय जिनेन्द्र
+            {t("about.connect.salutation")}
           </div>
         </R>
       </div>
     </section>
   );
 }
+

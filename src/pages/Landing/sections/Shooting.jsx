@@ -1,28 +1,30 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const Shooting = () => {
+  const { t } = useTranslation();
   return (
     <section className="section shooting-section">
       <div className="section-header reveal">
-        <div className="section-sub">The Shooting Phase</div>
-        <h2 className="section-title">23 Days.<br/>111 Sacred Sites.<br/>One Historic Mission.</h2>
-        <p className="section-desc">From 17 December to 8 January, the GEO Jainism team trekked to remote locations across Tamil Nadu — from Madurai to distant Chithral and Kalugumalai — capturing what no camera had ever captured before.</p>
+        <div className="section-sub">{t("shooting.sub")}</div>
+        <h2 className="section-title">{t("shooting.title1")}<br/>{t("shooting.title2")}<br/>{t("shooting.title3")}</h2>
+        <p className="section-desc">{t("shooting.desc")}</p>
       </div>
       <div className="features-grid">
         <div className="feature-card reveal">
           <span className="feature-icon">🏔️</span>
-          <div className="feature-title">50+ Hills Climbed</div>
-          <div className="feature-body">Scaling mountain ranges to document Jain cave shelters, hilltop shrines, and rock-cut Tirthankara figures that have silently watched centuries pass.</div>
+          <div className="feature-title">{t("shooting.feature1.title")}</div>
+          <div className="feature-body">{t("shooting.feature1.body")}</div>
         </div>
         <div className="feature-card reveal">
           <span className="feature-icon">🎙️</span>
-          <div className="feature-title">50+ Interviews</div>
-          <div className="feature-body">Tamil language interviews conducted and translated — with elders, priests, scholars, and community members sharing living memory of a fading tradition.</div>
+          <div className="feature-title">{t("shooting.feature2.title")}</div>
+          <div className="feature-body">{t("shooting.feature2.body")}</div>
         </div>
         <div className="feature-card reveal">
           <span className="feature-icon">🏛️</span>
-          <div className="feature-title">10+ Converted Sites</div>
-          <div className="feature-body">Documenting historic Jain sites that were transformed over time, uncovering their original identity, architecture, and forgotten legacy.</div>
+          <div className="feature-title">{t("shooting.feature3.title")}</div>
+          <div className="feature-body">{t("shooting.feature3.body")}</div>
         </div>
       </div>
     </section>
@@ -30,3 +32,4 @@ const Shooting = () => {
 };
 
 export default Shooting;
+

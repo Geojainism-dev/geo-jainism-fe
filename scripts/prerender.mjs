@@ -7,7 +7,7 @@ import { getSeoForPath, absoluteUrl } from "../src/config/seo.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST_DIR = path.join(__dirname, "..", "dist");
-const ROUTES = ["/", "/tamil-jain", "/about"];
+const ROUTES = ["/", "/tamil-jain", "/about", "/virasat", "/shop"];
 const PORT = 4173;
 
 function contentType(filePath) {
@@ -79,7 +79,8 @@ async function prerender() {
       const expectedTitle = getSeoForPath(route).title;
       const expectedCanonical = absoluteUrl(getSeoForPath(route).path);
       const page = await browser.newPage();
-      await page.goto(`${baseUrl}${route}`, { waitUntil: "networkidle0", timeout: 60000 });
+      await page.goto(`${baseUrl}${route}`, { waitUntil: "networkidle2", timeout: 60000 });
+
       await page.waitForFunction(() => document.getElementById("root")?.childElementCount > 0, {
         timeout: 30000,
       });

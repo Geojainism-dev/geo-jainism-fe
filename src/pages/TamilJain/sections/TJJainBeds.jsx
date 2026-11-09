@@ -1,18 +1,20 @@
 import React, { useRef } from "react";
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import imgShayanika from "@/assets/images/Shayanika/TJPage Shayanika.jpg";
-
-const STATS = [
-  { num: "2300+", label: "Years of Monastic History" },
-  { num: "150+",   label: "Rock-Bed Sites Documented" },
-  { num: "3rd BCE", label: "Earliest Recorded Evidence" },
-];
 
 export default function TJJainBeds() {
   const sectionRef = useRef(null);
   const imageRef   = useRef(null);
   const shouldReduce = useReducedMotion();
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+  const { t } = useTranslation();
+
+  const STATS = [
+    { num: t("tamilJain.jainBeds.stats.0.num", "2300+"), label: t("tamilJain.jainBeds.stats.0.label", "Years of Monastic History") },
+    { num: t("tamilJain.jainBeds.stats.1.num", "150+"),   label: t("tamilJain.jainBeds.stats.1.label", "Rock-Bed Sites Documented") },
+    { num: t("tamilJain.jainBeds.stats.2.num", "3rd BCE"), label: t("tamilJain.jainBeds.stats.2.label", "Earliest Recorded Evidence") },
+  ];
 
   const { scrollYProgress } = useScroll({
     target: imageRef,
@@ -54,17 +56,17 @@ export default function TJJainBeds() {
           transition={{ duration: 0.7, delay: 0.1 }}
         >
           <div className="tj-beds-v3-eyebrow-line" />
-          <span>Ancient Shelters</span>
+          <span>{t("tamilJain.jainBeds.eyebrow1")}</span>
           <span className="tj-beds-v3-eyebrow-sep">/</span>
-          <span>Monastic Traditions</span>
+          <span>{t("tamilJain.jainBeds.eyebrow2")}</span>
         </motion.div>
 
         {/* Title — Jain Shayanika */}
         <div className="tj-beds-v3-title-block">
           <h2 className="tj-beds-v3-title">
             {[
-              { text: "Jain",      em: false },
-              { text: "Shayanika", em: true  },
+              { text: t("tamilJain.jainBeds.title1", "Jain"),      em: false },
+              { text: t("tamilJain.jainBeds.title2", "Shayanika"), em: true  },
             ].map((l, i) => (
               <div key={i} className="tj-beds-v3-title-clip">
                 <motion.span
@@ -84,7 +86,7 @@ export default function TJJainBeds() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.7, delay: 0.42 }}
           >
-            (Jain Stone Beds)
+            {t("tamilJain.jainBeds.subtitle")}
           </motion.p>
         </div>
 
@@ -103,10 +105,7 @@ export default function TJJainBeds() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.58 }}
         >
-          Jain beds are rock-cut stone platforms used by Jain monks for meditation and
-          ascetic living. They are among the oldest archaeological evidences of Jainism
-          in South India — offering firsthand insight into the monastic traditions and
-          ancient Jain heritage of Tamil Nadu.
+          {t("tamilJain.jainBeds.body")}
         </motion.p>
 
         {/* Quote — tulsi-tinted bg, lotus border */}
@@ -116,7 +115,7 @@ export default function TJJainBeds() {
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1], delay: 0.68 }}
         >
-          "Where time stops and spirit awakens — carved eternally in the hills of Madurai."
+          {t("tamilJain.jainBeds.quote")}
         </motion.blockquote>
 
         {/* Stats */}
@@ -139,3 +138,4 @@ export default function TJJainBeds() {
     </section>
   );
 }
+

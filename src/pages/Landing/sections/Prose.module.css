@@ -1,0 +1,66 @@
+.label {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: 2.2px;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 12px;
+}
+
+.heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 500;
+  line-height: 57.2px;
+  letter-spacing: 0;
+  color: var(--deep-brown);
+  margin-bottom: 32px;
+}
+
+.heading em {
+  font-family: 'Playfair Display', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 52px;
+  line-height: 57.2px;
+  letter-spacing: 0;
+  color: var(--saffron);
+}
+
+.body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  line-height: 27.75px;
+  letter-spacing: 0;
+  color: var(--ink);
+  opacity: 0.75;
+  max-width: 100%;
+}
+
+.body + .body {
+  margin-top: 20px;
+}
+
+@media (max-width: 900px) {
+  .heading {
+    font-size: 42px;
+    line-height: 1.2;
+  }
+
+  .heading em {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 34px;
+  }
+
+  .heading em {
+    font-size: 34px;
+  }
+}

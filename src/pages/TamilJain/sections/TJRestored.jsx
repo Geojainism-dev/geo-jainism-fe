@@ -1,30 +1,32 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-
-const CARDS = [
-  {
-    title: "Converted",
-    subtitle: "Restored & Reclaimed",
-    desc: "Jain temples converted to worship other deities are being systematically documented — their original Tirthankara images, inscriptions, and architectural features preserved through 4K photography before further erasure.",
-    img: "/journey/05-rock-carvings.jpg",
-    tag: "Converted",
-    tagColor: "#C85A6A",
-    stat: "10+", statLabel: "Sites Reclaimed",
-  },
-  {
-    title: "Ancient Inscriptions",
-    subtitle: "Decoded & Preserved",
-    desc: "Tamil Brahmi and Grantha script inscriptions found across cave walls are being professionally photographed and translated — many for the first time in recorded history.",
-    img: "/journey/01-rock-sculpture.jpg",
-    tag: "Documentation",
-    tagColor: "#C8881A",
-    stat: "450+", statLabel: "Inscriptions Captured",
-  },
-];
+import { useTranslation } from "react-i18next";
 
 export default function TJRestored() {
   const ref    = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
+  const { t } = useTranslation();
+
+  const CARDS = [
+    {
+      title: t("tamilJain.restored.cards.0.title", "Converted"),
+      subtitle: t("tamilJain.restored.cards.0.subtitle", "Restored & Reclaimed"),
+      desc: t("tamilJain.restored.cards.0.desc", "Jain temples converted to worship other deities are being systematically documented — their original Tirthankara images, inscriptions, and architectural features preserved through 4K photography before further erasure."),
+      img: "/journey/05-rock-carvings.jpg",
+      tag: t("tamilJain.restored.cards.0.tag", "Converted"),
+      tagColor: "#C85A6A",
+      stat: "10+", statLabel: t("tamilJain.restored.cards.0.statLabel", "Sites Reclaimed"),
+    },
+    {
+      title: t("tamilJain.restored.cards.1.title", "Ancient Inscriptions"),
+      subtitle: t("tamilJain.restored.cards.1.subtitle", "Decoded & Preserved"),
+      desc: t("tamilJain.restored.cards.1.desc", "Tamil Brahmi and Grantha script inscriptions found across cave walls are being professionally photographed and translated — many for the first time in recorded history."),
+      img: "/journey/01-rock-sculpture.jpg",
+      tag: t("tamilJain.restored.cards.1.tag", "Documentation"),
+      tagColor: "#C8881A",
+      stat: "450+", statLabel: t("tamilJain.restored.cards.1.statLabel", "Inscriptions Captured"),
+    },
+  ];
 
   return (
     <section ref={ref} className="tj-section tj-restored-section">
@@ -40,13 +42,13 @@ export default function TJRestored() {
         >
           <div className="tj-eyebrow-row" style={{ justifyContent: "center", marginBottom: "14px" }}>
             <div className="tj-eyebrow-line" style={{ background: "linear-gradient(to right, transparent, var(--saffron))" }} />
-            <span className="tj-eyebrow-label">Heritage Preservation</span>
+            <span className="tj-eyebrow-label">{t("tamilJain.restored.eyebrow")}</span>
             <div className="tj-eyebrow-line" style={{ background: "linear-gradient(to left, transparent, var(--saffron))" }} />
           </div>
           <h2 className="tj-section-heading" style={{ fontSize: "clamp(32px,5.5vw,58px)", lineHeight: 1.1 }}>
-            Converted, Restored{" "}
+            {t("tamilJain.restored.title1")}{" "}
             <span style={{ fontStyle: "italic", color: "var(--saffron)" }}>
-              &amp; Reclaimed Heritage
+              {t("tamilJain.restored.title2")}
             </span>
           </h2>
         </motion.div>
@@ -89,7 +91,7 @@ export default function TJRestored() {
                   fontFamily: "'Cinzel', serif", fontSize: "9.5px",
                   letterSpacing: "2.5px", color: "var(--saffron)", textTransform: "uppercase",
                 }}>
-                  Learn More <span>→</span>
+                  {t("tamilJain.restored.learnMore")} <span>→</span>
                 </div>
               </div>
             </motion.div>
@@ -109,3 +111,4 @@ export default function TJRestored() {
     </section>
   );
 }
+

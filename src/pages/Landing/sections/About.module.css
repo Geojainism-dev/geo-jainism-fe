@@ -1,0 +1,109 @@
+.aboutSection {
+  background: var(--cream);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+:global(.landing-root[data-theme="dark"]) .aboutSection {
+  background: var(--bg-alt);
+}
+
+.aboutTag {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 20px;
+  background: rgba(200, 223, 192, 0.4);
+  border: 1px solid rgba(125, 175, 110, 0.4);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--tulsi-deep);
+  margin-bottom: 20px;
+}
+
+.aboutFounder {
+  margin-top: 32px;
+  padding: 24px;
+  border-radius: 14px;
+  background: rgba(244, 165, 53, 0.06);
+  border: 1px solid rgba(244, 165, 53, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.founderAvatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--saffron), var(--marigold-deep));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.founderName {
+  font-family: 'Cinzel', serif;
+  font-size: 14px;
+  color: var(--deep-brown);
+  margin-bottom: 4px;
+}
+
+.founderRole {
+  font-size: 12px;
+  color: var(--saffron);
+  letter-spacing: 1px;
+}
+
+.coverageGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.coverageItem {
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(253, 248, 240, 0.9);
+  border: 1px solid rgba(244, 165, 53, 0.2);
+}
+
+:global(.landing-root[data-theme="dark"]) .coverageItem {
+  background: rgba(42, 26, 14, 0.75);
+  border-color: rgba(244, 165, 53, 0.35);
+  color: var(--text-main);
+}
+
+.coverageIcon {
+  font-size: 20px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.coverageTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--deep-brown);
+  margin-bottom: 4px;
+}
+
+.coverageBody {
+  font-size: 11px;
+  line-height: 1.6;
+  color: var(--ink);
+  opacity: 0.6;
+}
+
+@media (max-width: 900px) {
+  .aboutSection {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}

@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
@@ -9,12 +10,13 @@ const fade = (delay = 0) => ({
 export default function TJRani() {
   const ref    = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
+  const { t } = useTranslation();
 
   return (
     <section ref={ref} className="tj-section tj-rani-section">
 
       {/* Background decorative text */}
-      <div className="tj-rani-bg-word" aria-hidden="true">QUEEN</div>
+      <div className="tj-rani-bg-word" aria-hidden="true">{t("tamilJain.rani.bgWord")}</div>
 
       <div className="tj-rani-inner">
 
@@ -37,8 +39,8 @@ export default function TJRani() {
 
             {/* Century stamp */}
             <div className="tj-rani-century">
-              <span className="tj-rani-century-num">10th</span>
-              <span className="tj-rani-century-label">Century CE</span>
+              <span className="tj-rani-century-num">{t("tamilJain.rani.centuryNum")}</span>
+              <span className="tj-rani-century-label">{t("tamilJain.rani.centuryLabel")}</span>
             </div>
           </div>
 
@@ -46,7 +48,7 @@ export default function TJRani() {
           <div className="tj-rani-inscription">
             <span className="tj-rani-inscription-mark">"</span>
             <p className="tj-rani-inscription-text">
-              Her name appears in copper-plate grants and stone inscriptions — silent witnesses to faith across centuries.
+              {t("tamilJain.rani.inscriptionQuote")}
             </p>
           </div>
         </motion.div>
@@ -61,7 +63,7 @@ export default function TJRani() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
           >
             <div className="tj-eyebrow-line" style={{ background: "linear-gradient(to right, transparent, var(--saffron))" }} />
-            <span className="tj-eyebrow-label">Tamil Jain Queens</span>
+            <span className="tj-eyebrow-label">{t("tamilJain.rani.eyebrow")}</span>
             <div className="tj-eyebrow-line" style={{ background: "linear-gradient(to left, transparent, var(--saffron))" }} />
           </motion.div>
 
@@ -70,7 +72,7 @@ export default function TJRani() {
             {...fade(0.35)}
             animate={inView ? { opacity: 1, y: 0 } : {}}
           >
-            Rani <em>Aaiyabba<br />Devi</em>
+            {t("tamilJain.rani.title1")}<em>{t("tamilJain.rani.title2")}</em>
           </motion.h2>
 
           <motion.div
@@ -85,9 +87,7 @@ export default function TJRani() {
             {...fade(0.55)}
             animate={inView ? { opacity: 1, y: 0 } : {}}
           >
-            A fearless Jain queen whose devotion and royal patronage helped sustain
-            Jain temples, scholars, and communities across Tamil Nadu. Her legacy
-            resonates through the inscriptions and monuments she commissioned.
+            {t("tamilJain.rani.body1")}
           </motion.p>
 
           <motion.p
@@ -95,8 +95,7 @@ export default function TJRani() {
             {...fade(0.7)}
             animate={inView ? { opacity: 1, y: 0 } : {}}
           >
-            She governed with the Jain ideals of compassion, non-violence, and pursuit
-            of knowledge — values that became woven into the cultural fabric of the region.
+            {t("tamilJain.rani.body2")}
           </motion.p>
 
           {/* Stats row */}
@@ -106,18 +105,18 @@ export default function TJRani() {
             animate={inView ? { opacity: 1, y: 0 } : {}}
           >
             <div className="tj-rani-stat">
-              <span className="tj-rani-stat-num">12+</span>
-              <span className="tj-rani-stat-label">Temples Patronised</span>
+              <span className="tj-rani-stat-num">{t("tamilJain.rani.stats.0.num", "12+")}</span>
+              <span className="tj-rani-stat-label">{t("tamilJain.rani.stats.0.label", "Temples Patronised")}</span>
             </div>
             <div className="tj-rani-stat-divider" />
             <div className="tj-rani-stat">
-              <span className="tj-rani-stat-num">3</span>
-              <span className="tj-rani-stat-label">Copper-plate Grants</span>
+              <span className="tj-rani-stat-num">{t("tamilJain.rani.stats.1.num", "3")}</span>
+              <span className="tj-rani-stat-label">{t("tamilJain.rani.stats.1.label", "Copper-plate Grants")}</span>
             </div>
             <div className="tj-rani-stat-divider" />
             <div className="tj-rani-stat">
-              <span className="tj-rani-stat-num">10th C</span>
-              <span className="tj-rani-stat-label">Era</span>
+              <span className="tj-rani-stat-num">{t("tamilJain.rani.stats.2.num", "10th C")}</span>
+              <span className="tj-rani-stat-label">{t("tamilJain.rani.stats.2.label", "Era")}</span>
             </div>
           </motion.div>
 
@@ -127,10 +126,11 @@ export default function TJRani() {
             {...fade(1)}
             animate={inView ? { opacity: 1, y: 0 } : {}}
           >
-            Explore Her Story <span>→</span>
+            {t("tamilJain.rani.cta")} <span>→</span>
           </motion.a>
         </div>
       </div>
     </section>
   );
 }
+

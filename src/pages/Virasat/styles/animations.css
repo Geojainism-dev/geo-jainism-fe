@@ -1,0 +1,67 @@
+/* Ambient, CSS-only motion for the Virasat page. All of it stops under
+   prefers-reduced-motion (bottom of file). */
+
+@keyframes vr-marquee {
+  to { transform: translateX(-50%); }
+}
+.vr-marquee {
+  animation: vr-marquee 48s linear infinite;
+}
+.vr-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes vr-kenburns {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to { transform: scale(1.16) translate3d(-1.5%, -1%, 0); }
+}
+.vr-kenburns {
+  animation: vr-kenburns 22s ease-in-out infinite alternate;
+}
+
+@keyframes vr-bob {
+  0%, 100% { transform: translateY(-2px); }
+  50% { transform: translateY(3px); }
+}
+.vr-bob {
+  animation: vr-bob 2.2s ease-in-out infinite;
+}
+
+@keyframes vr-spin {
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+.vr-spin-slow {
+  animation: vr-spin 140s linear infinite;
+}
+
+/* fine animated film grain over the hero */
+@keyframes vr-grain {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -3%); }
+  60% { transform: translate(-2%, -1%); }
+  80% { transform: translate(3%, 3%); }
+}
+.vr-grain {
+  pointer-events: none;
+  position: absolute;
+  inset: -20%;
+  opacity: 0.09;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: vr-grain 1.2s steps(5) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vr-marquee,
+  .vr-kenburns,
+  .vr-bob,
+  .vr-spin-slow,
+  .vr-grain {
+    animation: none !important;
+  }
+  .vr-root *,
+  .vr-modal * {
+    transition-duration: 0.01ms !important;
+  }
+}

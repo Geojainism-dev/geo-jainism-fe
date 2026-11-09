@@ -1,35 +1,39 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
+import styles from "./PostProduction.module.css";
+import prose from "./Prose.module.css";
 
 const PostProduction = () => {
+  const { t } = useTranslation();
   return (
-    <section className="section post-section">
+    <section className={`section ${styles.postSection}`}>
       <div className="reveal-left">
-        <div className="story-label">About Course</div>
-        <h2 className="story-heading">History<br/><em>Brought to Life</em></h2>
-        <p className="story-body">Step beyond books and explore the untold stories of Jain civilization through history, temples, literature, philosophy, and real-world heritage journeys.</p>
-        <h4 className="story-body" style={{ marginTop: 16 }}>Who Is This Course For?</h4>
-        <p className="story-body" style={{ marginTop: 16 }}>Students, researchers, creators, history enthusiasts, travelers, and anyone passionate about Jain culture and Indian heritage.</p>
-        <div className="history-pills">
-          {["4 Months", "Research", "Exploration", "Heritage", "Literature", "Legends", "Storytelling"].map((p) => (
-            <span className="pill" key={p}>{p}</span>
+        <div className={prose.label}>{t("postProduction.label")}</div>
+        <h2 className={prose.heading}>{t("postProduction.title1")}<br/><em>{t("postProduction.title2")}</em></h2>
+        <p className={prose.body}>{t("postProduction.body1")}</p>
+        <h4 className={prose.body} style={{ marginTop: 16 }}>{t("postProduction.whoForHeading")}</h4>
+        <p className={prose.body} style={{ marginTop: 16 }}>{t("postProduction.whoForBody")}</p>
+        <div className={styles.historyPills}>
+          {["4 Months", "Research", "Exploration", "Heritage", "Literature", "Legends", "Storytelling"].map((p, idx) => (
+            <span className={styles.pill} key={p}>{t(`postProduction.pills.${idx}`, p)}</span>
           ))}
         </div>
       </div>
-      <div className="post-visual reveal-right">
-        <div className="epoch-card">
-          <div className="epoch-era">Ancient · History</div>
-          <div className="epoch-title">Forgotten History</div>
-          <div className="epoch-body">Uncover lost kingdoms, hidden stories, vanished Jain communities, and forgotten chapters of history buried across centuries.</div>
+      <div className={`${styles.postVisual} reveal-right`}>
+        <div className={styles.epochCard}>
+          <div className={styles.epochEra}>{t("postProduction.card1.era")}</div>
+          <div className={styles.epochTitle}>{t("postProduction.card1.title")}</div>
+          <div className={styles.epochBody}>{t("postProduction.card1.body")}</div>
         </div>
-        <div className="epoch-card" style={{ borderLeftColor: "var(--lotus-deep)" }}>
-          <div className="epoch-era" style={{ color: "var(--lotus-deep)" }}>Medieval · India</div>
-          <div className="epoch-title">Stories of Kings, Queens & Monks</div>
-          <div className="epoch-body">Discover the lives of powerful rulers, fearless monks, and visionary scholars who shaped Jain civilization across India.</div>
+        <div className={styles.epochCard} style={{ borderLeftColor: "var(--lotus-deep)" }}>
+          <div className={styles.epochEra} style={{ color: "var(--lotus-deep)" }}>{t("postProduction.card2.era")}</div>
+          <div className={styles.epochTitle}>{t("postProduction.card2.title")}</div>
+          <div className={styles.epochBody}>{t("postProduction.card2.body")}</div>
         </div>
-        <div className="epoch-card" style={{ borderLeftColor: "var(--tulsi-deep)" }}>
-          <div className="epoch-era" style={{ color: "var(--tulsi-deep)" }}>Literary · Jain Contribution</div>
-          <div className="epoch-title">Jain Literature & Ancient Texts</div>
-          <div className="epoch-body">Explore timeless Jain scriptures, epics, poetry, and philosophical works that preserved the wisdom, culture, and intellectual legacy of an ancient civilization.</div>
+        <div className={styles.epochCard} style={{ borderLeftColor: "var(--tulsi-deep)" }}>
+          <div className={styles.epochEra} style={{ color: "var(--tulsi-deep)" }}>{t("postProduction.card3.era")}</div>
+          <div className={styles.epochTitle}>{t("postProduction.card3.title")}</div>
+          <div className={styles.epochBody}>{t("postProduction.card3.body")}</div>
         </div>
       </div>
     </section>
@@ -37,3 +41,4 @@ const PostProduction = () => {
 };
 
 export default PostProduction;
+

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDarkMode } from "@/hooks";
+import { useTranslation } from "react-i18next";
 
 const VIDEO_ID = "6HN19HhugzU";
 
@@ -112,6 +113,7 @@ export default function TJInfinityFilm() {
   const [imgError,  setImgError]  = useState(false);
   const [revealed,  setRevealed]  = useState(false);
   const sectionRef = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -376,7 +378,7 @@ export default function TJInfinityFilm() {
           fontFamily:"'Cinzel',serif", fontSize:"clamp(9px,1.3vw,12px)",
           letterSpacing:"clamp(4px,1vw,7px)", fontWeight:600,
           color:LOTUS, textTransform:"uppercase", whiteSpace:"nowrap",
-        }}>GEO Originals</span>
+        }}>{t("tamilJain.infinityFilm.originalLabel")}</span>
         <span style={{
           width:"5px", height:"5px", borderRadius:"50%",
           background:`linear-gradient(135deg,${LOTUS_DEEP},${TULSI_DEEP})`,
@@ -385,7 +387,7 @@ export default function TJInfinityFilm() {
         <span style={{
           fontFamily:"'Playfair Display',serif", fontSize:"clamp(11px,1.6vw,16px)",
           fontStyle:"italic", color:TULSI, whiteSpace:"nowrap", letterSpacing:"2px",
-        }}>A Cinematic Journey</span>
+        }}>{t("tamilJain.infinityFilm.journeyLabel")}</span>
         <span style={{
           width:"5px", height:"5px", borderRadius:"50%",
           background:`linear-gradient(135deg,${TULSI_DEEP},${LOTUS_DEEP})`,
@@ -395,7 +397,7 @@ export default function TJInfinityFilm() {
           fontFamily:"'Cinzel',serif", fontSize:"clamp(9px,1.3vw,12px)",
           letterSpacing:"clamp(4px,1vw,7px)", fontWeight:600,
           color:TULSI, textTransform:"uppercase", whiteSpace:"nowrap",
-        }}>Sacred Heritage</span>
+        }}>{t("tamilJain.infinityFilm.heritageLabel")}</span>
         <div style={{ display:"flex", gap:"5px", alignItems:"center" }}>
           {[10,22,10].map((w, i) => (
             <div key={i} style={{
@@ -480,7 +482,7 @@ export default function TJInfinityFilm() {
           letterSpacing:"4px", textTransform:"uppercase",
           color:"rgba(253,248,240,0.45)", margin:"0 0 28px",
           animation: revealed ? "tjInfFadeUp 0.8s 0.85s ease both" : "none",
-        }}>Click to experience</p>
+        }}>{t("tamilJain.infinityFilm.cue")}</p>
 
         {/* Mobile-only title (desktop shows it in the bottom strip instead) */}
         <div style={{
@@ -493,12 +495,12 @@ export default function TJInfinityFilm() {
             color:"rgba(253,248,240,0.82)", margin:"0 0 6px",
             textShadow:"0 2px 24px rgba(0,0,0,0.8)",
             letterSpacing:"0.5px",
-          }}>The Untold Story</p>
+          }}>{t("tamilJain.infinityFilm.title")}</p>
           <p style={{
             fontFamily:"'DM Sans',sans-serif",
             fontSize:"11px", letterSpacing:"3px",
             color:"rgba(232,144,159,0.70)", margin:0, textTransform:"uppercase",
-          }}>GEO Originals · Documentary</p>
+          }}>{t("tamilJain.infinityFilm.meta")}</p>
         </div>
       </div>
 
@@ -524,20 +526,24 @@ export default function TJInfinityFilm() {
             <span style={{
               fontFamily:"'Cinzel',serif", fontSize:"9px",
               letterSpacing:"3px", color:LOTUS_DEEP, textTransform:"uppercase",
-            }}>Exclusive Documentary</span>
+            }}>{t("tamilJain.infinityFilm.badge")}</span>
           </div>
           <h3 style={{
             fontFamily:"'Cormorant Garamond',serif",
             fontSize:"clamp(18px,2.2vw,28px)", fontWeight:400,
             color:"#FDF8F0", margin:"0 0 8px", lineHeight:1.2,
             textShadow:"0 2px 20px rgba(0,0,0,0.8)",
-          }}><em>The Untold Story of Jainism</em></h3>
+          }}><em>{t("tamilJain.infinityFilm.docTitle")}</em></h3>
           <div style={{
             display:"flex", gap:"8px", alignItems:"center",
             fontFamily:"'DM Sans',sans-serif", fontSize:"12px",
             color:"rgba(253,248,240,0.55)",
           }}>
-            {["Untold","Sacred","Heritage"].map((tag, idx, arr) => (
+            {[
+              t("tamilJain.infinityFilm.tags.0", "Untold"),
+              t("tamilJain.infinityFilm.tags.1", "Sacred"),
+              t("tamilJain.infinityFilm.tags.2", "Heritage")
+            ].map((tag, idx, arr) => (
               <React.Fragment key={tag}>
                 <span>{tag}</span>
                 {idx < arr.length - 1 && <span style={{ opacity:0.4 }}>·</span>}
@@ -554,23 +560,6 @@ export default function TJInfinityFilm() {
             animation: revealed ? "tjInfFadeUp 0.8s 1s ease both" : "none",
           }}
         >
-          {/* <button
-            onClick={handlePlay}
-            style={{
-              display:"flex", alignItems:"center", gap:"8px",
-              background:`linear-gradient(135deg,${LOTUS_DEEP},${TULSI_DEEP})`,
-              color:"#fff", border:"none", borderRadius:"6px", padding:"10px 22px",
-              fontFamily:"'DM Sans',sans-serif", fontSize:"13px", fontWeight:600,
-              cursor:"pointer",
-              boxShadow:`0 4px 24px rgba(232,144,159,0.45), 0 4px 24px rgba(125,175,110,0.20)`,
-              transition:"transform 0.2s, box-shadow 0.2s",
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform="scale(1.05)"; e.currentTarget.style.boxShadow=`0 6px 30px rgba(232,144,159,0.65),0 6px 30px rgba(125,175,110,0.30)`; }}
-            onMouseLeave={e => { e.currentTarget.style.transform="scale(1)";    e.currentTarget.style.boxShadow=`0 4px 24px rgba(232,144,159,0.45),0 4px 24px rgba(125,175,110,0.20)`; }}
-          >
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            Play Now
-          </button> */}
           <a
             href="https://www.youtube.com/@geo_jainism"
             target="_blank" rel="noreferrer"
@@ -588,7 +577,7 @@ export default function TJInfinityFilm() {
             onMouseEnter={e => { e.currentTarget.style.borderColor="rgba(232,144,159,0.50)"; e.currentTarget.style.background="rgba(0,0,0,0.50)"; }}
             onMouseLeave={e => { e.currentTarget.style.borderColor="rgba(253,248,240,0.22)"; e.currentTarget.style.background="rgba(0,0,0,0.35)"; }}
           >
-            View Channel ↗
+            {t("tamilJain.infinityFilm.viewChannel")}
           </a>
         </div>
       </div>
@@ -596,3 +585,4 @@ export default function TJInfinityFilm() {
     </section>
   );
 }
+

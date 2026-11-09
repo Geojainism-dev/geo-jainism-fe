@@ -1,0 +1,572 @@
+{
+  "nav": {
+    "home": "Home",
+    "tamilJain": "Tamil Jain",
+    "virasat": "Virasat",
+    "shop": "Shop",
+    "about": "About us",
+    "events": "Events",
+    "language": "Language",
+    "drawerSalutation": "Jay Jinendra",
+    "drawerTagline": "Where ancient stone speaks — and a forgotten legacy finds its light.",
+    "drawerClose": "CLOSE",
+    "instagram": "Instagram",
+    "youtube": "YouTube",
+    "contact": "Contact",
+    "donate": "Donate"
+  },
+  "footer": {
+    "logo": "GEO JAINISM",
+    "rights": "All rights reserved. Created by Kavi Sajal Jain.",
+    "subtitle": "Unearthing the Forgotten Heritage",
+    "author": "Kavi Sajal Jain"
+  },
+  "hero": {
+    "presents": "GEO Jainism — Presents",
+    "title1": "Tamil",
+    "title2": "Jains",
+    "subtitle": "Minority Within A Minority",
+    "tagline": "A cinematic documentary unearthing 2300+ years of hidden Jain heritage across Tamil Nadu — 111 ancient sites, 50+ hills, one mission.",
+    "watchTrailer": "▶ Watch Trailer",
+    "supportFilm": "Support the Film",
+    "sites": "Ancient Sites",
+    "hills": "Hills Climbed",
+    "documentation": "Documentation",
+    "converted": "Converted Sites",
+    "scroll": "Scroll to explore"
+  },
+  "story": {
+    "beginning": "The Beginning",
+    "title1": "Golden Era Of",
+    "title2": "Jainism",
+    "body1": "GEO Jainism is among the first dedicated initiatives creating in-depth, research-based documentary films on the vast and rich history of Jainism.",
+    "body2": "We don't just talk about history — we travel to ancient places, document hidden temples, and bring lost stories back to life.",
+    "body3": "Through authentic field research, on-site documentation, and long-format storytelling, we uncover forgotten Jain sites, ancient temples, rare traditions, literature, and untold historical narratives from across India. Our mission is not only to study Jain heritage but also to protect and preserve it for future generations.",
+    "body4": "With upcoming plans for pan-India site mapping, deeper archaeological exploration, and documentary filmmaking, GEO Jainism aims to make this hidden legacy accessible to people around the world.",
+    "stoneQuote": "\"Our sole objective is to bring the neglected heritage of Jainism into the mainstream\"",
+    "stoneAttr": "Documenting Jain India",
+    "stat1Label": "Jain Sites Covered",
+    "stat2Label": "Volunteers"
+  },
+  "stats": {
+    "label1": "States Covered",
+    "label2": "INSTAGRAM REACH",
+    "label3": "YOUTUBE VIDEOS",
+    "label4": "FOLLOWERS"
+  },
+  "landingAbout": {
+    "tag": "About GEO Jainism",
+    "title": "We Don't Just<br/><em>Study History —<br/>We Live It</em>",
+    "body1": "GEO Jainism is a research-based platform dedicated to the study and documentation of Jain culture, history, and heritage. We focus on authentic, field-based research and the unseen facets of Jainism.",
+    "body2": "We travel to ancient sites, document hidden temples, and bring forgotten stories back to life — across Karnataka, Andhra Pradesh, Kerala, Telangana, Tamil Nadu, and Goa.",
+    "founderRole": "Founder & Concept Director",
+    "founderQuote": "\"To bring the eternal Jain heritage into the light — that is our foremost purpose.\"",
+    "coverage": {
+      "0": {
+        "title": "1.9M+ Views",
+        "body": "Pakistan's largest Jain temple — documentary making global waves"
+      },
+      "1": {
+        "title": "Naldiyar",
+        "body": "First-ever video on the book written by 8,000 Jain monks · 24K views"
+      },
+      "2": {
+        "title": "Multi-State Coverage",
+        "body": "Karnataka, AP, Kerala, Telangana, TN, Goa — Jain history documented"
+      },
+      "3": {
+        "title": "@geo_jainism",
+        "body": "Follow on Instagram, YouTube & Twitter for latest updates"
+      },
+      "4": {
+        "title": "Rare Literature",
+        "body": "Naldiyar, Silappadikaram, Ratnakara — rare Jain traditions studied"
+      },
+      "5": {
+        "title": "Field Research",
+        "body": "Katariya, Lalitpur, Bihar — ancient Jain temples visited & documented"
+      }
+    }
+  },
+  "blogs": {
+    "sub": "From the Journal",
+    "title": "Articles & Essays",
+    "desc": "Long-form writings, field notes, and research essays from the GEO Jainism team — illuminating the people, places, and texts that carry this tradition forward.",
+    "read": "Read Article"
+  },
+  "challenges": {
+    "eyebrow": "HISTORICAL JOURNEY",
+    "title": "To Ground Documentation",
+    "tagline": "Exploring ancient sites, documenting hidden heritage, and uncovering history through on-ground research and real-world journeys."
+  },
+  "courses": {
+    "stats": {
+      "hours": "Hours",
+      "quality": "Quality",
+      "doubts": "Doubt Sessions"
+    },
+    "learningHub": "Learning Hub",
+    "upcomingCourse": "Upcoming Course",
+    "heading": "Explore Jain<br />Heritage Courses",
+    "comingSoon": "Upcoming · Launching Soon",
+    "comingSoonLabel": "Coming Soon"
+  },
+  "landingHeritage": {
+    "sub": "Historical Journal",
+    "from": "From",
+    "title": "Literature & Legacy",
+    "desc": "Exploring ancient scriptures, timeless stories, and the cultural legacy <br /> that shaped generations and civilizations."
+  },
+  "journey": {
+    "sub": "Sacred Trails",
+    "brand": "Jain India",
+    "title": "Journey Through GEO Jainism",
+    "quote": "\" Tracing the Sacred Landscapes, Ancient Routes,<br/>and Hidden Heritage of Jain India. \""
+  },
+  "pakistan": {
+    "sub": "Field Research",
+    "brand": "GEO Jainism",
+    "title": "Documenting the Untold",
+    "desc": "Ancient sites. Forgotten histories. On-ground journeys across India and beyond — GEO Jainism brings untold Jain stories to the world, one documentary at a time.",
+    "video": "Video",
+    "originals": "GEO Jainism Originals",
+    "clickPlay": "Click to play",
+    "originalsBadge": "GEO Originals",
+    "playNow": "Play Now",
+    "viewChannel": "View Channel ↗"
+  },
+  "genres": {
+    "untold": "Untold",
+    "ancient": "Ancient",
+    "sacred": "Sacred"
+  },
+  "postProduction": {
+    "label": "About Course",
+    "title1": "History",
+    "title2": "Brought to Life",
+    "body1": "Step beyond books and explore the untold stories of Jain civilization through history, temples, literature, philosophy, and real-world heritage journeys.",
+    "whoForHeading": "Who Is This Course For?",
+    "whoForBody": "Students, researchers, creators, history enthusiasts, travelers, and anyone passionate about Jain culture and Indian heritage.",
+    "card1": {
+      "era": "Ancient · History",
+      "title": "Forgotten History",
+      "body": "Uncover lost kingdoms, hidden stories, vanished Jain communities, and forgotten chapters of history buried across centuries."
+    },
+    "card2": {
+      "era": "Medieval · India",
+      "title": "Stories of Kings, Queens & Monks",
+      "body": "Discover the lives of powerful rulers, fearless monks, and visionary scholars who shaped Jain civilization across India."
+    },
+    "card3": {
+      "era": "Literary · Jain Contribution",
+      "title": "Jain Literature & Ancient Texts",
+      "body": "Explore timeless Jain scriptures, epics, poetry, and philosophical works that preserved the wisdom, culture, and intellectual legacy of an ancient civilization."
+    }
+  },
+  "release": {
+    "label": "Coming August 2026",
+    "title1": "Hear Their",
+    "title2": "Story",
+    "body": "A 2-hour powerful film presenting history, culture, and present-day struggle — together on the global stage. Tamil Jainism, finally seen by the world.",
+    "pill1": "📅 <strong>August 2026</strong> — World Release",
+    "pill2": "📍 <strong>100+</strong> Screening Locations Planned",
+    "pill3": "📲 <strong>May 2026</strong> — Global Marketing Begins",
+    "btnPrimary": "Support This Documentary",
+    "btnSecondary": "Watch on GEO Jainism"
+  },
+  "screening": {
+    "marqueeLabel": "Coming to Screens",
+    "marqueeDate": "August 2026",
+    "releasing": "Releasing",
+    "date": "August 2026",
+    "narrative1": "GEO JAINISM presents the <em style=\"font-style:italic; color:#F4A535\">Tamil Jains Documentary</em> — a sweeping cinematic record of a civilisation long hidden in plain sight. Our team traversed <strong style=\"font-weight:500\">111 ancient Jain sites</strong> across Tamil Nadu, scaling 50+ remote hillside shrines and uncovering 10+ sites that history had all but erased.",
+    "narrative2": "In August 2026, the film will screen at <strong style=\"font-weight:500\">100 curated venues</strong> across India — bringing this untold legacy to cities near and far.",
+    "nationwideLabel": "Nationwide Screening",
+    "venuesLabel": "Curated Venues · Across India",
+    "btnRegister": "Register for Screening",
+    "btnSubtext": "Host a screening · Attend a show · Partner with us",
+    "getInTouch": "Get in Touch"
+  },
+  "shooting": {
+    "sub": "The Shooting Phase",
+    "title1": "23 Days.",
+    "title2": "111 Sacred Sites.",
+    "title3": "One Historic Mission.",
+    "desc": "From 17 December to 8 January, the GEO Jainism team trekked to remote locations across Tamil Nadu — from Madurai to distant Chithral and Kalugumalai — capturing what no camera had ever captured before.",
+    "feature1": {
+      "title": "50+ Hills Climbed",
+      "body": "Scaling mountain ranges to document Jain cave shelters, hilltop shrines, and rock-cut Tirthankara figures that have silently watched centuries pass."
+    },
+    "feature2": {
+      "title": "50+ Interviews",
+      "body": "Tamil language interviews conducted and translated — with elders, priests, scholars, and community members sharing living memory of a fading tradition."
+    },
+    "feature3": {
+      "title": "10+ Converted Sites",
+      "body": "Documenting historic Jain sites that were transformed over time, uncovering their original identity, architecture, and forgotten legacy."
+    }
+  },
+  "support": {
+    "title": "Support the Mission",
+    "essential": "Your support is essential",
+    "body": "Be a part of this cultural yagna. Every contribution helps us explore ancient Jain sites, document hidden histories, preserve cultural heritage, and bring untold stories to life through research and documentation.",
+    "card1": {
+      "title": "Bank Transfer",
+      "name": "GEO JAINISM",
+      "ac": "SBI A/C: 43784639669",
+      "ifsc": "IFSC: SBIN0002895"
+    },
+    "card2": {
+      "title": "UPI Payment"
+    },
+    "card3": {
+      "title": "Contact Us"
+    }
+  },
+  "trailer": {
+    "marqueeFieldResearch": "Field Research",
+    "marqueeOnGround": "On the Ground",
+    "marqueeDocHeritage": "Documenting Heritage",
+    "officialVideos": "Official Videos",
+    "title": "Journey Through GEO Jainism",
+    "desc": "A visual chronicle across ancient literature, forgotten temples, and the living legacy of Jain civilization — documented on the ground.",
+    "chapterWord": "Chapter",
+    "badge1": {
+      "sub": "In the Field"
+    },
+    "badge2": {
+      "sub": "Anamorphic"
+    },
+    "badge3": {
+      "sub": "Ancient Sites"
+    },
+    "btnYouTube": "View All on YouTube ↗",
+    "btnSubscribe": "Subscribe ↗"
+  },
+  "about": {
+    "hero": {
+      "eyebrow": "Golden Era of Jainism",
+      "title1": "GEO",
+      "title2": "Jainism.",
+      "quote": "Where every stone holds a story<br />two thousand years old.",
+      "sublabel": "Research · Documentation · Preservation",
+      "scrollCue": "Scroll"
+    },
+    "manifesto": {
+      "quote": "We don't just talk about history — we travel to ancient places, document hidden temples, and bring lost stories back to life.",
+      "chapter": "Our Purpose",
+      "body": "GEO Jainism is among the first dedicated content initiatives creating in-depth, research-based documentary films on the vast and rich history of Jainism. Our sole objective: to bring the neglected heritage of Jainism into the mainstream."
+    },
+    "stats": {
+      "1": {
+        "num": "1.9M+",
+        "label": "Documentary\nViews"
+      },
+      "2": {
+        "label": "Jain Sites\nDocumented"
+      },
+      "3": {
+        "label": "States &\nNations"
+      },
+      "4": {
+        "label": "Tamil Voices\nCaptured"
+      }
+    },
+    "work": {
+      "card1": {
+        "word": "Research",
+        "statLabel": "Ancient Sites",
+        "body": "Decades of on-ground scholarship — from Tamil cave temples to Bihar's forgotten rock inscriptions."
+      },
+      "card2": {
+        "word": "Document",
+        "statLabel": "Cinematic Coverage",
+        "body": "Drone, ground and macro footage across India's most remote Jain heritage landscapes."
+      },
+      "card3": {
+        "word": "Preserve",
+        "statLabel": "Years of History",
+        "body": "So the children of Tamil Jains, a thousand years from now, know exactly who they were."
+      },
+      "pillars": {
+        "0": {
+          "label": "Documentary Filmmaking",
+          "body": "Among the first dedicated initiatives creating in-depth, research-based films on the vast and rich history of Jainism."
+        },
+        "1": {
+          "label": "Field Research",
+          "body": "Ancient Jain temples, remote cave sites, and neglected historical locations documented through rigorous on-ground work."
+        },
+        "2": {
+          "label": "Rare Literature",
+          "body": "First-ever video coverage of Naldiyar, Silappadikaram, Ratnakar and other rare Jain texts and oral traditions."
+        },
+        "3": {
+          "label": "Regional Coverage",
+          "body": "Jain history across Pakistan, Andhra Pradesh, Kerala, Telangana, Tamil Nadu, Karnataka, Goa, Bihar and Lalitpur."
+        },
+        "4": {
+          "label": "Inspiring Ancestors",
+          "body": "Documentaries on Chennabhairadevi, Rani Abbakka and other extraordinary Jain figures that history nearly forgot."
+        }
+      },
+      "chapter": "What We Do",
+      "title1": "Research. Document.",
+      "title2": "Preserve.",
+      "desc": "Through cameras, boots, and field notes — we ensure nothing is lost to time.",
+      "focusAreas": "Focus Areas"
+    },
+    "gallery": {
+      "desc": "111 Sites · 7 States · 50+ Hilltop Pilgrimages",
+      "touchHint": "touch to pause · swipe freely"
+    },
+    "regions": {
+      "chapter": "Where We've Been",
+      "title1": "Jain Heritage Across",
+      "title2": "Borders",
+      "desc": "Field documentation spanning multiple states and nations"
+    },
+    "founder": {
+      "photoLabel": "Founder · Geo Jainism",
+      "chapter": "The Voice Behind",
+      "role": "Founder & Concept Director",
+      "quote": "\"To bring the eternal Jain heritage into the light —<br />that is our foremost purpose.\"",
+      "bio": "Researcher · Filmmaker · Cultural Documentarian"
+    },
+    "upcoming": {
+      "future": {
+        "0": "Pan-India site mapping & geographical visual archive of Jainism's spread",
+        "1": "Long-format documentary storytelling for global audiences",
+        "2": "Deeper field research into unexplored Jain cave sites & remote temples"
+      },
+      "chapter": "What's Next",
+      "title1": "Upcoming Work &",
+      "title2": "Vision",
+      "badge": "Now in Post-Production",
+      "docTitle": "Tamil Jains Documentary",
+      "docDesc": "On-ground shooting complete across 111 ancient Jain sites in Tamil Nadu — 4K footage, 50+ hilltop pilgrimages, and the living testimony of 30,000 Tamil Jains preserved forever on film.",
+      "releasingLabel": "Releasing August 2026",
+      "horizonLabel": "On The Horizon",
+      "inviteText": "We warmly invite individuals, families, trusts and institutions to join us as supporters. Your contribution protects our ancient heritage."
+    },
+    "connect": {
+      "whatsappJoin": "Join Group",
+      "chapter": "Find Us",
+      "title1": "Stay",
+      "title2": "Connected",
+      "desc": "Follow the journey — each frame is a discovery.",
+      "bottomQuote": "Together, we can discover hidden sites, document ancient temples,<br />and pass this legacy on to future generations.",
+      "salutation": "जय जिनेन्द्र"
+    }
+  },
+  "regions": {
+    "tamilNadu": "Tamil Nadu",
+    "karnataka": "Karnataka",
+    "andhraPradesh": "Andhra Pradesh",
+    "kerala": "Kerala",
+    "telangana": "Telangana",
+    "goa": "Goa",
+    "bihar": "Bihar",
+    "lalitpur": "Lalitpur",
+    "pakistan": "Pakistan",
+    "madurai": "Madurai",
+    "vellore": "Vellore",
+    "ariyalur": "Ariyalur",
+    "karur": "Karur",
+    "thoothukudi": "Thoothukudi"
+  },
+  "landingData": {
+    "journey": {
+      "0": {
+        "title": "Samanar Malai",
+        "caption": "A majestic hill complex near Madurai, housing 2,000-year-old rock beds and inscriptions.",
+        "num": "Chapter 01"
+      },
+      "1": {
+        "title": "Vallimalai",
+        "caption": "A serene hill site with rock-cut sculptures, ancient caves, and a living heritage temple.",
+        "num": "Chapter 02"
+      },
+      "2": {
+        "title": "Thirunathar Kundru",
+        "caption": "Famous for its 24 Tirthankara relief carvings and ancient ascetic rock beds.",
+        "num": "Chapter 03"
+      },
+      "3": {
+        "title": "Azhagarmalai",
+        "caption": "A historic cave shelter used by Jain monks, preserving ancient Brahmi records.",
+        "num": "Chapter 04"
+      },
+      "4": {
+        "title": "Kalugumalai",
+        "caption": "A masterpiece of rock-cut architecture, featuring magnificent monolithic carvings.",
+        "num": "Chapter 05"
+      }
+    },
+    "blogs": {
+      "0": {
+        "title": "The Legacy of Jainism in Tamil Nadu",
+        "excerpt": "Exploring the historical roots, contributions, and surviving legacy of Tamil Jains across two millennia."
+      },
+      "1": {
+        "title": "Preserving Ancient Palm-Leaf Manuscripts",
+        "excerpt": "How scholars and community members are digitizing and translating rare Jain scriptures before they crumble to dust."
+      },
+      "2": {
+        "title": "The Rock-Cut Masterpieces of Kalugumalai",
+        "excerpt": "A deep dive into the artistic brilliance, carving techniques, and historical significance of the Kalugumalai Jain complex."
+      }
+    },
+    "challenges": {
+      "0": {
+        "title": "The Legacy of Jainism in the Lalitpur District Of Uttar Pradesh",
+        "body": "Documenting forgotten Jain heritage, ancient temples, and hidden stories from the historic heartland of Central India."
+      },
+      "1": {
+        "title": "The Lost Jain Temples of Gulbarga — On Camera for the First Time",
+        "body": "Exploring the forgotten Jain monuments of Karnataka — ancient structures that have waited centuries for the world to notice them. Captured on camera for the very first time."
+      },
+      "2": {
+        "title": "Jain Heritage in Bihar – The Birth Place of Bhagwan Mahavir",
+        "body": "Tracing the sacred roots of Jain history across ancient pilgrimage sites, archaeological remains, and timeless traditions."
+      },
+      "3": {
+        "title": "Tamil Jains – Minority within in Minority",
+        "body": "In the heart of Tamil Nadu, carved into ancient rock faces and scattered across jungle-covered hills, lies one of the world's oldest yet most overlooked spiritual traditions — Tamil Jainism."
+      }
+    },
+    "courses": {
+      "0": {
+        "tag": "History",
+        "title": "The Golden Era of Jainism",
+        "desc": "Dive deeper into the rich, often-overlooked world of Jain history, literature, and culture — through structured, research-based series crafted by GEO Jainism.",
+        "cta": "Register Interest"
+      }
+    },
+    "timeline": {
+      "0": {
+        "eyebrow": "Naladiyar",
+        "title": "8,000 Jain Monks",
+        "body": "Written by 8,000 Jain monks, Naladiyar stands as a monument to moral philosophy, alongside the Kural. It continues to guide the ethical framework of Tamil society.",
+        "caption": "Naladiyar manuscript leaf"
+      },
+      "1": {
+        "eyebrow": "Silappadikaram",
+        "title": "Rani Chennabhairadevi",
+        "body": "Known as the 'Pepper Queen' by the Portuguese, she ruled Gerusoppa for 54 years, offering sanctuary to refugees and building grand temples in Karnataka.",
+        "caption": "Gerusoppa temple ruins"
+      },
+      "2": {
+        "eyebrow": "Jeevak Chintamani",
+        "title": "Epics of Tamil Literature",
+        "body": "Out of the 5 Great Tamil Epics, 3 were authored by Jain monks. These works laid the foundation of Tamil grammar, poetry, and classical literature.",
+        "caption": "Ancient palm-leaf library"
+      },
+      "3": {
+        "eyebrow": "Ratnakaravarni",
+        "title": "Classical Kannada Literature",
+        "body": "The golden age of Kannada literature was shaped by Jain poets. Masterpieces like Bharatesha Vaibhava blend spiritual detachment with aesthetic beauty.",
+        "caption": "Statue of Gommateshwara, Shravanabelagola"
+      }
+    },
+    "pakistan": {
+      "0": {
+        "title": "The Lost Jain Temple of Pakistan",
+        "desc": "Exploring the grand temple in Nagarparkar, standing as a lone witness to a once-thriving Jain community."
+      },
+      "1": {
+        "title": "The Monolithic Marvel of Kalugumalai",
+        "desc": "Uncovering the carving techniques and religious legacy of one of South India's greatest Jain rock-cut sites."
+      },
+      "2": {
+        "title": "The Sacred Caves of Sittanavasal",
+        "desc": "Documenting the exquisite 2nd-century frescoes and rock-cut shrines in the heart of Tamil Nadu."
+      }
+    }
+  },
+  "tamilJain": {
+    "hero": {
+      "eyebrow": "Exclusive Showcase",
+      "title1": "Tamil",
+      "title2": "Jains",
+      "sub": "Minority Within A Minority · Sacred Heritage of Tamil Nadu",
+      "scrollCue": "SCROLL"
+    },
+    "centuryWall": {
+      "title": "Heritage Timeline",
+      "eyebrow": "Historical Milestones",
+      "prevEra": "Previous era",
+      "nextEra": "Next era"
+    },
+    "inscriptions": {
+      "eyebrow": "Epigraphical Heritage",
+      "title1": "Deciphering",
+      "title2": "Ancient Scripts",
+      "desc": "How Tamil-Brahmi, Vatteluttu, and Grantha inscriptions on cave walls preserve 2,300 years of Jain history."
+    },
+    "jainBeds": {
+      "eyebrow1": "Sacred Spaces",
+      "eyebrow2": "Monastic Retreats",
+      "title1": "Jain",
+      "title2": "Shayanika",
+      "subtitle": "Venerated Granite Monasteries",
+      "body": "Carved directly into natural rock shelters, these stone beds served as the silent retreats of Jain ascetics who practiced severe austerities, study, and meditation.",
+      "quote": "\"Where ancient stone speaks — and a forgotten legacy finds its light.\""
+    },
+    "notify": {
+      "eyebrow": "Stay Updated",
+      "title1": "Join the",
+      "title2": "Movement",
+      "desc": "Subscribe to receive exclusive screening details, documentary launches, and historical research updates directly in your inbox.",
+      "placeholder": "Your email address",
+      "button": "Notify Me",
+      "success": "Thank you! We will notify you.",
+      "trust": "No spam. Only heritage."
+    },
+    "rani": {
+      "bgWord": "QUEEN",
+      "centuryNum": "10th",
+      "centuryLabel": "Century",
+      "inscriptionQuote": "\"In the 10th Century CE, Queens and Merchants built grand monuments of stone and faith.\"",
+      "eyebrow": "Royal Benefactors",
+      "title1": "Rani",
+      "title2": "Aaiyabba Devi",
+      "body1": "Jain queens and patrons played a vital role in supporting monastic centers and building stone temples across South India. Rani Aaiyabba Devi was among the notable figures whose endowments ensured the survival of key Jain institutions.",
+      "body2": "Her support extended beyond building monuments to providing shelter, food, and medicine to the resident monks, reinforcing the Jain values of charity (dana).",
+      "cta": "Explore Monuments"
+    },
+    "restored": {
+      "eyebrow": "Heritage Preservation",
+      "title1": "Converted, Restored",
+      "title2": " & Reclaimed Heritage",
+      "learnMore": "Learn More"
+    },
+    "silence": {
+      "eyebrow": "The Untold Story",
+      "title1": "The Tamil Jains — ",
+      "title2": "2300+ Years",
+      "title3": " of Silence",
+      "body1": "Only 25,000–35,000 Tamil Jains remain. This ancient community — once the architects of Tamil literature, sponsors of cave temples, and patrons of the arts — has reached near-endangered status.",
+      "body2": "Most people — in India and abroad — are completely unaware that Jainism had a deep and foundational presence in Tamil Nadu. A civilisation teetering on the edge of extinction, invisible to the world.",
+      "cta": "View Story →"
+    },
+    "temples": {
+      "bgWord": "TEMPLE",
+      "eyebrow": "Sacred Architecture",
+      "title1": "Temples of",
+      "title2": "Tamil Jainism",
+      "sub": "From cave shrines to grand gopurams — 2,300 years of stone, devotion & living tradition."
+    },
+    "infinityFilm": {
+      "originalLabel": "GEO Originals",
+      "journeyLabel": "A Cinematic Journey",
+      "heritageLabel": "Sacred Heritage",
+      "cue": "Click to experience",
+      "title": "The Untold Story",
+      "meta": "GEO Originals · Documentary",
+      "badge": "Exclusive Documentary",
+      "docTitle": "The Untold Story of Jainism",
+      "viewChannel": "View Channel ↗"
+    }
+  }
+}

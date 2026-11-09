@@ -8,7 +8,7 @@ import "@/styles/app.css";
 import "@/styles/navbar.css";
 import "@/styles/footer.css";
 import "./firebase";
-import { loadLanding, loadTamilJain, loadAbout } from "@/lib/routePreloader";
+import { loadLanding, loadTamilJain, loadAbout, loadVirasat, loadShop } from "@/lib/routePreloader";
 import { Toaster } from "@/components/ui/sonner";
 import { AuthProvider } from "@/features/auth/AuthContext";
 import ProtectedRoute from "@/features/auth/ProtectedRoute";
@@ -42,6 +42,8 @@ import BlogDetailPage from "@/pages/Blog/Detail";
 const LandingPage = lazy(loadLanding);
 const TamilJainPage = lazy(loadTamilJain);
 const AboutPage = lazy(loadAbout);
+const VirasatPage = lazy(loadVirasat);
+const ShopApp = lazy(loadShop);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -80,6 +82,8 @@ function App() {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/tamil-jain" element={<TamilJainPage />} />
                 <Route path="/about" element={<AboutPage />} />
+                <Route path="/virasat" element={<VirasatPage />} />
+                <Route path="/shop/*" element={<ShopApp />} />
 
                 <Route path="/events" element={<ScreeningsListPage />} />
                 <Route path="/events/:id" element={<ScreeningDetailPage />} />

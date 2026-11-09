@@ -366,6 +366,11 @@ export default function ScreeningsListPage() {
 
   const hasUpcoming = upcoming.length > 0;
 
+  useEffect(() => {
+    document.body.classList.toggle("has-dark-hero", hasUpcoming);
+    return () => document.body.classList.remove("has-dark-hero");
+  }, [hasUpcoming]);
+
   return (
     <>
       <Navbar />
@@ -460,8 +465,8 @@ export default function ScreeningsListPage() {
               )}
 
               {isError && (
-                <p className="rounded-xl border border-destructive/20 bg-destructive/5 p-4 text-sm text-destructive">
-                  Failed to load events.
+                <p className="rounded-xl border border-[#3C3228]/10 bg-white p-6 text-center text-sm text-muted-foreground">
+                  No events to show right now — we're updating this, please check back soon!
                 </p>
               )}
 

@@ -21,8 +21,24 @@ export const loadAbout = () => {
   return preloadPromises["/about"];
 };
 
+export const loadVirasat = () => {
+  if (!preloadPromises["/virasat"]) {
+    preloadPromises["/virasat"] = import("../pages/Virasat");
+  }
+  return preloadPromises["/virasat"];
+};
+
+export const loadShop = () => {
+  if (!preloadPromises["/shop"]) {
+    preloadPromises["/shop"] = import("../pages/Shop/ShopApp");
+  }
+  return preloadPromises["/shop"];
+};
+
 export const preloadRoute = (path) => {
   if (path === "/") loadLanding();
   else if (path === "/tamil-jain") loadTamilJain();
   else if (path === "/about") loadAbout();
+  else if (path === "/virasat") loadVirasat();
+  else if (path === "/shop") loadShop();
 };

@@ -1,0 +1,7 @@
+.coursesSection {
+  background: linear-gradient(160deg, #FDF3E7 0%, #F5EDD8 50%, #F0E6D2 100%);
+}
+
+:global(.landing-root[data-theme="dark"]) .coursesSection {
+  background: linear-gradient(160deg, #1F140B 0%, #28190D 50%, #2F2015 100%);
+}

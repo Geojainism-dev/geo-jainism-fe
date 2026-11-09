@@ -41,6 +41,22 @@ export const SEO_ROUTES = {
     ogType: "website",
     jsonLd: ["organization", "breadcrumb", "webpage", "person"],
   },
+  "/virasat": {
+    title: "Virasat | Where Heritage Comes Alive",
+    description:
+      "Virasat is a season of live Indian classical music, classical and folk dance staged at heritage venues — forts, temple lawns, stepwells and desert camps. See upcoming shows and book tickets.",
+    path: "/virasat",
+    ogType: "website",
+    jsonLd: ["organization", "breadcrumb", "webpage"],
+  },
+  "/shop": {
+    title: "GEO Jainism Shop | Books, Art & Handmade Heritage",
+    description:
+      "Shop books, archival art prints, devotional objects and handmade pieces from the GEO Jainism collection. Every purchase supports Jain heritage documentation.",
+    path: "/shop",
+    ogType: "website",
+    jsonLd: ["organization", "breadcrumb", "webpage"],
+  },
 };
 
 export function getSeoForPath(pathname) {

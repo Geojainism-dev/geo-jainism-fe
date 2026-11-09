@@ -1,0 +1,417 @@
+/* ───────────────────────────────────────────────────────────────
+   Virasat page — scoped under .vr-root (plus .vr-modal, which
+   portals to <body>). Layout lives in Tailwind utilities; this file
+   holds tokens and the few components utilities can't express well.
+   ─────────────────────────────────────────────────────────────── */
+
+.vr-root,
+.vr-modal {
+  --vr-burgundy: #4a101d;
+  --vr-maroon: #641c2b;
+  --vr-gold: #c6a15b;
+  --vr-gold-soft: #d9be86;
+  --vr-ivory: #f5ebd8;
+  --vr-charcoal: #171313;
+  --vr-ink: #0e0b0b;
+  --vr-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: Manrope, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.vr-root {
+  background: var(--vr-ink);
+  color: var(--vr-ivory);
+  overflow-x: clip;
+}
+
+#root > .vr-root {
+  flex: 1 0 auto;
+}
+
+.vr-root ::selection {
+  background: var(--vr-gold);
+  color: var(--vr-ink);
+}
+
+.vr-root :focus-visible,
+.vr-modal :focus-visible {
+  outline: 1px solid var(--vr-gold);
+  outline-offset: 4px;
+}
+
+/* ── Type ───────────────────────────────────────────────────── */
+.vr-display {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.vr-accent {
+  font-style: italic;
+  color: var(--vr-gold);
+}
+
+.vr-root .bg-vr-ivory .vr-accent {
+  color: var(--vr-maroon);
+}
+
+.vr-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  /* room for descenders and italic overhang */
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+  padding-right: 0.04em;
+  vertical-align: top;
+}
+
+.vr-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.vr-eyebrow__rule {
+  width: 2.5rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.5;
+}
+
+.vr-dropcap::first-letter {
+  float: left;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 4.6em;
+  line-height: 0.8;
+  padding: 0.08em 0.12em 0 0;
+  color: var(--vr-maroon);
+}
+
+.vr-link {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0% 1px no-repeat;
+  transition: background-size 0.5s var(--vr-ease), color 0.3s;
+}
+.vr-link:hover,
+.vr-link:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+/* zero-specificity display so Tailwind's hidden / sm:inline-flex still win */
+:where(.vr-btn) {
+  display: inline-flex;
+}
+.vr-btn {
+  position: relative;
+  align-items: center;
+  gap: 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.45s var(--vr-ease), border-color 0.45s var(--vr-ease), background-color 0.45s var(--vr-ease);
+}
+.vr-btn--sm { padding: 0.7rem 1.15rem 0.7rem 1.35rem; }
+.vr-btn--md { padding: 0.95rem 1.4rem 0.95rem 1.7rem; }
+.vr-btn--lg { padding: 1.15rem 1.6rem 1.15rem 2rem; font-size: 0.78rem; }
+
+.vr-btn--solid {
+  background: var(--vr-gold);
+  color: var(--vr-ink);
+}
+.vr-btn--solid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--vr-ivory);
+  transform: translateY(101%);
+  transition: transform 0.55s var(--vr-ease);
+  border-radius: inherit;
+}
+.vr-btn--solid:hover::before,
+.vr-btn--solid:focus-visible::before {
+  transform: translateY(0);
+}
+
+.vr-btn--ghost {
+  border-color: rgba(245, 235, 216, 0.35);
+  color: var(--vr-ivory);
+  backdrop-filter: blur(6px);
+  background: rgba(14, 11, 11, 0.12);
+}
+.vr-btn--ghost:hover,
+.vr-btn--ghost:focus-visible {
+  border-color: var(--vr-ivory);
+  background: var(--vr-ivory);
+  color: var(--vr-ink);
+}
+
+.vr-btn__icon {
+  transition: transform 0.5s var(--vr-ease);
+}
+.vr-btn:hover .vr-btn__icon {
+  transform: translate(2px, -2px) rotate(45deg);
+}
+
+/* ── Modals ─────────────────────────────────────────────────── */
+.vr-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1100; /* above the shared #navbar (999) and its drawer (1001) */
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  color: var(--vr-ivory);
+}
+.vr-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 6, 7, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: default;
+}
+.vr-modal__panel {
+  position: relative;
+  width: min(1040px, 100%);
+  max-height: calc(100svh - 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: linear-gradient(160deg, #2a0b12, var(--vr-charcoal) 60%);
+  border: 1px solid rgba(198, 161, 91, 0.22);
+  box-shadow: 0 40px 120px -30px rgba(0, 0, 0, 0.8);
+}
+.vr-modal--fullscreen {
+  padding: 0;
+}
+.vr-modal--fullscreen .vr-modal__panel {
+  width: 100%;
+  height: 100svh;
+  max-height: none;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+.vr-modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 235, 216, 0.25);
+  background: rgba(14, 11, 11, 0.5);
+  transition: border-color 0.3s, transform 0.5s var(--vr-ease);
+}
+.vr-modal__close:hover {
+  border-color: var(--vr-gold);
+  transform: rotate(90deg);
+}
+
+/* ── Form fields ────────────────────────────────────────────── */
+.vr-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+.vr-field__label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(245, 235, 216, 0.6);
+}
+.vr-field__input {
+  width: 100%;
+  padding: 0.7rem 0;
+  border: 0;
+  border-bottom: 1px solid rgba(245, 235, 216, 0.25);
+  background: transparent;
+  color: var(--vr-ivory);
+  font-size: 1rem;
+  border-radius: 0;
+  transition: border-color 0.3s;
+}
+.vr-field__input:focus {
+  outline: none;
+  border-bottom-color: var(--vr-gold);
+}
+.vr-field__input[aria-invalid="true"] {
+  border-bottom-color: #e58a7a;
+}
+select.vr-field__input {
+  appearance: none;
+  background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='m1 1 5 5 5-5' stroke='%23C6A15B'/%3E%3C/svg%3E") no-repeat right 0.2rem center;
+  padding-right: 1.5rem;
+}
+select.vr-field__input option {
+  background: var(--vr-charcoal);
+  color: var(--vr-ivory);
+}
+.vr-field__error {
+  font-size: 0.78rem;
+  color: #f0a597;
+}
+
+.vr-tier {
+  display: block;
+  cursor: pointer;
+  padding: 0.9rem 0.85rem;
+  border: 1px solid rgba(245, 235, 216, 0.15);
+  transition: border-color 0.3s, background-color 0.3s;
+}
+.vr-tier:hover {
+  border-color: rgba(198, 161, 91, 0.5);
+}
+.vr-tier.is-active {
+  border-color: var(--vr-gold);
+  background: rgba(198, 161, 91, 0.1);
+}
+.vr-tier:has(input:focus-visible) {
+  outline: 1px solid var(--vr-gold);
+  outline-offset: 3px;
+}
+
+.vr-stepper {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(245, 235, 216, 0.25);
+  color: var(--vr-ivory);
+  transition: border-color 0.3s, background-color 0.3s;
+}
+.vr-stepper:hover {
+  border-color: var(--vr-gold);
+  background: rgba(198, 161, 91, 0.12);
+}
+
+/* ── Experience: static (reduced-motion) layout ─────────────── */
+.vr-exp-static .vr-track {
+  width: auto !important;
+  flex-direction: column !important;
+}
+.vr-exp-static .vr-act,
+.vr-exp-static .vr-exp-intro {
+  width: auto !important;
+  height: auto !important;
+  padding-block: 4rem;
+}
+
+/* ── Show rows ──────────────────────────────────────────────── */
+.vr-show {
+  isolation: isolate;
+}
+.vr-show::before {
+  content: "";
+  position: absolute;
+  inset: 0 -2rem;
+  z-index: -1;
+  background: linear-gradient(90deg, transparent, rgba(198, 161, 91, 0.06), transparent);
+  opacity: 0;
+  transition: opacity 0.6s var(--vr-ease);
+}
+.vr-show:hover::before {
+  opacity: 1;
+}
+
+/* ── Footer "torchlight" wordmark ───────────────────────────── */
+@property --mx {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 50%;
+}
+@property --my {
+  syntax: "<percentage>";
+  inherits: true;
+  initial-value: 55%;
+}
+
+.vr-torch {
+  --mx: 50%;
+  --my: 55%;
+  --r: clamp(7rem, 16vw, 15rem);
+  position: relative;
+  isolation: isolate;
+  user-select: none;
+}
+.vr-torch__text {
+  margin: 0;
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(4.5rem, 19vw, 19rem);
+  line-height: 0.85;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  /* optical centring: tracking adds space after the last letter */
+  padding-left: 0.08em;
+}
+.vr-torch__outline {
+  color: rgba(198, 161, 91, 0.05);
+  -webkit-text-stroke: 1.25px rgba(217, 190, 134, 0.55);
+}
+.vr-torch__gilt {
+  position: absolute;
+  inset: 0;
+  color: var(--vr-gold-soft);
+  -webkit-text-stroke: 1px #f3dca8;
+  text-shadow: 0 0 28px rgba(255, 190, 110, 0.45);
+  -webkit-mask-image: radial-gradient(circle var(--r) at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 75%);
+  mask-image: radial-gradient(circle var(--r) at var(--mx) var(--my), #000 0%, rgba(0, 0, 0, 0.55) 45%, transparent 75%);
+}
+.vr-torch__halo {
+  position: absolute;
+  /* generous box so the radial glow always fades out before an edge */
+  inset: -60% -20%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(
+    circle calc(var(--r) * 1.4) at calc(20% + var(--mx) * 0.6) calc(37.5% + var(--my) * 0.25),
+    rgba(255, 170, 80, 0.15),
+    rgba(100, 28, 43, 0.1) 40%,
+    transparent 68%
+  );
+}
+
+/* the lamp travels first letter → last letter → back, easing at each end */
+@keyframes vr-torch-sweep {
+  0% { --mx: 4%; }
+  100% { --mx: 96%; }
+}
+.vr-torch.is-sweeping {
+  animation: vr-torch-sweep 7s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
+
+/* flicker of the flame */
+@keyframes vr-torch-flicker {
+  0%, 100% { opacity: 1; }
+  40% { opacity: 0.88; }
+  55% { opacity: 0.97; }
+  70% { opacity: 0.9; }
+}
+.vr-torch:not(.is-still) .vr-torch__gilt,
+.vr-torch:not(.is-still) .vr-torch__halo {
+  animation: vr-torch-flicker 2.6s ease-in-out infinite;
+}
+
+/* reduced motion: resting light, centred and wide */
+.vr-torch.is-still {
+  --r: clamp(12rem, 30vw, 26rem);
+}

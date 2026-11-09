@@ -1,6 +1,8 @@
 import React from "react";
 import { COURSES } from "@/constants/landingData";
 import { useDarkMode } from "@/hooks";
+import { useTranslation } from "react-i18next";
+import styles from "./Courses.module.css";
 
 const PARTICLE_COLORS = ["#F4A535", "#F7D580", "#7DAF6E", "#A8D4A0"];
 const PARTICLES = Array.from({ length: 36 }, (_, i) => ({
@@ -15,15 +17,16 @@ const PARTICLES = Array.from({ length: 36 }, (_, i) => ({
           :               "0 0 7px rgba(168,212,160,0.8),0 0 15px rgba(168,212,160,0.35)",
 }));
 
-const STATS = [
-  { num: "30+",   label: "Hours" },
-  { num: "1080p", label: "Quality" },
-  { num: "Live",  label: "Doubt Sessions" },
-];
-
 const Courses = () => {
   const isDark = useDarkMode();
+  const { t } = useTranslation();
   const course = COURSES[0];
+
+  const STATS = [
+    { num: "30+",   label: t("courses.stats.hours") },
+    { num: "1080p", label: t("courses.stats.quality") },
+    { num: "Live",  label: t("courses.stats.doubts") },
+  ];
 
   const bg       = isDark
     ? "linear-gradient(145deg,#060D08 0%,#0E0804 45%,#08100A 100%)"
@@ -34,13 +37,18 @@ const Courses = () => {
   const saffron  = "#F4A535";
   const titleCol = isDark ? "#FAF0D9"                 : "#3D2314";
   const bodyCol  = isDark ? "rgba(240,223,180,0.70)"  : "rgba(42,26,14,0.65)";
-const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
+  const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
   const cardBdr  = isDark ? "rgba(125,175,110,0.22)"  : "rgba(125,175,110,0.28)";
+
+  const localizedTag = t("landingData.courses.0.tag", course.tag);
+  const localizedTitle = t("landingData.courses.0.title", course.title);
+  const localizedDesc = t("landingData.courses.0.desc", course.desc);
+  const localizedCta = t("landingData.courses.0.cta", course.cta);
 
   return (
     <section
       id="courses"
-      className="section courses-section reveal"
+      className={`section ${styles.coursesSection} reveal`}
       style={{ background: bg, position: "relative", overflow: "hidden", padding: "0 0 96px", transition: "background 0.5s ease" }}
     >
       <style>{`
@@ -92,7 +100,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
           fontWeight: 600, color: green,
           textTransform: "uppercase", whiteSpace: "nowrap",
         }}>
-          Learning Hub
+          {t("courses.learningHub")}
         </span>
         <span style={{ color: isDark ? "rgba(125,175,110,0.35)" : "rgba(90,152,80,0.35)", fontSize: 18 }}>✦</span>
         <span style={{
@@ -101,7 +109,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
           fontStyle: "italic", color: saffron,
           whiteSpace: "nowrap", letterSpacing: "2px",
         }}>
-          Upcoming Course
+          {t("courses.upcomingCourse")}
         </span>
         <div style={{ display: "flex", gap: "6px", opacity: 0.35 }}>
           {[...Array(5)].map((_, i) => (
@@ -179,7 +187,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
                 fontFamily: "'Cinzel', serif", fontSize: "10px",
                 letterSpacing: "3px", color: green,
                 textTransform: "uppercase", whiteSpace: "nowrap",
-              }}>Learning Hub</span>
+              }}>{t("courses.learningHub")}</span>
             </div>
 
             {/* Title */}
@@ -189,8 +197,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
                 fontSize: "clamp(34px,5vw,60px)", lineHeight: "1.1",
                 color: titleCol,
                 margin: "0 0 22px",
-              }}>
-                Explore Jain<br />Heritage Courses
+              }} dangerouslySetInnerHTML={{ __html: t("courses.heading") }}>
               </h2>
               <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
                 <div style={{ height: "1px", width: "36px", background: saffron, opacity: 0.5 }} />
@@ -207,7 +214,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
               borderLeft: `2px solid rgba(125,175,110,0.45)`,
               paddingLeft: "18px",
             }}>
-              Dive deeper into the rich, often-overlooked world of Jain history, literature, and culture — through structured, research-based series crafted by GEO Jainism.
+              {localizedDesc}
             </p>
 
             {/* Coming Soon pill */}
@@ -226,7 +233,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
                 fontFamily: "'Cinzel', serif", fontSize: "10px",
                 letterSpacing: "2.5px", textTransform: "uppercase",
                 color: green, fontWeight: 500,
-              }}>Upcoming · Launching Soon</span>
+              }}>{t("courses.comingSoon")}</span>
             </div>
 
             {/* Stats */}
@@ -249,7 +256,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
                     fontFamily: "'DM Sans', sans-serif", fontSize: "9px",
                     fontWeight: 600, letterSpacing: "1.6px", textTransform: "uppercase",
                     color: isDark ? "rgba(200,223,192,0.50)" : "rgba(42,26,14,0.45)",
-                    textAlign: "center",
+                    textAlign: "center", marginTop: "12px",
                   }}>{s.label}</span>
                 </div>
               ))}
@@ -291,7 +298,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
               {/* Image */}
               <div className="courses-card-img" style={{ position: "relative", height: "300px", overflow: "hidden" }}>
                 <img
-                  src={course.img} alt={course.title} loading="lazy"
+                  src={course.img} alt={localizedTitle} loading="lazy"
                   style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 1.4s ease", display: "block" }}
                   onMouseEnter={e => e.currentTarget.style.transform = "scale(1.06)"}
                   onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
@@ -311,7 +318,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
                     background: "rgba(6,13,8,0.60)", backdropFilter: "blur(8px)",
                     border: `1px solid rgba(125,175,110,0.50)`,
                     color: "#A8D4A0", textTransform: "uppercase",
-                  }}>{course.tag}</span>
+                  }}>{localizedTag}</span>
                   <div style={{
                     display: "flex", alignItems: "center", gap: "7px",
                     padding: "6px 14px", borderRadius: "30px",
@@ -326,7 +333,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
                     <span style={{
                       fontFamily: "'Cinzel', serif", fontSize: "8px",
                       letterSpacing: "2px", color: "#C8E8C0", textTransform: "uppercase",
-                    }}>Coming Soon</span>
+                    }}>{t("courses.comingSoonLabel")}</span>
                   </div>
                 </div>
               </div>
@@ -336,7 +343,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
                 <h3 style={{
                   fontFamily: "'Playfair Display', serif", fontWeight: 500,
                   fontSize: "19px", lineHeight: "1.45", color: titleCol, margin: 0,
-                }}>{course.title}</h3>
+                }}>{localizedTitle}</h3>
 
                 <div style={{ height: "1px", background: `linear-gradient(90deg, ${bandBdr}, transparent)` }} />
 
@@ -369,7 +376,7 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
                     e.currentTarget.style.borderColor = "rgba(244,165,53,0.45)";
                   }}
                 >
-                  {course.cta} →
+                  {localizedCta} →
                 </a>
               </div>
             </article>
@@ -382,3 +389,4 @@ const cardBg   = isDark ? "rgba(14,20,10,0.82)"     : "rgba(255,255,255,0.72)";
 };
 
 export default Courses;
+
