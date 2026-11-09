@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "instrument serif",
+        "createdAt": "2026-11-06T09:53:42.578Z",
+        "reason": "User chose to keep the original shop design (Instrument Serif) after rejecting a font change; font is already loaded site-wide in index.html"
+      }
+    ]
+  }
+}
