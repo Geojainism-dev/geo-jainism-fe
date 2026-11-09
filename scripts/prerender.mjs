@@ -79,7 +79,19 @@ async function prerender() {
       const expectedTitle = getSeoForPath(route).title;
       const expectedCanonical = absoluteUrl(getSeoForPath(route).path);
       const page = await browser.newPage();
-      await page.goto(`${baseUrl}${route}`, { waitUntil: "networkidle2", timeout: 60000 });
+      // Video/audio bytes aren't needed for static HTML, and long-running media
+      // downloads (e.g. /virasat hero .webm) keep the page from ever reaching
+      // network idle, which times out the build.
+      await page.setRequestInterception(true);
+      page.on("request", (req) => {
+        if (req.resourceType() === "media") req.abort();
+        else req.continue();
+      });
+      // networkidle2 never resolves on some routes (/virasat), so wait for
+      // `load` and treat network idle as best-effort; the checks below are the
+      // real readiness signals.
+      await page.goto(`${baseUrl}${route}`, { waitUntil: "load", timeout: 60000 });
+      await page.waitForNetworkIdle({ idleTime: 500, timeout: 10000 }).catch(() => {});
 
       await page.waitForFunction(() => document.getElementById("root")?.childElementCount > 0, {
         timeout: 30000,
