@@ -1,0 +1,428 @@
+/* ── Palette ──────────────────────────────────────────────────
+   RGB channels (used by Tailwind's gj-* colours and below). Light by
+   default; swapped by the site-wide theme (hooks/useTheme sets
+   data-theme on <html> and on the shop wrapper). Defined on :root so
+   floating UI and portals outside .gj-shop get them too. */
+:root {
+  --gj-ivory: 248 245 239;
+  --gj-paper: 255 253 249;
+  --gj-mist: 251 249 245;
+  --gj-sand: 241 234 223;
+  --gj-beige: 234 225 210;
+  --gj-gold: 185 154 89;
+  --gj-gold-deep: 154 125 64;
+  --gj-maroon: 84 32 44;
+  --gj-brown: 74 56 43;
+  --gj-charcoal: 36 33 30;
+  --gj-green: 63 107 58;
+  --gj-error: 163 58 47;
+  --gj-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+[data-theme="dark"] {
+  --gj-ivory: 23 19 16;
+  --gj-paper: 32 27 23;
+  --gj-mist: 28 23 20;
+  --gj-sand: 38 31 26;
+  --gj-beige: 50 41 34;
+  --gj-gold: 201 165 98;
+  --gj-gold-deep: 214 179 115;
+  --gj-maroon: 224 150 128;
+  --gj-brown: 205 189 168;
+  --gj-charcoal: 238 230 217;
+  --gj-green: 140 196 128;
+  --gj-error: 240 140 125;
+}
+/* Blocks that are dark by design (shop footer, gifting band, image
+   overlays, floating dock, lightbox) keep the light palette in both
+   themes so their ivory-on-dark contrast holds. */
+[data-theme="dark"] .gj-keep {
+  --gj-ivory: 248 245 239;
+  --gj-gold: 185 154 89;
+  --gj-gold-deep: 154 125 64;
+  --gj-maroon: 84 32 44;
+  --gj-brown: 74 56 43;
+  --gj-charcoal: 36 33 30;
+}
+
+/* ───────────────────────────────────────────────────────────────
+   GEO Jainism Shop — scoped under .gj-shop (and .gj-layer for
+   overlays portalled to <body>). Layout is Tailwind; this file holds
+   tokens and components utilities express poorly. Display values use
+   :where() so Tailwind's hidden / lg:flex etc. always win.
+   ─────────────────────────────────────────────────────────────── */
+
+.gj-shop,
+.gj-layer {
+  font-family: "DM Sans", system-ui, sans-serif;
+  color: rgb(var(--gj-charcoal));
+  -webkit-font-smoothing: antialiased;
+}
+
+.gj-shop {
+  background: rgb(var(--gj-ivory));
+  padding-top: 70px; /* shared #navbar height */
+  overflow-x: clip;
+}
+#root > .gj-shop {
+  flex: 1 0 auto;
+}
+
+/* The shared navbar's language button is styled for dark heroes until the
+   page scrolls; the shop is light from the top, so use its scrolled style
+   throughout (scoped here — the shared navbar.css is untouched). */
+.gj-shop:not([data-theme="dark"]) #navbar .lang-switcher-btn {
+  background: rgba(253, 248, 240, 0.65);
+  color: #2a1a0e;
+}
+
+.gj-shop ::selection {
+  background: rgb(var(--gj-maroon));
+  color: rgb(var(--gj-ivory));
+}
+.gj-shop :focus-visible,
+.gj-layer :focus-visible {
+  outline: 2px solid rgb(var(--gj-gold));
+  outline-offset: 3px;
+}
+
+/* ── Type ───────────────────────────────────────────────────── */
+.gj-display {
+  font-family: "Instrument Serif", Georgia, serif;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.gj-eyebrow {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgb(var(--gj-gold-deep));
+}
+.gj-link {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0% 1px no-repeat;
+  transition: background-size 0.45s var(--gj-ease);
+}
+.gj-link:hover,
+.gj-link:focus-visible {
+  background-size: 100% 1px;
+}
+
+/* ── Buttons ────────────────────────────────────────────────── */
+:where(.gj-btn) {
+  display: inline-flex;
+}
+.gj-btn {
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-height: 48px;
+  padding: 0 1.6rem;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  transition: color 0.4s var(--gj-ease), background-color 0.4s var(--gj-ease), border-color 0.4s var(--gj-ease), opacity 0.3s;
+}
+.gj-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.gj-btn--primary {
+  background: rgb(var(--gj-maroon));
+  color: rgb(var(--gj-ivory));
+}
+.gj-btn--primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgb(var(--gj-charcoal));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.55s var(--gj-ease);
+}
+.gj-btn--primary:not(:disabled):hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.gj-btn--gold {
+  background: rgb(var(--gj-gold));
+  color: #24211e; /* always dark text on gold */
+}
+.gj-btn--gold:not(:disabled):hover {
+  background: #f8f5ef;
+}
+.gj-btn--outline {
+  border-color: rgb(var(--gj-charcoal) / 0.3);
+  color: rgb(var(--gj-charcoal));
+  background: transparent;
+}
+.gj-btn--outline:not(:disabled):hover {
+  border-color: rgb(var(--gj-charcoal));
+  background: rgb(var(--gj-charcoal));
+  color: rgb(var(--gj-ivory));
+}
+.gj-btn--light {
+  border-color: rgb(var(--gj-ivory) / 0.5);
+  color: rgb(var(--gj-ivory));
+  background: transparent;
+}
+.gj-btn--light:hover {
+  background: rgb(var(--gj-ivory));
+  color: rgb(var(--gj-charcoal));
+}
+.gj-btn--sm {
+  min-height: 40px;
+  padding: 0 1.1rem;
+  font-size: 0.7rem;
+}
+
+:where(.gj-icon-btn) {
+  display: grid;
+}
+.gj-icon-btn {
+  position: relative;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  color: rgb(var(--gj-charcoal));
+  transition: background-color 0.3s, color 0.3s;
+}
+.gj-icon-btn:hover {
+  background: rgb(var(--gj-brown) / 0.08);
+}
+
+/* ── Form controls ──────────────────────────────────────────── */
+.gj-input {
+  width: 100%;
+  min-height: 48px;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgb(var(--gj-brown) / 0.22);
+  border-radius: 2px;
+  background: rgb(var(--gj-paper));
+  font-size: 0.95rem;
+  color: rgb(var(--gj-charcoal));
+  transition: border-color 0.25s, box-shadow 0.25s;
+}
+.gj-input::placeholder {
+  color: rgb(var(--gj-brown) / 0.45);
+}
+.gj-input:focus {
+  outline: none;
+  border-color: rgb(var(--gj-brown));
+  box-shadow: 0 0 0 3px rgb(var(--gj-gold) / 0.25);
+}
+.gj-input[aria-invalid="true"] {
+  border-color: rgb(var(--gj-error));
+}
+.gj-label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgb(var(--gj-brown));
+}
+.gj-error {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  color: rgb(var(--gj-error));
+}
+select.gj-input {
+  appearance: none;
+  padding-right: 2.2rem;
+  background: rgb(var(--gj-paper)) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='m1 1 5 5 5-5' stroke='%234A382B' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat right 0.9rem center;
+}
+
+.gj-check {
+  appearance: none;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgb(var(--gj-brown) / 0.4);
+  border-radius: 2px;
+  background: rgb(var(--gj-paper));
+  display: grid;
+  place-items: center;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.gj-check:checked {
+  background: rgb(var(--gj-maroon));
+  border-color: rgb(var(--gj-maroon));
+}
+.gj-check:checked::after {
+  content: "";
+  width: 5px;
+  height: 9px;
+  border: solid rgb(var(--gj-ivory));
+  border-width: 0 2px 2px 0;
+  transform: translateY(-1px) rotate(45deg);
+}
+.gj-radio {
+  appearance: none;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgb(var(--gj-brown) / 0.45);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+.gj-radio:checked::after {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgb(var(--gj-maroon));
+}
+
+/* dual-thumb price range: two stacked native range inputs */
+.gj-range {
+  position: relative;
+  height: 28px;
+}
+.gj-range__track,
+.gj-range__fill {
+  position: absolute;
+  top: 13px;
+  height: 2px;
+  border-radius: 2px;
+}
+.gj-range__track {
+  left: 0;
+  right: 0;
+  background: rgb(var(--gj-brown) / 0.15);
+}
+.gj-range__fill {
+  background: rgb(var(--gj-maroon));
+}
+.gj-range input[type="range"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  appearance: none;
+  background: none;
+  pointer-events: none;
+}
+.gj-range input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  pointer-events: auto;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid rgb(var(--gj-maroon));
+  background: rgb(var(--gj-ivory));
+  cursor: grab;
+}
+.gj-range input[type="range"]::-moz-range-thumb {
+  pointer-events: auto;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgb(var(--gj-maroon));
+  background: rgb(var(--gj-ivory));
+  cursor: grab;
+}
+.gj-range input[type="range"]:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px rgb(var(--gj-gold) / 0.4);
+}
+
+/* ── Product card ───────────────────────────────────────────── */
+.gj-card__media img {
+  transition: opacity 0.7s var(--gj-ease), transform 1.2s var(--gj-ease);
+}
+.gj-card__media .gj-card__alt {
+  opacity: 0;
+}
+.gj-card:hover .gj-card__media .gj-card__alt,
+.gj-card:focus-within .gj-card__media .gj-card__alt {
+  opacity: 1;
+}
+.gj-card:hover .gj-card__media img {
+  transform: scale(1.04);
+}
+.gj-card__actions {
+  transform: translateY(12px);
+  opacity: 0;
+  transition: transform 0.5s var(--gj-ease), opacity 0.4s var(--gj-ease);
+}
+.gj-card:hover .gj-card__actions,
+.gj-card:focus-within .gj-card__actions {
+  transform: none;
+  opacity: 1;
+}
+@media (hover: none) {
+  .gj-card__actions {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* image fade-in once decoded */
+.gj-img {
+  opacity: 0;
+  transition: opacity 0.6s var(--gj-ease);
+}
+.gj-img.is-loaded {
+  opacity: 1;
+}
+
+/* skeleton shimmer */
+@keyframes gj-shimmer {
+  to { background-position: -200% 0; }
+}
+.gj-skeleton {
+  background: linear-gradient(90deg, rgb(var(--gj-sand)) 25%, rgb(var(--gj-beige)) 37%, rgb(var(--gj-sand)) 63%);
+  background-size: 200% 100%;
+  animation: gj-shimmer 1.4s ease infinite;
+}
+
+/* horizontal rail */
+.gj-rail {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.gj-rail::-webkit-scrollbar {
+  display: none;
+}
+.gj-rail > * {
+  scroll-snap-align: start;
+}
+
+/* paper texture used on sand panels */
+.gj-paper {
+  background-color: rgb(var(--gj-sand));
+  background-image: radial-gradient(rgb(var(--gj-brown) / 0.06) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+/* overlays portalled to body sit above the shared #navbar (999) */
+.gj-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gj-shop *,
+  .gj-layer * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+[data-theme="dark"] select.gj-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='m1 1 5 5 5-5' stroke='%23CDBDA8' stroke-width='1.4'/%3E%3C/svg%3E");
+}
+.gj-shop {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}

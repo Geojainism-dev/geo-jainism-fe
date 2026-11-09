@@ -59,6 +59,31 @@ module.exports = {
   				DEFAULT: 'hsl(var(--tulsi))',
   				deep: 'hsl(var(--tulsi-deep))'
   			},
+  			/* GEO Jainism Shop palette (src/pages/Shop) — values live in shop.css as
+  			   RGB channels so the global light/dark theme (useTheme → data-theme) can swap them. */
+  			gj: {
+  				ivory: 'rgb(var(--gj-ivory) / <alpha-value>)',
+  				gold: 'rgb(var(--gj-gold) / <alpha-value>)',
+  				'gold-deep': 'rgb(var(--gj-gold-deep) / <alpha-value>)',
+  				maroon: 'rgb(var(--gj-maroon) / <alpha-value>)',
+  				brown: 'rgb(var(--gj-brown) / <alpha-value>)',
+  				beige: 'rgb(var(--gj-beige) / <alpha-value>)',
+  				sand: 'rgb(var(--gj-sand) / <alpha-value>)',
+  				charcoal: 'rgb(var(--gj-charcoal) / <alpha-value>)',
+  				paper: 'rgb(var(--gj-paper) / <alpha-value>)',
+  				mist: 'rgb(var(--gj-mist) / <alpha-value>)',
+  				green: 'rgb(var(--gj-green) / <alpha-value>)'
+  			},
+  			/* Virasat page palette (src/pages/Virasat) */
+  			vr: {
+  				burgundy: '#4A101D',
+  				maroon: '#641C2B',
+  				gold: '#C6A15B',
+  				'gold-soft': '#D9BE86',
+  				ivory: '#F5EBD8',
+  				charcoal: '#171313',
+  				ink: '#0E0B0B'
+  			},
   			'sky-pale': 'hsl(var(--sky-pale))',
   			'bg-alt': 'hsl(var(--bg-alt))',
   			'bg-deep': 'hsl(var(--bg-deep))',
@@ -76,6 +101,13 @@ module.exports = {
   				'4': 'hsl(var(--chart-4))',
   				'5': 'hsl(var(--chart-5))'
   			}
+  		},
+  		fontFamily: {
+  			'gj-display': ['"Instrument Serif"', 'Georgia', 'serif'],
+  			'gj-sans': ['"DM Sans"', 'system-ui', 'sans-serif'],
+  			'vr-display': ['"Cormorant Garamond"', 'Georgia', 'serif'],
+  			'vr-sans': ['Manrope', 'system-ui', 'sans-serif'],
+  			'vr-deva': ['"Tiro Devanagari Hindi"', '"Cormorant Garamond"', 'serif']
   		},
   		keyframes: {
   			'accordion-down': {
