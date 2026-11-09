@@ -62,6 +62,24 @@ function routeOutputPath(route) {
   return path.join(dir, "index.html");
 }
 
+// On Vercel, npm skips puppeteer's postinstall (so no Chrome download) and the
+// build image lacks Chrome's system libs; @sparticuz/chromium ships a Chromium
+// that runs there. Keep its major in sync with puppeteer's Chrome (24.43.1 -> 148).
+async function launchBrowser() {
+  if (process.env.VERCEL) {
+    const { default: chromium } = await import("@sparticuz/chromium");
+    return puppeteer.launch({
+      args: chromium.args,
+      executablePath: await chromium.executablePath(),
+      headless: true,
+    });
+  }
+  return puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
+}
+
 async function prerender() {
   const spaShellPath = path.join(DIST_DIR, "index.html");
   const spaShell = fs.readFileSync(spaShellPath, "utf8");
@@ -69,10 +87,7 @@ async function prerender() {
   await new Promise((resolve) => server.listen(PORT, resolve));
   const baseUrl = `http://127.0.0.1:${PORT}`;
 
-  const browser = await puppeteer.launch({
-    headless: true,
-    args: ["--no-sandbox", "--disable-setuid-sandbox"],
-  });
+  const browser = await launchBrowser();
 
   try {
     for (const route of ROUTES) {
