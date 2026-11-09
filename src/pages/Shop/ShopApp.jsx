@@ -101,7 +101,8 @@ export default function ShopApp() {
           <main id="main">
             <AnimatePresence mode="wait" initial={false}>
               <Routes location={location} key={location.pathname}>
-                <Route index element={<Page><Title k="home">Discover the Essence of Jain Heritage</Title><ShopHome /></Page>} />
+                {/* no <Title> here: /shop uses the global SEO title from config/seo.js (prerender waits on it) */}
+                <Route index element={<Page><ShopHome /></Page>} />
                 <Route path="products" element={<Page><ListingTitle /><ProductListing /></Page>} />
                 <Route path="product/:slug" element={<Page><ProductTitle /><ProductDetails /></Page>} />
                 <Route path="cart" element={<Page><Title k="bag">Your bag</Title><Cart /></Page>} />
