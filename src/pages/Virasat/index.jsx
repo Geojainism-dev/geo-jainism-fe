@@ -9,13 +9,13 @@ import { HERO_MEDIA } from "./data/site";
 import { Navbar } from "@/components/layout";
 import Footer from "./components/layout/Footer";
 import Preloader from "./components/common/Preloader";
-import BookingModal from "./components/common/BookingModal";
 import Hero from "./sections/Hero";
 import About from "./sections/About";
 import Experience from "./sections/Experience";
 import UpcomingShows from "./sections/UpcomingShows";
 import Gallery from "./sections/Gallery";
 import Partners from "./sections/Partners";
+import Founder from "./sections/Founder";
 import Contact from "./sections/Contact";
 
 const FONTS = "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Tiro+Devanagari+Hindi&display=swap";
@@ -44,10 +44,17 @@ export default function VirasatPage() {
   const { scrollTo, lenisRef } = useSmoothScroll(reducedMotion);
   const ready = useAssetsReady();
   const [introDone, setIntroDone] = useState(reducedMotion);
-  const [booking, setBooking] = useState({ open: false, eventId: null });
+  // preset for the enquiry form (Partners / Contact CTAs); `n` re-applies a repeated choice
+  const [enquiry, setEnquiry] = useState({ type: "", n: 0 });
 
-  const openBooking = useCallback((eventId = null) => setBooking({ open: true, eventId }), []);
-  const closeBooking = useCallback(() => setBooking((b) => ({ ...b, open: false })), []);
+  /** Scroll to the enquiry form, optionally preselecting its event type. */
+  const enquire = useCallback(
+    (type = "") => {
+      setEnquiry((e) => ({ type, n: e.n + 1 }));
+      scrollTo("enquiry");
+    },
+    [scrollTo]
+  );
   const onIntroDone = useCallback(() => setIntroDone(true), []);
 
   // fonts/images change layout — re-measure every ScrollTrigger once settled
@@ -61,7 +68,7 @@ export default function VirasatPage() {
     };
   }, [ready]);
 
-  const ctx = useMemo(() => ({ scrollTo, openBooking, reducedMotion, lenisRef }), [scrollTo, openBooking, reducedMotion, lenisRef]);
+  const ctx = useMemo(() => ({ scrollTo, enquire, enquiry, reducedMotion, lenisRef }), [scrollTo, enquire, enquiry, reducedMotion, lenisRef]);
 
   return (
     <VirasatContext.Provider value={ctx}>
@@ -83,10 +90,10 @@ export default function VirasatPage() {
           <UpcomingShows />
           <Gallery />
           <Partners />
+          <Founder />
           <Contact />
         </main>
         <Footer />
-        <BookingModal open={booking.open} initialEventId={booking.eventId} onClose={closeBooking} />
       </div>
     </VirasatContext.Provider>
   );

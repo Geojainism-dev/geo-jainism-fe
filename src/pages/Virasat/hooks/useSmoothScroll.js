@@ -53,7 +53,8 @@ export function useSmoothScroll(reducedMotion) {
 
 export const VirasatContext = createContext({
   scrollTo: () => {},
-  openBooking: () => {},
+  enquire: () => {},
+  enquiry: { type: "", n: 0 },
   reducedMotion: false,
   lenisRef: { current: null },
 });

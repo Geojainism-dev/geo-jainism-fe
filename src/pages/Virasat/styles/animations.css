@@ -52,13 +52,44 @@
   animation: vr-grain 1.2s steps(5) infinite;
 }
 
+/* "Virasat on Stage" ambience */
+@keyframes vr-sway {
+  from { transform: rotate(-4deg); }
+  to { transform: rotate(4deg); }
+}
+@keyframes vr-flicker {
+  0% { transform: scale(1, 1) skewX(0deg); opacity: 0.95; }
+  40% { transform: scale(0.94, 1.08) skewX(2deg); opacity: 1; }
+  100% { transform: scale(1.04, 0.94) skewX(-2deg); opacity: 0.85; }
+}
+@keyframes vr-glow {
+  from { opacity: 0.7; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1.08); }
+}
+@keyframes vr-mote {
+  0% { transform: translate3d(0, 0, 0); opacity: 0; }
+  20% { opacity: 0.8; }
+  100% { transform: translate3d(14px, -140px, 0); opacity: 0; }
+}
+.vr-mote {
+  animation: vr-mote 9s linear infinite;
+  box-shadow: 0 0 6px rgba(247, 223, 166, 0.8);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .vr-marquee,
   .vr-kenburns,
   .vr-bob,
   .vr-spin-slow,
-  .vr-grain {
+  .vr-grain,
+  .vr-tassel,
+  .vr-flame,
+  .vr-diya-glow,
+  .vr-mote {
     animation: none !important;
+  }
+  .vr-mote {
+    display: none;
   }
   .vr-root *,
   .vr-modal * {

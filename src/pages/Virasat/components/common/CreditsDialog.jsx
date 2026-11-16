@@ -27,7 +27,7 @@ export default function CreditsDialog({ open, onClose }) {
         <p className="vr-eyebrow mb-3">{v("credits.eyebrow", "Credits")}</p>
         <h3 className="vr-display mb-3 text-4xl">{v("credits.title", "Photography & film")}</h3>
         <p className="mb-8 max-w-xl text-sm text-vr-ivory/60">
-          {v("credits.body", "Temporary imagery from Wikimedia Commons, used under the licences below. Each title links to its source page.")}
+          {v("credits.body", "Some imagery on this page is from Wikimedia Commons, used under the licences below. Each title links to its source page. All other photographs are from the GEO Jainism archive.")}
         </p>
         {credits === null ? (
           <p className="text-sm text-vr-ivory/50">{v("credits.loading", "Loading…")}</p>

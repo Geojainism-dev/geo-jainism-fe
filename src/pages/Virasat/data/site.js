@@ -2,7 +2,7 @@
  * Central content + asset references for the Virasat page.
  *
  * Every photo, video, contact detail and link the page uses is defined in
- * this folder (site.js, events.js, gallery.js, sponsors.js). Swap the values
+ * this folder (site.js, events.js, gallery.js). Swap the values
  * here to replace temporary assets — no component code needs to change.
  *
  * Temporary photography is CC-licensed work from Wikimedia Commons, stored
@@ -23,54 +23,86 @@ export const srcSet = (key) => `${imgSm(key)} 900w, ${img(key)} 1920w`;
 export const BRAND = {
   name: "Virasat",
   nameDeva: "विरासत",
-  tagline: "Where Heritage Comes Alive.",
   presenter: "GEO Jainism",
   founder: "Kavi Sajal Jain",
   founderRole: "Founder, GEO Jainism",
+  /** Footer wordmark line. */
+  tagline: "The Grand Jain Cultural Experience",
+  /** Official event identity — "Kavi Sajal Jain's Virasat". */
+  title: "Kavi Sajal Jain’s Virasat",
+  subtitle: "The Grand Jain Cultural Experience",
+  taglineDeva: "जैनत्व का गौरव गान",
 };
 
+/**
+ * Hero media. Temporary: a Jain temple film and a Tirthankara still from the
+ * GEO Jainism archive. Swap for authentic Virasat stage media when available.
+ */
 export const HERO_MEDIA = {
   /** Plays inside the 3D portal, and full-screen on the non-3D fallback. */
   video: "/tamiljain/temple-cinematic.mp4",
-  poster: img("dance-stage"),
-  posterKey: "dance-stage",
+  poster: img("vs-tirthankara"),
+  posterKey: "vs-tirthankara",
 };
 
-/** Section ids double as nav anchors. */
+/** Section ids double as nav anchors (footer navigation). */
 export const NAV_ITEMS = [
   { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "experience", label: "Experience" },
-  { id: "shows", label: "Shows" },
+  { id: "about", label: "About Virasat" },
+  { id: "experience", label: "The Experience" },
+  { id: "shows", label: "Upcoming Shows" },
   { id: "gallery", label: "Gallery" },
-  { id: "partners", label: "Partners" },
-  { id: "contact", label: "Contact" },
+  { id: "founder", label: "Founder" },
+  { id: "contact", label: "Book Virasat" },
 ];
 
-/** Replace with the Virasat box office / enquiry contacts. */
+/** Official Virasat contacts. */
 export const CONTACT = {
+  person: "Kavi Sajal Jain",
+  role: "Founder & Creative Director",
+  phone: "+91 6261820815",
+  phoneHref: "tel:+916261820815",
   email: "goldeneraofjainism@gmail.com",
-  enquiryHours: "Mon – Sat, 10:00 – 19:00 IST",
-  whatsapp: "https://chat.whatsapp.com/EnHCodUJre9AlzFO9LRx5j",
+  /** wa.me number (no "+"); use whatsappLink() to prefill a message. */
+  whatsappNumber: "916261820815",
+  whatsapp: "https://wa.me/916261820815",
+  instagramHandle: "@geo_jainism",
+  /**
+   * Booking enquiries are emailed via FormSubmit (formsubmit.co) — no backend
+   * or account needed. The FIRST submission sends an activation email to the
+   * address below; click "Activate Form" in it once, and every enquiry after
+   * that arrives in this inbox as a table. After activating, FormSubmit also
+   * gives you a random alias — put it in place of the email here to keep the
+   * address out of the page source:  https://formsubmit.co/ajax/<alias>
+   */
+  formEndpoint: "https://formsubmit.co/ajax/siddharthjwork@gmail.com", // temporary inbox for enquiries
   socials: [
-    { id: "instagram", label: "Instagram", href: "https://instagram.com/geo_jainism" },
-    { id: "youtube", label: "YouTube", href: "https://www.youtube.com/@geo_jainism" },
-    { id: "x", label: "X", href: "https://x.com/geo_jainism" },
+    { id: "instagram", label: "Instagram", handle: "@geo_jainism", href: "https://instagram.com/geo_jainism" },
+    { id: "youtube", label: "YouTube", handle: "@geo_jainism", href: "https://www.youtube.com/@geo_jainism" },
+    { id: "whatsapp", label: "WhatsApp", handle: "+91 6261820815", href: "https://wa.me/916261820815" },
   ],
 };
 
-/** Art forms that scroll through the About marquee. */
-export const ART_FORMS = [
-  "Kathak",
-  "Bharatanatyam",
-  "Odissi",
-  "Kuchipudi",
-  "Hindustani Raag",
-  "Carnatic Kriti",
-  "Kalbelia",
-  "Ghoomar",
-  "Manganiyar",
-  "Gotipua",
-  "Shehnai",
-  "Tabla Taal",
-];
+/** WhatsApp chat link with an optional prefilled message. */
+export const whatsappLink = (text = "") =>
+  `https://wa.me/${CONTACT.whatsappNumber}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
+
+/** mailto: link with optional subject/body. */
+export const mailLink = (subject = "", body = "") => {
+  const q = [subject && `subject=${encodeURIComponent(subject)}`, body && `body=${encodeURIComponent(body)}`].filter(Boolean).join("&");
+  return `mailto:${CONTACT.email}${q ? `?${q}` : ""}`;
+};
+
+/** Themes that scroll through the About marquee. */
+export const ART_FORMS = ["Veer Ras", "Kavya", "Itihaas", "Sangeet", "Tirthankaras", "Bahubali", "Neminath & Rajul", "Mahotsav"];
+/** Devanagari shown beside each marquee theme. */
+export const ART_FORMS_DEVA = {
+  "Veer Ras": "वीर रस",
+  Kavya: "काव्य",
+  Itihaas: "इतिहास",
+  Sangeet: "संगीत",
+  Tirthankaras: "तीर्थंकर",
+  Bahubali: "बाहुबली",
+  "Neminath & Rajul": "नेमिनाथ और राजुल",
+  Mahotsav: "महोत्सव",
+};

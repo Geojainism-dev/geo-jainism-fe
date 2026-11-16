@@ -3,22 +3,28 @@ import { img, imgSm } from "./site";
 /**
  * Gallery media. Order = display order within the masonry.
  *
+ * NO VIRASAT EVENT PHOTOS OR FILMS EXIST IN THE PROJECT YET. Until they do,
+ * the gallery shows genuine Jain heritage imagery — mostly GEO Jainism's own
+ * field photography — captioned as heritage, never as Virasat performances.
+ * When event coverage arrives, add it with photo()/film() and, if useful,
+ * performance categories to GALLERY_FILTERS (e.g. "Live Performances").
+ *
+ * Images live in /public/virasat/images as <key>.webp (≤1920px) and
+ * <key>-sm.webp (≤900px). CC-licensed items are credited in CREDITS.json.
+ *
  *  type:    "image" | "video"
  *  span:    "tall" | "wide" | "square" — controls the masonry tile shape
- *  video:   for type "video", the file played in the modal (poster = image)
- *
- * Temporary media is CC-licensed (see /public/virasat/images/CREDITS.json and
- * VIDEO_CREDITS below). Replace with Virasat's own event coverage.
+ *  video:   for type "video", the file played in the lightbox (poster = image)
  */
 export const GALLERY_FILTERS = [
-  { id: "all", label: "All" },
-  { id: "performances", label: "Performances" },
-  { id: "backstage", label: "Behind the Scenes" },
-  { id: "videos", label: "Films" },
-  { id: "highlights", label: "Past Highlights" },
+  { id: "all", label: "All Moments" },
+  { id: "tirthankaras", label: "Tirthankaras" },
+  { id: "sites", label: "Sacred Sites" },
+  { id: "manuscripts", label: "Manuscripts & Inscriptions" },
+  { id: "field", label: "Behind The Scenes" },
 ];
 
-const photo = (key, category, caption, span = "square") => ({
+export const photo = (key, category, caption, span = "square") => ({
   id: key,
   type: "image",
   category,
@@ -28,57 +34,30 @@ const photo = (key, category, caption, span = "square") => ({
   thumb: imgSm(key),
 });
 
+export const film = (key, category, caption, video, span = "wide") => ({
+  ...photo(key, category, caption, span),
+  type: "video",
+  video,
+});
+
+// order chosen so the dense grid packs without gaps at 4 and 2 columns
 export const GALLERY = [
-  {
-    id: "film-khajuraho-01",
-    type: "video",
-    category: "videos",
-    caption: "Khajuraho Dance Festival — evening performances",
-    span: "wide",
-    src: img("dance-stage"),
-    thumb: imgSm("dance-stage"),
-    video: "/virasat/videos/khajuraho-festival-01.webm",
-  },
-  photo("kathak-portrait", "performances", "Kathak — the spin before the stillness", "tall"),
-  photo("gotipua", "backstage", "Gotipua — lamp-lit preparation before entering the stage", "wide"),
-  photo("ghoomar", "performances", "Ghoomar — a whirl of Rajasthani colour"),
-  photo("kathak-tatkar", "backstage", "Ghungroo and tatkar — the footwork rehearsal", "wide"),
-  photo("manganiyar-singers", "performances", "Manganiyar voices", "tall"),
-  photo("kalbelia", "highlights", "Kalbelia in full flight", "wide"),
-  photo("odissi-festival", "backstage", "Odissi — moments before curtain"),
-  {
-    id: "film-khajuraho-02",
-    type: "video",
-    category: "videos",
-    caption: "Classical dance under the Khajuraho temples",
-    span: "square",
-    src: img("stage-night"),
-    thumb: imgSm("stage-night"),
-    video: "/virasat/videos/khajuraho-festival-02.webm",
-  },
-  photo("kathak-group", "performances", "Kathak ensemble", "wide"),
-  photo("kalbelia-festival", "highlights", "Kalbelia at the Khajuraho festival", "tall"),
-  photo("shehnai", "backstage", "Shehnai, sambal and harmonium tuning up", "wide"),
-  photo("bharatanatyam-portrait", "performances", "Bharatanatyam — a line held in time", "tall"),
-  photo("odissi-youth", "highlights", "Odissi trio on the festival stage", "wide"),
-  photo("diyas", "highlights", "The lamps of Deepotsav", "square"),
-  photo("sound-of-desert", "performances", "Sound of the desert — kamaicha and voice", "wide"),
-  photo("tabla", "backstage", "Tabla — riyaaz before the concert", "square"),
-  photo("bharatanatyam-group", "highlights", "Bharatanatyam trio", "wide"),
+  photo("vs-dilwara", "sites", "The carved marble dome of the Dilwara Jain temples", "wide"),
+  photo("vs-tirthankara", "tirthankaras", "A Tirthankara idol in a temple shrine", "wide"),
+  photo("vs-kalpasutra", "manuscripts", "A Kalpasutra folio, c. 1465", "tall"),
+  photo("vs-rock-jina", "tirthankaras", "A rock-cut Tirthankara, Tamil Nadu", "tall"),
+  photo("vs-lalitpur", "tirthankaras", "A standing Tirthankara — Lalitpur, Uttar Pradesh", "tall"),
+  photo("vs-founder", "field", "Kavi Sajal Jain during on-field documentation", "tall"),
+  photo("vs-samanar-malai", "sites", "Samanar Malai, Madurai", "wide"),
+  photo("vs-kalugumalai", "sites", "Rock-cut reliefs at Kalugumalai, Tamil Nadu", "wide"),
+  photo("vs-stone-carving", "tirthankaras", "Rock-shelter carvings of Tirthankaras, Tamil Nadu", "wide"),
+  photo("vs-gulbarga", "tirthankaras", "A Tirthankara in a stone niche — Gulbarga"),
+  photo("vs-inscription", "manuscripts", "A Tamil-Brahmi cave inscription"),
+  photo("vs-bihar", "sites", "Bihar — the birthplace of Bhagwan Mahavir", "tall"),
+  photo("vs-vijayamangalam", "sites", "Samanakovil, Vijayamangalam", "tall"),
+  photo("vs-team", "field", "The GEO Jainism team in the field", "wide"),
+  photo("vs-vallimalai", "sites", "Vallimalai, Tamil Nadu", "wide"),
 ];
 
-/** Attribution for the temporary films. */
-export const VIDEO_CREDITS = [
-  {
-    title: "Khajuraho Dance Festival 2025 01.webm",
-    author: "The open draft",
-    license: "CC BY-SA 4.0",
-    source: "https://commons.wikimedia.org/wiki/File:Khajuraho_Dance_Festival_2025_01.webm",
-  },
-  {
-    title: "Khajuraho Dance Festival 2025 02.webm",
-    author: "The open draft",
-    license: "CC BY-SA 4.0",
-    source: "https://commons.wikimedia.org/wiki/File:Khajuraho_Dance_Festival_2025_02.webm",
-  },
-];
+/** Attribution for any CC-licensed films added to the gallery. */
+export const VIDEO_CREDITS = [];
