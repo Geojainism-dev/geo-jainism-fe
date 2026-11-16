@@ -42,9 +42,9 @@ export const SEO_ROUTES = {
     jsonLd: ["organization", "breadcrumb", "webpage", "person"],
   },
   "/virasat": {
-    title: "Virasat | Where Heritage Comes Alive",
+    title: "Kavi Sajal Jain's Virasat | The Grand Jain Cultural Experience",
     description:
-      "Virasat is a season of live Indian classical music, classical and folk dance staged at heritage venues — forts, temple lawns, stepwells and desert camps. See upcoming shows and book tickets.",
+      "Experience Kavi Sajal Jain's Virasat — a grand live celebration of Jain history, heritage, poetry, music and culture.",
     path: "/virasat",
     ogType: "website",
     jsonLd: ["organization", "breadcrumb", "webpage"],

@@ -13,7 +13,7 @@ import { useVT } from "../i18n";
 const SceneCanvas = lazy(() => import("../components/three/SceneCanvas"));
 const HeroScene = lazy(() => import("../components/three/HeroScene"));
 
-const PORTAL_VIDEO = "/virasat/videos/khajuraho-festival-01.webm";
+const PORTAL_VIDEO = HERO_MEDIA.video;
 
 const ease = [0.16, 1, 0.3, 1];
 
@@ -39,7 +39,7 @@ function CinematicBackdrop({ reducedMotion }) {
 }
 
 export default function Hero({ introDone }) {
-  const { openBooking, scrollTo, reducedMotion } = useVirasat();
+  const { scrollTo, reducedMotion } = useVirasat();
   const use3D = useCanRender3D();
   const sectionRef = useRef(null);
   const progress = useRef(0);
@@ -85,7 +85,7 @@ export default function Hero({ introDone }) {
       : { initial: { opacity: 0, y: 34 }, animate: introDone ? { opacity: 1, y: 0 } : {}, transition: { duration: 1.2, delay, ease } };
 
   return (
-    <section id="home" ref={sectionRef} className="relative h-[100svh] min-h-[640px] w-full overflow-hidden bg-vr-ink" aria-label={v("brand.name", "Virasat")}>
+    <section id="home" ref={sectionRef} className="relative min-h-[100svh] w-full overflow-hidden bg-vr-ink" aria-label={v("vh.aria", BRAND.title)}>
       {use3D ? (
         <Suspense fallback={<CinematicBackdrop reducedMotion />}>
           <SceneCanvas className="!absolute inset-0" frameloop={inView ? "always" : "never"}>
@@ -102,16 +102,26 @@ export default function Hero({ introDone }) {
       {!use3D && <div className="pointer-events-none absolute inset-0 bg-vr-burgundy/25 mix-blend-multiply" />}
       <div className="vr-grain" aria-hidden="true" />
 
-      <div data-hero-content className="relative z-10 mx-auto flex h-full max-w-[1600px] flex-col justify-end px-5 pb-10 sm:px-8 lg:px-12 lg:pb-14">
+      <div data-hero-content className="relative z-10 mx-auto flex min-h-[100svh] max-w-[1600px] flex-col justify-end px-5 pb-10 pt-28 sm:px-8 lg:px-12 lg:pb-14">
         <div className="max-w-[54rem]">
           <motion.p className="vr-eyebrow mb-6 text-vr-gold" {...appear(0.1)}>
             <span className="hidden sm:inline">{BRAND.nameDeva}</span>
             <span className="vr-eyebrow__rule hidden sm:block" aria-hidden="true" />
-            <span>{v("hero.season", "Live heritage season · 2026–27")}</span>
+            <span>{v("vh.presented", "Presented by Kavi Sajal Jain")}</span>
           </motion.p>
 
-          <h1 className="vr-display text-vr-ivory">
-            <span className="block overflow-hidden pb-[0.08em]">
+          <h1 className="vr-display text-vr-ivory" aria-label={v("vh.aria", BRAND.title)}>
+            <span className="block overflow-hidden pb-[0.06em]" aria-hidden="true">
+              <motion.span
+                className="block text-[clamp(1.5rem,2.8vw,2.6rem)] font-light italic leading-tight text-vr-ivory/90"
+                initial={reducedMotion ? false : { yPercent: 110 }}
+                animate={introDone ? { yPercent: 0 } : {}}
+                transition={{ duration: 1.4, ease }}
+              >
+                {v("vh.kavi", "Kavi Sajal Jain’s")}
+              </motion.span>
+            </span>
+            <span className="block overflow-hidden pb-[0.08em]" aria-hidden="true">
               <motion.span
                 className="block text-[clamp(4.2rem,13.5vw,12.5rem)] font-light uppercase leading-[0.82] tracking-[0.06em]"
                 initial={reducedMotion ? false : { yPercent: 110 }}
@@ -121,24 +131,33 @@ export default function Hero({ introDone }) {
                 {BRAND.name}
               </motion.span>
             </span>
-            <span className="block overflow-hidden">
+            <span className="block overflow-hidden" aria-hidden="true">
               <motion.span
                 className="mt-3 block text-[clamp(1.6rem,3.4vw,3.1rem)] font-light italic leading-tight text-vr-ivory/90"
                 initial={reducedMotion ? false : { yPercent: 110 }}
                 animate={introDone ? { yPercent: 0 } : {}}
                 transition={{ duration: 1.4, delay: 0.15, ease }}
               >
-                {v("brand.tagline", BRAND.tagline)}
+                {v("vh.subtitle", BRAND.subtitle)}
               </motion.span>
             </span>
           </h1>
 
+          <motion.p className="mt-5 flex items-center gap-4 text-vr-gold" lang="hi" {...appear(0.35)}>
+            <span className="h-px w-8 bg-vr-gold/60" aria-hidden="true" />
+            <span className="font-vr-deva text-[clamp(1.3rem,2.2vw,1.9rem)] leading-normal">{BRAND.taglineDeva}</span>
+            <span className="h-px w-8 bg-vr-gold/60" aria-hidden="true" />
+          </motion.p>
+          <motion.p className="mt-4 max-w-[34rem] text-[1.05rem] leading-[1.75] text-vr-ivory/75 sm:text-[1.12rem]" {...appear(0.4)}>
+            {v("vh.body", "An extraordinary celebration of Jain history, culture, literature, poetry and music.")}
+          </motion.p>
+
           <motion.div className="mt-9 flex flex-wrap items-center gap-4" {...appear(0.45)}>
-            <Button size="lg" onClick={() => openBooking()}>
-              {v("cta.book", "Book Tickets")}
+            <Button size="lg" onClick={() => scrollTo("experience")}>
+              {v("vh.explore", "Explore the Experience")}
             </Button>
-            <Button variant="ghost" size="lg" icon={false} onClick={() => scrollTo("about")}>
-              {v("hero.discover", "Discover the Experience")}
+            <Button variant="ghost" size="lg" icon={false} onClick={() => scrollTo("contact")}>
+              {v("vh.book", "Book Virasat")}
             </Button>
           </motion.div>
         </div>
@@ -147,16 +166,16 @@ export default function Hero({ introDone }) {
           className="mt-12 flex flex-col gap-6 border-t border-vr-ivory/15 pt-6 text-vr-ivory sm:flex-row sm:items-end sm:justify-between"
           {...appear(0.65)}
         >
-          <button type="button" onClick={() => openBooking(show.id)} className="group flex items-center gap-5 text-left" aria-label={v("hero.nextAria", "Next show: {{title}}. Book tickets", { title: show.title })}>
+          <button type="button" onClick={() => scrollTo("shows")} className="group flex items-center gap-5 text-left" aria-label={v("vh.nextAria", "Next show: {{title}}, {{date}}. View details", { title: show.title, date: d.long })}>
             <span className="font-vr-display text-5xl font-light leading-none text-vr-gold tabular-nums">{d.day}</span>
             <span className="flex flex-col gap-1">
-              <span className="text-[0.68rem] uppercase tracking-[0.3em] text-vr-ivory/55">{v("hero.next", "Next performance")}</span>
+              <span className="text-[0.68rem] uppercase tracking-[0.3em] text-vr-ivory/55">{v("vh.next", "Next performance")}</span>
               <span className="font-vr-display text-2xl leading-tight transition-colors group-hover:text-vr-gold">
-                {show.title} <span className="italic text-vr-ivory/60">— {locale === "en-IN" ? show.subtitle.toLowerCase() : show.subtitle}</span>
+                {show.title} <span className="italic text-vr-ivory/60">— {show.subtitle}</span>
               </span>
               <span className="flex flex-wrap gap-x-5 gap-y-1 text-sm text-vr-ivory/65">
                 <span className="inline-flex items-center gap-1.5">
-                  <CalendarDays size={14} strokeWidth={1.5} /> {d.month} {d.year} · {d.time}
+                  <CalendarDays size={14} strokeWidth={1.5} /> {d.long}
                 </span>
                 <span className="inline-flex items-center gap-1.5">
                   <MapPin size={14} strokeWidth={1.5} /> {show.venue}, {show.city}
@@ -169,7 +188,7 @@ export default function Hero({ introDone }) {
             onClick={() => scrollTo("about")}
             className="hidden items-center gap-3 text-[0.68rem] uppercase tracking-[0.3em] text-vr-ivory/60 transition-colors hover:text-vr-ivory sm:inline-flex"
           >
-            {v("hero.scroll", "Scroll to enter")}
+            {v("vh.scroll", "Scroll to enter")}
             <span className="grid h-10 w-10 place-items-center rounded-full border border-vr-ivory/25">
               <ArrowDown size={14} className={reducedMotion ? "" : "vr-bob"} />
             </span>

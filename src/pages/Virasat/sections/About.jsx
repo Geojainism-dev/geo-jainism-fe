@@ -1,21 +1,27 @@
 import { useRef } from "react";
-import { BRAND, ART_FORMS, img, imgSm, srcSet } from "../data/site";
+import { BRAND, ART_FORMS, ART_FORMS_DEVA, img, imgSm, srcSet } from "../data/site";
 import { useVirasat } from "../hooks/useSmoothScroll";
 import { useGsap, revealWords, revealUp, revealImages, parallax } from "../animations/gsapAnimations";
 import SectionHeading from "../components/common/SectionHeading";
 import Ornament from "../components/common/Ornament";
+import Highlight from "../components/common/Highlight";
 import { useVT } from "../i18n";
 
 function Marquee() {
   const { v } = useVT();
-  const forms = ART_FORMS.map((name) => v(`art.${name}`, name));
-  const row = [...forms, ...forms];
+  const forms = ART_FORMS.map((name) => v(`va.theme.${name}`, name));
+  const row = [...ART_FORMS, ...ART_FORMS].map((name) => ({ name: v(`va.theme.${name}`, name), deva: ART_FORMS_DEVA[name] }));
   return (
-    <div className="relative overflow-hidden border-y border-vr-charcoal/15 py-6" aria-label={v("about.artForms", "Art forms: {{list}}", { list: forms.join(", ") })}>
+    <div className="relative overflow-hidden border-y border-vr-charcoal/15 py-6" aria-label={v("va.themes", "Themes: {{list}}", { list: forms.join(", ") })}>
       <div className="vr-marquee flex w-max items-center gap-10" aria-hidden="true">
-        {row.map((name, i) => (
+        {row.map(({ name, deva }, i) => (
           <span key={i} className="flex items-center gap-10 whitespace-nowrap font-vr-display text-[clamp(1.8rem,3.2vw,3rem)] italic text-vr-maroon">
-            {name}
+            <span className="flex items-baseline gap-4">
+              {name}
+              <span className="font-vr-deva text-[0.55em] not-italic text-vr-gold" lang="hi">
+                {deva}
+              </span>
+            </span>
             <svg width="14" height="14" viewBox="0 0 14 14" className="text-vr-gold" aria-hidden="true">
               <path d="M7 0c1.6 2.6 2.6 4.6 2.6 7S8.6 11.4 7 14C5.4 11.4 4.4 9.4 4.4 7S5.4 2.6 7 0Z" fill="currentColor" />
             </svg>
@@ -31,13 +37,13 @@ const PILLARS = [
     n: "i.",
     id: "mission",
     title: "Our Mission",
-    body: "To give India’s classical and folk artists the stages, audiences and respect their traditions deserve — and to make every performance an evening people carry with them for life.",
+    body: "To bring the **neglected chapters** of Jain history and heritage into the **mainstream** through powerful storytelling, poetry, music and live cultural experiences.",
   },
   {
     n: "ii.",
     id: "vision",
     title: "Our Vision",
-    body: "A country where heritage is not kept behind glass but lived, out loud, by every generation — performed in the very places where it was born.",
+    body: "To inspire **future generations** to discover, understand and take **pride** in the extraordinary legacy of Jainism.",
   },
 ];
 
@@ -75,20 +81,37 @@ export default function About() {
       <div className="relative mx-auto max-w-[1600px] px-5 pb-24 pt-28 sm:px-8 lg:px-12 lg:pb-32 lg:pt-40">
         <SectionHeading
           index="01"
-          eyebrow={v("about.eyebrow", "About Virasat")}
+          eyebrow={v("va.eyebrow", "The Story of Virasat")}
           tone="dark"
-          title={v("about.title", "A living stage for India’s *timeless* arts.")}
-          titleClassName="max-w-[14ch]"
+          title={v("va.title", "A Grand Celebration of *Jain* Heritage, History & Culture.")}
+          titleClassName="max-w-[18ch] !text-[clamp(2.6rem,5.6vw,5.75rem)]"
         />
 
         <div className="mt-16 grid gap-16 lg:mt-24 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5 lg:pt-10">
             <p className={`${lang === "en" ? "vr-dropcap " : ""}text-[1.2rem] leading-[1.75] text-vr-charcoal/85 lg:text-[1.28rem]`} data-reveal>
-              <em className="not-italic font-semibold text-vr-maroon">{v("brand.name", "Virasat")}</em>{" "}
-              {v("about.p1", "— the Hindi and Urdu word for inheritance — is a season of live performance staged where India’s heritage was made: in fort courtyards, on temple lawns, down the steps of ancient wells and around desert fires.")}
+              <Highlight
+                text={v(
+                  "va.p1",
+                  "Virasat is a grand live cultural experience conceptualised by **Kavi Sajal Jain**, celebrating the glorious history, values, literature and heritage of **Jainism**."
+                )}
+              />
             </p>
             <p className="mt-6 text-[1.05rem] leading-[1.8] text-vr-charcoal/70" data-reveal data-delay="0.1">
-              {v("about.p2", "Each evening brings masters and young torchbearers together — gharana musicians, classical dancers and folk performers whose art has passed from guru to shishya for generations. Nothing is staged for the camera. Everything is staged for the people sitting in front of it.")}
+              <Highlight
+                text={v(
+                  "va.p2",
+                  "Through powerful **poetry**, soulful **music**, captivating **storytelling** and spectacular live performances, Virasat brings the **forgotten chapters** of Jain history to life."
+                )}
+              />
+            </p>
+            <p className="mt-6 text-[1.05rem] leading-[1.8] text-vr-charcoal/70" data-reveal data-delay="0.15">
+              <Highlight
+                text={v(
+                  "va.p3",
+                  "From the extraordinary courage of our **Tirthankaras** to the legacy of great kings, queens and spiritual leaders — every performance celebrates the **pride of Jain heritage**."
+                )}
+              />
             </p>
             <Ornament.Divider className="mt-10 w-52 text-vr-gold" />
           </div>
@@ -97,10 +120,10 @@ export default function About() {
           <div className="relative lg:col-span-7">
             <figure className="relative ml-auto aspect-[4/3] w-full overflow-hidden lg:w-[88%]" data-clip="up">
               <img
-                src={img("kathak-group")}
-                srcSet={srcSet("kathak-group")}
+                src={img("vs-kalpasutra")}
+                srcSet={srcSet("vs-kalpasutra")}
                 sizes="(min-width: 1024px) 52vw, 100vw"
-                alt={v("about.alt1", "A Kathak ensemble performing in green and blue costumes")}
+                alt={v("va.alt1", "A folio from a 15th-century Kalpasutra manuscript, painted in red, gold and blue")}
                 className="h-[118%] w-full object-cover"
                 data-speed="-0.15"
                 loading="lazy"
@@ -111,11 +134,11 @@ export default function About() {
               data-speed="0.25"
             >
               <div className="aspect-[3/4] overflow-hidden" data-clip="right">
-                <img src={imgSm("bharatanatyam-portrait")} alt={v("about.alt2", "A Bharatanatyam dancer holding a pose on stage")} className="h-full w-full object-cover" loading="lazy" />
+                <img src={imgSm("vs-rock-jina")} alt={v("va.alt2", "A seated Tirthankara carved into a rock face")} className="h-full w-full object-cover" loading="lazy" />
               </div>
             </figure>
             <figcaption className="mt-6 text-right text-xs uppercase tracking-[0.25em] text-vr-charcoal/50 lg:mt-8" data-reveal>
-              {v("about.caption", "Kathak & Bharatanatyam — two of the eight classical forms")}
+              {v("va.caption", "Manuscript & stone — the living record of Jain heritage")}
             </figcaption>
           </div>
         </div>
@@ -125,15 +148,17 @@ export default function About() {
 
       <div className="relative mx-auto grid max-w-[1600px] gap-14 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:gap-10 lg:px-12 lg:py-32">
         <figure className="relative aspect-[4/5] overflow-hidden lg:col-span-4" data-clip="down">
-          <img src={imgSm("chand-baori")} alt={v("about.alt3", "The geometric steps of Chand Baori stepwell")} className="h-[120%] w-full object-cover grayscale-[30%]" data-speed="-0.2" loading="lazy" />
+          <img src={imgSm("vs-kalugumalai")} alt={v("va.alt3", "Rows of Tirthankara reliefs carved along the rock at Kalugumalai")} className="h-[120%] w-full object-cover" data-speed="-0.2" loading="lazy" />
         </figure>
         <div className="flex flex-col justify-center gap-14 lg:col-span-7 lg:col-start-6">
           {PILLARS.map((p, i) => (
             <article key={p.title} className="grid grid-cols-[3.5rem_1fr] gap-4 border-t border-vr-charcoal/15 pt-8" data-reveal data-delay={i * 0.1}>
               <span className="font-vr-display text-3xl italic text-vr-gold">{p.n}</span>
               <div>
-                <h3 className="font-vr-display text-[clamp(2rem,3.2vw,3rem)] leading-none text-vr-maroon">{v(`about.${p.id}.title`, p.title)}</h3>
-                <p className="mt-5 max-w-xl text-[1.08rem] leading-[1.8] text-vr-charcoal/75">{v(`about.${p.id}.body`, p.body)}</p>
+                <h3 className="font-vr-display text-[clamp(2rem,3.2vw,3rem)] leading-none text-vr-maroon">{v(`va.${p.id}.title`, p.title)}</h3>
+                <p className="mt-5 max-w-xl text-[1.08rem] leading-[1.8] text-vr-charcoal/75">
+                  <Highlight text={v(`va.${p.id}.body`, p.body)} />
+                </p>
               </div>
             </article>
           ))}

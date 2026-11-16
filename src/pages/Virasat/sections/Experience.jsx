@@ -8,62 +8,68 @@ import SplitWords from "../components/common/SplitWords";
 import Ornament from "../components/common/Ornament";
 import { useVT } from "../i18n";
 
+/** Experience categories — not a fixed running order; each evening is curated from them. */
 const ACTS = [
   {
     n: "I",
-    deva: "राग",
-    title: "Raag",
-    theme: "Traditional music",
-    body: "Hours-long raags unfold from a single drone — sarangi, shehnai and tabla answering one another until the courtyard holds its breath.",
-    main: "manganiyar",
-    mainAlt: "Manganiyar musicians performing on steps at a festival",
-    second: "tabla",
-    secondAlt: "A tabla player in concert",
-  },
-  {
-    n: "II",
-    deva: "नृत्य",
-    title: "Nritya",
-    theme: "Classical dance",
-    body: "Kathak’s spins, Odissi’s sculpted curves and Bharatanatyam’s geometry — codified over centuries, performed against the temples that inspired them.",
-    main: "kathak-festival",
-    mainAlt: "Kathak dancers performing on a festival stage",
-    second: "odissi-festival",
-    secondAlt: "An Odissi dancer in costume and jewellery",
-  },
-  {
-    n: "III",
-    deva: "लोक",
-    title: "Lok",
-    theme: "Folk traditions",
-    body: "Kalbelia and Ghoomar arrive in a blaze of mirrorwork and whirling skirts, carrying the songs of desert communities into the night.",
-    main: "kalbelia-desert",
-    mainAlt: "A Kalbelia dancer whirling in the desert",
-    second: "ghoomar",
-    secondAlt: "A Ghoomar dancer mid-spin with musicians behind",
+    id: "veer-ras",
+    deva: "वीर रस",
+    title: "Veer Ras",
+    theme: "The Spirit of Valour",
+    body: "Powerful poetry celebrating the courage, sacrifice and extraordinary achievements of Jain kings, warriors and legendary personalities.",
+    main: "vs-lalitpur",
+    mainAlt: "A towering standing Tirthankara sculpture beneath a stone canopy",
+    second: "vs-rock-jina",
+    secondAlt: "A seated Tirthankara carved into a rock face",
     tall: true,
   },
   {
+    n: "II",
+    id: "kavya",
+    deva: "काव्य",
+    title: "Kavya",
+    theme: "The Power of Words",
+    body: "Soul-stirring poetry, वीर रस, श्रृंगार and हास्य presentations connecting audiences with emotions, values and heritage.",
+    main: "vs-inscription",
+    mainAlt: "An ancient Brahmi inscription carved into the rock of a cave",
+    second: "vs-kalpasutra",
+    secondAlt: "A painted folio from a Kalpasutra manuscript",
+  },
+  {
+    n: "III",
+    id: "itihaas",
+    deva: "इतिहास",
+    title: "Itihaas",
+    theme: "Stories Untold",
+    body: "The extraordinary stories of Bhagwan Bahubali, Bharat Chakravarti, Bhagwan Neminath, Rajul and forgotten chapters of Jain history.",
+    main: "vs-samanar-malai",
+    mainAlt: "A row of Tirthankara reliefs carved along a granite hill",
+    second: "vs-kalugumalai",
+    secondAlt: "Tirthankara reliefs at Kalugumalai",
+  },
+  {
     n: "IV",
-    deva: "कलाकार",
-    title: "Kalakar",
-    theme: "The artists",
-    body: "Gharana masters share the stage with the students they are training — voices and hands that keep an unbroken line alive.",
-    main: "sound-of-desert",
-    mainAlt: "Two Rajasthani musicians playing string instruments",
-    second: "manganiyar-singers",
-    secondAlt: "A Manganiyar singer in a colourful turban",
+    id: "sangeet",
+    deva: "संगीत",
+    title: "Sangeet",
+    theme: "The Soul of Heritage",
+    body: "Soulful musical performances celebrating Jain devotion, spirituality, culture and timeless traditions.",
+    main: "diyas",
+    mainAlt: "A row of lit oil lamps glowing in the dark",
+    second: "vs-tirthankara",
+    secondAlt: "A golden Tirthankara idol in a temple shrine",
   },
   {
     n: "V",
-    deva: "उत्सव",
-    title: "Utsav",
-    theme: "Stage & audience",
-    body: "Lit monuments for a backdrop, lamps underfoot, and an audience close enough to hear the ghungroo — every show ends as a celebration.",
-    main: "dance-stage",
-    mainAlt: "An illuminated temple stage with a dancer at night",
-    second: "diyas",
-    secondAlt: "A row of lit oil lamps",
+    id: "mahotsav",
+    deva: "महोत्सव",
+    title: "Mahotsav",
+    theme: "The Grand Celebration",
+    body: "A spectacular culmination of poetry, music, performances and collective celebration.",
+    main: "vs-dilwara",
+    mainAlt: "The intricately carved marble dome of the Dilwara Jain temple",
+    second: "vs-gulbarga",
+    secondAlt: "A Tirthankara sculpture lit in a dark stone niche",
   },
 ];
 
@@ -95,7 +101,7 @@ function TiltImage({ src, set, alt, className = "", reducedMotion }) {
 
 function Act({ act: raw, index, reducedMotion }) {
   const { v } = useVT();
-  const k = `act.${raw.title.toLowerCase()}`;
+  const k = `ve.${raw.id}`;
   const act = {
     ...raw,
     theme: v(`${k}.theme`, raw.theme),
@@ -104,9 +110,10 @@ function Act({ act: raw, index, reducedMotion }) {
     secondAlt: v(`${k}.secondAlt`, raw.secondAlt),
   };
   return (
-    <article className="vr-act relative flex shrink-0 items-center lg:h-screen lg:w-[86vw] xl:w-[78vw]" aria-labelledby={`act-${act.title}`}>
+    <article className="vr-act relative flex shrink-0 items-center lg:h-screen lg:w-[86vw] xl:w-[78vw]" aria-labelledby={`act-${act.id}`}>
       <div className="grid w-full items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-12 lg:gap-8 lg:px-12 lg:py-0">
-        <div className={`relative lg:col-span-7 ${act.tall ? "lg:col-start-2 lg:col-span-5" : ""}`}>
+        {/* one col-span per breakpoint: conflicting spans pushed the copy of a tall act onto a second row */}
+        <div className={`relative ${act.tall ? "lg:col-span-5 lg:col-start-2" : "lg:col-span-7"}`}>
           <TiltImage
             src={img(act.main)}
             set={srcSet(act.main)}
@@ -123,18 +130,18 @@ function Act({ act: raw, index, reducedMotion }) {
           </span>
         </div>
 
-        <div className={`relative flex flex-col gap-6 lg:col-span-5 ${act.tall ? "lg:col-span-5 lg:col-start-8" : ""}`}>
+        <div className={`relative flex flex-col gap-6 ${act.tall ? "lg:col-span-5 lg:col-start-8" : "lg:col-span-5"}`}>
           <figure className="relative hidden w-[58%] self-end overflow-hidden lg:block" data-hx="80">
             <div className="aspect-[4/3] overflow-hidden" data-clip="left">
               <img src={imgSm(act.second)} alt={act.secondAlt} className="h-full w-full object-cover" loading="lazy" />
             </div>
           </figure>
           <p className="vr-eyebrow text-vr-gold">
-            <span className="tabular-nums">{v("act.label", "Act {{n}}", { n: String(index + 1).padStart(2, "0") })}</span>
+            <span className="tabular-nums">{v("ve.act", "Act {{n}}", { n: String(index + 1).padStart(2, "0") })}</span>
             <span className="vr-eyebrow__rule" aria-hidden="true" />
             <span>{act.theme}</span>
           </p>
-          <h3 id={`act-${act.title}`} className="flex items-baseline gap-5 text-vr-ivory">
+          <h3 id={`act-${act.id}`} className="flex items-baseline gap-5 text-vr-ivory">
             <span className="vr-display text-[clamp(3.4rem,6vw,6rem)]">{act.title}</span>
             <span className="font-vr-deva text-[clamp(1.6rem,2.4vw,2.4rem)] text-vr-gold/80" lang="hi">
               {act.deva}
@@ -229,23 +236,29 @@ export default function Experience() {
             <p className="vr-eyebrow relative mb-8 text-vr-gold" data-reveal>
               <span className="tabular-nums">02</span>
               <span className="vr-eyebrow__rule" aria-hidden="true" />
-              <span>{v("exp.eyebrow", "The Grand Live Experience")}</span>
+              <span>{v("ve.eyebrow", "Experience Virasat")}</span>
             </p>
-            <h2 id="experience-title" className="vr-display relative text-[clamp(3.4rem,7.5vw,8.5rem)]">
-              <SplitWords text={v("exp.h1", "One evening.")} className="block" />
-              <SplitWords text={v("exp.h2", "*Five* acts.")} className="block" />
-              <SplitWords text={v("exp.h3", "A thousand years.")} className="block text-vr-gold" />
+            <h2 id="experience-title" className="vr-display relative text-[clamp(3rem,6.2vw,7rem)]">
+              <SplitWords text={v("ve.h1", "One Stage.")} className="block" />
+              <SplitWords text={v("ve.h2", "Countless *Stories.*")} className="block" />
+              <SplitWords text={v("ve.h3", "An Eternal Heritage.")} className="block text-vr-gold" />
             </h2>
             <p className="relative mt-10 max-w-md text-[1.08rem] leading-[1.8] text-vr-ivory/65" data-reveal>
-              {v("exp.body", "Every Virasat evening moves through music, dance, folk, artistry and celebration — staged in the open air, under monuments that have heard these sounds before.")}
+              {v(
+                "ve.body",
+                "An immersive journey through the glorious chapters of Jain history, brought alive through powerful poetry, music, historical storytelling and spectacular stage performances."
+              )}
+            </p>
+            <p className="relative mt-5 max-w-md border-l border-vr-gold/40 pl-4 text-sm leading-relaxed text-vr-ivory/50" data-reveal>
+              {v("ve.note", "Five experiences, not a fixed running order — every Virasat evening is curated from them.")}
             </p>
             <p className="relative mt-10 hidden items-center gap-3 text-[0.68rem] uppercase tracking-[0.3em] text-vr-ivory/45 lg:flex" data-reveal>
-              <span className="h-px w-10 bg-vr-ivory/30" /> {v("exp.keep", "Keep scrolling")}
+              <span className="h-px w-10 bg-vr-ivory/30" /> {v("ve.keep", "Keep scrolling")}
             </p>
           </div>
 
           {ACTS.map((act, i) => (
-            <Act key={act.title} act={act} index={i} reducedMotion={reducedMotion} />
+            <Act key={act.id} act={act} index={i} reducedMotion={reducedMotion} />
           ))}
           <div className="hidden shrink-0 lg:block lg:w-[8vw]" aria-hidden="true" />
         </div>
