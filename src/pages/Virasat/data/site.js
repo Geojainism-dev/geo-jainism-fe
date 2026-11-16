@@ -75,7 +75,7 @@ export const CONTACT = {
    * gives you a random alias — put it in place of the email here to keep the
    * address out of the page source:  https://formsubmit.co/ajax/<alias>
    */
-  formEndpoint: "https://formsubmit.co/ajax/siddharthjwork@gmail.com", // temporary inbox for enquiries
+  formEndpoint: "https://formsubmit.co/ajax/goldeneraofjainism@gmail.com",
   socials: [
     { id: "instagram", label: "Instagram", handle: "@geo_jainism", href: "https://instagram.com/geo_jainism" },
     { id: "youtube", label: "YouTube", handle: "@geo_jainism", href: "https://www.youtube.com/@geo_jainism" },
