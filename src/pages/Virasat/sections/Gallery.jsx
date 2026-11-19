@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useRef, useState } from "react";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { useMemo, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import { Expand, Play } from "lucide-react";
-import { GALLERY, GALLERY_FILTERS } from "../data/gallery";
+import { GALLERY } from "../data/gallery";
 import { useVirasat } from "../hooks/useSmoothScroll";
 import { useMediaQuery } from "../hooks/useMotionPrefs";
-import { gsap, ScrollTrigger, useGsap, revealWords, revealUp } from "../animations/gsapAnimations";
+import { gsap, useGsap, revealWords, revealUp } from "../animations/gsapAnimations";
 import SplitWords from "../components/common/SplitWords";
 import Ornament from "../components/common/Ornament";
 import Lightbox from "../components/common/Lightbox";
@@ -23,7 +23,7 @@ const ASPECTS = ["3 / 4", "3 / 4.7", "3 / 3.9", "3 / 4.4"];
 /** Plate number for each photo, fixed by its place in the full collection. */
 const PLATE = Object.fromEntries(GALLERY.map((g, i) => [g.id, String(i + 1).padStart(2, "0")]));
 
-function Jharokha({ item, label, aspect, onOpen, reducedMotion }) {
+function Jharokha({ item, aspect, onOpen, reducedMotion }) {
   const { v } = useVT();
   const isVideo = item.type === "video";
   return (
@@ -70,8 +70,6 @@ function Jharokha({ item, label, aspect, onOpen, reducedMotion }) {
         <span className="mt-5 flex flex-col items-center gap-1.5 text-center">
           <span className="flex items-center gap-2 text-[0.58rem] uppercase tracking-[0.3em] text-vr-gold sm:text-[0.62rem]">
             <span className="tabular-nums">{v("vg.plate", "No. {{n}}", { n: PLATE[item.id] })}</span>
-            <span className="hidden h-px w-4 bg-vr-gold/50 sm:block" aria-hidden="true" />
-            <span className="hidden sm:inline">{label}</span>
           </span>
           <span className="font-vr-display text-[1.02rem] italic leading-snug text-vr-ivory/80 transition-colors duration-500 group-hover:text-vr-gold-soft sm:text-[1.15rem]">
             {item.caption}
@@ -86,21 +84,15 @@ function Jharokha({ item, label, aspect, onOpen, reducedMotion }) {
 export default function Gallery() {
   const ref = useRef(null);
   const { reducedMotion } = useVirasat();
-  const [filter, setFilter] = useState("all");
   const [index, setIndex] = useState(null);
   const { v, lang } = useVT();
   const wide = useMediaQuery("(min-width: 1024px)");
   const colCount = wide ? 3 : 2;
 
-  const labels = useMemo(
-    () => Object.fromEntries(GALLERY_FILTERS.map((f) => [f.id, v(`vg.f.${f.id}`, f.label)])),
+  const items = useMemo(
+    () => GALLERY.map((g) => ({ ...g, caption: v(`vg.${g.id}`, g.caption) })),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [lang]
-  );
-  const items = useMemo(
-    () => (filter === "all" ? GALLERY : GALLERY.filter((g) => g.category === filter)).map((g) => ({ ...g, caption: v(`vg.${g.id}`, g.caption) })),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [filter, lang]
   );
   // deal the photos into staggered columns, left to right
   const columns = useMemo(() => {
@@ -128,11 +120,6 @@ export default function Gallery() {
     { reducedMotion }
   );
 
-  // filtering changes the wall's height — re-measure the scroll animations once it settles
-  useEffect(() => {
-    const t = setTimeout(() => ScrollTrigger.refresh(), 750);
-    return () => clearTimeout(t);
-  }, [filter]);
 
   // a soft lamp that follows the pointer across the wall (desktop only, see .vr-gallery__lamp)
   const onMove = (e) => {
@@ -160,9 +147,9 @@ export default function Gallery() {
             <span className="vr-eyebrow__rule" aria-hidden="true" />
             <span>{v("vg.eyebrow", "The Virasat Experience")}</span>
           </p>
-          <h2 className="vr-display mt-8 text-[clamp(2.6rem,6vw,6.25rem)]" aria-label={v("vg.title", "Moments That Celebrate Our Heritage.").replace(/\*/g, "")}>
+          <h2 className="vr-display mt-8 text-[clamp(2.6rem,6vw,6.25rem)]" aria-label={v("vg.title", "Moments That Celebrate Our Legacy").replace(/\*/g, "")}>
             <SplitWords text={v("vg.h1", "Moments That")} className="block" />
-            <SplitWords text={v("vg.h2", "*Celebrate* Our Heritage.")} className="block" />
+            <SplitWords text={v("vg.h2", "*Celebrate* Our Legacy")} className="block" />
           </h2>
           <Ornament.Divider className="mt-8 w-56 text-vr-gold" />
           <div className="mt-8 max-w-2xl space-y-3 text-[1.05rem] leading-[1.8] text-vr-ivory/65" data-reveal>
@@ -174,54 +161,24 @@ export default function Gallery() {
               )}
             </p>
           </div>
-
-          <LayoutGroup id="gallery-filters">
-            <div role="group" aria-label={v("vg.filter", "Filter gallery")} className="mt-12 flex flex-wrap justify-center gap-x-1 gap-y-2" data-reveal>
-              {GALLERY_FILTERS.map((f) => (
-                <button
-                  key={f.id}
-                  type="button"
-                  aria-pressed={filter === f.id}
-                  onClick={() => setFilter(f.id)}
-                  className={`relative min-h-[44px] rounded-full px-4 py-2 text-[0.72rem] uppercase tracking-[0.22em] transition-colors ${
-                    filter === f.id ? "text-vr-ink" : "text-vr-ivory/65 hover:text-vr-gold-soft"
-                  }`}
-                >
-                  {filter === f.id && (
-                    <motion.span layoutId="gallery-pill" className="absolute inset-0 rounded-full bg-vr-gold" transition={{ type: "spring", stiffness: 380, damping: 32 }} />
-                  )}
-                  <span className="relative">{labels[f.id]}</span>
-                </button>
-              ))}
-            </div>
-          </LayoutGroup>
         </header>
 
         {/* the wall of jharokhas */}
         <div data-wall className="mx-auto mt-20 grid max-w-[1320px] grid-cols-2 gap-x-4 sm:gap-x-8 lg:mt-24 lg:grid-cols-3 lg:gap-x-14">
           {columns.map((col, c) => (
             <ul key={c} data-col className={`flex flex-col gap-y-14 sm:gap-y-20 ${c === 1 ? "pt-16 sm:pt-28 lg:pt-36" : c === 2 ? "lg:pt-12" : ""}`}>
-              <AnimatePresence mode="popLayout">
                 {col.map(({ item, i }) => (
                   <Jharokha
                     key={item.id}
                     item={item}
-                    label={labels[item.category]}
                     aspect={ASPECTS[(i + c) % ASPECTS.length]}
                     reducedMotion={reducedMotion}
                     onOpen={() => setIndex(i)}
                   />
                 ))}
-              </AnimatePresence>
             </ul>
           ))}
         </div>
-
-        <p className="mt-20 flex items-center justify-center gap-3 text-center text-sm text-vr-ivory/50" data-reveal>
-          <span className="h-px w-8 bg-vr-gold/50" aria-hidden="true" />
-          {v("vg.note", "Images from the GEO Jainism heritage archive. Photographs and films from Virasat stages will be added soon.")}
-          <span className="h-px w-8 bg-vr-gold/50" aria-hidden="true" />
-        </p>
       </div>
 
       <Lightbox items={items} index={index} onIndex={setIndex} onClose={() => setIndex(null)} />

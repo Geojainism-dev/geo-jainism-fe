@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Instagram, Mail, MessageCircle, Phone } from "lucide-react";
+import { Instagram, Mail, MessageCircle } from "lucide-react";
 import { CONTACT, img, whatsappLink, mailLink } from "../data/site";
 import { useVirasat } from "../hooks/useSmoothScroll";
 import { useGsap, revealWords, revealUp, parallax } from "../animations/gsapAnimations";
@@ -51,7 +51,7 @@ export default function Contact() {
               {v("vc.p1", "Planning a Jain Mahotsav, cultural celebration or a special community event?")}
             </p>
             <p>{v("vc.p2", "Invite Kavi Sajal Jain’s Virasat and create an unforgettable celebration of Jain history, culture and heritage.")}</p>
-            <p>{v("vc.p3", "Connect with us for event bookings, collaborations and sponsorship opportunities.")}</p>
+            <p>{v("vc.p3", "Connect with us for event bookings and collaborations.")}</p>
           </div>
           <div className="mt-10 flex flex-wrap justify-center gap-4" data-reveal>
             <Button size="lg" onClick={() => enquire("")}>
@@ -76,16 +76,11 @@ export default function Contact() {
             <p className="mt-1 text-[0.7rem] uppercase tracking-[0.26em] text-vr-gold-soft">{v("vc.role", CONTACT.role)}</p>
             <ul className="mt-8 space-y-5 text-vr-ivory/80">
               <li>
-                <span className="text-[0.65rem] uppercase tracking-[0.26em] text-vr-ivory/45">{v("vc.phoneLabel", "Phone / WhatsApp")}</span>
-                <div className="mt-2 flex flex-wrap items-center gap-x-5 gap-y-2">
-                  <a href={CONTACT.phoneHref} className="vr-link inline-flex items-center gap-3">
-                    <Phone size={17} strokeWidth={1.4} className="shrink-0 text-vr-gold" aria-hidden="true" />
-                    {CONTACT.phone}
-                  </a>
-                  <a href={hello} target="_blank" rel="noopener noreferrer" className="vr-link inline-flex items-center gap-1.5 text-sm text-vr-gold">
-                    <MessageCircle size={14} strokeWidth={1.5} aria-hidden="true" /> WhatsApp
-                  </a>
-                </div>
+                <span className="text-[0.65rem] uppercase tracking-[0.26em] text-vr-ivory/45">{v("vc.whatsappLabel", "WhatsApp")}</span>
+                <a href={hello} target="_blank" rel="noopener noreferrer" className="vr-link mt-2 flex items-center gap-3">
+                  <MessageCircle size={17} strokeWidth={1.4} className="shrink-0 text-vr-gold" aria-hidden="true" />
+                  {CONTACT.whatsappDisplay}
+                </a>
               </li>
               <li>
                 <span className="text-[0.65rem] uppercase tracking-[0.26em] text-vr-ivory/45">{v("vc.emailLabel", "Email")}</span>

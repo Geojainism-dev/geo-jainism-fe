@@ -8,9 +8,9 @@ import Highlight from "../components/common/Highlight";
 import { useVT } from "../i18n";
 
 /**
- * Founder & Creative Director. The photograph is Kavi Sajal Jain's own
- * (GEO Jainism field documentation, /journey/10-founder-research.jpg).
- * Copy is limited to what the brief states — no invented biography.
+ * Founder & Visionary. The photograph is Kavi Sajal Jain on the Virasat
+ * stage, from the client's Drive folder (Nov 2026).
+ * Bio copy is the client-supplied parichay — no invented biography.
  */
 export default function Founder() {
   const ref = useRef(null);
@@ -50,18 +50,17 @@ export default function Founder() {
           <div className="pointer-events-none absolute -bottom-4 -right-4 top-4 left-4 border border-vr-gold/60 sm:-bottom-6 sm:-right-6 sm:left-6 sm:top-6" aria-hidden="true" />
           <figure className="relative aspect-[4/5] overflow-hidden bg-vr-charcoal shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)]" data-clip="up">
             <img
-              src={img("vs-founder")}
-              srcSet={`${imgSm("vs-founder")} 720w, ${img("vs-founder")} 874w`}
+              src={img("vs-kavi-sajal-jain")}
+              srcSet={`${imgSm("vs-kavi-sajal-jain")} 600w, ${img("vs-kavi-sajal-jain")} 1280w`}
               sizes="(min-width: 1024px) 34vw, 90vw"
-              alt={v("vf.alt", "Kavi Sajal Jain examining ancient carved stonework during on-field documentation")}
-              className="absolute inset-x-0 -top-[9%] h-[118%] w-full object-cover object-[60%_30%]"
+              alt={v("vf.alt", "Kavi Sajal Jain performing on the Virasat stage")}
+              className="absolute inset-x-0 -top-[9%] h-[118%] w-full object-cover object-[50%_25%]"
               data-speed="-0.12"
               loading="lazy"
             />
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-vr-ink/70 via-transparent to-transparent" />
             <figcaption className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-              <span className="block text-[0.62rem] uppercase tracking-[0.3em] text-vr-gold-soft">{v("vf.caption", "On-field documentation")}</span>
-              <span className="mt-1 block font-vr-display text-xl text-vr-ivory">{BRAND.founder}</span>
+              <span className="block font-vr-display text-xl text-vr-ivory">{BRAND.founder}</span>
             </figcaption>
           </figure>
         </div>
@@ -75,7 +74,7 @@ export default function Founder() {
             <SplitWords text={v("vf.name", "Kavi Sajal *Jain*")} />
           </h2>
           <p className="mt-6 inline-flex items-center gap-4 self-start border-y border-vr-gold/50 py-2.5 text-[0.75rem] font-semibold uppercase tracking-[0.28em] text-vr-gold-soft" data-reveal>
-            {v("vf.role", "Founder & Creative Director")}
+            {v("vf.role", "Founder & Visionary")}
           </p>
 
           <div className="mt-10 space-y-6 text-[1.08rem] leading-[1.85] text-vr-ivory/70">
@@ -84,7 +83,7 @@ export default function Founder() {
                 className="text-vr-gold-soft"
                 text={v(
                   "vf.p1",
-                  "A **poet, storyteller and cultural creator**, Kavi Sajal Jain envisioned Virasat as a grand platform to bring the glorious yet often overlooked chapters of Jain history and heritage to **mainstream audiences**."
+                  "A renowned **Hindi poet, storyteller and cultural visionary**, Kavi Sajal Jain has performed at over **300 Jain literary and cultural platforms**, earning recognition in the Hindi Kavi Sammelan circuit. In contemporary Jain poetry, he has pioneered creative expressions by blending historical narratives with modern poetic forms."
                 )}
               />
             </p>
@@ -93,7 +92,16 @@ export default function Founder() {
                 className="text-vr-gold-soft"
                 text={v(
                   "vf.p2",
-                  "Through powerful poetry and engaging live performances, he aims to reconnect generations with the **pride, values and extraordinary legacy** of Jainism."
+                  "He is the **Founder of GEO Jainism** and Director of the widely discussed international documentary **Tamil Jains**, bringing overlooked dimensions of Jain heritage to wider audiences. A postgraduate in Hindi from Banaras Hindu University (BHU), he combines literary scholarship with contemporary cultural expression."
+                )}
+              />
+            </p>
+            <p data-reveal data-delay="0.1">
+              <Highlight
+                className="text-vr-gold-soft"
+                text={v(
+                  "vf.p3",
+                  "Through grand productions like Virasat, he is taking **Jain legacy to the masses**, creating a powerful connection between heritage and today’s youth."
                 )}
               />
             </p>
@@ -101,7 +109,7 @@ export default function Founder() {
 
           <blockquote className="relative mt-10 border-l-2 border-vr-gold pl-6" data-reveal data-delay="0.12">
             <p className="font-vr-display text-[clamp(1.5rem,2.3vw,2.1rem)] italic leading-snug text-vr-ivory">
-              {v("vf.p3", "Virasat is his vision of celebrating Jainatva through the language of art, literature, music and storytelling.")}
+              {v("vf.quote", "His vision is to make Jainatva a living, celebrated and inspiring part of contemporary culture.")}
             </p>
             <p className="mt-4 font-vr-deva text-lg text-vr-gold" lang="hi">
               {BRAND.taglineDeva}

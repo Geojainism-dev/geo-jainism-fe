@@ -42,7 +42,7 @@ export const SEO_ROUTES = {
     jsonLd: ["organization", "breadcrumb", "webpage", "person"],
   },
   "/virasat": {
-    title: "Kavi Sajal Jain's Virasat | The Grand Jain Cultural Experience",
+    title: "Kavi Sajal Jain's Virasat | The Grand Jain Cultural Live Show",
     description:
       "Experience Kavi Sajal Jain's Virasat — a grand live celebration of Jain history, heritage, poetry, music and culture.",
     path: "/virasat",
