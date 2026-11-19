@@ -40,7 +40,7 @@ export const BRAND = {
  */
 export const HERO_MEDIA = {
   /** Plays inside the 3D portal, and full-screen on the non-3D fallback. */
-  video: "/tamiljain/temple-cinematic.mp4",
+  video: "/virasat/videos/virasat-hero.mp4",
   poster: img("vs-tirthankara"),
   posterKey: "vs-tirthankara",
 };

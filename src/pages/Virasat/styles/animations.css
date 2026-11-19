@@ -76,7 +76,79 @@
   box-shadow: 0 0 6px rgba(247, 223, 166, 0.8);
 }
 
+/* Hero film: monochrome grade, reveal, drift, light, vignette */
+.vr-film-grade {
+  filter: grayscale(1) contrast(1.24) brightness(0.86);
+}
+.vr-film-reveal {
+  opacity: 0;
+  transform: scale(1.08);
+  filter: blur(6px);
+  transition: opacity 2.4s ease, transform 3.2s cubic-bezier(0.16, 1, 0.3, 1), filter 2.4s ease;
+}
+.vr-film-reveal.is-playing {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+/* phones: the film fills the top and fades into the copy; desktop: feathered into the dark on its left */
+.vr-film-frame {
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+}
+@media (min-width: 1024px) {
+  .vr-film-frame {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 34%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 34%);
+  }
+}
+.vr-film-tone {
+  background: #c9a35c;
+  mix-blend-mode: color;
+  opacity: 0.14;
+}
+.vr-film-corner {
+  background:
+    radial-gradient(40% 36% at 100% 26%, rgb(0 0 0 / 0.97), transparent 80%),
+    linear-gradient(to left, rgb(0 0 0 / 0.97) 4%, rgb(0 0 0 / 0.6) 12%, transparent 22%);
+}
+.vr-grain--film {
+  opacity: 0.16;
+}
+@keyframes vr-play-ring {
+  0% { box-shadow: 0 0 0 0 rgb(201 163 92 / 0.45); }
+  100% { box-shadow: 0 0 0 18px rgb(201 163 92 / 0); }
+}
+.vr-play-ring {
+  animation: vr-play-ring 2.4s ease-out infinite;
+}
+@keyframes vr-film-drift {
+  from { transform: scale(1.06) translate3d(1%, 0.5%, 0); }
+  to { transform: scale(1.14) translate3d(-1.5%, -1%, 0); }
+}
+.vr-film-drift {
+  animation: vr-film-drift 32s ease-in-out infinite alternate;
+}
+@keyframes vr-film-light {
+  0%, 100% { opacity: 0.55; transform: translate3d(0, 0, 0); }
+  50% { opacity: 0.9; transform: translate3d(-4%, 2%, 0); }
+}
+.vr-film-light {
+  inset: -10%;
+  background:
+    radial-gradient(60% 50% at 78% 18%, rgb(255 178 103 / 0.22), transparent 70%),
+    radial-gradient(50% 60% at 10% 90%, rgb(122 28 40 / 0.35), transparent 70%);
+  mix-blend-mode: soft-light;
+  animation: vr-film-light 14s ease-in-out infinite;
+}
+.vr-film-vignette {
+  background: radial-gradient(120% 90% at 50% 45%, transparent 45%, rgb(0 0 0 / 0.55) 82%, rgb(0 0 0 / 0.85) 100%);
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .vr-film-drift,
+  .vr-film-light,
+  .vr-play-ring,
   .vr-marquee,
   .vr-kenburns,
   .vr-bob,
