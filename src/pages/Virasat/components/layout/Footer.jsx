@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowUp, Mail, Phone } from "lucide-react";
+import { ArrowUp, Mail } from "lucide-react";
 import { BRAND, CONTACT, NAV_ITEMS, mailLink } from "../../data/site";
 import { useVirasat } from "../../hooks/useSmoothScroll";
 import CreditsDialog from "../common/CreditsDialog";
@@ -65,12 +65,6 @@ export default function Footer() {
           <div>
             <p className="vr-eyebrow mb-5">{v("vft.contact", "Contact & Follow")}</p>
             <ul className="space-y-2.5 text-vr-ivory/75">
-              <li>
-                <a href={CONTACT.phoneHref} className="vr-link inline-flex items-center gap-2">
-                  <Phone size={14} strokeWidth={1.4} className="text-vr-gold" aria-hidden="true" />
-                  {CONTACT.phone}
-                </a>
-              </li>
               <li>
                 <a href={mailLink()} className="vr-link inline-flex items-center gap-2 break-all">
                   <Mail size={14} strokeWidth={1.4} className="shrink-0 text-vr-gold" aria-hidden="true" />

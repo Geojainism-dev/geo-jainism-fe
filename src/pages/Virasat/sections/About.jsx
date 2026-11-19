@@ -37,7 +37,7 @@ const PILLARS = [
     n: "i.",
     id: "mission",
     title: "Our Mission",
-    body: "To bring the **neglected chapters** of Jain history and heritage into the **mainstream** through powerful storytelling, poetry, music and live cultural experiences.",
+    body: "To bring the inspiring stories, teachings and extraordinary lives of our **Tirthankaras** to every corner of society, making the **timeless wisdom** and glorious heritage of Jainism known to generations through powerful storytelling, poetry, music and live cultural experiences.",
   },
   {
     n: "ii.",

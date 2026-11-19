@@ -28,8 +28,8 @@ const CATEGORIES = [
   },
   {
     id: "sponsor",
-    title: "Sponsorship Opportunities",
-    body: "Partner with Virasat and become a part of a grand cultural experience.",
+    title: "Brand Collaboration Opportunities",
+    body: "Collaborate with Virasat and connect your brand with a grand celebration of Jain heritage, culture and timeless traditions.",
     cta: true,
   },
 ];
@@ -75,14 +75,6 @@ export default function Partners() {
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Button onClick={() => enquire("partnership")}>{v("vp.cta.partner", "Become a Virasat Partner")}</Button>
-              <Button
-                variant="ghost"
-                icon={false}
-                className="!border-vr-maroon/40 !bg-transparent !text-vr-maroon hover:!bg-vr-maroon hover:!text-vr-ivory"
-                onClick={() => enquire("sponsorship")}
-              >
-                {v("vp.cta.sponsor", "Discuss Sponsorship")}
-              </Button>
             </div>
           </div>
         </div>

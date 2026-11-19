@@ -487,7 +487,7 @@ export default function UpcomingShows() {
           <p className="text-[1.08rem] leading-[1.8] text-vr-ivory/70">
             {v(
               "vs.body",
-              "Every Virasat performance is a unique celebration of Jain history and culture. We collaborate with Jain organisations, institutions and communities to bring this extraordinary experience to different cities."
+              "Every Virasat performance is a unique celebration of Jain culture. We collaborate with Jain organisations, institutions and communities to bring this extraordinary experience to different cities."
             )}
           </p>
           <button type="button" onClick={() => scrollTo("contact")} className="vr-link mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-vr-gold">

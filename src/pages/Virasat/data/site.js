@@ -27,10 +27,10 @@ export const BRAND = {
   founder: "Kavi Sajal Jain",
   founderRole: "Founder, GEO Jainism",
   /** Footer wordmark line. */
-  tagline: "The Grand Jain Cultural Experience",
+  tagline: "The Grand Jain Cultural Live Show",
   /** Official event identity — "Kavi Sajal Jain's Virasat". */
   title: "Kavi Sajal Jain’s Virasat",
-  subtitle: "The Grand Jain Cultural Experience",
+  subtitle: "The Grand Jain Cultural Live Show",
   taglineDeva: "जैनत्व का गौरव गान",
 };
 
@@ -59,14 +59,13 @@ export const NAV_ITEMS = [
 /** Official Virasat contacts. */
 export const CONTACT = {
   person: "Kavi Sajal Jain",
-  role: "Founder & Creative Director",
-  phone: "+91 6261820815",
-  phoneHref: "tel:+916261820815",
-  email: "goldeneraofjainism@gmail.com",
+  role: "Founder & Visionary",
+  email: "virasat.event@gmail.com",
   /** wa.me number (no "+"); use whatsappLink() to prefill a message. */
-  whatsappNumber: "916261820815",
-  whatsapp: "https://wa.me/916261820815",
-  instagramHandle: "@geo_jainism",
+  whatsappNumber: "918955302069",
+  whatsappDisplay: "+91 8955302069",
+  whatsapp: "https://wa.me/918955302069",
+  instagramHandle: "@virasat_live",
   /**
    * Booking enquiries are emailed via FormSubmit (formsubmit.co) — no backend
    * or account needed. The FIRST submission sends an activation email to the
@@ -75,11 +74,10 @@ export const CONTACT = {
    * gives you a random alias — put it in place of the email here to keep the
    * address out of the page source:  https://formsubmit.co/ajax/<alias>
    */
-  formEndpoint: "https://formsubmit.co/ajax/goldeneraofjainism@gmail.com",
+  formEndpoint: "https://formsubmit.co/ajax/virasat.event@gmail.com",
   socials: [
-    { id: "instagram", label: "Instagram", handle: "@geo_jainism", href: "https://instagram.com/geo_jainism" },
-    { id: "youtube", label: "YouTube", handle: "@geo_jainism", href: "https://www.youtube.com/@geo_jainism" },
-    { id: "whatsapp", label: "WhatsApp", handle: "+91 6261820815", href: "https://wa.me/916261820815" },
+    { id: "instagram", label: "Instagram", handle: "@virasat_live", href: "https://instagram.com/virasat_live" },
+    { id: "whatsapp", label: "WhatsApp", handle: "+91 8955302069", href: "https://wa.me/918955302069" },
   ],
 };
 
