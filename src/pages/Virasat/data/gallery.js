@@ -3,8 +3,7 @@ import { img, imgSm } from "./site";
 /**
  * Gallery media. Order = display order within the masonry.
  *
- * Mostly Virasat event photography supplied by the client, plus two heritage
- * images (GEO Jainism field photography) where no event photo was supplied.
+ * Virasat event photography supplied by the client.
  *
  * Images live in /public/virasat/images as <key>.webp (≤1920px) and
  * <key>-sm.webp (≤900px). CC-licensed items are credited in CREDITS.json.
@@ -29,25 +28,28 @@ export const film = (key, category, caption, video, span = "wide") => ({
   video,
 });
 
-// Plate numbers follow the client's numbered photos (Drive folder, Nov 2026):
-// photo N fills plate N. Numbers with no photo (07, 15) keep the earlier
-// heritage images.
+// The client's unnumbered photos (Drive folder, Nov 2026). Their numbered
+// photos run through the About and Experience sections instead.
 export const GALLERY = [
-  photo("vs-event-01", "event", "Poetry and song before an epic backdrop on the Virasat stage", "wide"),
-  photo("vs-event-02", "event", "Addressing a full hall at Virasat", "wide"),
-  photo("vs-event-03", "event", "The Virasat ensemble", "tall"),
-  photo("vs-event-04", "event", "A packed auditorium for Virasat", "tall"),
-  photo("vs-event-05", "event", "Bharat and Bahubali — artwork from the Virasat stage", "tall"),
-  photo("vs-event-06", "event", "A recitation with live music", "tall"),
-  photo("vs-samanar-malai", "sites", "Samanar Malai, Madurai", "wide"),
-  photo("vs-event-08", "event", "A royal court — artwork from the Virasat stage", "wide"),
-  photo("vs-event-09", "event", "The Virasat team on stage at the finale", "wide"),
-  photo("vs-event-10", "event", "A duet before the battlefield backdrop"),
-  photo("vs-event-11", "event", "A recitation at Virasat"),
-  photo("vs-event-12", "event", "A performer holds the stage at Virasat", "tall"),
-  photo("vs-event-13", "event", "A screening during Virasat", "tall"),
-  photo("vs-event-14", "event", "A battle scene — artwork from the Virasat stage", "wide"),
-  photo("vs-vallimalai", "sites", "Vallimalai, Tamil Nadu", "wide"),
+  photo("vs-moment-01", "event", "The Virasat ensemble beneath the Virasat banner", "wide"),
+  photo("vs-moment-02", "event", "Nemi ka Nirnay — artwork from Neminath", "wide"),
+  photo("vs-moment-03", "event", "Addressing the hall at Virasat", "wide"),
+  photo("vs-kavi-sajal-jain", "event", "Kavi Sajal Jain on the Virasat stage", "tall"),
+  photo("vs-moment-05", "event", "The team behind Virasat", "wide"),
+  photo("vs-moment-06", "event", "A song with live music", "tall"),
+  photo("vs-moment-07", "event", "Rath ko Modna — artwork from Neminath", "wide"),
+  photo("vs-moment-08", "event", "Poetry before an image of the Tirthankara", "wide"),
+  photo("vs-moment-09", "event", "Veer ras at full voice", "wide"),
+  photo("vs-moment-10", "event", "A performer in the empty hall before the show", "tall"),
+  photo("vs-moment-11", "event", "A recitation at Virasat", "wide"),
+  photo("vs-moment-12", "event", "Friends of Virasat", "wide"),
+  photo("vs-moment-13", "event", "A duet before the battlefield backdrop", "wide"),
+  photo("vs-moment-14", "event", "The performers on stage", "tall"),
+  photo("vs-moment-15", "event", "A call to the audience", "wide"),
+  photo("vs-moment-16", "event", "A quiet moment on stage", "tall"),
+  photo("vs-moment-17", "event", "Rehearsal in the hall", "tall"),
+  photo("vs-moment-18", "event", "A young admirer backstage", "tall"),
+  photo("vs-moment-19", "event", "A recitation beneath the Virasat banner", "wide"),
 ];
 
 /** Attribution for any CC-licensed films added to the gallery. */
