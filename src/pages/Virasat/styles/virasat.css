@@ -60,7 +60,10 @@
 .vr-word-mask {
   display: inline-block;
   overflow: hidden;
-  /* room for descenders and italic overhang */
+  /* room for ascenders, descenders and italic overhang — tight display
+     line-heights otherwise shave the tops off capitals */
+  padding-top: 0.12em;
+  margin-top: -0.12em;
   padding-bottom: 0.12em;
   margin-bottom: -0.12em;
   padding-right: 0.04em;

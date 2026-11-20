@@ -120,10 +120,10 @@ export default function About() {
           <div className="relative lg:col-span-7">
             <figure className="relative ml-auto aspect-[4/3] w-full overflow-hidden lg:w-[88%]" data-clip="up">
               <img
-                src={img("vs-kalpasutra")}
-                srcSet={srcSet("vs-kalpasutra")}
+                src={img("vs-event-01")}
+                srcSet={srcSet("vs-event-01")}
                 sizes="(min-width: 1024px) 52vw, 100vw"
-                alt={v("va.alt1", "A folio from a 15th-century Kalpasutra manuscript, painted in red, gold and blue")}
+                alt={v("va.alt1", "Poetry and song before an epic backdrop on the Virasat stage")}
                 className="h-[118%] w-full object-cover"
                 data-speed="-0.15"
                 loading="lazy"
@@ -134,11 +134,11 @@ export default function About() {
               data-speed="0.25"
             >
               <div className="aspect-[3/4] overflow-hidden" data-clip="right">
-                <img src={imgSm("vs-rock-jina")} alt={v("va.alt2", "A seated Tirthankara carved into a rock face")} className="h-full w-full object-cover" loading="lazy" />
+                <img src={imgSm("vs-event-02")} alt={v("va.alt2", "Addressing a full hall at Virasat")} className="h-full w-full object-cover" loading="lazy" />
               </div>
             </figure>
             <figcaption className="mt-6 text-right text-xs uppercase tracking-[0.25em] text-vr-charcoal/50 lg:mt-8" data-reveal>
-              {v("va.caption", "Manuscript & stone — the living record of Jain heritage")}
+              {v("va.caption", "Scenes from the Virasat stage")}
             </figcaption>
           </div>
         </div>
@@ -148,7 +148,7 @@ export default function About() {
 
       <div className="relative mx-auto grid max-w-[1600px] gap-14 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:gap-10 lg:px-12 lg:py-32">
         <figure className="relative aspect-[4/5] overflow-hidden lg:col-span-4" data-clip="down">
-          <img src={imgSm("vs-kalugumalai")} alt={v("va.alt3", "Rows of Tirthankara reliefs carved along the rock at Kalugumalai")} className="h-[120%] w-full object-cover" data-speed="-0.2" loading="lazy" />
+          <img src={imgSm("vs-event-03")} alt={v("va.alt3", "The Virasat ensemble")} className="h-[120%] w-full object-cover" data-speed="-0.2" loading="lazy" />
         </figure>
         <div className="flex flex-col justify-center gap-14 lg:col-span-7 lg:col-start-6">
           {PILLARS.map((p, i) => (
