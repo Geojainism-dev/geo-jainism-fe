@@ -1,5 +1,11 @@
 import { useRef } from "react";
-import { BRAND, img, imgSm } from "../data/site";
+import { BRAND, coverBox, imageProps, PAGE } from "../data/site";
+
+// Portrait: 4:5 figure, 5 of 12 columns from 1024px (gap 40px), at most 34rem (544px); the image is 118% of the figure's height.
+const founderSizes = coverBox(
+  { sm: `min(544px, ${PAGE.sm})`, md: `min(544px, ${PAGE.md})`, lg: `min(544px, calc(${PAGE.lg} * 0.4167 - 23px))` },
+  { sm: 1.475, md: 1.475, lg: 1.475 },
+);
 import { useVirasat } from "../hooks/useSmoothScroll";
 import { useGsap, revealWords, revealUp, revealImages, parallax } from "../animations/gsapAnimations";
 import SplitWords from "../components/common/SplitWords";
@@ -50,9 +56,7 @@ export default function Founder() {
           <div className="pointer-events-none absolute -bottom-4 -right-4 top-4 left-4 border border-vr-gold/60 sm:-bottom-6 sm:-right-6 sm:left-6 sm:top-6" aria-hidden="true" />
           <figure className="relative aspect-[4/5] overflow-hidden bg-vr-charcoal shadow-[0_40px_80px_-30px_rgba(0,0,0,0.8)]" data-clip="up">
             <img
-              src={img("vs-kavi-sajal-jain")}
-              srcSet={`${imgSm("vs-kavi-sajal-jain")} 600w, ${img("vs-kavi-sajal-jain")} 1280w`}
-              sizes="(min-width: 1024px) 34vw, 90vw"
+              {...imageProps("vs-kavi-sajal-jain", { sizes: founderSizes })}
               alt={v("vf.alt", "Kavi Sajal Jain performing on the Virasat stage")}
               className="absolute inset-x-0 -top-[9%] h-[118%] w-full object-cover object-[50%_25%]"
               data-speed="-0.12"

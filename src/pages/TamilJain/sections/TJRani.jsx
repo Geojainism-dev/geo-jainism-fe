@@ -1,6 +1,15 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
+
+// Image column: 1fr of a two-column grid (max 1300px, padding 80px, gap 100px); one column at or below 768px (padding 20px).
+// object-fit: cover in a box that is 580px tall (320px at or below 768px).
+const raniSizes = (a) =>
+  buildSizes(
+    [["(max-width: 768px)", coverSize("calc(100vw - 40px)", "320px", a)]],
+    coverSize("calc((min(100vw, 1300px) - 260px) / 2)", "580px", a),
+  );
 
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 32 },
@@ -30,7 +39,7 @@ export default function TJRani() {
           <div className="tj-rani-img-wrap">
             <img
               className="tj-rani-img"
-              src="/journey/08-community.jpg"
+              {...getImageProps("site/journey/08-community", { widths: WIDTH_LADDERS.medium, sizes: raniSizes })}
               alt="Rani Aaiyabba Devi"
               loading="lazy"
             />

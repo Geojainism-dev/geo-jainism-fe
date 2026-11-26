@@ -2,6 +2,23 @@ import { useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Expand, Play } from "lucide-react";
 import { GALLERY } from "../data/gallery";
+import { buildSizes, coverSize } from "@/lib/cloudinary";
+import { imageProps } from "../data/site";
+
+// Tile: an arched window, object-fit: cover, 3 columns from 1024px (min(403px, (100vw - 209px) / 3) wide, measured) and 2 below
+// (20px padding / 16px gap below 640px, 32px / 32px up to 1023px). Window heights cycle (ASPECTS) between 1.30x and 1.57x the width, so a
+// landscape photo renders about 2.15x as wide as the tile (a portrait one about as wide as the tile). Hover scale 1.08.
+const tileSizes = (aspect) => {
+  const f = aspect >= 1 ? 1.43 : 1.3; // typical window height / width
+  const tile = (w) => coverSize(w, `calc(${w} * ${f})`, aspect, 1.08);
+  return buildSizes(
+    [
+      ["(max-width: 639px)", tile("((100vw - 56px) / 2)")],
+      ["(max-width: 1023px)", tile("((100vw - 96px) / 2)")],
+    ],
+    tile("min(403px, (100vw - 209px) / 3)"),
+  );
+};
 import { useVirasat } from "../hooks/useSmoothScroll";
 import { useMediaQuery } from "../hooks/useMotionPrefs";
 import { gsap, useGsap, revealWords, revealUp } from "../animations/gsapAnimations";
@@ -45,7 +62,7 @@ function Jharokha({ item, aspect, onOpen, reducedMotion }) {
         <span className="absolute -top-[18px] left-1/2 z-10 h-2.5 w-2.5 -translate-x-1/2 rotate-45 border border-vr-gold/80 bg-vr-ink transition-colors duration-500 group-hover:bg-vr-gold" aria-hidden="true" />
         <span className="vr-jharokha relative block overflow-hidden rounded-t-full bg-vr-charcoal" style={{ aspectRatio: aspect }}>
           <img
-            src={item.thumb}
+            {...imageProps(item.key, { sizes: tileSizes })}
             alt=""
             loading="lazy"
             decoding="async"

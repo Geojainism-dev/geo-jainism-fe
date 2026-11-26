@@ -1,31 +1,47 @@
 import React from "react";
 import { useDarkMode } from "@/hooks";
 import { useTranslation } from "react-i18next";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
+
+// Card image: 220px tall, object-fit: cover. Cards sit in grid(auto-fit, minmax(280px, 1fr)), gap 28px, inside a 1440px container
+// with clamp(16px, 4vw, 40px) side padding: 1 column below 639px, 2 from 639px, 3 from 974px, 4 from 1284px.
+const challengeSizes = (aspect) => {
+  const cover = (w) => coverSize(w, "220px", aspect);
+  return buildSizes(
+    [
+      ["(max-width: 399px)", cover("calc(100vw - 32px)")],
+      ["(max-width: 638px)", cover("92vw")],
+      ["(max-width: 973px)", cover("calc(46vw - 14px)")],
+      ["(max-width: 1283px)", cover("calc((100vw - 136px) / 3)")],
+    ],
+    cover("calc((min(100vw, 1440px) - 164px) / 4)"),
+  );
+};
 
 const CARDS = [
   {
     date:  "JAN · 2025",
     title: "The Legacy of Jainism in the Lalitpur District Of Uttar Pradesh",
     body:  "Documenting forgotten Jain heritage, ancient temples, and hidden stories from the historic heartland of Central India.",
-    img:   "/ground-documentation/Lalitpur.jpg",
+    asset: "site/ground-documentation/lalitpur",
   },
   {
     date:  "MAR · 2025",
     title: "The Lost Jain Temples of Gulbarga — On Camera for the First Time",
     body:  "Exploring the forgotten Jain monuments of Karnataka — ancient structures that have waited centuries for the world to notice them. Captured on camera for the very first time.",
-    img:   "/ground-documentation/GULBARGA.JPG",
+    asset: "site/ground-documentation/gulbarga",
   },
   {
     date:  "OCT · 2025",
     title: "Jain Heritage in Bihar – The Birth Place of Bhagwan Mahavir",
     body:  "Tracing the sacred roots of Jain history across ancient pilgrimage sites, archaeological remains, and timeless traditions.",
-    img:   "/ground-documentation/BIHAR.jpg",
+    asset: "site/ground-documentation/bihar",
   },
   {
     date:  "JAN · 2026",
     title: "Tamil Jains – Minority within in Minority",
     body:  "In the heart of Tamil Nadu, carved into ancient rock faces and scattered across jungle-covered hills, lies one of the world's oldest yet most overlooked spiritual traditions — Tamil Jainism.",
-    img:   "/ground-documentation/TAMIL NADU.JPG",
+    asset: "site/ground-documentation/tamil-nadu",
   },
 ];
 
@@ -72,7 +88,7 @@ const ChallengeCard = ({ item, isDark, index }) => {
       {/* Image */}
       <div style={{ width: "100%", height: "220px", overflow: "hidden", position: "relative" }}>
         <img
-          src={item.img}
+          {...getImageProps(item.asset, { widths: WIDTH_LADDERS.medium, sizes: challengeSizes })}
           alt={localizedTitle}
           loading="lazy"
           style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 1s ease" }}

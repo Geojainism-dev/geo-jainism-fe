@@ -13,10 +13,8 @@
 
 # misc
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
+.env*
+!.env.example
 
 npm-debug.log*
 yarn-debug.log*
@@ -34,6 +32,14 @@ pnpm-lock.yaml
 # firebase
 .firebase/
 .firebaserc
+
+# local temporary files
+# upload-assets.mjs writes this and renames it over upload-results.json; it survives only if a run crashes mid-save
+/scripts/cloudinary/results/upload-results.json.tmp
+# Vite writes a bundled config next to vite.config.js while loading it; left behind if Vite is killed
+/vite.config.js.timestamp-*
+# Claude Code per-user settings (the tracked .claude/skills/ stay tracked)
+/.claude/settings.local.json
 
 # archives
 *.zip

@@ -3,6 +3,10 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import FloatingDots from "@/features/auth/FloatingDots";
+import { getImageUrl } from "@/lib/cloudinary";
+
+// Cover image beside the form; it renders about 1470px wide on desktop, so the 1536px master (q_auto, f_auto) is used.
+const LOGIN_BG = getImageUrl("site/auth/login-bg");
 
 const EASE = [0.16, 1, 0.3, 1];
 
@@ -103,7 +107,7 @@ export default function AuthShell({
 
         <section className="relative min-h-[220px] flex-1 p-4">
           <div className="relative h-full w-full overflow-hidden rounded-[20px] bg-gradient-to-br from-[#F5EBD8] via-[#EBDFC4] to-[#F2C4CE]">
-            <img src="/login-bg.png" alt="" className="absolute inset-0 h-full w-full object-cover" />
+            <img src={LOGIN_BG} alt="" className="absolute inset-0 h-full w-full object-cover" />
           </div>
         </section>
       </motion.div>

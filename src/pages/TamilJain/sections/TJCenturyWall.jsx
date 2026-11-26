@@ -1,6 +1,15 @@
 import React, { useState, useRef, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
+
+// Cinematic panel: full-bleed background, object-fit: cover, Ken Burns scale starts at 1.07. Panel is as wide as the section content
+// (100vw minus 1rem padding each side; 1.5rem from 1024px) and clamp(400px, 58vh, 580px) tall.
+const cwImageSizes = (aspect) =>
+  buildSizes(
+    [["(max-width: 1023px)", coverSize("calc(100vw - 32px)", "clamp(400px, 58vh, 580px)", aspect, 1.07)]],
+    coverSize("calc(100vw - 48px)", "clamp(400px, 58vh, 580px)", aspect, 1.07),
+  );
 
 const bgVariants = {
   enter:  { opacity: 0 },
@@ -24,7 +33,7 @@ export default function TJCenturyWall() {
       icon: "🏺",
       period: t("tamilJain.centuryWall.eras.0.period", "3rd Century BCE"),
       shortPeriod: t("tamilJain.centuryWall.eras.0.shortPeriod", "3rd BCE"),
-      imageSrc: "/journey-throught-time/1 stone beds.jpg",
+      asset: "site/tamil-jain/century-wall/01-stone-beds",
       title: t("tamilJain.centuryWall.eras.0.title", "Stone Beds & Tamil-Brahmi Inscriptions"),
       desc: t("tamilJain.centuryWall.eras.0.desc", "Stone beds and Tamil-Brahmi inscriptions mark the beginning of a remarkable journey — Jain monks finding refuge in the granite hills of Tamil Nadu, leaving their stories etched in ancient script."),
     },
@@ -32,7 +41,7 @@ export default function TJCenturyWall() {
       icon: "⛰️",
       period: t("tamilJain.centuryWall.eras.1.period", "2nd Century BCE – 3rd Century CE"),
       shortPeriod: t("tamilJain.centuryWall.eras.1.shortPeriod", "2nd–3rd CE"),
-      imageSrc: "/journey-throught-time/2 hills become monastries.jpg",
+      asset: "site/tamil-jain/century-wall/02-hills-become-monasteries",
       title: t("tamilJain.centuryWall.eras.1.title", "Hills Become Monasteries"),
       desc: t("tamilJain.centuryWall.eras.1.desc", "Jainism spreads across the Tamil landscape. Natural caves are carved into monasteries; hilltops are consecrated. A network of sacred sites stretches from the Kaveri delta to the far south."),
     },
@@ -40,7 +49,7 @@ export default function TJCenturyWall() {
       icon: "📚",
       period: t("tamilJain.centuryWall.eras.2.period", "4th – 8th Century CE"),
       shortPeriod: t("tamilJain.centuryWall.eras.2.shortPeriod", "4–8th CE"),
-      imageSrc: "/journey-throught-time/3 shaping classic tamil culture.jpg",
+      asset: "site/tamil-jain/century-wall/03-shaping-classical-tamil-culture",
       title: t("tamilJain.centuryWall.eras.2.title", "Shaping Classical Tamil Culture"),
       desc: t("tamilJain.centuryWall.eras.2.desc", "Tamil Jain scholars contribute profoundly to the Sangam literary tradition. Works like Tirukkural, Silappatikaram, and Manimekalai emerge from a world deeply influenced by Jain ethics and philosophy."),
     },
@@ -48,7 +57,7 @@ export default function TJCenturyWall() {
       icon: "🛕",
       period: t("tamilJain.centuryWall.eras.3.period", "9th – 13th Century CE"),
       shortPeriod: t("tamilJain.centuryWall.eras.3.shortPeriod", "9–13th CE"),
-      imageSrc: "/journey-throught-time/4 artistic brilliance.jpg",
+      asset: "site/tamil-jain/century-wall/04-artistic-brilliance",
       title: t("tamilJain.centuryWall.eras.3.title", "Artistic Brilliance"),
       desc: t("tamilJain.centuryWall.eras.3.desc", "A period of artistic brilliance — rock-cut temples, monolithic sculptures, and intricate bas-reliefs flourish. Kalagumalai, Vallimalai, and Sittanavasal stand as masterpieces of this era."),
     },
@@ -56,7 +65,7 @@ export default function TJCenturyWall() {
       icon: "🍂",
       period: t("tamilJain.centuryWall.eras.4.period", "14th – 18th Century CE"),
       shortPeriod: t("tamilJain.centuryWall.eras.4.shortPeriod", "14–18th CE"),
-      imageSrc: "/journey-throught-time/5 preservation through change.jpg",
+      asset: "site/tamil-jain/century-wall/05-preservation-through-change",
       title: t("tamilJain.centuryWall.eras.4.title", "Preservation Through Change"),
       desc: t("tamilJain.centuryWall.eras.4.desc", "Political and religious transformations reshape the region. Jain communities adapt, many sites pass into other traditions, yet the monuments endure — silent witnesses to centuries of devotion."),
     },
@@ -64,7 +73,7 @@ export default function TJCenturyWall() {
       icon: "🔍",
       period: t("tamilJain.centuryWall.eras.5.period", "19th – 20th Century CE"),
       shortPeriod: t("tamilJain.centuryWall.eras.5.shortPeriod", "19–20th CE"),
-      imageSrc: "/journey-throught-time/6- rediscovered .jpg",
+      asset: "site/tamil-jain/century-wall/06-rediscovered",
       title: t("tamilJain.centuryWall.eras.5.title", "A Forgotten Chapter Rediscovered"),
       desc: t("tamilJain.centuryWall.eras.5.desc", "Ancient caves, sculptures, and inscriptions are rediscovered by epigraphers and archaeologists. A forgotten chapter of Tamil history begins to resurface, reclaiming its rightful place in the story of India."),
     },
@@ -72,7 +81,7 @@ export default function TJCenturyWall() {
       icon: "🌿",
       period: t("tamilJain.centuryWall.eras.6.period", "Today"),
       shortPeriod: t("tamilJain.centuryWall.eras.6.shortPeriod", "Today"),
-      imageSrc: "/journey-throught-time/7 .jpg",
+      asset: "site/tamil-jain/century-wall/07-continuous-history",
       title: t("tamilJain.centuryWall.eras.6.title", "2300+ Years of Continuous History"),
       desc: t("tamilJain.centuryWall.eras.6.desc", "A living tradition that endures — communities, scholars, and pilgrims keeping the flame alive. Tamil Jainism's 2300+ - year journey is not just history. It is heritage, still breathing."),
     },
@@ -121,7 +130,7 @@ export default function TJCenturyWall() {
             >
               <img
                 className="cw-cinema-img"
-                src={era.imageSrc}
+                {...getImageProps(era.asset, { widths: WIDTH_LADDERS.medium, sizes: cwImageSizes })}
                 alt=""
                 aria-hidden="true"
               />

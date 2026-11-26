@@ -1,9 +1,15 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import imgTamilBrahmi from "@/assets/images/Inscription/TAMIL-BRAHMI .jpg";
-import imgVatteluttu from "@/assets/images/Inscription/Vatteluttu.jpg";
-import imgGrantha from "@/assets/images/Inscription/Granth.jpg";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
+
+// Card image: 210px tall (200px <=768px), object-fit: cover, hover scale 1.07. Three-column grid (gap 22px, max 1100px) inside a
+// section with 60px side padding; one column with 20px padding at or below 768px.
+const inscSizes = (aspect) =>
+  buildSizes(
+    [["(max-width: 768px)", coverSize("calc(100vw - 40px)", "200px", aspect, 1.07)]],
+    coverSize("calc((min(100vw - 120px, 1100px) - 44px) / 3)", "210px", aspect, 1.07),
+  );
 
 function useCountUp(target, active, duration = 1350) {
   const num = parseInt(target.replace(/\D/g, ''), 10);
@@ -52,7 +58,7 @@ function TreeCard({ data: d, index: i, inView }) {
       <div className="tj-insc-card-img-wrap">
         <img
           className="tj-insc-card-img"
-          src={d.image}
+          {...getImageProps(d.asset, { widths: WIDTH_LADDERS.medium, sizes: inscSizes })}
           alt={d.title}
           loading="lazy"
         />
@@ -89,7 +95,7 @@ export default function TJInscriptions() {
       text: t("tamilJain.inscriptions.cards.0.text", "Early inscriptions found in rock shelters and Jain beds, often recording donations made to Jain ascetics. These are the earliest written records of the Tamil language."),
       stat: "580+",
       statLabel: t("tamilJain.inscriptions.cards.0.statLabel", "Known inscriptions identified"),
-      image: imgTamilBrahmi,
+      asset: "site/tamil-jain/inscriptions/tamil-brahmi",
     },
     {
       id: "vatteluttu",
@@ -98,7 +104,7 @@ export default function TJInscriptions() {
       text: t("tamilJain.inscriptions.cards.1.text", "Records of grants, charitable donations, Jain monasteries (pallis), and religious activities — reflecting the administrative flourishing of Jain centers."),
       stat: "100+",
       statLabel: t("tamilJain.inscriptions.cards.1.statLabel", "Documented pallis & monasteries"),
-      image: imgVatteluttu,
+      asset: "site/tamil-jain/inscriptions/vatteluttu",
     },
     {
       id: "grantha",
@@ -107,7 +113,7 @@ export default function TJInscriptions() {
       text: t("tamilJain.inscriptions.cards.2.text", "Inscriptions documenting temple endowments, land grants, image installations, tax exemptions, and the socio-economic role of Jain communities during the golden era of South Indian Jain history."),
       stat: "200+",
       statLabel: t("tamilJain.inscriptions.cards.2.statLabel", "Royal temple endowments recorded"),
-      image: imgGrantha,
+      asset: "site/tamil-jain/inscriptions/grantha",
     },
   ];
 

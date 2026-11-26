@@ -1,0 +1,4413 @@
+{
+  "schemaVersion": 1,
+  "manifestFile": "scripts/cloudinary/migration-manifest.json",
+  "manifestSha256": "8f815dc897ebe971235c183098e45a9a4cd5a20d1a291d7a96ccd70ecec5ea72",
+  "createdAt": "2026-11-23T16:17:50.349Z",
+  "updatedAt": "2026-11-23T16:43:54.728Z",
+  "summary": {
+    "recorded": 172,
+    "uploaded": 172,
+    "exists": 0,
+    "failed": 0,
+    "manifestAssets": 172,
+    "remaining": 0
+  },
+  "assets": [
+    {
+      "id": "site/landing/mahavira",
+      "localPath": "public/mahavira.png",
+      "publicId": "geo-jainism/site/landing/mahavira",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452143/geo-jainism/site/landing/mahavira.png",
+      "version": 1795452143,
+      "remoteBytes": 1564910,
+      "originalChecksum": {
+        "sha256": "d2c58f16c2f1b914c04f6b727a79beb54420815ccdd8a9bde4bbad27f58cdd69",
+        "bytes": 1564910
+      },
+      "uploadedChecksum": {
+        "md5": "919aec36702e1240ab7c8d856577b120",
+        "sha256": "d2c58f16c2f1b914c04f6b727a79beb54420815ccdd8a9bde4bbad27f58cdd69",
+        "cloudinaryEtag": "919aec36702e1240ab7c8d856577b120",
+        "etagMatchesMd5": true,
+        "assetId": "b971ddeb460edd6c8c8421f2601c91de"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:24.940Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/landing/mandala",
+      "localPath": "src/assets/images/landing/mandala.png",
+      "publicId": "geo-jainism/site/landing/mandala",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452148/geo-jainism/site/landing/mandala.png",
+      "version": 1795452148,
+      "remoteBytes": 1259384,
+      "originalChecksum": {
+        "sha256": "6150a3dfec42ca9527f0f5a58c07a38b62e1c216c1e8c990b95726237a41e725",
+        "bytes": 1259384
+      },
+      "uploadedChecksum": {
+        "md5": "d1bab20dd28c6e16b3bedb3d51150424",
+        "sha256": "6150a3dfec42ca9527f0f5a58c07a38b62e1c216c1e8c990b95726237a41e725",
+        "cloudinaryEtag": "d1bab20dd28c6e16b3bedb3d51150424",
+        "etagMatchesMd5": true,
+        "assetId": "2517f82db5bf7816dc05e3ffbc9d75f5"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:30.213Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/landing/hero-bg",
+      "localPath": "src/assets/images/landing/hero_bg.png",
+      "publicId": "geo-jainism/site/landing/hero-bg",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452144/geo-jainism/site/landing/hero-bg.png",
+      "version": 1795452144,
+      "remoteBytes": 1657577,
+      "originalChecksum": {
+        "sha256": "c6211abcd81d945e9262fe66c420714b6babd1516543880d372bef142c64c222",
+        "bytes": 1657577
+      },
+      "uploadedChecksum": {
+        "md5": "0be3c2c4580db314d8c15bd2793eadfc",
+        "sha256": "c6211abcd81d945e9262fe66c420714b6babd1516543880d372bef142c64c222",
+        "cloudinaryEtag": "0be3c2c4580db314d8c15bd2793eadfc",
+        "etagMatchesMd5": true,
+        "assetId": "ba8ab7a0606655ef7466b6975ab25bf8"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:26.563Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/landing/screening-popup",
+      "localPath": "public/Screening.png",
+      "publicId": "geo-jainism/site/landing/screening-popup",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452146/geo-jainism/site/landing/screening-popup.png",
+      "version": 1795452146,
+      "remoteBytes": 941066,
+      "originalChecksum": {
+        "sha256": "ae7d9eed682ad339390edc3c1de3667cd1763a3e1ba84010803232c3d3ef38a8",
+        "bytes": 941066
+      },
+      "uploadedChecksum": {
+        "md5": "a7f8d02f74445b74e698bf27c722c020",
+        "sha256": "ae7d9eed682ad339390edc3c1de3667cd1763a3e1ba84010803232c3d3ef38a8",
+        "cloudinaryEtag": "a7f8d02f74445b74e698bf27c722c020",
+        "etagMatchesMd5": true,
+        "assetId": "ca7536e963266936a2f90449354a79f4"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:27.623Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/landing/literature/naladiyar",
+      "localPath": "public/Literature-and-legacy/naladiyar_1.png",
+      "publicId": "geo-jainism/site/landing/literature/naladiyar",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452147/geo-jainism/site/landing/literature/naladiyar.png",
+      "version": 1795452147,
+      "remoteBytes": 811769,
+      "originalChecksum": {
+        "sha256": "b7a2d826ddeb0d31ae39a08df2c4a5bf5f68f72479ef6e1668a68b81f81704d6",
+        "bytes": 811769
+      },
+      "uploadedChecksum": {
+        "md5": "a63cb8fae0916e747daf50095b01f5a9",
+        "sha256": "b7a2d826ddeb0d31ae39a08df2c4a5bf5f68f72479ef6e1668a68b81f81704d6",
+        "cloudinaryEtag": "a63cb8fae0916e747daf50095b01f5a9",
+        "etagMatchesMd5": true,
+        "assetId": "2bf622469e88632f536e2d59ea85a29d"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:28.906Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/landing/literature/shilapattikaram",
+      "localPath": "public/Literature-and-legacy/Shilapattikaram_2.png",
+      "publicId": "geo-jainism/site/landing/literature/shilapattikaram",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452148/geo-jainism/site/landing/literature/shilapattikaram.png",
+      "version": 1795452148,
+      "remoteBytes": 805246,
+      "originalChecksum": {
+        "sha256": "bd8c5e563ed149884241ce0b733c1ad54525516b31a09f4501d70f8e7ac37676",
+        "bytes": 805246
+      },
+      "uploadedChecksum": {
+        "md5": "1047c40ef420f08fe50151acef0e721d",
+        "sha256": "bd8c5e563ed149884241ce0b733c1ad54525516b31a09f4501d70f8e7ac37676",
+        "cloudinaryEtag": "1047c40ef420f08fe50151acef0e721d",
+        "etagMatchesMd5": true,
+        "assetId": "5020e98f61531801738e9e7c9449022c"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:29.754Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/landing/literature/jeevak-chintamani",
+      "localPath": "public/Literature-and-legacy/Jeevak Chintamani_3.png",
+      "publicId": "geo-jainism/site/landing/literature/jeevak-chintamani",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452149/geo-jainism/site/landing/literature/jeevak-chintamani.png",
+      "version": 1795452149,
+      "remoteBytes": 779885,
+      "originalChecksum": {
+        "sha256": "1b817d65648f7dd7839f8738b5712de3f15a59816223b2fc03874d91481302fc",
+        "bytes": 779885
+      },
+      "uploadedChecksum": {
+        "md5": "641e2a513456ee56b12e3c0698e64c5f",
+        "sha256": "1b817d65648f7dd7839f8738b5712de3f15a59816223b2fc03874d91481302fc",
+        "cloudinaryEtag": "641e2a513456ee56b12e3c0698e64c5f",
+        "etagMatchesMd5": true,
+        "assetId": "96c336364679fb707f9b327261505f3f"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:30.851Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/landing/literature/ratnakar",
+      "localPath": "public/Literature-and-legacy/ratnakar_4.png",
+      "publicId": "geo-jainism/site/landing/literature/ratnakar",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452150/geo-jainism/site/landing/literature/ratnakar.png",
+      "version": 1795452150,
+      "remoteBytes": 789885,
+      "originalChecksum": {
+        "sha256": "b904eb946f3c033031a95093d27dfe71ffc26f8a2264e5b42dfc41c042833fcb",
+        "bytes": 789885
+      },
+      "uploadedChecksum": {
+        "md5": "d3ba84dab403658303703614862115a4",
+        "sha256": "b904eb946f3c033031a95093d27dfe71ffc26f8a2264e5b42dfc41c042833fcb",
+        "cloudinaryEtag": "d3ba84dab403658303703614862115a4",
+        "etagMatchesMd5": true,
+        "assetId": "1e40b80930fc6fdf9d11686bf30feb37"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:32.183Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/landing/literature/chenna-bhaira-devi",
+      "localPath": "public/Literature-and-legacy/ChennaBhairaDevi_5.jpg",
+      "publicId": "geo-jainism/site/landing/literature/chenna-bhaira-devi",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452150/geo-jainism/site/landing/literature/chenna-bhaira-devi.jpg",
+      "version": 1795452150,
+      "remoteBytes": 374988,
+      "originalChecksum": {
+        "sha256": "97d74b4c6b5afede1a742a54cddd5629d72c746c2e1dec6ba110ad02823c428e",
+        "bytes": 374988
+      },
+      "uploadedChecksum": {
+        "md5": "47c25f00bb8cac8d266c7ee6b39a68e3",
+        "sha256": "97d74b4c6b5afede1a742a54cddd5629d72c746c2e1dec6ba110ad02823c428e",
+        "cloudinaryEtag": "47c25f00bb8cac8d266c7ee6b39a68e3",
+        "etagMatchesMd5": true,
+        "assetId": "7c9bd99305e97ca3cbe701dc51c32952"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:31.671Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/ground-documentation/bihar",
+      "localPath": "public/ground-documentation/BIHAR.jpg",
+      "publicId": "geo-jainism/site/ground-documentation/bihar",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452151/geo-jainism/site/ground-documentation/bihar.jpg",
+      "version": 1795452151,
+      "remoteBytes": 845036,
+      "originalChecksum": {
+        "sha256": "a57f4ad4c4a241a6c033532601c540508cc50df08b165068e397d25d21f65b0e",
+        "bytes": 845036
+      },
+      "uploadedChecksum": {
+        "md5": "0a5cd9c53ff327a6898a92d3f94b6b3b",
+        "sha256": "a57f4ad4c4a241a6c033532601c540508cc50df08b165068e397d25d21f65b0e",
+        "cloudinaryEtag": "0a5cd9c53ff327a6898a92d3f94b6b3b",
+        "etagMatchesMd5": true,
+        "assetId": "2cb99221db8b80009e41d9ea5c87c209"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:32.694Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/ground-documentation/gulbarga",
+      "localPath": "public/ground-documentation/GULBARGA.JPG",
+      "publicId": "geo-jainism/site/ground-documentation/gulbarga",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452151/geo-jainism/site/ground-documentation/gulbarga.jpg",
+      "version": 1795452151,
+      "remoteBytes": 234674,
+      "originalChecksum": {
+        "sha256": "5aa6cbedf92b75ee7992e95533e5467838e9dbcb0ac8da193b0343d50cd6058c",
+        "bytes": 234674
+      },
+      "uploadedChecksum": {
+        "md5": "2ce182fbc4fcc0c2c4f51284491bf5a3",
+        "sha256": "5aa6cbedf92b75ee7992e95533e5467838e9dbcb0ac8da193b0343d50cd6058c",
+        "cloudinaryEtag": "2ce182fbc4fcc0c2c4f51284491bf5a3",
+        "etagMatchesMd5": true,
+        "assetId": "073de2ec5a3d1f36bbefbadeac370f04"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:33.104Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/ground-documentation/lalitpur",
+      "localPath": "public/ground-documentation/Lalitpur.jpg",
+      "publicId": "geo-jainism/site/ground-documentation/lalitpur",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452152/geo-jainism/site/ground-documentation/lalitpur.jpg",
+      "version": 1795452152,
+      "remoteBytes": 559582,
+      "originalChecksum": {
+        "sha256": "88992a0e5c9c354475d82d6876c666a31eb0332fb0ae5a6a5325475b74204bac",
+        "bytes": 559582
+      },
+      "uploadedChecksum": {
+        "md5": "462e755a3cd7e3dbfe4144aa3c8fe8d0",
+        "sha256": "88992a0e5c9c354475d82d6876c666a31eb0332fb0ae5a6a5325475b74204bac",
+        "cloudinaryEtag": "462e755a3cd7e3dbfe4144aa3c8fe8d0",
+        "etagMatchesMd5": true,
+        "assetId": "79e56090095906b82c3705b445cb337e"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:33.616Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/ground-documentation/tamil-nadu",
+      "localPath": "public/ground-documentation/TAMIL NADU.JPG",
+      "publicId": "geo-jainism/site/ground-documentation/tamil-nadu",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452153/geo-jainism/site/ground-documentation/tamil-nadu.jpg",
+      "version": 1795452153,
+      "remoteBytes": 520757,
+      "originalChecksum": {
+        "sha256": "d68d470e8e40a32b2934a884de8434eb6796f26715cbb411fc357a20b52e56f2",
+        "bytes": 520757
+      },
+      "uploadedChecksum": {
+        "md5": "aa6bcdaf9d27b11de66f6ac8745b22ec",
+        "sha256": "d68d470e8e40a32b2934a884de8434eb6796f26715cbb411fc357a20b52e56f2",
+        "cloudinaryEtag": "aa6bcdaf9d27b11de66f6ac8745b22ec",
+        "etagMatchesMd5": true,
+        "assetId": "156cf7222c5265580d2c5ddf19688f51"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:34.333Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/journey/01-rock-sculpture",
+      "localPath": "public/journey/01-rock-sculpture.jpg",
+      "publicId": "geo-jainism/site/journey/01-rock-sculpture",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795450671/geo-jainism/site/journey/01-rock-sculpture.jpg",
+      "version": 1795450671,
+      "remoteBytes": 203625,
+      "originalChecksum": {
+        "sha256": "37202fe27635eca3a3add1f0440dad27a9f0db52eb176a9301127423d3980753",
+        "bytes": 203625
+      },
+      "uploadedChecksum": {
+        "md5": "8fe42b21500cda75772fcedbda1d4478",
+        "sha256": "37202fe27635eca3a3add1f0440dad27a9f0db52eb176a9301127423d3980753",
+        "cloudinaryEtag": "8fe42b21500cda75772fcedbda1d4478",
+        "etagMatchesMd5": true,
+        "assetId": "b3c96375f027a8314fe0e68a375ca0d5"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:17:52.746Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/journey/02-temple-hill",
+      "localPath": "public/journey/02-temple-hill.jpg",
+      "publicId": "geo-jainism/site/journey/02-temple-hill",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795450671/geo-jainism/site/journey/02-temple-hill.jpg",
+      "version": 1795450671,
+      "remoteBytes": 69635,
+      "originalChecksum": {
+        "sha256": "2864d072b04af3ff5ffbff174a63784fc0d5ccc6887208b25709142d6cf405e9",
+        "bytes": 69635
+      },
+      "uploadedChecksum": {
+        "md5": "fa18eda8368d2fc1dd4be012327935ca",
+        "sha256": "2864d072b04af3ff5ffbff174a63784fc0d5ccc6887208b25709142d6cf405e9",
+        "cloudinaryEtag": "fa18eda8368d2fc1dd4be012327935ca",
+        "etagMatchesMd5": true,
+        "assetId": "550f45451104049c8645e736e187bbac"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:17:52.705Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/journey/03-team-group",
+      "localPath": "public/journey/03-team-group.jpg",
+      "publicId": "geo-jainism/site/journey/03-team-group",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795450673/geo-jainism/site/journey/03-team-group.jpg",
+      "version": 1795450673,
+      "remoteBytes": 444448,
+      "originalChecksum": {
+        "sha256": "77a41a979ed6ab2a32e353552de65e15b6b1d0ad239bcf9493a0f040c7e84fd8",
+        "bytes": 444448
+      },
+      "uploadedChecksum": {
+        "md5": "c3cacc6f80c21a8025d46de9e4b4ef99",
+        "sha256": "77a41a979ed6ab2a32e353552de65e15b6b1d0ad239bcf9493a0f040c7e84fd8",
+        "cloudinaryEtag": "c3cacc6f80c21a8025d46de9e4b4ef99",
+        "etagMatchesMd5": true,
+        "assetId": "29b33031243dabb85b41d43972144044"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:17:54.503Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/journey/04-hillside",
+      "localPath": "public/journey/04-hillside.jpg",
+      "publicId": "geo-jainism/site/journey/04-hillside",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795450672/geo-jainism/site/journey/04-hillside.jpg",
+      "version": 1795450672,
+      "remoteBytes": 571636,
+      "originalChecksum": {
+        "sha256": "53dcb77a0a0529e615b999355a9d86aaa68f6a31daa881c46f411955da0f64d7",
+        "bytes": 571636
+      },
+      "uploadedChecksum": {
+        "md5": "3b70d7b60eaeb4729d1d1cbd97928096",
+        "sha256": "53dcb77a0a0529e615b999355a9d86aaa68f6a31daa881c46f411955da0f64d7",
+        "cloudinaryEtag": "3b70d7b60eaeb4729d1d1cbd97928096",
+        "etagMatchesMd5": true,
+        "assetId": "6f8cd2c2bf2f729d90ade7bfaada9a34"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:17:54.138Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/journey/05-rock-carvings",
+      "localPath": "public/journey/05-rock-carvings.jpg",
+      "publicId": "geo-jainism/site/journey/05-rock-carvings",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795450673/geo-jainism/site/journey/05-rock-carvings.jpg",
+      "version": 1795450673,
+      "remoteBytes": 465061,
+      "originalChecksum": {
+        "sha256": "b4296e251ff6b7302b22b1990f1ff2d9e1d2c24e933dd75110615bf42f4a48a5",
+        "bytes": 465061
+      },
+      "uploadedChecksum": {
+        "md5": "2ff25d24979b21313a1c8867cd5a5af5",
+        "sha256": "b4296e251ff6b7302b22b1990f1ff2d9e1d2c24e933dd75110615bf42f4a48a5",
+        "cloudinaryEtag": "2ff25d24979b21313a1c8867cd5a5af5",
+        "etagMatchesMd5": true,
+        "assetId": "41ee597cc9b2ea4c3d56d85997aee37b"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:17:55.245Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/journey/06-sheep-site",
+      "localPath": "public/journey/06-sheep-site.jpg",
+      "publicId": "geo-jainism/site/journey/06-sheep-site",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795450674/geo-jainism/site/journey/06-sheep-site.jpg",
+      "version": 1795450674,
+      "remoteBytes": 751750,
+      "originalChecksum": {
+        "sha256": "b2188b9ac3f83e48e127498b34783ca9dcddad08d57d703f5a360867ae860588",
+        "bytes": 751750
+      },
+      "uploadedChecksum": {
+        "md5": "f4f715be6eecb1c76868f6c82db22829",
+        "sha256": "b2188b9ac3f83e48e127498b34783ca9dcddad08d57d703f5a360867ae860588",
+        "cloudinaryEtag": "f4f715be6eecb1c76868f6c82db22829",
+        "etagMatchesMd5": true,
+        "assetId": "4c5033e2965fc6c9581e2e36db7dfa98"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:17:55.575Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/journey/07-stone-carving",
+      "localPath": "public/journey/07-stone-carving.jpg",
+      "publicId": "geo-jainism/site/journey/07-stone-carving",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795450674/geo-jainism/site/journey/07-stone-carving.jpg",
+      "version": 1795450674,
+      "remoteBytes": 333176,
+      "originalChecksum": {
+        "sha256": "da00bfbb93d0ee0946f8461fe85d52549854b542aa8aeaa69f6760ba8b9d3cb1",
+        "bytes": 333176
+      },
+      "uploadedChecksum": {
+        "md5": "a1076ed0860b43afd3720df9b6e09811",
+        "sha256": "da00bfbb93d0ee0946f8461fe85d52549854b542aa8aeaa69f6760ba8b9d3cb1",
+        "cloudinaryEtag": "a1076ed0860b43afd3720df9b6e09811",
+        "etagMatchesMd5": true,
+        "assetId": "49b1ae58b2ba015830ba73f59683087d"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:17:56.187Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/journey/08-community",
+      "localPath": "public/journey/08-community.jpg",
+      "publicId": "geo-jainism/site/journey/08-community",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795450675/geo-jainism/site/journey/08-community.jpg",
+      "version": 1795450675,
+      "remoteBytes": 296193,
+      "originalChecksum": {
+        "sha256": "cdb90f4a5bdf3cc7cf40abcea3760243afe9a2718eb57f843cb418815da47fa4",
+        "bytes": 296193
+      },
+      "uploadedChecksum": {
+        "md5": "35e459e1414c398140874624694b221d",
+        "sha256": "cdb90f4a5bdf3cc7cf40abcea3760243afe9a2718eb57f843cb418815da47fa4",
+        "cloudinaryEtag": "35e459e1414c398140874624694b221d",
+        "etagMatchesMd5": true,
+        "assetId": "c18cf9aad43ca9ef7c8baf8585ffe94f"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:17:56.495Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/journey/09-temple",
+      "localPath": "public/journey/09-temple.jpg",
+      "publicId": "geo-jainism/site/journey/09-temple",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795450675/geo-jainism/site/journey/09-temple.jpg",
+      "version": 1795450675,
+      "remoteBytes": 166179,
+      "originalChecksum": {
+        "sha256": "7ed1a166992adb65a3e55998fdcbe335b35c5f2dbe9e536bc3e3dd032055bc6a",
+        "bytes": 166179
+      },
+      "uploadedChecksum": {
+        "md5": "aa7656c16b1f28f42a6a539f445707ef",
+        "sha256": "7ed1a166992adb65a3e55998fdcbe335b35c5f2dbe9e536bc3e3dd032055bc6a",
+        "cloudinaryEtag": "aa7656c16b1f28f42a6a539f445707ef",
+        "etagMatchesMd5": true,
+        "assetId": "ea5666db7b8b2291c21653e5158d4f51"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:17:57.173Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/journey/10-founder-research",
+      "localPath": "public/journey/10-founder-research.jpg",
+      "publicId": "geo-jainism/site/journey/10-founder-research",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795450676/geo-jainism/site/journey/10-founder-research.jpg",
+      "version": 1795450676,
+      "remoteBytes": 258067,
+      "originalChecksum": {
+        "sha256": "ab9c4cc43cea3d1a4f79077d7a7c34076709422064e5a72e9ed3a2204553839e",
+        "bytes": 258067
+      },
+      "uploadedChecksum": {
+        "md5": "ae8318305c17f1a9a44d94217d1e9e61",
+        "sha256": "ab9c4cc43cea3d1a4f79077d7a7c34076709422064e5a72e9ed3a2204553839e",
+        "cloudinaryEtag": "ae8318305c17f1a9a44d94217d1e9e61",
+        "etagMatchesMd5": true,
+        "assetId": "cc7d27525f626d0d7dbe84fdb51c9462"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:17:57.377Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/about/hero-tirthankara",
+      "localPath": "public/hero-tirthankara.jpg",
+      "publicId": "geo-jainism/site/about/hero-tirthankara",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452153/geo-jainism/site/about/hero-tirthankara.jpg",
+      "version": 1795452153,
+      "remoteBytes": 411696,
+      "originalChecksum": {
+        "sha256": "a1fffe5f1e8750d64e993f6c8459c36cfd4d985423e60e9d7d644e3488050a15",
+        "bytes": 411696
+      },
+      "uploadedChecksum": {
+        "md5": "c6d1176687515309a212fa445616c11e",
+        "sha256": "a1fffe5f1e8750d64e993f6c8459c36cfd4d985423e60e9d7d644e3488050a15",
+        "cloudinaryEtag": "c6d1176687515309a212fa445616c11e",
+        "etagMatchesMd5": true,
+        "assetId": "4ca5f9ad37dedd7153ddbba0b2b5c9f2"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:34.843Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/auth/login-bg",
+      "localPath": "public/login-bg.png",
+      "publicId": "geo-jainism/site/auth/login-bg",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452154/geo-jainism/site/auth/login-bg.png",
+      "version": 1795452154,
+      "remoteBytes": 1457588,
+      "originalChecksum": {
+        "sha256": "6b583bd642460bac636e22576e570f2d358f43ea7fec5ed381f9ad258acebd2a",
+        "bytes": 1457588
+      },
+      "uploadedChecksum": {
+        "md5": "a12201de83d5360b9fbc4e11dcdc2666",
+        "sha256": "6b583bd642460bac636e22576e570f2d358f43ea7fec5ed381f9ad258acebd2a",
+        "cloudinaryEtag": "a12201de83d5360b9fbc4e11dcdc2666",
+        "etagMatchesMd5": true,
+        "assetId": "01ec82d358703aac97a28345afe8befe"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:36.240Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/hero/temple",
+      "localPath": "public/tamiljain/temple.png",
+      "publicId": "geo-jainism/site/tamil-jain/hero/temple",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452154/geo-jainism/site/tamil-jain/hero/temple.png",
+      "version": 1795452154,
+      "remoteBytes": 533267,
+      "originalChecksum": {
+        "sha256": "77070b38caa41a497446c28cc049bbe75f3251b0258a13ad01adb694c012a0fa",
+        "bytes": 533267
+      },
+      "uploadedChecksum": {
+        "md5": "824a91dd1f7275c9e10de525947590ca",
+        "sha256": "77070b38caa41a497446c28cc049bbe75f3251b0258a13ad01adb694c012a0fa",
+        "cloudinaryEtag": "824a91dd1f7275c9e10de525947590ca",
+        "etagMatchesMd5": true,
+        "assetId": "d8de35086adb1314e5f52dc9190d990c"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:35.871Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/hero/birds",
+      "localPath": "public/tamiljain/birds-new.png",
+      "publicId": "geo-jainism/site/tamil-jain/hero/birds",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452155/geo-jainism/site/tamil-jain/hero/birds.png",
+      "version": 1795452155,
+      "remoteBytes": 223120,
+      "originalChecksum": {
+        "sha256": "bd64deaeecb355137ac5c6e36ea5559696d2c4f238966fccb573a353ef480f8d",
+        "bytes": 223120
+      },
+      "uploadedChecksum": {
+        "md5": "ca1e6a75995b1fc76b51362cb45c0e7e",
+        "sha256": "bd64deaeecb355137ac5c6e36ea5559696d2c4f238966fccb573a353ef480f8d",
+        "cloudinaryEtag": "ca1e6a75995b1fc76b51362cb45c0e7e",
+        "etagMatchesMd5": true,
+        "assetId": "4296644e29052684ecbb7a8fa7e7fc1e"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:36.791Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/hero/sky",
+      "localPath": "public/tamiljain/sky-new.png",
+      "publicId": "geo-jainism/site/tamil-jain/hero/sky",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452155/geo-jainism/site/tamil-jain/hero/sky.png",
+      "version": 1795452155,
+      "remoteBytes": 199516,
+      "originalChecksum": {
+        "sha256": "b81c5b2f46d307a6075bc8e338e3fbb7bfae76bb70f6aa98daf6c3ce562c14b7",
+        "bytes": 199516
+      },
+      "uploadedChecksum": {
+        "md5": "53466ac1e68582c2313e85995665ad31",
+        "sha256": "b81c5b2f46d307a6075bc8e338e3fbb7bfae76bb70f6aa98daf6c3ce562c14b7",
+        "cloudinaryEtag": "53466ac1e68582c2313e85995665ad31",
+        "etagMatchesMd5": true,
+        "assetId": "3e561e412c7833eacb19cbf5603a03e6"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:37.301Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/century-wall/01-stone-beds",
+      "localPath": "public/journey-throught-time/1 stone beds.jpg",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/01-stone-beds",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452158/geo-jainism/site/tamil-jain/century-wall/01-stone-beds.jpg",
+      "version": 1795452158,
+      "remoteBytes": 1583793,
+      "originalChecksum": {
+        "sha256": "a6f58f1d97b67772a48c3f32113b0d298491ab38da43ede374d3042d9229cfef",
+        "bytes": 735962
+      },
+      "uploadedChecksum": {
+        "md5": "cd34d39fa3301e98dedb1b7f84d4c10b",
+        "sha256": "42870b74fc6cc0fa1d1e73c243bf5280fd10080f805be7ab294ab93be5ddc941",
+        "cloudinaryEtag": "cd34d39fa3301e98dedb1b7f84d4c10b",
+        "etagMatchesMd5": true,
+        "assetId": "1d1bb8aaca0b1867c388f8418a4440ff"
+      },
+      "preprocessed": {
+        "tool": "sharp 0.35.5",
+        "from": {
+          "width": 8192,
+          "height": 5464,
+          "bytes": 735962,
+          "sha256": "a6f58f1d97b67772a48c3f32113b0d298491ab38da43ede374d3042d9229cfef"
+        },
+        "to": {
+          "width": 4096,
+          "height": 2732
+        },
+        "maxLongEdge": 4096,
+        "jpegQuality": 90,
+        "bytes": 1583793,
+        "sha256": "42870b74fc6cc0fa1d1e73c243bf5280fd10080f805be7ab294ab93be5ddc941"
+      },
+      "uploadedAt": "2026-11-23T16:42:40.682Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/century-wall/02-hills-become-monasteries",
+      "localPath": "public/journey-throught-time/2 hills become monastries.jpg",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/02-hills-become-monasteries",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452157/geo-jainism/site/tamil-jain/century-wall/02-hills-become-monasteries.jpg",
+      "version": 1795452157,
+      "remoteBytes": 765232,
+      "originalChecksum": {
+        "sha256": "4e399682839acaaa9e1b2f57de3e4b256bad7f0b02e4777bbf1458ebda230fe4",
+        "bytes": 765232
+      },
+      "uploadedChecksum": {
+        "md5": "c5ecc19ad8790b9005f643c660728114",
+        "sha256": "4e399682839acaaa9e1b2f57de3e4b256bad7f0b02e4777bbf1458ebda230fe4",
+        "cloudinaryEtag": "c5ecc19ad8790b9005f643c660728114",
+        "etagMatchesMd5": true,
+        "assetId": "09fbd5825df7e8f774976f930c4eeac4"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:38.509Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/century-wall/03-shaping-classical-tamil-culture",
+      "localPath": "public/journey-throught-time/3 shaping classic tamil culture.jpg",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/03-shaping-classical-tamil-culture",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452159/geo-jainism/site/tamil-jain/century-wall/03-shaping-classical-tamil-culture.jpg",
+      "version": 1795452159,
+      "remoteBytes": 739608,
+      "originalChecksum": {
+        "sha256": "c049e78f2dc246a9db6cb65853105a789399a9c4be6d5de68dbd178dff571a6a",
+        "bytes": 571455
+      },
+      "uploadedChecksum": {
+        "md5": "44a975ebea067877a0bfe73fb0ac0aa9",
+        "sha256": "a2cffc721af77ec8ca2c6351dc4e795591b608cfb488cb6c1ed18c7f0f3243ac",
+        "cloudinaryEtag": "44a975ebea067877a0bfe73fb0ac0aa9",
+        "etagMatchesMd5": true,
+        "assetId": "2316357fe461b8523980ee830c7b7ba0"
+      },
+      "preprocessed": {
+        "tool": "sharp 0.35.5",
+        "from": {
+          "width": 8192,
+          "height": 5464,
+          "bytes": 571455,
+          "sha256": "c049e78f2dc246a9db6cb65853105a789399a9c4be6d5de68dbd178dff571a6a"
+        },
+        "to": {
+          "width": 4096,
+          "height": 2732
+        },
+        "maxLongEdge": 4096,
+        "jpegQuality": 90,
+        "bytes": 739608,
+        "sha256": "a2cffc721af77ec8ca2c6351dc4e795591b608cfb488cb6c1ed18c7f0f3243ac"
+      },
+      "uploadedAt": "2026-11-23T16:42:40.862Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/century-wall/04-artistic-brilliance",
+      "localPath": "public/journey-throught-time/4 artistic brilliance.jpg",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/04-artistic-brilliance",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452160/geo-jainism/site/tamil-jain/century-wall/04-artistic-brilliance.jpg",
+      "version": 1795452160,
+      "remoteBytes": 1518319,
+      "originalChecksum": {
+        "sha256": "c28afbfdedb3622be618e505d2cc99075cbea6435f7fdfa507a58abe4baf6d51",
+        "bytes": 1518319
+      },
+      "uploadedChecksum": {
+        "md5": "2db612af2eb0eb8ae145a1add0bc0930",
+        "sha256": "c28afbfdedb3622be618e505d2cc99075cbea6435f7fdfa507a58abe4baf6d51",
+        "cloudinaryEtag": "2db612af2eb0eb8ae145a1add0bc0930",
+        "etagMatchesMd5": true,
+        "assetId": "9263eaab40f9a01d0834ebd970f29628"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:41.981Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/century-wall/05-preservation-through-change",
+      "localPath": "public/journey-throught-time/5 preservation through change.jpg",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/05-preservation-through-change",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452163/geo-jainism/site/tamil-jain/century-wall/05-preservation-through-change.jpg",
+      "version": 1795452163,
+      "remoteBytes": 2085996,
+      "originalChecksum": {
+        "sha256": "98993eb238b8a033620a5e89c6839e0dd1dd86428431c57be55d26e11517bb70",
+        "bytes": 838918
+      },
+      "uploadedChecksum": {
+        "md5": "cfa5a5296999ff4978cbe2fc70d8ce80",
+        "sha256": "288e6afa2f370738d50d99654f1a7207424e6ce42eb195ca593d0d71aab5d1e7",
+        "cloudinaryEtag": "cfa5a5296999ff4978cbe2fc70d8ce80",
+        "etagMatchesMd5": true,
+        "assetId": "dfa0d5bcf21e089bd7e908c5df578d56"
+      },
+      "preprocessed": {
+        "tool": "sharp 0.35.5",
+        "from": {
+          "width": 8192,
+          "height": 5464,
+          "bytes": 838918,
+          "sha256": "98993eb238b8a033620a5e89c6839e0dd1dd86428431c57be55d26e11517bb70"
+        },
+        "to": {
+          "width": 4096,
+          "height": 2732
+        },
+        "maxLongEdge": 4096,
+        "jpegQuality": 90,
+        "bytes": 2085996,
+        "sha256": "288e6afa2f370738d50d99654f1a7207424e6ce42eb195ca593d0d71aab5d1e7"
+      },
+      "uploadedAt": "2026-11-23T16:42:45.085Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/century-wall/06-rediscovered",
+      "localPath": "public/journey-throught-time/6- rediscovered .jpg",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/06-rediscovered",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452161/geo-jainism/site/tamil-jain/century-wall/06-rediscovered.jpg",
+      "version": 1795452161,
+      "remoteBytes": 777243,
+      "originalChecksum": {
+        "sha256": "1e13acd8a288a81fda7ccc00bcff6b989cd67dda856a7924fa8305170c0f696a",
+        "bytes": 777243
+      },
+      "uploadedChecksum": {
+        "md5": "d629c0974bbe53a812a88231f78e6405",
+        "sha256": "1e13acd8a288a81fda7ccc00bcff6b989cd67dda856a7924fa8305170c0f696a",
+        "cloudinaryEtag": "d629c0974bbe53a812a88231f78e6405",
+        "etagMatchesMd5": true,
+        "assetId": "714352a2add0b068bdf27793372af518"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:42.870Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/century-wall/07-continuous-history",
+      "localPath": "public/journey-throught-time/7 .jpg",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/07-continuous-history",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452164/geo-jainism/site/tamil-jain/century-wall/07-continuous-history.jpg",
+      "version": 1795452164,
+      "remoteBytes": 1325428,
+      "originalChecksum": {
+        "sha256": "b200e412e1b66b025cb21d188de69ab91cda10bffe002403c665bd12c7f47436",
+        "bytes": 763114
+      },
+      "uploadedChecksum": {
+        "md5": "de98f9b7c394116577f63a45d37ca447",
+        "sha256": "c61c1debbf561ebcb5c22efca7f49f5e0e1c2c9233f316b29102db9e8e8e791b",
+        "cloudinaryEtag": "de98f9b7c394116577f63a45d37ca447",
+        "etagMatchesMd5": true,
+        "assetId": "f7170c1cae95a53a77ca95625d7cf298"
+      },
+      "preprocessed": {
+        "tool": "sharp 0.35.5",
+        "from": {
+          "width": 8192,
+          "height": 5464,
+          "bytes": 763114,
+          "sha256": "b200e412e1b66b025cb21d188de69ab91cda10bffe002403c665bd12c7f47436"
+        },
+        "to": {
+          "width": 4096,
+          "height": 2732
+        },
+        "maxLongEdge": 4096,
+        "jpegQuality": 90,
+        "bytes": 1325428,
+        "sha256": "c61c1debbf561ebcb5c22efca7f49f5e0e1c2c9233f316b29102db9e8e8e791b"
+      },
+      "uploadedAt": "2026-11-23T16:42:45.590Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/hills/samanar-malai",
+      "localPath": "public/TJpageCarousel/Samanar Malai.JPG",
+      "publicId": "geo-jainism/site/tamil-jain/hills/samanar-malai",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452164/geo-jainism/site/tamil-jain/hills/samanar-malai.jpg",
+      "version": 1795452164,
+      "remoteBytes": 553502,
+      "originalChecksum": {
+        "sha256": "cc871d65e316b96d510709a4a8fb63e0466c3172de75adb3205ad97045a8ff83",
+        "bytes": 553502
+      },
+      "uploadedChecksum": {
+        "md5": "df5c1837a0426856080cee0ec5f0b61b",
+        "sha256": "cc871d65e316b96d510709a4a8fb63e0466c3172de75adb3205ad97045a8ff83",
+        "cloudinaryEtag": "df5c1837a0426856080cee0ec5f0b61b",
+        "etagMatchesMd5": true,
+        "assetId": "5dfc02f64730c4d6e9aa25001d83c6a0"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:45.989Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/hills/vallimalai",
+      "localPath": "public/TJpageCarousel/Vallimalai.jpg",
+      "publicId": "geo-jainism/site/tamil-jain/hills/vallimalai",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452165/geo-jainism/site/tamil-jain/hills/vallimalai.jpg",
+      "version": 1795452165,
+      "remoteBytes": 458607,
+      "originalChecksum": {
+        "sha256": "64b3e988fbc24e0843f4b40a53fa2e31953cb1fe41ff01d4471c4db7d68aad20",
+        "bytes": 458607
+      },
+      "uploadedChecksum": {
+        "md5": "9d1d407cd4b78b64569c9a90789934e4",
+        "sha256": "64b3e988fbc24e0843f4b40a53fa2e31953cb1fe41ff01d4471c4db7d68aad20",
+        "cloudinaryEtag": "9d1d407cd4b78b64569c9a90789934e4",
+        "etagMatchesMd5": true,
+        "assetId": "b6a385ad01d99c440b5ae09f5a8d00c2"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:46.620Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/hills/thirunathar-kundru",
+      "localPath": "public/TJpageCarousel/THIRUNATHAR KUNDRU .JPG",
+      "publicId": "geo-jainism/site/tamil-jain/hills/thirunathar-kundru",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452165/geo-jainism/site/tamil-jain/hills/thirunathar-kundru.jpg",
+      "version": 1795452165,
+      "remoteBytes": 671709,
+      "originalChecksum": {
+        "sha256": "43b7aaa2f2a761cee4324fe68062f8ec9cc3434f37ae001827cec268e09babd2",
+        "bytes": 671709
+      },
+      "uploadedChecksum": {
+        "md5": "1da06983f7909044433d84dcda196c07",
+        "sha256": "43b7aaa2f2a761cee4324fe68062f8ec9cc3434f37ae001827cec268e09babd2",
+        "cloudinaryEtag": "1da06983f7909044433d84dcda196c07",
+        "etagMatchesMd5": true,
+        "assetId": "f636053341abffc768b771081ff0dcc9"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:47.029Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/hills/azhgarmalai",
+      "localPath": "public/TJpageCarousel/Azhgarmalai.JPG",
+      "publicId": "geo-jainism/site/tamil-jain/hills/azhgarmalai",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452166/geo-jainism/site/tamil-jain/hills/azhgarmalai.jpg",
+      "version": 1795452166,
+      "remoteBytes": 826345,
+      "originalChecksum": {
+        "sha256": "01efb266b27f1cbb3ff22d9383ddc9446c7904ef0d237e0368efcd7ac9c7eeff",
+        "bytes": 826345
+      },
+      "uploadedChecksum": {
+        "md5": "2734cca086bbdec9bcd4d645cf10e6c1",
+        "sha256": "01efb266b27f1cbb3ff22d9383ddc9446c7904ef0d237e0368efcd7ac9c7eeff",
+        "cloudinaryEtag": "2734cca086bbdec9bcd4d645cf10e6c1",
+        "etagMatchesMd5": true,
+        "assetId": "cdf56732bba09bf90c534907fee4ef89"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:47.543Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/hills/kalagumalai",
+      "localPath": "public/TJpageCarousel/Kalagumalai.JPG",
+      "publicId": "geo-jainism/site/tamil-jain/hills/kalagumalai",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452166/geo-jainism/site/tamil-jain/hills/kalagumalai.jpg",
+      "version": 1795452166,
+      "remoteBytes": 836255,
+      "originalChecksum": {
+        "sha256": "eb321846ee3edad0402a3f902dd09d6139182ae22651252c14bb39560349c0d4",
+        "bytes": 836255
+      },
+      "uploadedChecksum": {
+        "md5": "f946926fc498f41dc8c8a582daa2f9f2",
+        "sha256": "eb321846ee3edad0402a3f902dd09d6139182ae22651252c14bb39560349c0d4",
+        "cloudinaryEtag": "f946926fc498f41dc8c8a582daa2f9f2",
+        "etagMatchesMd5": true,
+        "assetId": "8a93647a6793f3479aad560dab57c32d"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:47.950Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/inscriptions/tamil-brahmi",
+      "localPath": "src/assets/images/Inscription/TAMIL-BRAHMI .jpg",
+      "publicId": "geo-jainism/site/tamil-jain/inscriptions/tamil-brahmi",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452169/geo-jainism/site/tamil-jain/inscriptions/tamil-brahmi.jpg",
+      "version": 1795452169,
+      "remoteBytes": 1322731,
+      "originalChecksum": {
+        "sha256": "fd74148c738832b3a0f27ed15a60a5872e416ebd0e4876955c7768bd3ad6ba8b",
+        "bytes": 743482
+      },
+      "uploadedChecksum": {
+        "md5": "3896b230742959317fd69a9fbe242aaa",
+        "sha256": "d92977134d646b41c78ab3072ef47477660abafb1ad3276065466bc6565b06ab",
+        "cloudinaryEtag": "3896b230742959317fd69a9fbe242aaa",
+        "etagMatchesMd5": true,
+        "assetId": "cacd50fce3f354c2c314b15ccd0ff098"
+      },
+      "preprocessed": {
+        "tool": "sharp 0.35.5",
+        "from": {
+          "width": 8192,
+          "height": 5464,
+          "bytes": 743482,
+          "sha256": "fd74148c738832b3a0f27ed15a60a5872e416ebd0e4876955c7768bd3ad6ba8b"
+        },
+        "to": {
+          "width": 4096,
+          "height": 2732
+        },
+        "maxLongEdge": 4096,
+        "jpegQuality": 90,
+        "bytes": 1322731,
+        "sha256": "d92977134d646b41c78ab3072ef47477660abafb1ad3276065466bc6565b06ab"
+      },
+      "uploadedAt": "2026-11-23T16:42:50.514Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/inscriptions/vatteluttu",
+      "localPath": "src/assets/images/Inscription/Vatteluttu.jpg",
+      "publicId": "geo-jainism/site/tamil-jain/inscriptions/vatteluttu",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452167/geo-jainism/site/tamil-jain/inscriptions/vatteluttu.jpg",
+      "version": 1795452167,
+      "remoteBytes": 734094,
+      "originalChecksum": {
+        "sha256": "ecd0362f3fd6a3f55e2c4747fcf7f196a4bf9cf3d0a1a116e5e8a9e1e7c0b1b7",
+        "bytes": 734094
+      },
+      "uploadedChecksum": {
+        "md5": "0cfefa0c78b45f1adb8310176493eefb",
+        "sha256": "ecd0362f3fd6a3f55e2c4747fcf7f196a4bf9cf3d0a1a116e5e8a9e1e7c0b1b7",
+        "cloudinaryEtag": "0cfefa0c78b45f1adb8310176493eefb",
+        "etagMatchesMd5": true,
+        "assetId": "0c8cc00432fb5d27041b2d09c21a2c71"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:49.280Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/inscriptions/grantha",
+      "localPath": "src/assets/images/Inscription/Granth.jpg",
+      "publicId": "geo-jainism/site/tamil-jain/inscriptions/grantha",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452168/geo-jainism/site/tamil-jain/inscriptions/grantha.jpg",
+      "version": 1795452168,
+      "remoteBytes": 794075,
+      "originalChecksum": {
+        "sha256": "cba2ec3ce15588ec2a94a4a7125bb8e5f73dc8da8fa25e9cff06169bcbf4428c",
+        "bytes": 794075
+      },
+      "uploadedChecksum": {
+        "md5": "0233d3d9d17efdd80c436e689d0a97de",
+        "sha256": "cba2ec3ce15588ec2a94a4a7125bb8e5f73dc8da8fa25e9cff06169bcbf4428c",
+        "cloudinaryEtag": "0233d3d9d17efdd80c436e689d0a97de",
+        "etagMatchesMd5": true,
+        "assetId": "2b0e49239ff817199ac3c9f114b47fdf"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:50.277Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "site/tamil-jain/shayanika",
+      "localPath": "src/assets/images/Shayanika/TJPage Shayanika.jpg",
+      "publicId": "geo-jainism/site/tamil-jain/shayanika",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795450678/geo-jainism/site/tamil-jain/shayanika.jpg",
+      "version": 1795450678,
+      "remoteBytes": 1384619,
+      "originalChecksum": {
+        "sha256": "7a8ba76b451516bc5c5b36531f923c823c334c844a017db7532450e27592bc24",
+        "bytes": 739113
+      },
+      "uploadedChecksum": {
+        "md5": "6c343e1f8792699308432aa717718f7d",
+        "sha256": "cc1cff94d9399d225a76a06c8f951cb79aab332c21499474b22126c93f0453b8",
+        "cloudinaryEtag": "6c343e1f8792699308432aa717718f7d",
+        "etagMatchesMd5": true,
+        "assetId": "8215e3f4a8420695f9a1d9622e578cc2"
+      },
+      "preprocessed": {
+        "tool": "sharp 0.35.5",
+        "from": {
+          "width": 8192,
+          "height": 5464,
+          "bytes": 739113,
+          "sha256": "7a8ba76b451516bc5c5b36531f923c823c334c844a017db7532450e27592bc24"
+        },
+        "to": {
+          "width": 4096,
+          "height": 2732
+        },
+        "maxLongEdge": 4096,
+        "jpegQuality": 90,
+        "bytes": 1384619,
+        "sha256": "cc1cff94d9399d225a76a06c8f951cb79aab332c21499474b22126c93f0453b8"
+      },
+      "uploadedAt": "2026-11-23T16:18:00.688Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/tamil-jain-heritage-field-atlas-1",
+      "localPath": "public/shop-assets/products/tamil-jain-heritage-field-atlas-1.webp",
+      "publicId": "geo-jainism/shop/products/tamil-jain-heritage-field-atlas-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452169/geo-jainism/shop/products/tamil-jain-heritage-field-atlas-1.webp",
+      "version": 1795452169,
+      "remoteBytes": 88520,
+      "originalChecksum": {
+        "sha256": "c06e53617b92c22fac87f61e7400df0aba8fda29f2c91c72593a6040e577a8cf",
+        "bytes": 88520
+      },
+      "uploadedChecksum": {
+        "md5": "bf05442d60e1c764a30efab3ea53c8e3",
+        "sha256": "c06e53617b92c22fac87f61e7400df0aba8fda29f2c91c72593a6040e577a8cf",
+        "cloudinaryEtag": "bf05442d60e1c764a30efab3ea53c8e3",
+        "etagMatchesMd5": true,
+        "assetId": "dbf28b27076e11c869645ee2d127ae01"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:51.434Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/tamil-jain-heritage-field-atlas-2",
+      "localPath": "public/shop-assets/products/tamil-jain-heritage-field-atlas-2.webp",
+      "publicId": "geo-jainism/shop/products/tamil-jain-heritage-field-atlas-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452170/geo-jainism/shop/products/tamil-jain-heritage-field-atlas-2.webp",
+      "version": 1795452170,
+      "remoteBytes": 116080,
+      "originalChecksum": {
+        "sha256": "fe2c0ed48e59b87148e5fbc46e74325b372b38142fee967d01f250baff5b8cd0",
+        "bytes": 116080
+      },
+      "uploadedChecksum": {
+        "md5": "da6ed73741359c6ceb0b12050bfae388",
+        "sha256": "fe2c0ed48e59b87148e5fbc46e74325b372b38142fee967d01f250baff5b8cd0",
+        "cloudinaryEtag": "da6ed73741359c6ceb0b12050bfae388",
+        "etagMatchesMd5": true,
+        "assetId": "ca25f14c27a017185b2dc69f882db6b5"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:51.442Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/tamil-jain-heritage-field-atlas-3",
+      "localPath": "public/shop-assets/products/tamil-jain-heritage-field-atlas-3.webp",
+      "publicId": "geo-jainism/shop/products/tamil-jain-heritage-field-atlas-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452170/geo-jainism/shop/products/tamil-jain-heritage-field-atlas-3.webp",
+      "version": 1795452170,
+      "remoteBytes": 106512,
+      "originalChecksum": {
+        "sha256": "f73129542d4cdb86be9ac5657d8b56dacb7b2ef939ecc41226460f4c8d0b5a78",
+        "bytes": 106512
+      },
+      "uploadedChecksum": {
+        "md5": "414b63e0975e1482f5f3a7c0cc6887b9",
+        "sha256": "f73129542d4cdb86be9ac5657d8b56dacb7b2ef939ecc41226460f4c8d0b5a78",
+        "cloudinaryEtag": "414b63e0975e1482f5f3a7c0cc6887b9",
+        "etagMatchesMd5": true,
+        "assetId": "3594ad1d24a18c8dd7d61bb7370f8ad9"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:52.600Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/tattvartha-sutra-annotated-1",
+      "localPath": "public/shop-assets/products/tattvartha-sutra-annotated-1.webp",
+      "publicId": "geo-jainism/shop/products/tattvartha-sutra-annotated-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452170/geo-jainism/shop/products/tattvartha-sutra-annotated-1.webp",
+      "version": 1795452170,
+      "remoteBytes": 66568,
+      "originalChecksum": {
+        "sha256": "a71918ab0de87d1d993f9f8aeab3935e88e5b37fa0d3e26553938c32fda40806",
+        "bytes": 66568
+      },
+      "uploadedChecksum": {
+        "md5": "eadd65267d5902b4e888b98ee60c703c",
+        "sha256": "a71918ab0de87d1d993f9f8aeab3935e88e5b37fa0d3e26553938c32fda40806",
+        "cloudinaryEtag": "eadd65267d5902b4e888b98ee60c703c",
+        "etagMatchesMd5": true,
+        "assetId": "d41ebcd3a59e8778b803fdad2f96ba5d"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:52.252Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/tattvartha-sutra-annotated-2",
+      "localPath": "public/shop-assets/products/tattvartha-sutra-annotated-2.webp",
+      "publicId": "geo-jainism/shop/products/tattvartha-sutra-annotated-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452171/geo-jainism/shop/products/tattvartha-sutra-annotated-2.webp",
+      "version": 1795452171,
+      "remoteBytes": 56366,
+      "originalChecksum": {
+        "sha256": "3cd37d52cc4e3d7cec96eac3e9c29e60636da3c0ad3b6d080b22c0c069d24012",
+        "bytes": 56366
+      },
+      "uploadedChecksum": {
+        "md5": "99d1740882f8061477dadbfd6bd2bd90",
+        "sha256": "3cd37d52cc4e3d7cec96eac3e9c29e60636da3c0ad3b6d080b22c0c069d24012",
+        "cloudinaryEtag": "99d1740882f8061477dadbfd6bd2bd90",
+        "etagMatchesMd5": true,
+        "assetId": "c2152aaf6c28fbfe8eb3496f974cc767"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:53.099Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/tattvartha-sutra-annotated-3",
+      "localPath": "public/shop-assets/products/tattvartha-sutra-annotated-3.webp",
+      "publicId": "geo-jainism/shop/products/tattvartha-sutra-annotated-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452172/geo-jainism/shop/products/tattvartha-sutra-annotated-3.webp",
+      "version": 1795452172,
+      "remoteBytes": 58644,
+      "originalChecksum": {
+        "sha256": "633b87115865765bde39e76931e10dd98bb3a061f7d689eea6577ae36ade67ce",
+        "bytes": 58644
+      },
+      "uploadedChecksum": {
+        "md5": "784ad09cb543bae0df119be23c83ec4d",
+        "sha256": "633b87115865765bde39e76931e10dd98bb3a061f7d689eea6577ae36ade67ce",
+        "cloudinaryEtag": "784ad09cb543bae0df119be23c83ec4d",
+        "etagMatchesMd5": true,
+        "assetId": "b489400b54958e319fa89bb64a8d30cb"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:53.426Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/naladiyar-verses-of-wisdom-1",
+      "localPath": "public/shop-assets/products/naladiyar-verses-of-wisdom-1.webp",
+      "publicId": "geo-jainism/shop/products/naladiyar-verses-of-wisdom-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452172/geo-jainism/shop/products/naladiyar-verses-of-wisdom-1.webp",
+      "version": 1795452172,
+      "remoteBytes": 59866,
+      "originalChecksum": {
+        "sha256": "6102c9d9aa9a79f15697aea4178dfe477f8118aa55953e72311e7aa424518abd",
+        "bytes": 59866
+      },
+      "uploadedChecksum": {
+        "md5": "bd209d43cac138927281890e4b07afab",
+        "sha256": "6102c9d9aa9a79f15697aea4178dfe477f8118aa55953e72311e7aa424518abd",
+        "cloudinaryEtag": "bd209d43cac138927281890e4b07afab",
+        "etagMatchesMd5": true,
+        "assetId": "306615d33a9769e585c1cc4c47f2b66b"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:54.292Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/naladiyar-verses-of-wisdom-2",
+      "localPath": "public/shop-assets/products/naladiyar-verses-of-wisdom-2.webp",
+      "publicId": "geo-jainism/shop/products/naladiyar-verses-of-wisdom-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452173/geo-jainism/shop/products/naladiyar-verses-of-wisdom-2.webp",
+      "version": 1795452173,
+      "remoteBytes": 45966,
+      "originalChecksum": {
+        "sha256": "0f04767b66cd5573fb8a33347efd185f851d73d0d56c929c34dd4f1a0cb64542",
+        "bytes": 45966
+      },
+      "uploadedChecksum": {
+        "md5": "9e671c61d9bef079273b80ef0ec6c992",
+        "sha256": "0f04767b66cd5573fb8a33347efd185f851d73d0d56c929c34dd4f1a0cb64542",
+        "cloudinaryEtag": "9e671c61d9bef079273b80ef0ec6c992",
+        "etagMatchesMd5": true,
+        "assetId": "c76f601c43224820f80b7c745151123d"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:54.319Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/naladiyar-verses-of-wisdom-3",
+      "localPath": "public/shop-assets/products/naladiyar-verses-of-wisdom-3.webp",
+      "publicId": "geo-jainism/shop/products/naladiyar-verses-of-wisdom-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452173/geo-jainism/shop/products/naladiyar-verses-of-wisdom-3.webp",
+      "version": 1795452173,
+      "remoteBytes": 46848,
+      "originalChecksum": {
+        "sha256": "6a6070db5e8592df3c030a88c9b0bfd915031a6dc13401ac8dad5c3007dae84f",
+        "bytes": 46848
+      },
+      "uploadedChecksum": {
+        "md5": "350209b02c204e42be819535ea34ac47",
+        "sha256": "6a6070db5e8592df3c030a88c9b0bfd915031a6dc13401ac8dad5c3007dae84f",
+        "cloudinaryEtag": "350209b02c204e42be819535ea34ac47",
+        "etagMatchesMd5": true,
+        "assetId": "ed32c4b5033f47590e7771b3bc6de2b7"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:55.441Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/kalpasutra-miniature-print-1",
+      "localPath": "public/shop-assets/products/kalpasutra-miniature-print-1.webp",
+      "publicId": "geo-jainism/shop/products/kalpasutra-miniature-print-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452174/geo-jainism/shop/products/kalpasutra-miniature-print-1.webp",
+      "version": 1795452174,
+      "remoteBytes": 102440,
+      "originalChecksum": {
+        "sha256": "27b2b2b80960bb07410c5efe1f01836c8478c2ed39b2827ff72fe3e0a46f458a",
+        "bytes": 102440
+      },
+      "uploadedChecksum": {
+        "md5": "27a7d709b3c90f56d621fee23759cdca",
+        "sha256": "27b2b2b80960bb07410c5efe1f01836c8478c2ed39b2827ff72fe3e0a46f458a",
+        "cloudinaryEtag": "27a7d709b3c90f56d621fee23759cdca",
+        "etagMatchesMd5": true,
+        "assetId": "55d0cd61d1cc30d8ee1cf20d75a90b38"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:55.448Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/kalpasutra-miniature-print-2",
+      "localPath": "public/shop-assets/products/kalpasutra-miniature-print-2.webp",
+      "publicId": "geo-jainism/shop/products/kalpasutra-miniature-print-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452174/geo-jainism/shop/products/kalpasutra-miniature-print-2.webp",
+      "version": 1795452174,
+      "remoteBytes": 160486,
+      "originalChecksum": {
+        "sha256": "e112aac4d108968d30b6224e344edeff7b8eff3c40b6eb6f1e561ef02b5f3832",
+        "bytes": 160486
+      },
+      "uploadedChecksum": {
+        "md5": "30cb73564bbf955ba5a147f4dc240ff0",
+        "sha256": "e112aac4d108968d30b6224e344edeff7b8eff3c40b6eb6f1e561ef02b5f3832",
+        "cloudinaryEtag": "30cb73564bbf955ba5a147f4dc240ff0",
+        "etagMatchesMd5": true,
+        "assetId": "6308f63b6dc3a1e213b381bf860e26ae"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:56.344Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/kalpasutra-miniature-print-3",
+      "localPath": "public/shop-assets/products/kalpasutra-miniature-print-3.webp",
+      "publicId": "geo-jainism/shop/products/kalpasutra-miniature-print-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452174/geo-jainism/shop/products/kalpasutra-miniature-print-3.webp",
+      "version": 1795452174,
+      "remoteBytes": 151448,
+      "originalChecksum": {
+        "sha256": "81beaa6d1dda08568bc1bafce60265ab4f1b31ac764dfacd126a30cf8c6aee82",
+        "bytes": 151448
+      },
+      "uploadedChecksum": {
+        "md5": "36e469321b28d5d53e6d728a14fc2602",
+        "sha256": "81beaa6d1dda08568bc1bafce60265ab4f1b31ac764dfacd126a30cf8c6aee82",
+        "cloudinaryEtag": "36e469321b28d5d53e6d728a14fc2602",
+        "etagMatchesMd5": true,
+        "assetId": "bf9024bb22fa7f2a69f4f125a2926900"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:56.437Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/adhai-dvipa-cosmology-print-1",
+      "localPath": "public/shop-assets/products/adhai-dvipa-cosmology-print-1.webp",
+      "publicId": "geo-jainism/shop/products/adhai-dvipa-cosmology-print-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452176/geo-jainism/shop/products/adhai-dvipa-cosmology-print-1.webp",
+      "version": 1795452176,
+      "remoteBytes": 225394,
+      "originalChecksum": {
+        "sha256": "3588dfb1ce3b560864ac1968ee3ce767308dbe1fdd5aa4df75534b6c4a7c666a",
+        "bytes": 225394
+      },
+      "uploadedChecksum": {
+        "md5": "3bc75d01a517889450ed460ffefa3a15",
+        "sha256": "3588dfb1ce3b560864ac1968ee3ce767308dbe1fdd5aa4df75534b6c4a7c666a",
+        "cloudinaryEtag": "3bc75d01a517889450ed460ffefa3a15",
+        "etagMatchesMd5": true,
+        "assetId": "d95094b95df0408853d71299f4bc73d3"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:57.590Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/adhai-dvipa-cosmology-print-2",
+      "localPath": "public/shop-assets/products/adhai-dvipa-cosmology-print-2.webp",
+      "publicId": "geo-jainism/shop/products/adhai-dvipa-cosmology-print-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452176/geo-jainism/shop/products/adhai-dvipa-cosmology-print-2.webp",
+      "version": 1795452176,
+      "remoteBytes": 830964,
+      "originalChecksum": {
+        "sha256": "397d33543ae52bd11c86a23bb39f0f32a5f90787aca287e144802af5266b6684",
+        "bytes": 830964
+      },
+      "uploadedChecksum": {
+        "md5": "6596dd1b941e0d9009f52738f7100939",
+        "sha256": "397d33543ae52bd11c86a23bb39f0f32a5f90787aca287e144802af5266b6684",
+        "cloudinaryEtag": "6596dd1b941e0d9009f52738f7100939",
+        "etagMatchesMd5": true,
+        "assetId": "33f869378aa17f00e93bbce18c340b52"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:57.435Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/adhai-dvipa-cosmology-print-3",
+      "localPath": "public/shop-assets/products/adhai-dvipa-cosmology-print-3.webp",
+      "publicId": "geo-jainism/shop/products/adhai-dvipa-cosmology-print-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452177/geo-jainism/shop/products/adhai-dvipa-cosmology-print-3.webp",
+      "version": 1795452177,
+      "remoteBytes": 183598,
+      "originalChecksum": {
+        "sha256": "2c794c19e435f654291712e404c87e204bbe5f88a376ba85496c85a466322aa9",
+        "bytes": 183598
+      },
+      "uploadedChecksum": {
+        "md5": "470bb51fbcc4a65586a1b4b57dcb11b5",
+        "sha256": "2c794c19e435f654291712e404c87e204bbe5f88a376ba85496c85a466322aa9",
+        "cloudinaryEtag": "470bb51fbcc4a65586a1b4b57dcb11b5",
+        "etagMatchesMd5": true,
+        "assetId": "98d54d195fa1b4fce75e393b2555afaa"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:58.524Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/palitana-dawn-photograph-1",
+      "localPath": "public/shop-assets/products/palitana-dawn-photograph-1.webp",
+      "publicId": "geo-jainism/shop/products/palitana-dawn-photograph-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452177/geo-jainism/shop/products/palitana-dawn-photograph-1.webp",
+      "version": 1795452177,
+      "remoteBytes": 113210,
+      "originalChecksum": {
+        "sha256": "eb5f7536c949b92f49afda9f2b97b498d2102664bd33803aff8c307f060e5589",
+        "bytes": 113210
+      },
+      "uploadedChecksum": {
+        "md5": "4bc85b089b1c948806e996d06695ffda",
+        "sha256": "eb5f7536c949b92f49afda9f2b97b498d2102664bd33803aff8c307f060e5589",
+        "cloudinaryEtag": "4bc85b089b1c948806e996d06695ffda",
+        "etagMatchesMd5": true,
+        "assetId": "0bceeef3dedbe7eb9d0d49d4abb3cf27"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:58.529Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/palitana-dawn-photograph-2",
+      "localPath": "public/shop-assets/products/palitana-dawn-photograph-2.webp",
+      "publicId": "geo-jainism/shop/products/palitana-dawn-photograph-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452178/geo-jainism/shop/products/palitana-dawn-photograph-2.webp",
+      "version": 1795452178,
+      "remoteBytes": 239352,
+      "originalChecksum": {
+        "sha256": "da3dc7fdbbbfe964ec71fe62b28a52eafbccdcdd75fca3d6b5743448c45b2adb",
+        "bytes": 239352
+      },
+      "uploadedChecksum": {
+        "md5": "0e7530cff6b60356c95d2a24f4a6af99",
+        "sha256": "da3dc7fdbbbfe964ec71fe62b28a52eafbccdcdd75fca3d6b5743448c45b2adb",
+        "cloudinaryEtag": "0e7530cff6b60356c95d2a24f4a6af99",
+        "etagMatchesMd5": true,
+        "assetId": "354a41f3c276b506ef6c28856c485a97"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:59.684Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/palitana-dawn-photograph-3",
+      "localPath": "public/shop-assets/products/palitana-dawn-photograph-3.webp",
+      "publicId": "geo-jainism/shop/products/palitana-dawn-photograph-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452178/geo-jainism/shop/products/palitana-dawn-photograph-3.webp",
+      "version": 1795452178,
+      "remoteBytes": 255960,
+      "originalChecksum": {
+        "sha256": "45be6673c6988dc58cbfedfb45985848d2967af3d796e74dd3691b3096a83ccb",
+        "bytes": 255960
+      },
+      "uploadedChecksum": {
+        "md5": "5906ff953140c685bdccc7b7bf469924",
+        "sha256": "45be6673c6988dc58cbfedfb45985848d2967af3d796e74dd3691b3096a83ccb",
+        "cloudinaryEtag": "5906ff953140c685bdccc7b7bf469924",
+        "etagMatchesMd5": true,
+        "assetId": "01f6f8df5a2f7a4d34459b584b54fa17"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:42:59.692Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/brass-akhand-diya-1",
+      "localPath": "public/shop-assets/products/brass-akhand-diya-1.webp",
+      "publicId": "geo-jainism/shop/products/brass-akhand-diya-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452179/geo-jainism/shop/products/brass-akhand-diya-1.webp",
+      "version": 1795452179,
+      "remoteBytes": 140070,
+      "originalChecksum": {
+        "sha256": "d819a79b5b8a9dd8ba95511c8b0416cec8c6c5762888f54f954d7d55563066b9",
+        "bytes": 140070
+      },
+      "uploadedChecksum": {
+        "md5": "07d65a639e44971fa1f0b55c68500911",
+        "sha256": "d819a79b5b8a9dd8ba95511c8b0416cec8c6c5762888f54f954d7d55563066b9",
+        "cloudinaryEtag": "07d65a639e44971fa1f0b55c68500911",
+        "etagMatchesMd5": true,
+        "assetId": "7adbafd1e3f4d96ba408edaaea393427"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:01.146Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/brass-akhand-diya-2",
+      "localPath": "public/shop-assets/products/brass-akhand-diya-2.webp",
+      "publicId": "geo-jainism/shop/products/brass-akhand-diya-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452179/geo-jainism/shop/products/brass-akhand-diya-2.webp",
+      "version": 1795452179,
+      "remoteBytes": 98238,
+      "originalChecksum": {
+        "sha256": "f0faa4017b44652bb939c602f6f63763379d19b77fd444acbc44cce8cbcbb062",
+        "bytes": 98238
+      },
+      "uploadedChecksum": {
+        "md5": "a725c02c3be2674394e131fe510a4744",
+        "sha256": "f0faa4017b44652bb939c602f6f63763379d19b77fd444acbc44cce8cbcbb062",
+        "cloudinaryEtag": "a725c02c3be2674394e131fe510a4744",
+        "etagMatchesMd5": true,
+        "assetId": "1680bae8fe784c11e85f28747e7d75e5"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:00.697Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/brass-akhand-diya-3",
+      "localPath": "public/shop-assets/products/brass-akhand-diya-3.webp",
+      "publicId": "geo-jainism/shop/products/brass-akhand-diya-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452180/geo-jainism/shop/products/brass-akhand-diya-3.webp",
+      "version": 1795452180,
+      "remoteBytes": 120554,
+      "originalChecksum": {
+        "sha256": "98c259394249c0a0040cbb49496fd74635ef92bc779441f32a8aae916a8118be",
+        "bytes": 120554
+      },
+      "uploadedChecksum": {
+        "md5": "00eebe3e1a6887fc4ff0229d2006d086",
+        "sha256": "98c259394249c0a0040cbb49496fd74635ef92bc779441f32a8aae916a8118be",
+        "cloudinaryEtag": "00eebe3e1a6887fc4ff0229d2006d086",
+        "etagMatchesMd5": true,
+        "assetId": "f8d98fcff7cf8e3272afd44e6896ac8c"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:01.797Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/sandalwood-mala-108-1",
+      "localPath": "public/shop-assets/products/sandalwood-mala-108-1.webp",
+      "publicId": "geo-jainism/shop/products/sandalwood-mala-108-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452180/geo-jainism/shop/products/sandalwood-mala-108-1.webp",
+      "version": 1795452180,
+      "remoteBytes": 101700,
+      "originalChecksum": {
+        "sha256": "4f5be886e74cf583226ade44053dd8e750ac0c010eb298e4bb72d2c86d746591",
+        "bytes": 101700
+      },
+      "uploadedChecksum": {
+        "md5": "c5058c96cc63bb549179ee85d747c0fd",
+        "sha256": "4f5be886e74cf583226ade44053dd8e750ac0c010eb298e4bb72d2c86d746591",
+        "cloudinaryEtag": "c5058c96cc63bb549179ee85d747c0fd",
+        "etagMatchesMd5": true,
+        "assetId": "deeda9ba0a303c507f77e5a91e3f08ac"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:02.395Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/sandalwood-mala-108-2",
+      "localPath": "public/shop-assets/products/sandalwood-mala-108-2.webp",
+      "publicId": "geo-jainism/shop/products/sandalwood-mala-108-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452181/geo-jainism/shop/products/sandalwood-mala-108-2.webp",
+      "version": 1795452181,
+      "remoteBytes": 60700,
+      "originalChecksum": {
+        "sha256": "8f0a60af1b655a43340a58b765182bfa70ea674aba1098cd00082eea1a24958e",
+        "bytes": 60700
+      },
+      "uploadedChecksum": {
+        "md5": "fe4359cfb96e90c0e1ee3125fa80d7b8",
+        "sha256": "8f0a60af1b655a43340a58b765182bfa70ea674aba1098cd00082eea1a24958e",
+        "cloudinaryEtag": "fe4359cfb96e90c0e1ee3125fa80d7b8",
+        "etagMatchesMd5": true,
+        "assetId": "7e765c65750fcc1247de3bd1e59c22af"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:02.768Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/sandalwood-mala-108-3",
+      "localPath": "public/shop-assets/products/sandalwood-mala-108-3.webp",
+      "publicId": "geo-jainism/shop/products/sandalwood-mala-108-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452181/geo-jainism/shop/products/sandalwood-mala-108-3.webp",
+      "version": 1795452181,
+      "remoteBytes": 58550,
+      "originalChecksum": {
+        "sha256": "60f7f056a365854f367dd3d30429af260e81880504ef82d300f5bbde84320af5",
+        "bytes": 58550
+      },
+      "uploadedChecksum": {
+        "md5": "ac511f6c575f014d44b12350cee761d2",
+        "sha256": "60f7f056a365854f367dd3d30429af260e81880504ef82d300f5bbde84320af5",
+        "cloudinaryEtag": "ac511f6c575f014d44b12350cee761d2",
+        "etagMatchesMd5": true,
+        "assetId": "6db798ce91f0bd1d9a24060eae286413"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:03.246Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/chandan-kesar-dhoop-1",
+      "localPath": "public/shop-assets/products/chandan-kesar-dhoop-1.webp",
+      "publicId": "geo-jainism/shop/products/chandan-kesar-dhoop-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452182/geo-jainism/shop/products/chandan-kesar-dhoop-1.webp",
+      "version": 1795452182,
+      "remoteBytes": 127816,
+      "originalChecksum": {
+        "sha256": "c5f6a097c87a65c798c40848234e8872711726fed8d182f17a890926380b0163",
+        "bytes": 127816
+      },
+      "uploadedChecksum": {
+        "md5": "10e615008951527f1b5d446cb5b70690",
+        "sha256": "c5f6a097c87a65c798c40848234e8872711726fed8d182f17a890926380b0163",
+        "cloudinaryEtag": "10e615008951527f1b5d446cb5b70690",
+        "etagMatchesMd5": true,
+        "assetId": "d583a7d291547a1c3ace868bf032c0db"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:04.062Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/chandan-kesar-dhoop-2",
+      "localPath": "public/shop-assets/products/chandan-kesar-dhoop-2.webp",
+      "publicId": "geo-jainism/shop/products/chandan-kesar-dhoop-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452182/geo-jainism/shop/products/chandan-kesar-dhoop-2.webp",
+      "version": 1795452182,
+      "remoteBytes": 64350,
+      "originalChecksum": {
+        "sha256": "f80d681ff2932655a0a6fb455b0d84793771c85a8b8398bceccf6e4bcb99ac86",
+        "bytes": 64350
+      },
+      "uploadedChecksum": {
+        "md5": "9990cd3bf28edff3785a2d1642d44194",
+        "sha256": "f80d681ff2932655a0a6fb455b0d84793771c85a8b8398bceccf6e4bcb99ac86",
+        "cloudinaryEtag": "9990cd3bf28edff3785a2d1642d44194",
+        "etagMatchesMd5": true,
+        "assetId": "f0b910da0cea638b6eeecdfe1b274e7f"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:04.387Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/chandan-kesar-dhoop-3",
+      "localPath": "public/shop-assets/products/chandan-kesar-dhoop-3.webp",
+      "publicId": "geo-jainism/shop/products/chandan-kesar-dhoop-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452183/geo-jainism/shop/products/chandan-kesar-dhoop-3.webp",
+      "version": 1795452183,
+      "remoteBytes": 80130,
+      "originalChecksum": {
+        "sha256": "4891636121fec5c63acd696699a005909dce4eb846af538f39f7994129e30b8c",
+        "bytes": 80130
+      },
+      "uploadedChecksum": {
+        "md5": "92e1007735621bddeee837b1854762ee",
+        "sha256": "4891636121fec5c63acd696699a005909dce4eb846af538f39f7994129e30b8c",
+        "cloudinaryEtag": "92e1007735621bddeee837b1854762ee",
+        "etagMatchesMd5": true,
+        "assetId": "b76f215b635fd51c348bee29a40cf7f2"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:04.962Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/pierced-brass-dhoop-box-1",
+      "localPath": "public/shop-assets/products/pierced-brass-dhoop-box-1.webp",
+      "publicId": "geo-jainism/shop/products/pierced-brass-dhoop-box-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452183/geo-jainism/shop/products/pierced-brass-dhoop-box-1.webp",
+      "version": 1795452183,
+      "remoteBytes": 186944,
+      "originalChecksum": {
+        "sha256": "7f0c747c54947577c8a937740d0ca5af99839fb0a04f9e6270c61da86343183f",
+        "bytes": 186944
+      },
+      "uploadedChecksum": {
+        "md5": "35225bff81c84544163ce7f1c3224869",
+        "sha256": "7f0c747c54947577c8a937740d0ca5af99839fb0a04f9e6270c61da86343183f",
+        "cloudinaryEtag": "35225bff81c84544163ce7f1c3224869",
+        "etagMatchesMd5": true,
+        "assetId": "cadb71c2c74bf5590f88baca2414a6bc"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:06.365Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/pierced-brass-dhoop-box-2",
+      "localPath": "public/shop-assets/products/pierced-brass-dhoop-box-2.webp",
+      "publicId": "geo-jainism/shop/products/pierced-brass-dhoop-box-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452184/geo-jainism/shop/products/pierced-brass-dhoop-box-2.webp",
+      "version": 1795452184,
+      "remoteBytes": 237186,
+      "originalChecksum": {
+        "sha256": "abcd63f42145314c6cbd4e0ad4a7def2ece7da1634507c1ea1df119ffbf4c3b5",
+        "bytes": 237186
+      },
+      "uploadedChecksum": {
+        "md5": "0737ce98f5e1cacc87a332186917055a",
+        "sha256": "abcd63f42145314c6cbd4e0ad4a7def2ece7da1634507c1ea1df119ffbf4c3b5",
+        "cloudinaryEtag": "0737ce98f5e1cacc87a332186917055a",
+        "etagMatchesMd5": true,
+        "assetId": "e9e3d48a85ee420cc2c3a63ae94e0b9c"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:06.042Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/pierced-brass-dhoop-box-3",
+      "localPath": "public/shop-assets/products/pierced-brass-dhoop-box-3.webp",
+      "publicId": "geo-jainism/shop/products/pierced-brass-dhoop-box-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452185/geo-jainism/shop/products/pierced-brass-dhoop-box-3.webp",
+      "version": 1795452185,
+      "remoteBytes": 194454,
+      "originalChecksum": {
+        "sha256": "af88bca7d5fa712d2aeff220af24b170ba67cbe75cc863f3374d522d64408465",
+        "bytes": 194454
+      },
+      "uploadedChecksum": {
+        "md5": "ca1b08a2f2f9ae5d35d4c1008b38d442",
+        "sha256": "af88bca7d5fa712d2aeff220af24b170ba67cbe75cc863f3374d522d64408465",
+        "cloudinaryEtag": "ca1b08a2f2f9ae5d35d4c1008b38d442",
+        "etagMatchesMd5": true,
+        "assetId": "6418069225c911b60d82a54810c0829b"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:07.255Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/temple-border-table-runner-1",
+      "localPath": "public/shop-assets/products/temple-border-table-runner-1.webp",
+      "publicId": "geo-jainism/shop/products/temple-border-table-runner-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452185/geo-jainism/shop/products/temple-border-table-runner-1.webp",
+      "version": 1795452185,
+      "remoteBytes": 106384,
+      "originalChecksum": {
+        "sha256": "2aeef1741cce2e7cbfca59decd5af8d0048d120707995588d230f4080302184e",
+        "bytes": 106384
+      },
+      "uploadedChecksum": {
+        "md5": "f86687dfe869f02bbe7687dd62113e00",
+        "sha256": "2aeef1741cce2e7cbfca59decd5af8d0048d120707995588d230f4080302184e",
+        "cloudinaryEtag": "f86687dfe869f02bbe7687dd62113e00",
+        "etagMatchesMd5": true,
+        "assetId": "ce741c2a640fe8467e7f49d98af4b998"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:07.295Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/temple-border-table-runner-2",
+      "localPath": "public/shop-assets/products/temple-border-table-runner-2.webp",
+      "publicId": "geo-jainism/shop/products/temple-border-table-runner-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452186/geo-jainism/shop/products/temple-border-table-runner-2.webp",
+      "version": 1795452186,
+      "remoteBytes": 217406,
+      "originalChecksum": {
+        "sha256": "6e127dd0f482f122b3d43bd48e0cef91491b289dfef8545b846ec6cc4affd494",
+        "bytes": 217406
+      },
+      "uploadedChecksum": {
+        "md5": "46889da5f99e82bfb99fd621faf49ca2",
+        "sha256": "6e127dd0f482f122b3d43bd48e0cef91491b289dfef8545b846ec6cc4affd494",
+        "cloudinaryEtag": "46889da5f99e82bfb99fd621faf49ca2",
+        "etagMatchesMd5": true,
+        "assetId": "78415b2bb68900566937daee4483798a"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:08.436Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/temple-border-table-runner-3",
+      "localPath": "public/shop-assets/products/temple-border-table-runner-3.webp",
+      "publicId": "geo-jainism/shop/products/temple-border-table-runner-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452186/geo-jainism/shop/products/temple-border-table-runner-3.webp",
+      "version": 1795452186,
+      "remoteBytes": 66598,
+      "originalChecksum": {
+        "sha256": "0394ee4ad98585a751f35816eceeee215319e6e8c5d0978804521220a965e908",
+        "bytes": 66598
+      },
+      "uploadedChecksum": {
+        "md5": "0e0053012b92004ae9cef3efe8b8e892",
+        "sha256": "0394ee4ad98585a751f35816eceeee215319e6e8c5d0978804521220a965e908",
+        "cloudinaryEtag": "0e0053012b92004ae9cef3efe8b8e892",
+        "etagMatchesMd5": true,
+        "assetId": "e9c416386a95d9d0fc3a931e17d64c3d"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:08.443Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/hammered-copper-bottle-1",
+      "localPath": "public/shop-assets/products/hammered-copper-bottle-1.webp",
+      "publicId": "geo-jainism/shop/products/hammered-copper-bottle-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452188/geo-jainism/shop/products/hammered-copper-bottle-1.webp",
+      "version": 1795452188,
+      "remoteBytes": 215134,
+      "originalChecksum": {
+        "sha256": "6ed19443e66a0c3d440e90258359e79c7b5c8bdc0affad93d348ff3c3f294515",
+        "bytes": 215134
+      },
+      "uploadedChecksum": {
+        "md5": "451adf6d00e0b68b385f6ea7edb9cdf3",
+        "sha256": "6ed19443e66a0c3d440e90258359e79c7b5c8bdc0affad93d348ff3c3f294515",
+        "cloudinaryEtag": "451adf6d00e0b68b385f6ea7edb9cdf3",
+        "etagMatchesMd5": true,
+        "assetId": "0052c88643272db772b3fa330b59ea26"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:09.813Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/hammered-copper-bottle-2",
+      "localPath": "public/shop-assets/products/hammered-copper-bottle-2.webp",
+      "publicId": "geo-jainism/shop/products/hammered-copper-bottle-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452188/geo-jainism/shop/products/hammered-copper-bottle-2.webp",
+      "version": 1795452188,
+      "remoteBytes": 105586,
+      "originalChecksum": {
+        "sha256": "db5561152ce21621dbbd1c71e8be84336d402ceeb767c24b6c9f2a9227d88fb8",
+        "bytes": 105586
+      },
+      "uploadedChecksum": {
+        "md5": "bf9746e9710c2b24a1da5f8526df7567",
+        "sha256": "db5561152ce21621dbbd1c71e8be84336d402ceeb767c24b6c9f2a9227d88fb8",
+        "cloudinaryEtag": "bf9746e9710c2b24a1da5f8526df7567",
+        "etagMatchesMd5": true,
+        "assetId": "04440bfdc0b2f172799085e514512081"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:09.442Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/hammered-copper-bottle-3",
+      "localPath": "public/shop-assets/products/hammered-copper-bottle-3.webp",
+      "publicId": "geo-jainism/shop/products/hammered-copper-bottle-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452189/geo-jainism/shop/products/hammered-copper-bottle-3.webp",
+      "version": 1795452189,
+      "remoteBytes": 140710,
+      "originalChecksum": {
+        "sha256": "03cbe367d319217739105c2e32a36fe52a34b7d65e163fe999d20107c399dc2d",
+        "bytes": 140710
+      },
+      "uploadedChecksum": {
+        "md5": "257dcf334bd6fe14a9f76a52ad7e3e06",
+        "sha256": "03cbe367d319217739105c2e32a36fe52a34b7d65e163fe999d20107c399dc2d",
+        "cloudinaryEtag": "257dcf334bd6fe14a9f76a52ad7e3e06",
+        "etagMatchesMd5": true,
+        "assetId": "91dace47199841991fe8c93c66a95d5c"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:10.492Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/undyed-khadi-stole-1",
+      "localPath": "public/shop-assets/products/undyed-khadi-stole-1.webp",
+      "publicId": "geo-jainism/shop/products/undyed-khadi-stole-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452189/geo-jainism/shop/products/undyed-khadi-stole-1.webp",
+      "version": 1795452189,
+      "remoteBytes": 43136,
+      "originalChecksum": {
+        "sha256": "047f2e48e1f60d330b736e07e20c2784a7bd89a503bff0079617015e458c7760",
+        "bytes": 43136
+      },
+      "uploadedChecksum": {
+        "md5": "0802dbfdde10ea9d30562567b324e812",
+        "sha256": "047f2e48e1f60d330b736e07e20c2784a7bd89a503bff0079617015e458c7760",
+        "cloudinaryEtag": "0802dbfdde10ea9d30562567b324e812",
+        "etagMatchesMd5": true,
+        "assetId": "bdb6f7b422d8b2c8fbaf0c58aab8b4d2"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:10.688Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/undyed-khadi-stole-2",
+      "localPath": "public/shop-assets/products/undyed-khadi-stole-2.webp",
+      "publicId": "geo-jainism/shop/products/undyed-khadi-stole-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452190/geo-jainism/shop/products/undyed-khadi-stole-2.webp",
+      "version": 1795452190,
+      "remoteBytes": 163764,
+      "originalChecksum": {
+        "sha256": "e1d52b90b386cdef13c7c7fdaaa3f6fcee24bada77f08077636fbc65a754c96c",
+        "bytes": 163764
+      },
+      "uploadedChecksum": {
+        "md5": "c8f23bc40bcda38bd5575b5984c663f4",
+        "sha256": "e1d52b90b386cdef13c7c7fdaaa3f6fcee24bada77f08077636fbc65a754c96c",
+        "cloudinaryEtag": "c8f23bc40bcda38bd5575b5984c663f4",
+        "etagMatchesMd5": true,
+        "assetId": "42887de9defb61044479b69582763190"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:11.332Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/undyed-khadi-stole-3",
+      "localPath": "public/shop-assets/products/undyed-khadi-stole-3.webp",
+      "publicId": "geo-jainism/shop/products/undyed-khadi-stole-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452190/geo-jainism/shop/products/undyed-khadi-stole-3.webp",
+      "version": 1795452190,
+      "remoteBytes": 17886,
+      "originalChecksum": {
+        "sha256": "806a20c49d972073ac957e7158e7a9932fa22fe95cd9f9df002a238fe013e5b7",
+        "bytes": 17886
+      },
+      "uploadedChecksum": {
+        "md5": "d64dbf93b1e101a2d700b19f85bf0c70",
+        "sha256": "806a20c49d972073ac957e7158e7a9932fa22fe95cd9f9df002a238fe013e5b7",
+        "cloudinaryEtag": "d64dbf93b1e101a2d700b19f85bf0c70",
+        "etagMatchesMd5": true,
+        "assetId": "ec6e449de6773317969073e5d776da73"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:11.521Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/ajrakh-block-print-scarf-1",
+      "localPath": "public/shop-assets/products/ajrakh-block-print-scarf-1.webp",
+      "publicId": "geo-jainism/shop/products/ajrakh-block-print-scarf-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452191/geo-jainism/shop/products/ajrakh-block-print-scarf-1.webp",
+      "version": 1795452191,
+      "remoteBytes": 126616,
+      "originalChecksum": {
+        "sha256": "4f3651c4195f5589e81a13d9d11832f49dfea0996ddf33989d48ff3a92664ef1",
+        "bytes": 126616
+      },
+      "uploadedChecksum": {
+        "md5": "e7f4a5c572ae295bb6ccb357358124d2",
+        "sha256": "4f3651c4195f5589e81a13d9d11832f49dfea0996ddf33989d48ff3a92664ef1",
+        "cloudinaryEtag": "e7f4a5c572ae295bb6ccb357358124d2",
+        "etagMatchesMd5": true,
+        "assetId": "256efc888c33aafa668c59f0b55ad2e0"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:12.492Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/ajrakh-block-print-scarf-2",
+      "localPath": "public/shop-assets/products/ajrakh-block-print-scarf-2.webp",
+      "publicId": "geo-jainism/shop/products/ajrakh-block-print-scarf-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452191/geo-jainism/shop/products/ajrakh-block-print-scarf-2.webp",
+      "version": 1795452191,
+      "remoteBytes": 86516,
+      "originalChecksum": {
+        "sha256": "f4de5a03686b63680c481bd1c3b13216a65624bae05e1386e84f3990106dbfe6",
+        "bytes": 86516
+      },
+      "uploadedChecksum": {
+        "md5": "4da99edc50f8e9f034246957bc75a05f",
+        "sha256": "f4de5a03686b63680c481bd1c3b13216a65624bae05e1386e84f3990106dbfe6",
+        "cloudinaryEtag": "4da99edc50f8e9f034246957bc75a05f",
+        "etagMatchesMd5": true,
+        "assetId": "052c77c6f1960f273db5158ef664ec6c"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:12.456Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/ajrakh-block-print-scarf-3",
+      "localPath": "public/shop-assets/products/ajrakh-block-print-scarf-3.webp",
+      "publicId": "geo-jainism/shop/products/ajrakh-block-print-scarf-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452192/geo-jainism/shop/products/ajrakh-block-print-scarf-3.webp",
+      "version": 1795452192,
+      "remoteBytes": 119192,
+      "originalChecksum": {
+        "sha256": "916af0fcf10edb1f7369b581033c44872dba311bf165b98da6cdbe78e2a13745",
+        "bytes": 119192
+      },
+      "uploadedChecksum": {
+        "md5": "9fae0017d55bb627b79c3e3ed2817953",
+        "sha256": "916af0fcf10edb1f7369b581033c44872dba311bf165b98da6cdbe78e2a13745",
+        "cloudinaryEtag": "9fae0017d55bb627b79c3e3ed2817953",
+        "etagMatchesMd5": true,
+        "assetId": "fb6869f9ce741facc2265c0067f809d1"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:13.491Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/madhubani-painted-silk-stole-1",
+      "localPath": "public/shop-assets/products/madhubani-painted-silk-stole-1.webp",
+      "publicId": "geo-jainism/shop/products/madhubani-painted-silk-stole-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452192/geo-jainism/shop/products/madhubani-painted-silk-stole-1.webp",
+      "version": 1795452192,
+      "remoteBytes": 939874,
+      "originalChecksum": {
+        "sha256": "880eddfdb505682b1fddcb4593021a5eb34a3b34ccc63d22bb30f2aba4714380",
+        "bytes": 939874
+      },
+      "uploadedChecksum": {
+        "md5": "05e82c93ecd80734ee4521b20b930c5e",
+        "sha256": "880eddfdb505682b1fddcb4593021a5eb34a3b34ccc63d22bb30f2aba4714380",
+        "cloudinaryEtag": "05e82c93ecd80734ee4521b20b930c5e",
+        "etagMatchesMd5": true,
+        "assetId": "764998e602f2b191298027b4eb216c71"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:13.500Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/madhubani-painted-silk-stole-2",
+      "localPath": "public/shop-assets/products/madhubani-painted-silk-stole-2.webp",
+      "publicId": "geo-jainism/shop/products/madhubani-painted-silk-stole-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452193/geo-jainism/shop/products/madhubani-painted-silk-stole-2.webp",
+      "version": 1795452193,
+      "remoteBytes": 711286,
+      "originalChecksum": {
+        "sha256": "6907fc20bbad86bcee9cbe4b994576540d22fdb93e8ce7b52a95c133bfbf8cb0",
+        "bytes": 711286
+      },
+      "uploadedChecksum": {
+        "md5": "94170da5a66540c06fb6d7289fe50dbd",
+        "sha256": "6907fc20bbad86bcee9cbe4b994576540d22fdb93e8ce7b52a95c133bfbf8cb0",
+        "cloudinaryEtag": "94170da5a66540c06fb6d7289fe50dbd",
+        "etagMatchesMd5": true,
+        "assetId": "190ea53a0cd0888b2851c3d79c2802b5"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:14.511Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/madhubani-painted-silk-stole-3",
+      "localPath": "public/shop-assets/products/madhubani-painted-silk-stole-3.webp",
+      "publicId": "geo-jainism/shop/products/madhubani-painted-silk-stole-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452193/geo-jainism/shop/products/madhubani-painted-silk-stole-3.webp",
+      "version": 1795452193,
+      "remoteBytes": 562694,
+      "originalChecksum": {
+        "sha256": "8393c18dcb089744a8be870b0b305d277200c154ab99df7d42283d1b31362a20",
+        "bytes": 562694
+      },
+      "uploadedChecksum": {
+        "md5": "87f81e5f59167249abf922232f7ad4a5",
+        "sha256": "8393c18dcb089744a8be870b0b305d277200c154ab99df7d42283d1b31362a20",
+        "cloudinaryEtag": "87f81e5f59167249abf922232f7ad4a5",
+        "etagMatchesMd5": true,
+        "assetId": "fdb1a1147554cc93584e1de8acaf7d9b"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:15.070Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/seated-tirthankara-bronze-1",
+      "localPath": "public/shop-assets/products/seated-tirthankara-bronze-1.webp",
+      "publicId": "geo-jainism/shop/products/seated-tirthankara-bronze-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452194/geo-jainism/shop/products/seated-tirthankara-bronze-1.webp",
+      "version": 1795452194,
+      "remoteBytes": 133074,
+      "originalChecksum": {
+        "sha256": "712ad2fc6aab44a3f772f3afc7aca0f50bc75a497315697507ffba29d7d54835",
+        "bytes": 133074
+      },
+      "uploadedChecksum": {
+        "md5": "b4fc56650cc05d6268a3bf4aa12e70cb",
+        "sha256": "712ad2fc6aab44a3f772f3afc7aca0f50bc75a497315697507ffba29d7d54835",
+        "cloudinaryEtag": "b4fc56650cc05d6268a3bf4aa12e70cb",
+        "etagMatchesMd5": true,
+        "assetId": "b37a527ed761686e55d0cccdaa575e5b"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:16.112Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/seated-tirthankara-bronze-2",
+      "localPath": "public/shop-assets/products/seated-tirthankara-bronze-2.webp",
+      "publicId": "geo-jainism/shop/products/seated-tirthankara-bronze-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452194/geo-jainism/shop/products/seated-tirthankara-bronze-2.webp",
+      "version": 1795452194,
+      "remoteBytes": 118028,
+      "originalChecksum": {
+        "sha256": "01bc215907b741391887f21f82caa14d67baeb910aa7e594467aa1d1adf38cbb",
+        "bytes": 118028
+      },
+      "uploadedChecksum": {
+        "md5": "a248b14551ac9a0c3efbae19526afd9a",
+        "sha256": "01bc215907b741391887f21f82caa14d67baeb910aa7e594467aa1d1adf38cbb",
+        "cloudinaryEtag": "a248b14551ac9a0c3efbae19526afd9a",
+        "etagMatchesMd5": true,
+        "assetId": "65e7235e812e2aaef5ee2198c82fc390"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:16.118Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/seated-tirthankara-bronze-3",
+      "localPath": "public/shop-assets/products/seated-tirthankara-bronze-3.webp",
+      "publicId": "geo-jainism/shop/products/seated-tirthankara-bronze-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452195/geo-jainism/shop/products/seated-tirthankara-bronze-3.webp",
+      "version": 1795452195,
+      "remoteBytes": 207216,
+      "originalChecksum": {
+        "sha256": "55ad108a2392e5199b9894917c626d55cdaed179c5b970297780e44760f2f82c",
+        "bytes": 207216
+      },
+      "uploadedChecksum": {
+        "md5": "033405edf71c79c7a39a82c34c3bead7",
+        "sha256": "55ad108a2392e5199b9894917c626d55cdaed179c5b970297780e44760f2f82c",
+        "cloudinaryEtag": "033405edf71c79c7a39a82c34c3bead7",
+        "etagMatchesMd5": true,
+        "assetId": "0272cad8f3d8907657927d0d05f59d8b"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:17.137Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/brahmi-inscription-rubbing-1",
+      "localPath": "public/shop-assets/products/brahmi-inscription-rubbing-1.webp",
+      "publicId": "geo-jainism/shop/products/brahmi-inscription-rubbing-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452195/geo-jainism/shop/products/brahmi-inscription-rubbing-1.webp",
+      "version": 1795452195,
+      "remoteBytes": 48852,
+      "originalChecksum": {
+        "sha256": "31ed7a349550d00d7005cec210af14eda8c25a4a85d776fda6c848ae13bf0c43",
+        "bytes": 48852
+      },
+      "uploadedChecksum": {
+        "md5": "921ba67b795771dab4355ed7dc4b76b7",
+        "sha256": "31ed7a349550d00d7005cec210af14eda8c25a4a85d776fda6c848ae13bf0c43",
+        "cloudinaryEtag": "921ba67b795771dab4355ed7dc4b76b7",
+        "etagMatchesMd5": true,
+        "assetId": "8264fdce1d06d95a6469de6791ec7bd4"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:16.991Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/brahmi-inscription-rubbing-2",
+      "localPath": "public/shop-assets/products/brahmi-inscription-rubbing-2.webp",
+      "publicId": "geo-jainism/shop/products/brahmi-inscription-rubbing-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452196/geo-jainism/shop/products/brahmi-inscription-rubbing-2.webp",
+      "version": 1795452196,
+      "remoteBytes": 143648,
+      "originalChecksum": {
+        "sha256": "4009380a3c75d327366a2505b77a0cb6fad2e2d9a6c83b1ef1c3bf8083f5e7c6",
+        "bytes": 143648
+      },
+      "uploadedChecksum": {
+        "md5": "3bb7bee4195fb50c02375483560274f3",
+        "sha256": "4009380a3c75d327366a2505b77a0cb6fad2e2d9a6c83b1ef1c3bf8083f5e7c6",
+        "cloudinaryEtag": "3bb7bee4195fb50c02375483560274f3",
+        "etagMatchesMd5": true,
+        "assetId": "a881aafb694a9f4396993c907630c508"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:17.852Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/brahmi-inscription-rubbing-3",
+      "localPath": "public/shop-assets/products/brahmi-inscription-rubbing-3.webp",
+      "publicId": "geo-jainism/shop/products/brahmi-inscription-rubbing-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452196/geo-jainism/shop/products/brahmi-inscription-rubbing-3.webp",
+      "version": 1795452196,
+      "remoteBytes": 75102,
+      "originalChecksum": {
+        "sha256": "d09a1d65774b5019cc1cd7039457dc53874ed1912ece174c0efc7b3112f459b1",
+        "bytes": 75102
+      },
+      "uploadedChecksum": {
+        "md5": "bc911ebf52470c82dd4e6bbb074ce3fd",
+        "sha256": "d09a1d65774b5019cc1cd7039457dc53874ed1912ece174c0efc7b3112f459b1",
+        "cloudinaryEtag": "bc911ebf52470c82dd4e6bbb074ce3fd",
+        "etagMatchesMd5": true,
+        "assetId": "19e79f2f3e56ba60335f3e19f7743c2a"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:18.057Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/ranakpur-pillar-miniature-1",
+      "localPath": "public/shop-assets/products/ranakpur-pillar-miniature-1.webp",
+      "publicId": "geo-jainism/shop/products/ranakpur-pillar-miniature-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452197/geo-jainism/shop/products/ranakpur-pillar-miniature-1.webp",
+      "version": 1795452197,
+      "remoteBytes": 169526,
+      "originalChecksum": {
+        "sha256": "b8d523a9d792e5dc55311c90afd2e1be31269c48b4bc2ba6e9c71615d71076a3",
+        "bytes": 169526
+      },
+      "uploadedChecksum": {
+        "md5": "e9cdd61c6c6bd03dab5366aa5036bda2",
+        "sha256": "b8d523a9d792e5dc55311c90afd2e1be31269c48b4bc2ba6e9c71615d71076a3",
+        "cloudinaryEtag": "e9cdd61c6c6bd03dab5366aa5036bda2",
+        "etagMatchesMd5": true,
+        "assetId": "f01ab32d1a5dd183c85c547f0d706dfd"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:18.693Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/ranakpur-pillar-miniature-2",
+      "localPath": "public/shop-assets/products/ranakpur-pillar-miniature-2.webp",
+      "publicId": "geo-jainism/shop/products/ranakpur-pillar-miniature-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452197/geo-jainism/shop/products/ranakpur-pillar-miniature-2.webp",
+      "version": 1795452197,
+      "remoteBytes": 373142,
+      "originalChecksum": {
+        "sha256": "8f6fc8f5b07f63b0e5382a812f000e9b0cbcb8ea471b190274d98ead0c11192c",
+        "bytes": 373142
+      },
+      "uploadedChecksum": {
+        "md5": "ff2dbf57840f1cf0ffaa36ee344c764e",
+        "sha256": "8f6fc8f5b07f63b0e5382a812f000e9b0cbcb8ea471b190274d98ead0c11192c",
+        "cloudinaryEtag": "ff2dbf57840f1cf0ffaa36ee344c764e",
+        "etagMatchesMd5": true,
+        "assetId": "0f9e3520f1c621a2808b6833e1522471"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:18.984Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/ranakpur-pillar-miniature-3",
+      "localPath": "public/shop-assets/products/ranakpur-pillar-miniature-3.webp",
+      "publicId": "geo-jainism/shop/products/ranakpur-pillar-miniature-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452198/geo-jainism/shop/products/ranakpur-pillar-miniature-3.webp",
+      "version": 1795452198,
+      "remoteBytes": 160114,
+      "originalChecksum": {
+        "sha256": "f829ebf702e7c9bbd550cae67ce7173e15f4cef795a8fc5c5f00adbdf9d05cbc",
+        "bytes": 160114
+      },
+      "uploadedChecksum": {
+        "md5": "3808dd6575428b7a9ab20476adace98c",
+        "sha256": "f829ebf702e7c9bbd550cae67ce7173e15f4cef795a8fc5c5f00adbdf9d05cbc",
+        "cloudinaryEtag": "3808dd6575428b7a9ab20476adace98c",
+        "etagMatchesMd5": true,
+        "assetId": "b9864cda7060a8304e3b30a88e007a32"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:19.593Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/ancient-scripts-flashcards-1",
+      "localPath": "public/shop-assets/products/ancient-scripts-flashcards-1.webp",
+      "publicId": "geo-jainism/shop/products/ancient-scripts-flashcards-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452198/geo-jainism/shop/products/ancient-scripts-flashcards-1.webp",
+      "version": 1795452198,
+      "remoteBytes": 60924,
+      "originalChecksum": {
+        "sha256": "ca109b2ab1a2f58a58fa786437d1706cf39586b1f606f1613d9b45775a7d6022",
+        "bytes": 60924
+      },
+      "uploadedChecksum": {
+        "md5": "7a5e26f2ee043397687b9dd7ff038afd",
+        "sha256": "ca109b2ab1a2f58a58fa786437d1706cf39586b1f606f1613d9b45775a7d6022",
+        "cloudinaryEtag": "7a5e26f2ee043397687b9dd7ff038afd",
+        "etagMatchesMd5": true,
+        "assetId": "aff1dc6c2083e11d82217591cccff0f0"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:19.797Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/ancient-scripts-flashcards-2",
+      "localPath": "public/shop-assets/products/ancient-scripts-flashcards-2.webp",
+      "publicId": "geo-jainism/shop/products/ancient-scripts-flashcards-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452199/geo-jainism/shop/products/ancient-scripts-flashcards-2.webp",
+      "version": 1795452199,
+      "remoteBytes": 43902,
+      "originalChecksum": {
+        "sha256": "4b2cac9868d18b971bc007d3faf58f221c2bb1afe6225f6d04b553c1d2f123d9",
+        "bytes": 43902
+      },
+      "uploadedChecksum": {
+        "md5": "44bae12d21b9d18f2f1bb33582c20ceb",
+        "sha256": "4b2cac9868d18b971bc007d3faf58f221c2bb1afe6225f6d04b553c1d2f123d9",
+        "cloudinaryEtag": "44bae12d21b9d18f2f1bb33582c20ceb",
+        "etagMatchesMd5": true,
+        "assetId": "d935c38b9b0fa8d8b5a4632530a5a563"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:20.512Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/ancient-scripts-flashcards-3",
+      "localPath": "public/shop-assets/products/ancient-scripts-flashcards-3.webp",
+      "publicId": "geo-jainism/shop/products/ancient-scripts-flashcards-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452199/geo-jainism/shop/products/ancient-scripts-flashcards-3.webp",
+      "version": 1795452199,
+      "remoteBytes": 50406,
+      "originalChecksum": {
+        "sha256": "cb3fafcee850bacbe40d14f5241b404b31b068c683d9c6f2d5f0cee7cf752bb7",
+        "bytes": 50406
+      },
+      "uploadedChecksum": {
+        "md5": "bb9f174c29d108ae8eb45fd8bc65147b",
+        "sha256": "cb3fafcee850bacbe40d14f5241b404b31b068c683d9c6f2d5f0cee7cf752bb7",
+        "cloudinaryEtag": "bb9f174c29d108ae8eb45fd8bc65147b",
+        "etagMatchesMd5": true,
+        "assetId": "8fa77187df90c7ef49d2191c0a0b3fd4"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:20.734Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/jain-heritage-sites-wall-map-1",
+      "localPath": "public/shop-assets/products/jain-heritage-sites-wall-map-1.webp",
+      "publicId": "geo-jainism/shop/products/jain-heritage-sites-wall-map-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452200/geo-jainism/shop/products/jain-heritage-sites-wall-map-1.webp",
+      "version": 1795452200,
+      "remoteBytes": 53156,
+      "originalChecksum": {
+        "sha256": "72424d186b3e289abc95a8ef30501357a03a0183ec8c2847d53915a703ee32c8",
+        "bytes": 53156
+      },
+      "uploadedChecksum": {
+        "md5": "9e9655260a5494ad7ac029a4dabcfef4",
+        "sha256": "72424d186b3e289abc95a8ef30501357a03a0183ec8c2847d53915a703ee32c8",
+        "cloudinaryEtag": "9e9655260a5494ad7ac029a4dabcfef4",
+        "etagMatchesMd5": true,
+        "assetId": "fd6a7f016eddd363e46d2df4661f345b"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:21.542Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/jain-heritage-sites-wall-map-2",
+      "localPath": "public/shop-assets/products/jain-heritage-sites-wall-map-2.webp",
+      "publicId": "geo-jainism/shop/products/jain-heritage-sites-wall-map-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452200/geo-jainism/shop/products/jain-heritage-sites-wall-map-2.webp",
+      "version": 1795452200,
+      "remoteBytes": 46394,
+      "originalChecksum": {
+        "sha256": "06318188a6f4161348cb94a81ed525b982ca2a1fec125d2ebb1976868294fdc1",
+        "bytes": 46394
+      },
+      "uploadedChecksum": {
+        "md5": "ee1c9de6ccc160faaddb620b94c9811a",
+        "sha256": "06318188a6f4161348cb94a81ed525b982ca2a1fec125d2ebb1976868294fdc1",
+        "cloudinaryEtag": "ee1c9de6ccc160faaddb620b94c9811a",
+        "etagMatchesMd5": true,
+        "assetId": "1e22911a8b07c8e45c118446da548df6"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:21.646Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/jain-heritage-sites-wall-map-3",
+      "localPath": "public/shop-assets/products/jain-heritage-sites-wall-map-3.webp",
+      "publicId": "geo-jainism/shop/products/jain-heritage-sites-wall-map-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452201/geo-jainism/shop/products/jain-heritage-sites-wall-map-3.webp",
+      "version": 1795452201,
+      "remoteBytes": 37122,
+      "originalChecksum": {
+        "sha256": "d5822347dc78aa1e08cc5fef0ccb8b31c9f7658c447a92dbf53f999a6147fdc1",
+        "bytes": 37122
+      },
+      "uploadedChecksum": {
+        "md5": "e6abc1f3ab393f75f0c5887c4ab30309",
+        "sha256": "d5822347dc78aa1e08cc5fef0ccb8b31c9f7658c447a92dbf53f999a6147fdc1",
+        "cloudinaryEtag": "e6abc1f3ab393f75f0c5887c4ab30309",
+        "etagMatchesMd5": true,
+        "assetId": "f5c11cf5543f5c36c788d9a9513dcf38"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:22.466Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/anekantavada-workbook-1",
+      "localPath": "public/shop-assets/products/anekantavada-workbook-1.webp",
+      "publicId": "geo-jainism/shop/products/anekantavada-workbook-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452201/geo-jainism/shop/products/anekantavada-workbook-1.webp",
+      "version": 1795452201,
+      "remoteBytes": 60482,
+      "originalChecksum": {
+        "sha256": "249476e9c54e55e71a696267bb9fa37f6383922a6e534ea7d3e01f735bc865fc",
+        "bytes": 60482
+      },
+      "uploadedChecksum": {
+        "md5": "6977f36509a6feab6d63e987bd91b6a2",
+        "sha256": "249476e9c54e55e71a696267bb9fa37f6383922a6e534ea7d3e01f735bc865fc",
+        "cloudinaryEtag": "6977f36509a6feab6d63e987bd91b6a2",
+        "etagMatchesMd5": true,
+        "assetId": "5290aa023d5fd04913d237a5228c2e0a"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:22.976Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/anekantavada-workbook-2",
+      "localPath": "public/shop-assets/products/anekantavada-workbook-2.webp",
+      "publicId": "geo-jainism/shop/products/anekantavada-workbook-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452202/geo-jainism/shop/products/anekantavada-workbook-2.webp",
+      "version": 1795452202,
+      "remoteBytes": 39890,
+      "originalChecksum": {
+        "sha256": "ce09652bd2b9bf7f1e4cec0605ce11742939f717aae9fcb19b0b0ce89ae8ca99",
+        "bytes": 39890
+      },
+      "uploadedChecksum": {
+        "md5": "99740e27c11f5280abe02e30857f870b",
+        "sha256": "ce09652bd2b9bf7f1e4cec0605ce11742939f717aae9fcb19b0b0ce89ae8ca99",
+        "cloudinaryEtag": "99740e27c11f5280abe02e30857f870b",
+        "etagMatchesMd5": true,
+        "assetId": "986e70ef39aa0392e3839aceca638a14"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:23.302Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/anekantavada-workbook-3",
+      "localPath": "public/shop-assets/products/anekantavada-workbook-3.webp",
+      "publicId": "geo-jainism/shop/products/anekantavada-workbook-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452202/geo-jainism/shop/products/anekantavada-workbook-3.webp",
+      "version": 1795452202,
+      "remoteBytes": 39542,
+      "originalChecksum": {
+        "sha256": "f43f9d9dba526f8aec4deee51723705be9665b6ac3ba41a678dd7316a92bb5dc",
+        "bytes": 39542
+      },
+      "uploadedChecksum": {
+        "md5": "dec47edbe8abb551fca101414c4a60fe",
+        "sha256": "f43f9d9dba526f8aec4deee51723705be9665b6ac3ba41a678dd7316a92bb5dc",
+        "cloudinaryEtag": "dec47edbe8abb551fca101414c4a60fe",
+        "etagMatchesMd5": true,
+        "assetId": "5243efefc5e21af9fa9990bb6dd039d5"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:23.885Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/heritage-postcard-set-1",
+      "localPath": "public/shop-assets/products/heritage-postcard-set-1.webp",
+      "publicId": "geo-jainism/shop/products/heritage-postcard-set-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452202/geo-jainism/shop/products/heritage-postcard-set-1.webp",
+      "version": 1795452202,
+      "remoteBytes": 111290,
+      "originalChecksum": {
+        "sha256": "135a94b18a7500b6edac1b19b38118fd5befd9e99f4a7c834c7d12588e8239d0",
+        "bytes": 111290
+      },
+      "uploadedChecksum": {
+        "md5": "9f518db90929a4dd1a30fc1850d51b8d",
+        "sha256": "135a94b18a7500b6edac1b19b38118fd5befd9e99f4a7c834c7d12588e8239d0",
+        "cloudinaryEtag": "9f518db90929a4dd1a30fc1850d51b8d",
+        "etagMatchesMd5": true,
+        "assetId": "8d65682e3894ff8095fa07fd732eb383"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:24.206Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/heritage-postcard-set-2",
+      "localPath": "public/shop-assets/products/heritage-postcard-set-2.webp",
+      "publicId": "geo-jainism/shop/products/heritage-postcard-set-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452203/geo-jainism/shop/products/heritage-postcard-set-2.webp",
+      "version": 1795452203,
+      "remoteBytes": 55984,
+      "originalChecksum": {
+        "sha256": "b3866e3c874c537ee4941b947a3fd2fd5ed18254ecabdaf247e35f8236dc09a8",
+        "bytes": 55984
+      },
+      "uploadedChecksum": {
+        "md5": "80af7c9d177997d0f860890b900d88e4",
+        "sha256": "b3866e3c874c537ee4941b947a3fd2fd5ed18254ecabdaf247e35f8236dc09a8",
+        "cloudinaryEtag": "80af7c9d177997d0f860890b900d88e4",
+        "etagMatchesMd5": true,
+        "assetId": "068b348d2c073dd6d44df1842411f86c"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:24.718Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/heritage-postcard-set-3",
+      "localPath": "public/shop-assets/products/heritage-postcard-set-3.webp",
+      "publicId": "geo-jainism/shop/products/heritage-postcard-set-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452203/geo-jainism/shop/products/heritage-postcard-set-3.webp",
+      "version": 1795452203,
+      "remoteBytes": 394120,
+      "originalChecksum": {
+        "sha256": "ba3bcd18118e0519003805f45f8b16a4063a1eef09c73f30af32446e4325123a",
+        "bytes": 394120
+      },
+      "uploadedChecksum": {
+        "md5": "731e181c72a21b9a5705e791911112c3",
+        "sha256": "ba3bcd18118e0519003805f45f8b16a4063a1eef09c73f30af32446e4325123a",
+        "cloudinaryEtag": "731e181c72a21b9a5705e791911112c3",
+        "etagMatchesMd5": true,
+        "assetId": "967c0bee93c436e52e1dcb5a2d67e165"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:25.025Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/diwali-gift-hamper-1",
+      "localPath": "public/shop-assets/products/diwali-gift-hamper-1.webp",
+      "publicId": "geo-jainism/shop/products/diwali-gift-hamper-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452204/geo-jainism/shop/products/diwali-gift-hamper-1.webp",
+      "version": 1795452204,
+      "remoteBytes": 289242,
+      "originalChecksum": {
+        "sha256": "47edd1b8d4ab440a0c4838b74e11c7450e3a543b00e24171320606be295c3fca",
+        "bytes": 289242
+      },
+      "uploadedChecksum": {
+        "md5": "97f996fa9c0374b1ec369993988ed517",
+        "sha256": "47edd1b8d4ab440a0c4838b74e11c7450e3a543b00e24171320606be295c3fca",
+        "cloudinaryEtag": "97f996fa9c0374b1ec369993988ed517",
+        "etagMatchesMd5": true,
+        "assetId": "caabb3b7d47defef6bac17b3b33e1e43"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:25.618Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/diwali-gift-hamper-2",
+      "localPath": "public/shop-assets/products/diwali-gift-hamper-2.webp",
+      "publicId": "geo-jainism/shop/products/diwali-gift-hamper-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452204/geo-jainism/shop/products/diwali-gift-hamper-2.webp",
+      "version": 1795452204,
+      "remoteBytes": 64190,
+      "originalChecksum": {
+        "sha256": "9cd4f81c624b901b7672c62ae7573158a2eea8ace90c34cb06426ebe419b7fa2",
+        "bytes": 64190
+      },
+      "uploadedChecksum": {
+        "md5": "c711120d8229f55e6ab2c19077dc4348",
+        "sha256": "9cd4f81c624b901b7672c62ae7573158a2eea8ace90c34cb06426ebe419b7fa2",
+        "cloudinaryEtag": "c711120d8229f55e6ab2c19077dc4348",
+        "etagMatchesMd5": true,
+        "assetId": "cbcdcd5b1314ddde99aa51233d5dbdb1"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:25.904Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/diwali-gift-hamper-3",
+      "localPath": "public/shop-assets/products/diwali-gift-hamper-3.webp",
+      "publicId": "geo-jainism/shop/products/diwali-gift-hamper-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452205/geo-jainism/shop/products/diwali-gift-hamper-3.webp",
+      "version": 1795452205,
+      "remoteBytes": 52240,
+      "originalChecksum": {
+        "sha256": "a42b7e67c7823d95202a09f26144b6404f3335f406574754c29422f701ad554e",
+        "bytes": 52240
+      },
+      "uploadedChecksum": {
+        "md5": "dac04ce7bf28d0d5ce0b4fd8f1f4ad73",
+        "sha256": "a42b7e67c7823d95202a09f26144b6404f3335f406574754c29422f701ad554e",
+        "cloudinaryEtag": "dac04ce7bf28d0d5ce0b4fd8f1f4ad73",
+        "etagMatchesMd5": true,
+        "assetId": "dcc072f2bc5598c241957e987ee67093"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:26.359Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/lotus-brass-bookmark-1",
+      "localPath": "public/shop-assets/products/lotus-brass-bookmark-1.webp",
+      "publicId": "geo-jainism/shop/products/lotus-brass-bookmark-1",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452205/geo-jainism/shop/products/lotus-brass-bookmark-1.webp",
+      "version": 1795452205,
+      "remoteBytes": 58018,
+      "originalChecksum": {
+        "sha256": "8540c13d7b8285f7802d79ab86bc0c4d1ca1f9c4c56a172503f0bf38f4e7bcd1",
+        "bytes": 58018
+      },
+      "uploadedChecksum": {
+        "md5": "965631f5b94467ee769d302d1a228e96",
+        "sha256": "8540c13d7b8285f7802d79ab86bc0c4d1ca1f9c4c56a172503f0bf38f4e7bcd1",
+        "cloudinaryEtag": "965631f5b94467ee769d302d1a228e96",
+        "etagMatchesMd5": true,
+        "assetId": "68eeb4a597dd5b972c3b37d77fb2c76a"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:26.868Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/lotus-brass-bookmark-2",
+      "localPath": "public/shop-assets/products/lotus-brass-bookmark-2.webp",
+      "publicId": "geo-jainism/shop/products/lotus-brass-bookmark-2",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452205/geo-jainism/shop/products/lotus-brass-bookmark-2.webp",
+      "version": 1795452205,
+      "remoteBytes": 21484,
+      "originalChecksum": {
+        "sha256": "3f37b456c3e6de942e14209d14602cf413d91d7b73e001cc6b9e32a7502b5e0e",
+        "bytes": 21484
+      },
+      "uploadedChecksum": {
+        "md5": "fb8a324c8a99bc1ae3545e4093725403",
+        "sha256": "3f37b456c3e6de942e14209d14602cf413d91d7b73e001cc6b9e32a7502b5e0e",
+        "cloudinaryEtag": "fb8a324c8a99bc1ae3545e4093725403",
+        "etagMatchesMd5": true,
+        "assetId": "f1caac59c7705499684c25750717ee18"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:27.176Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/products/lotus-brass-bookmark-3",
+      "localPath": "public/shop-assets/products/lotus-brass-bookmark-3.webp",
+      "publicId": "geo-jainism/shop/products/lotus-brass-bookmark-3",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452206/geo-jainism/shop/products/lotus-brass-bookmark-3.webp",
+      "version": 1795452206,
+      "remoteBytes": 47002,
+      "originalChecksum": {
+        "sha256": "887e51738a08ff737cbea9923d03a9b7f9245ab2bbdb4470590366a910af2a36",
+        "bytes": 47002
+      },
+      "uploadedChecksum": {
+        "md5": "567aed5d46f141da5bac834d2a0fbcda",
+        "sha256": "887e51738a08ff737cbea9923d03a9b7f9245ab2bbdb4470590366a910af2a36",
+        "cloudinaryEtag": "567aed5d46f141da5bac834d2a0fbcda",
+        "etagMatchesMd5": true,
+        "assetId": "53f13741eb806d72618e8ad6fc6222fa"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:27.789Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/categories/cat-books-literature",
+      "localPath": "public/shop-assets/cat-books-literature.webp",
+      "publicId": "geo-jainism/shop/categories/cat-books-literature",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452206/geo-jainism/shop/categories/cat-books-literature.webp",
+      "version": 1795452206,
+      "remoteBytes": 88312,
+      "originalChecksum": {
+        "sha256": "f186985ee9e18e87db7f319e3661517884afc6cf9e1637727b02e15193065515",
+        "bytes": 88312
+      },
+      "uploadedChecksum": {
+        "md5": "2e6562541ead300ccf46667124d7b7e6",
+        "sha256": "f186985ee9e18e87db7f319e3661517884afc6cf9e1637727b02e15193065515",
+        "cloudinaryEtag": "2e6562541ead300ccf46667124d7b7e6",
+        "etagMatchesMd5": true,
+        "assetId": "7001dff7a0eb77da88aad36901824e68"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:28.301Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/categories/cat-art-paintings",
+      "localPath": "public/shop-assets/cat-art-paintings.webp",
+      "publicId": "geo-jainism/shop/categories/cat-art-paintings",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452207/geo-jainism/shop/categories/cat-art-paintings.webp",
+      "version": 1795452207,
+      "remoteBytes": 281142,
+      "originalChecksum": {
+        "sha256": "fc7be4ae2fa5696a7b1df7f2b62f3ba8575e3c2dbe3f6f73fe6ea8c997ec9db3",
+        "bytes": 281142
+      },
+      "uploadedChecksum": {
+        "md5": "377b82f9f4ed369ba7b21dfe0ba9cd7e",
+        "sha256": "fc7be4ae2fa5696a7b1df7f2b62f3ba8575e3c2dbe3f6f73fe6ea8c997ec9db3",
+        "cloudinaryEtag": "377b82f9f4ed369ba7b21dfe0ba9cd7e",
+        "etagMatchesMd5": true,
+        "assetId": "998ce144031ec9bb27f89b04dff822e9"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:29.120Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/categories/cat-spiritual-devotional",
+      "localPath": "public/shop-assets/cat-spiritual-devotional.webp",
+      "publicId": "geo-jainism/shop/categories/cat-spiritual-devotional",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452207/geo-jainism/shop/categories/cat-spiritual-devotional.webp",
+      "version": 1795452207,
+      "remoteBytes": 140070,
+      "originalChecksum": {
+        "sha256": "d819a79b5b8a9dd8ba95511c8b0416cec8c6c5762888f54f954d7d55563066b9",
+        "bytes": 140070
+      },
+      "uploadedChecksum": {
+        "md5": "07d65a639e44971fa1f0b55c68500911",
+        "sha256": "d819a79b5b8a9dd8ba95511c8b0416cec8c6c5762888f54f954d7d55563066b9",
+        "cloudinaryEtag": "07d65a639e44971fa1f0b55c68500911",
+        "etagMatchesMd5": true,
+        "assetId": "351efd7f2d3850051633f314910ae5a9"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:29.340Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/categories/cat-home-lifestyle",
+      "localPath": "public/shop-assets/cat-home-lifestyle.webp",
+      "publicId": "geo-jainism/shop/categories/cat-home-lifestyle",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452208/geo-jainism/shop/categories/cat-home-lifestyle.webp",
+      "version": 1795452208,
+      "remoteBytes": 186944,
+      "originalChecksum": {
+        "sha256": "7f0c747c54947577c8a937740d0ca5af99839fb0a04f9e6270c61da86343183f",
+        "bytes": 186944
+      },
+      "uploadedChecksum": {
+        "md5": "35225bff81c84544163ce7f1c3224869",
+        "sha256": "7f0c747c54947577c8a937740d0ca5af99839fb0a04f9e6270c61da86343183f",
+        "cloudinaryEtag": "35225bff81c84544163ce7f1c3224869",
+        "etagMatchesMd5": true,
+        "assetId": "6b4256cb5a174c7baacd8e5359a8b651"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:30.045Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/categories/cat-clothing-accessories",
+      "localPath": "public/shop-assets/cat-clothing-accessories.webp",
+      "publicId": "geo-jainism/shop/categories/cat-clothing-accessories",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452208/geo-jainism/shop/categories/cat-clothing-accessories.webp",
+      "version": 1795452208,
+      "remoteBytes": 138324,
+      "originalChecksum": {
+        "sha256": "ab2a5280f39159fbafd0f31439002f2a21fb4133c1fb8d4e065faea7be004e73",
+        "bytes": 138324
+      },
+      "uploadedChecksum": {
+        "md5": "917de43e252c470cb454262efb6ae9a9",
+        "sha256": "ab2a5280f39159fbafd0f31439002f2a21fb4133c1fb8d4e065faea7be004e73",
+        "cloudinaryEtag": "917de43e252c470cb454262efb6ae9a9",
+        "etagMatchesMd5": true,
+        "assetId": "e3e3a3b08579eb00437f911658845a40"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:31.079Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/categories/cat-heritage-collectibles",
+      "localPath": "public/shop-assets/cat-heritage-collectibles.webp",
+      "publicId": "geo-jainism/shop/categories/cat-heritage-collectibles",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452209/geo-jainism/shop/categories/cat-heritage-collectibles.webp",
+      "version": 1795452209,
+      "remoteBytes": 466776,
+      "originalChecksum": {
+        "sha256": "1252e6fbb425996734af9cf14d3de32b80dd684bae1f4b8abc7513a092078fbe",
+        "bytes": 466776
+      },
+      "uploadedChecksum": {
+        "md5": "1d125175fda7a92a5daa71398a868b5e",
+        "sha256": "1252e6fbb425996734af9cf14d3de32b80dd684bae1f4b8abc7513a092078fbe",
+        "cloudinaryEtag": "1d125175fda7a92a5daa71398a868b5e",
+        "etagMatchesMd5": true,
+        "assetId": "46a67c2ec0c32369b556d3310dcc45cd"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:31.088Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/categories/cat-educational",
+      "localPath": "public/shop-assets/cat-educational.webp",
+      "publicId": "geo-jainism/shop/categories/cat-educational",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452210/geo-jainism/shop/categories/cat-educational.webp",
+      "version": 1795452210,
+      "remoteBytes": 612502,
+      "originalChecksum": {
+        "sha256": "ec6c4392c9f8a1b895683e5bd41316d391d64f5c45e73c555f3f10e05295411d",
+        "bytes": 612502
+      },
+      "uploadedChecksum": {
+        "md5": "69ba0639eb704297809258c2346a9a09",
+        "sha256": "ec6c4392c9f8a1b895683e5bd41316d391d64f5c45e73c555f3f10e05295411d",
+        "cloudinaryEtag": "69ba0639eb704297809258c2346a9a09",
+        "etagMatchesMd5": true,
+        "assetId": "a6a010f7e609214cfd2016f8ab1f974d"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:32.078Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/categories/cat-gifts-souvenirs",
+      "localPath": "public/shop-assets/cat-gifts-souvenirs.webp",
+      "publicId": "geo-jainism/shop/categories/cat-gifts-souvenirs",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452210/geo-jainism/shop/categories/cat-gifts-souvenirs.webp",
+      "version": 1795452210,
+      "remoteBytes": 111290,
+      "originalChecksum": {
+        "sha256": "135a94b18a7500b6edac1b19b38118fd5befd9e99f4a7c834c7d12588e8239d0",
+        "bytes": 111290
+      },
+      "uploadedChecksum": {
+        "md5": "9f518db90929a4dd1a30fc1850d51b8d",
+        "sha256": "135a94b18a7500b6edac1b19b38118fd5befd9e99f4a7c834c7d12588e8239d0",
+        "cloudinaryEtag": "9f518db90929a4dd1a30fc1850d51b8d",
+        "etagMatchesMd5": true,
+        "assetId": "981648966cbfaa3c49446d2c9fa2364d"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:31.926Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/editorial/hero-main",
+      "localPath": "public/shop-assets/hero-main.webp",
+      "publicId": "geo-jainism/shop/editorial/hero-main",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452211/geo-jainism/shop/editorial/hero-main.webp",
+      "version": 1795452211,
+      "remoteBytes": 413768,
+      "originalChecksum": {
+        "sha256": "b61fabb566927e145b51ca051f623bf32b19c273505c37e567b8b1f61c67dde3",
+        "bytes": 413768
+      },
+      "uploadedChecksum": {
+        "md5": "ef5b94a91a50b862a4aa3df525a603f4",
+        "sha256": "b61fabb566927e145b51ca051f623bf32b19c273505c37e567b8b1f61c67dde3",
+        "cloudinaryEtag": "ef5b94a91a50b862a4aa3df525a603f4",
+        "etagMatchesMd5": true,
+        "assetId": "615ea8d5ed26b4918ddbbc807913bf6e"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:32.909Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/editorial/hero-detail",
+      "localPath": "public/shop-assets/hero-detail.webp",
+      "publicId": "geo-jainism/shop/editorial/hero-detail",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452211/geo-jainism/shop/editorial/hero-detail.webp",
+      "version": 1795452211,
+      "remoteBytes": 135380,
+      "originalChecksum": {
+        "sha256": "9f0932e606ec2abc89d490bacb561fd37522a46b05f259c6bf30561166a02b63",
+        "bytes": 135380
+      },
+      "uploadedChecksum": {
+        "md5": "8707497632a6cd7b8cde534669f5e227",
+        "sha256": "9f0932e606ec2abc89d490bacb561fd37522a46b05f259c6bf30561166a02b63",
+        "cloudinaryEtag": "8707497632a6cd7b8cde534669f5e227",
+        "etagMatchesMd5": true,
+        "assetId": "dabc1357b5fa9495f83e99ebbc0ef45f"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:32.919Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/editorial/story-hills",
+      "localPath": "public/shop-assets/story-hills.webp",
+      "publicId": "geo-jainism/shop/editorial/story-hills",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452212/geo-jainism/shop/editorial/story-hills.webp",
+      "version": 1795452212,
+      "remoteBytes": 255410,
+      "originalChecksum": {
+        "sha256": "1b6a21bdeab3ce4947ce1d194afe5ef419d9b19a4ad8cd875feaf8cb58e293f7",
+        "bytes": 255410
+      },
+      "uploadedChecksum": {
+        "md5": "3a112c83832de145d879942e376038e4",
+        "sha256": "1b6a21bdeab3ce4947ce1d194afe5ef419d9b19a4ad8cd875feaf8cb58e293f7",
+        "cloudinaryEtag": "3a112c83832de145d879942e376038e4",
+        "etagMatchesMd5": true,
+        "assetId": "f324bcac5f1e17f6ead8b44c8fe06699"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:34.037Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/editorial/story-inscription",
+      "localPath": "public/shop-assets/story-inscription.webp",
+      "publicId": "geo-jainism/shop/editorial/story-inscription",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452212/geo-jainism/shop/editorial/story-inscription.webp",
+      "version": 1795452212,
+      "remoteBytes": 144576,
+      "originalChecksum": {
+        "sha256": "e76dc2c4ddc87b375cd867e47e9a1fe9999a4c6fc54a8843f22810e9a8bc799b",
+        "bytes": 144576
+      },
+      "uploadedChecksum": {
+        "md5": "a8a1fbe7586a741b8e53407312274edc",
+        "sha256": "e76dc2c4ddc87b375cd867e47e9a1fe9999a4c6fc54a8843f22810e9a8bc799b",
+        "cloudinaryEtag": "a8a1fbe7586a741b8e53407312274edc",
+        "etagMatchesMd5": true,
+        "assetId": "861059b31c2d0fb11147f04c8d497568"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:34.049Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/covers/anekantavada-workbook",
+      "localPath": "public/shop-assets/covers/anekantavada-workbook.webp",
+      "publicId": "geo-jainism/shop/covers/anekantavada-workbook",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452213/geo-jainism/shop/covers/anekantavada-workbook.webp",
+      "version": 1795452213,
+      "remoteBytes": 24500,
+      "originalChecksum": {
+        "sha256": "cdbeebe9937e655b365e6e7702adc3ec88ed1df28b85b6b85da79574d596c3a4",
+        "bytes": 24500
+      },
+      "uploadedChecksum": {
+        "md5": "0232313cc35e54d45955cf857836b170",
+        "sha256": "cdbeebe9937e655b365e6e7702adc3ec88ed1df28b85b6b85da79574d596c3a4",
+        "cloudinaryEtag": "0232313cc35e54d45955cf857836b170",
+        "etagMatchesMd5": true,
+        "assetId": "a336927c77a57923afe9e30458b822c5"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:34.958Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/covers/naladiyar-verses-of-wisdom",
+      "localPath": "public/shop-assets/covers/naladiyar-verses-of-wisdom.webp",
+      "publicId": "geo-jainism/shop/covers/naladiyar-verses-of-wisdom",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452213/geo-jainism/shop/covers/naladiyar-verses-of-wisdom.webp",
+      "version": 1795452213,
+      "remoteBytes": 23362,
+      "originalChecksum": {
+        "sha256": "b4493e4616a3abc1bf0846eeebb2f0576bf66637819fe615c9c2d58ba969aa59",
+        "bytes": 23362
+      },
+      "uploadedChecksum": {
+        "md5": "880a7b6e794df0fdd4a6ce768c6ffff3",
+        "sha256": "b4493e4616a3abc1bf0846eeebb2f0576bf66637819fe615c9c2d58ba969aa59",
+        "cloudinaryEtag": "880a7b6e794df0fdd4a6ce768c6ffff3",
+        "etagMatchesMd5": true,
+        "assetId": "5c3c64a419aa0a1854d42905332dab5e"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:34.826Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/covers/tamil-jain-heritage-field-atlas",
+      "localPath": "public/shop-assets/covers/tamil-jain-heritage-field-atlas.webp",
+      "publicId": "geo-jainism/shop/covers/tamil-jain-heritage-field-atlas",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452214/geo-jainism/shop/covers/tamil-jain-heritage-field-atlas.webp",
+      "version": 1795452214,
+      "remoteBytes": 56838,
+      "originalChecksum": {
+        "sha256": "12cc72fe6ac951eb52990648c66ccbe46bcb9db97391674937d21c6350057d6a",
+        "bytes": 56838
+      },
+      "uploadedChecksum": {
+        "md5": "be245d4155becbd4ee8ec49e453c312f",
+        "sha256": "12cc72fe6ac951eb52990648c66ccbe46bcb9db97391674937d21c6350057d6a",
+        "cloudinaryEtag": "be245d4155becbd4ee8ec49e453c312f",
+        "etagMatchesMd5": true,
+        "assetId": "c92e5eedcc10237c7a264624ab62ed08"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:35.880Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/covers/tattvartha-sutra-annotated",
+      "localPath": "public/shop-assets/covers/tattvartha-sutra-annotated.webp",
+      "publicId": "geo-jainism/shop/covers/tattvartha-sutra-annotated",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452214/geo-jainism/shop/covers/tattvartha-sutra-annotated.webp",
+      "version": 1795452214,
+      "remoteBytes": 31056,
+      "originalChecksum": {
+        "sha256": "fb281baaad79c3d4c24079af62e79a3526fb24e1200df0e1ddee4b94877a6529",
+        "bytes": 31056
+      },
+      "uploadedChecksum": {
+        "md5": "9cba59f59dfacfef226ef47793175f9a",
+        "sha256": "fb281baaad79c3d4c24079af62e79a3526fb24e1200df0e1ddee4b94877a6529",
+        "cloudinaryEtag": "9cba59f59dfacfef226ef47793175f9a",
+        "etagMatchesMd5": true,
+        "assetId": "36f02ccd102c2efd6c73d99771ca779b"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:35.892Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/art/adhai-dvipa-cosmology-print",
+      "localPath": "public/shop-assets/art/adhai-dvipa-cosmology-print.webp",
+      "publicId": "geo-jainism/shop/art/adhai-dvipa-cosmology-print",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452215/geo-jainism/shop/art/adhai-dvipa-cosmology-print.webp",
+      "version": 1795452215,
+      "remoteBytes": 841706,
+      "originalChecksum": {
+        "sha256": "7d20d9974c47672e4af18b071d4a982507a58c34875adf0c1dab11fbfdb97675",
+        "bytes": 841706
+      },
+      "uploadedChecksum": {
+        "md5": "4d00b832ea8935f924c480dff3118a8c",
+        "sha256": "7d20d9974c47672e4af18b071d4a982507a58c34875adf0c1dab11fbfdb97675",
+        "cloudinaryEtag": "4d00b832ea8935f924c480dff3118a8c",
+        "etagMatchesMd5": true,
+        "assetId": "17e86b7a972e73981062800effc20768"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:36.904Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/art/brahmi-inscription-rubbing",
+      "localPath": "public/shop-assets/art/brahmi-inscription-rubbing.webp",
+      "publicId": "geo-jainism/shop/art/brahmi-inscription-rubbing",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452215/geo-jainism/shop/art/brahmi-inscription-rubbing.webp",
+      "version": 1795452215,
+      "remoteBytes": 76352,
+      "originalChecksum": {
+        "sha256": "7cff0520a00358ac4beda404286ae19185771c1ada070f335a958cc9c5559ac6",
+        "bytes": 76352
+      },
+      "uploadedChecksum": {
+        "md5": "60a95eb216ce8470790da985c7563f3f",
+        "sha256": "7cff0520a00358ac4beda404286ae19185771c1ada070f335a958cc9c5559ac6",
+        "cloudinaryEtag": "60a95eb216ce8470790da985c7563f3f",
+        "etagMatchesMd5": true,
+        "assetId": "8fbc6df1c42a54eeba5c3b5a86f8f306"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:36.808Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/art/kalpasutra-miniature-print",
+      "localPath": "public/shop-assets/art/kalpasutra-miniature-print.webp",
+      "publicId": "geo-jainism/shop/art/kalpasutra-miniature-print",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452216/geo-jainism/shop/art/kalpasutra-miniature-print.webp",
+      "version": 1795452216,
+      "remoteBytes": 196852,
+      "originalChecksum": {
+        "sha256": "d5a5af776b4b69d750d86987cb1312edd7251a239c82560c515b5c7df75f35e1",
+        "bytes": 196852
+      },
+      "uploadedChecksum": {
+        "md5": "1a3bebffab0cde2084501b9967d7f7b2",
+        "sha256": "d5a5af776b4b69d750d86987cb1312edd7251a239c82560c515b5c7df75f35e1",
+        "cloudinaryEtag": "1a3bebffab0cde2084501b9967d7f7b2",
+        "etagMatchesMd5": true,
+        "assetId": "b1092eb550700f0af3fc8ca0b3401476"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:37.827Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "shop/art/palitana-dawn-photograph",
+      "localPath": "public/shop-assets/art/palitana-dawn-photograph.webp",
+      "publicId": "geo-jainism/shop/art/palitana-dawn-photograph",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452216/geo-jainism/shop/art/palitana-dawn-photograph.webp",
+      "version": 1795452216,
+      "remoteBytes": 262708,
+      "originalChecksum": {
+        "sha256": "b78e8edbc3ff6703508e554a2ee0420d9248dd0a072851732f4672823ea901ca",
+        "bytes": 262708
+      },
+      "uploadedChecksum": {
+        "md5": "a4d3478d619e443b075f6bf651f666a5",
+        "sha256": "b78e8edbc3ff6703508e554a2ee0420d9248dd0a072851732f4672823ea901ca",
+        "cloudinaryEtag": "a4d3478d619e443b075f6bf651f666a5",
+        "etagMatchesMd5": true,
+        "assetId": "b3694fce64d57a6730d87e2cea1a4386"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:37.936Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-dilwara",
+      "localPath": "public/virasat/images/vs-dilwara.webp",
+      "publicId": "geo-jainism/virasat/images/vs-dilwara",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452217/geo-jainism/virasat/images/vs-dilwara.webp",
+      "version": 1795452217,
+      "remoteBytes": 414736,
+      "originalChecksum": {
+        "sha256": "d2548db28fb5b93a7694e6cd5e9bca149968d50d0337f4b860766e0e87b6285f",
+        "bytes": 414736
+      },
+      "uploadedChecksum": {
+        "md5": "5f686491c098e647a8d6d9a59fa52499",
+        "sha256": "d2548db28fb5b93a7694e6cd5e9bca149968d50d0337f4b860766e0e87b6285f",
+        "cloudinaryEtag": "5f686491c098e647a8d6d9a59fa52499",
+        "etagMatchesMd5": true,
+        "assetId": "fb827654ba5ca1b037f5c51699a2a946"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:38.857Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-01",
+      "localPath": "public/virasat/images/vs-event-01.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-01",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452217/geo-jainism/virasat/images/vs-event-01.webp",
+      "version": 1795452217,
+      "remoteBytes": 342058,
+      "originalChecksum": {
+        "sha256": "adc0d6f4aeef0aa8f866a719355308d9f746142630fc3f319f9a04b8ce39e0a4",
+        "bytes": 342058
+      },
+      "uploadedChecksum": {
+        "md5": "c31845da15782c4117266a634dd8e96b",
+        "sha256": "adc0d6f4aeef0aa8f866a719355308d9f746142630fc3f319f9a04b8ce39e0a4",
+        "cloudinaryEtag": "c31845da15782c4117266a634dd8e96b",
+        "etagMatchesMd5": true,
+        "assetId": "8980455184cce8a575b2f23f85c526f3"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:38.913Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-02",
+      "localPath": "public/virasat/images/vs-event-02.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-02",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452218/geo-jainism/virasat/images/vs-event-02.webp",
+      "version": 1795452218,
+      "remoteBytes": 50348,
+      "originalChecksum": {
+        "sha256": "79115dde09f4eba73e0233ff30c2d440580ef6db446a30d8a93c6df1055f3382",
+        "bytes": 50348
+      },
+      "uploadedChecksum": {
+        "md5": "a92383b60668f9c6f6f6c9267dec1e99",
+        "sha256": "79115dde09f4eba73e0233ff30c2d440580ef6db446a30d8a93c6df1055f3382",
+        "cloudinaryEtag": "a92383b60668f9c6f6f6c9267dec1e99",
+        "etagMatchesMd5": true,
+        "assetId": "f7ce5759fe20ab7c028a105d6a5ed676"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:39.672Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-03",
+      "localPath": "public/virasat/images/vs-event-03.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-03",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452218/geo-jainism/virasat/images/vs-event-03.webp",
+      "version": 1795452218,
+      "remoteBytes": 122966,
+      "originalChecksum": {
+        "sha256": "26042d009ed57997033bdfaa0be8ca8ebae6884a9f7203f29caebde8889948a2",
+        "bytes": 122966
+      },
+      "uploadedChecksum": {
+        "md5": "edb236c0e24947cc3d3c31be1e7c60b6",
+        "sha256": "26042d009ed57997033bdfaa0be8ca8ebae6884a9f7203f29caebde8889948a2",
+        "cloudinaryEtag": "edb236c0e24947cc3d3c31be1e7c60b6",
+        "etagMatchesMd5": true,
+        "assetId": "3dc77fa05a2884a562b240e85c74acdd"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:39.771Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-04",
+      "localPath": "public/virasat/images/vs-event-04.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-04",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452219/geo-jainism/virasat/images/vs-event-04.webp",
+      "version": 1795452219,
+      "remoteBytes": 308346,
+      "originalChecksum": {
+        "sha256": "ed501d182d3fed13b2f2ff204ec169d45b4424688cf3cb690caf4a6119367089",
+        "bytes": 308346
+      },
+      "uploadedChecksum": {
+        "md5": "17086dd5c127656d6f54779dff9c108b",
+        "sha256": "ed501d182d3fed13b2f2ff204ec169d45b4424688cf3cb690caf4a6119367089",
+        "cloudinaryEtag": "17086dd5c127656d6f54779dff9c108b",
+        "etagMatchesMd5": true,
+        "assetId": "b71a5372ce028fea76b304ecca743a0d"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:40.697Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-05",
+      "localPath": "public/virasat/images/vs-event-05.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-05",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452219/geo-jainism/virasat/images/vs-event-05.webp",
+      "version": 1795452219,
+      "remoteBytes": 420416,
+      "originalChecksum": {
+        "sha256": "19a2d10f693429a391fc2176a0f3b7adfbd7bfc2826a4271e6c498da2efb1a65",
+        "bytes": 420416
+      },
+      "uploadedChecksum": {
+        "md5": "0ba232d80b1dcaa44f333b9e2416efe7",
+        "sha256": "19a2d10f693429a391fc2176a0f3b7adfbd7bfc2826a4271e6c498da2efb1a65",
+        "cloudinaryEtag": "0ba232d80b1dcaa44f333b9e2416efe7",
+        "etagMatchesMd5": true,
+        "assetId": "014c6d27e43275e4cf51474bd31c0586"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:40.887Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-06",
+      "localPath": "public/virasat/images/vs-event-06.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-06",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452220/geo-jainism/virasat/images/vs-event-06.webp",
+      "version": 1795452220,
+      "remoteBytes": 57322,
+      "originalChecksum": {
+        "sha256": "5407c5e8227b4c6acad91fed875f02e0ca1f35c35fe4bda942ca1dffc0b4165f",
+        "bytes": 57322
+      },
+      "uploadedChecksum": {
+        "md5": "042fab81f3583e8089c5354c764fc57f",
+        "sha256": "5407c5e8227b4c6acad91fed875f02e0ca1f35c35fe4bda942ca1dffc0b4165f",
+        "cloudinaryEtag": "042fab81f3583e8089c5354c764fc57f",
+        "etagMatchesMd5": true,
+        "assetId": "9a59d1a421099bb58f37b2a852dec8bf"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:41.511Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-08",
+      "localPath": "public/virasat/images/vs-event-08.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-08",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452220/geo-jainism/virasat/images/vs-event-08.webp",
+      "version": 1795452220,
+      "remoteBytes": 561288,
+      "originalChecksum": {
+        "sha256": "c81583e925273d99b4dc656f0bcd578ec0d996403b1c433149c9f85f309f85dd",
+        "bytes": 561288
+      },
+      "uploadedChecksum": {
+        "md5": "a8d516ea0eb400df0422ca4bee598a6c",
+        "sha256": "c81583e925273d99b4dc656f0bcd578ec0d996403b1c433149c9f85f309f85dd",
+        "cloudinaryEtag": "a8d516ea0eb400df0422ca4bee598a6c",
+        "etagMatchesMd5": true,
+        "assetId": "6940700527ff4333517ec8210100b87d"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:41.743Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-09",
+      "localPath": "public/virasat/images/vs-event-09.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-09",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452221/geo-jainism/virasat/images/vs-event-09.webp",
+      "version": 1795452221,
+      "remoteBytes": 160526,
+      "originalChecksum": {
+        "sha256": "9106e924dc3cc9d7e76f6b157a78fc135b18d8a37b6351e5e77b659ea74f0ade",
+        "bytes": 160526
+      },
+      "uploadedChecksum": {
+        "md5": "2c22e27d92985fb3db94b2a1e95bcbdc",
+        "sha256": "9106e924dc3cc9d7e76f6b157a78fc135b18d8a37b6351e5e77b659ea74f0ade",
+        "cloudinaryEtag": "2c22e27d92985fb3db94b2a1e95bcbdc",
+        "etagMatchesMd5": true,
+        "assetId": "af1fa0afca7655ad186e32bb302a90ac"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:42.421Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-10",
+      "localPath": "public/virasat/images/vs-event-10.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-10",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452221/geo-jainism/virasat/images/vs-event-10.webp",
+      "version": 1795452221,
+      "remoteBytes": 156408,
+      "originalChecksum": {
+        "sha256": "9d20a2288b886f6678aa88fd31a39ce57b9ec54202843ae957d771b449ae3b76",
+        "bytes": 156408
+      },
+      "uploadedChecksum": {
+        "md5": "cc98c20a9ec3d5b1a1f268565318ad4b",
+        "sha256": "9d20a2288b886f6678aa88fd31a39ce57b9ec54202843ae957d771b449ae3b76",
+        "cloudinaryEtag": "cc98c20a9ec3d5b1a1f268565318ad4b",
+        "etagMatchesMd5": true,
+        "assetId": "e92e24e0cd00e725ad882c0e5b23f86f"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:42.638Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-11",
+      "localPath": "public/virasat/images/vs-event-11.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-11",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452221/geo-jainism/virasat/images/vs-event-11.webp",
+      "version": 1795452221,
+      "remoteBytes": 76498,
+      "originalChecksum": {
+        "sha256": "78cb1a76ff811da57f0f37ccfea4458526daf76f347a18477c08d62d9ba0cd39",
+        "bytes": 76498
+      },
+      "uploadedChecksum": {
+        "md5": "f7d6f43e00d2a0c1d211d353ba974c81",
+        "sha256": "78cb1a76ff811da57f0f37ccfea4458526daf76f347a18477c08d62d9ba0cd39",
+        "cloudinaryEtag": "f7d6f43e00d2a0c1d211d353ba974c81",
+        "etagMatchesMd5": true,
+        "assetId": "084af986059cf3278c6db61a49d53bd1"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:43.251Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-12",
+      "localPath": "public/virasat/images/vs-event-12.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-12",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452222/geo-jainism/virasat/images/vs-event-12.webp",
+      "version": 1795452222,
+      "remoteBytes": 24704,
+      "originalChecksum": {
+        "sha256": "6122f85930f217d67d2ba3e2f70fb1b90835d223739384b1ce1d85c7d372e585",
+        "bytes": 24704
+      },
+      "uploadedChecksum": {
+        "md5": "a49d878c45ff08345388edf371ac8dca",
+        "sha256": "6122f85930f217d67d2ba3e2f70fb1b90835d223739384b1ce1d85c7d372e585",
+        "cloudinaryEtag": "a49d878c45ff08345388edf371ac8dca",
+        "etagMatchesMd5": true,
+        "assetId": "8f9b6a087e9f2d4934624b4c7224e8d2"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:43.354Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-13",
+      "localPath": "public/virasat/images/vs-event-13.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-13",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452222/geo-jainism/virasat/images/vs-event-13.webp",
+      "version": 1795452222,
+      "remoteBytes": 150954,
+      "originalChecksum": {
+        "sha256": "d394dd49b32a34235c3e4124177e6c3dc944f3a1c52397c7c2c7ca1312a69e1f",
+        "bytes": 150954
+      },
+      "uploadedChecksum": {
+        "md5": "33675e8bddcaffcb63294c43d42cb0e9",
+        "sha256": "d394dd49b32a34235c3e4124177e6c3dc944f3a1c52397c7c2c7ca1312a69e1f",
+        "cloudinaryEtag": "33675e8bddcaffcb63294c43d42cb0e9",
+        "etagMatchesMd5": true,
+        "assetId": "f6c728e35a9916b3eae0099acf430120"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:44.156Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-event-14",
+      "localPath": "public/virasat/images/vs-event-14.webp",
+      "publicId": "geo-jainism/virasat/images/vs-event-14",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452223/geo-jainism/virasat/images/vs-event-14.webp",
+      "version": 1795452223,
+      "remoteBytes": 416596,
+      "originalChecksum": {
+        "sha256": "48039dcf13a8de8a26543bfd7542b537dcf5046251576aed3e563ad438a1677d",
+        "bytes": 416596
+      },
+      "uploadedChecksum": {
+        "md5": "7804c3c2d0a6989a56e29ccdfa64c6b8",
+        "sha256": "48039dcf13a8de8a26543bfd7542b537dcf5046251576aed3e563ad438a1677d",
+        "cloudinaryEtag": "7804c3c2d0a6989a56e29ccdfa64c6b8",
+        "etagMatchesMd5": true,
+        "assetId": "389ec4cf0855154599f8f70ee0e02655"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:44.380Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-gulbarga",
+      "localPath": "public/virasat/images/vs-gulbarga.webp",
+      "publicId": "geo-jainism/virasat/images/vs-gulbarga",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452223/geo-jainism/virasat/images/vs-gulbarga.webp",
+      "version": 1795452223,
+      "remoteBytes": 115646,
+      "originalChecksum": {
+        "sha256": "ac4ceb70d9c7919dcc172c37472eed789c1ecb522adfea880a9209327dc61473",
+        "bytes": 115646
+      },
+      "uploadedChecksum": {
+        "md5": "0ef78c816c350f9355c189f6368a93d4",
+        "sha256": "ac4ceb70d9c7919dcc172c37472eed789c1ecb522adfea880a9209327dc61473",
+        "cloudinaryEtag": "0ef78c816c350f9355c189f6368a93d4",
+        "etagMatchesMd5": true,
+        "assetId": "86461f963a30b1bfb7e6884a9a6e7608"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:45.216Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-kavi-sajal-jain",
+      "localPath": "public/virasat/images/vs-kavi-sajal-jain.webp",
+      "publicId": "geo-jainism/virasat/images/vs-kavi-sajal-jain",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452223/geo-jainism/virasat/images/vs-kavi-sajal-jain.webp",
+      "version": 1795452223,
+      "remoteBytes": 109422,
+      "originalChecksum": {
+        "sha256": "5cfac4391c8f7b71bcb3a9f7a1fa26a52f22dcea1cf9fed14d5b6a6a20bdcdf6",
+        "bytes": 109422
+      },
+      "uploadedChecksum": {
+        "md5": "995f56d64044f5bdc7c77fbb62e9a867",
+        "sha256": "5cfac4391c8f7b71bcb3a9f7a1fa26a52f22dcea1cf9fed14d5b6a6a20bdcdf6",
+        "cloudinaryEtag": "995f56d64044f5bdc7c77fbb62e9a867",
+        "etagMatchesMd5": true,
+        "assetId": "2d0d351a748b0a99113d80c6f11cb3b5"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:45.208Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-01",
+      "localPath": "public/virasat/images/vs-moment-01.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-01",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452224/geo-jainism/virasat/images/vs-moment-01.webp",
+      "version": 1795452224,
+      "remoteBytes": 162370,
+      "originalChecksum": {
+        "sha256": "ee2391cdab05616d7580b2bcabaa2638d951c6d37696718f8927873b1adf4276",
+        "bytes": 162370
+      },
+      "uploadedChecksum": {
+        "md5": "3bbfb2aaecce460c7ee750f4766b23ab",
+        "sha256": "ee2391cdab05616d7580b2bcabaa2638d951c6d37696718f8927873b1adf4276",
+        "cloudinaryEtag": "3bbfb2aaecce460c7ee750f4766b23ab",
+        "etagMatchesMd5": true,
+        "assetId": "3119a63e90c43b6a103b1e4506acce59"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:46.221Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-02",
+      "localPath": "public/virasat/images/vs-moment-02.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-02",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452224/geo-jainism/virasat/images/vs-moment-02.webp",
+      "version": 1795452224,
+      "remoteBytes": 385518,
+      "originalChecksum": {
+        "sha256": "5bc3d6178985b66376a6ba01c5617886dbdbc2b4e3f4d16d128553053528a988",
+        "bytes": 385518
+      },
+      "uploadedChecksum": {
+        "md5": "54d13d4bd29e19c5a9383fb20cfb920b",
+        "sha256": "5bc3d6178985b66376a6ba01c5617886dbdbc2b4e3f4d16d128553053528a988",
+        "cloudinaryEtag": "54d13d4bd29e19c5a9383fb20cfb920b",
+        "etagMatchesMd5": true,
+        "assetId": "5156b8b8b4c5c8cdcbf5cbedb9776ff9"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:46.231Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-03",
+      "localPath": "public/virasat/images/vs-moment-03.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-03",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452225/geo-jainism/virasat/images/vs-moment-03.webp",
+      "version": 1795452225,
+      "remoteBytes": 44250,
+      "originalChecksum": {
+        "sha256": "61a630a262bc8f0ba7f4dca7bd802ba8746ca2a3d03a8a0ca3cf20b0f42e0990",
+        "bytes": 44250
+      },
+      "uploadedChecksum": {
+        "md5": "8ef3cd8d7b7aefb683cb903f544e9da6",
+        "sha256": "61a630a262bc8f0ba7f4dca7bd802ba8746ca2a3d03a8a0ca3cf20b0f42e0990",
+        "cloudinaryEtag": "8ef3cd8d7b7aefb683cb903f544e9da6",
+        "etagMatchesMd5": true,
+        "assetId": "b72719e0059d95472a187f95a2b2d03b"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:47.048Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-05",
+      "localPath": "public/virasat/images/vs-moment-05.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-05",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452225/geo-jainism/virasat/images/vs-moment-05.webp",
+      "version": 1795452225,
+      "remoteBytes": 209670,
+      "originalChecksum": {
+        "sha256": "2924cb4625567eb5d48028b8a8ac163055fd7f943f428565e02aeda8cc363428",
+        "bytes": 209670
+      },
+      "uploadedChecksum": {
+        "md5": "b647afaa8574cc9789d72e3f358a74ca",
+        "sha256": "2924cb4625567eb5d48028b8a8ac163055fd7f943f428565e02aeda8cc363428",
+        "cloudinaryEtag": "b647afaa8574cc9789d72e3f358a74ca",
+        "etagMatchesMd5": true,
+        "assetId": "a670648da04ec4b605ade83b5e581a69"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:47.138Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-06",
+      "localPath": "public/virasat/images/vs-moment-06.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-06",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452226/geo-jainism/virasat/images/vs-moment-06.webp",
+      "version": 1795452226,
+      "remoteBytes": 89750,
+      "originalChecksum": {
+        "sha256": "77b6e5f32d9d2f2f4bbf0caa2399397a60a05f891c2e9dc22d6af11b22c0f00f",
+        "bytes": 89750
+      },
+      "uploadedChecksum": {
+        "md5": "240054d16f63bfc1e810a2d377d329c4",
+        "sha256": "77b6e5f32d9d2f2f4bbf0caa2399397a60a05f891c2e9dc22d6af11b22c0f00f",
+        "cloudinaryEtag": "240054d16f63bfc1e810a2d377d329c4",
+        "etagMatchesMd5": true,
+        "assetId": "7a4cdb0de377618a35381994d035cfeb"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:47.953Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-07",
+      "localPath": "public/virasat/images/vs-moment-07.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-07",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452226/geo-jainism/virasat/images/vs-moment-07.webp",
+      "version": 1795452226,
+      "remoteBytes": 276308,
+      "originalChecksum": {
+        "sha256": "358727f1934f541e4963b24b6bd63c03f02db711bc091fd1f5ab6aa78d1ac88d",
+        "bytes": 276308
+      },
+      "uploadedChecksum": {
+        "md5": "e8892ac9c686024c11e97669adcfc5cb",
+        "sha256": "358727f1934f541e4963b24b6bd63c03f02db711bc091fd1f5ab6aa78d1ac88d",
+        "cloudinaryEtag": "e8892ac9c686024c11e97669adcfc5cb",
+        "etagMatchesMd5": true,
+        "assetId": "2e8ca35a344894e072e3630003fc31ff"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:48.169Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-08",
+      "localPath": "public/virasat/images/vs-moment-08.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-08",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452227/geo-jainism/virasat/images/vs-moment-08.webp",
+      "version": 1795452227,
+      "remoteBytes": 157160,
+      "originalChecksum": {
+        "sha256": "a6171cbcc2b929cfd4135b415898837e2f543bdddad61a34169fc94ba5e8f1f5",
+        "bytes": 157160
+      },
+      "uploadedChecksum": {
+        "md5": "985f5ba985e3cf72fb20fa6fdf514bf8",
+        "sha256": "a6171cbcc2b929cfd4135b415898837e2f543bdddad61a34169fc94ba5e8f1f5",
+        "cloudinaryEtag": "985f5ba985e3cf72fb20fa6fdf514bf8",
+        "etagMatchesMd5": true,
+        "assetId": "66f6dd918f4607f1da76580994d29200"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:48.767Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-09",
+      "localPath": "public/virasat/images/vs-moment-09.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-09",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452227/geo-jainism/virasat/images/vs-moment-09.webp",
+      "version": 1795452227,
+      "remoteBytes": 23720,
+      "originalChecksum": {
+        "sha256": "c2957c14b712d094ccd122242b7e7fc92d89f4f3c60630024d597dc8ac1bd523",
+        "bytes": 23720
+      },
+      "uploadedChecksum": {
+        "md5": "fe173ade1e46be803fa7a22b995e9891",
+        "sha256": "c2957c14b712d094ccd122242b7e7fc92d89f4f3c60630024d597dc8ac1bd523",
+        "cloudinaryEtag": "fe173ade1e46be803fa7a22b995e9891",
+        "etagMatchesMd5": true,
+        "assetId": "bf3e69ecdf81d70adef4cf9c4efbbf33"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:49.089Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-10",
+      "localPath": "public/virasat/images/vs-moment-10.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-10",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452228/geo-jainism/virasat/images/vs-moment-10.webp",
+      "version": 1795452228,
+      "remoteBytes": 87590,
+      "originalChecksum": {
+        "sha256": "c5137514d21475eadb9d285430b97c0e8cf88296016371d4e422e81a3c5759dd",
+        "bytes": 87590
+      },
+      "uploadedChecksum": {
+        "md5": "0cdada81b644b4e38c74758358d188d3",
+        "sha256": "c5137514d21475eadb9d285430b97c0e8cf88296016371d4e422e81a3c5759dd",
+        "cloudinaryEtag": "0cdada81b644b4e38c74758358d188d3",
+        "etagMatchesMd5": true,
+        "assetId": "234cf4e90a3b544430582f580bca2513"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:49.688Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-11",
+      "localPath": "public/virasat/images/vs-moment-11.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-11",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452228/geo-jainism/virasat/images/vs-moment-11.webp",
+      "version": 1795452228,
+      "remoteBytes": 72250,
+      "originalChecksum": {
+        "sha256": "ed3e6b2f2ccf21a8c6647d196eed8ffeade2553a91a3715d6643a9b572ea56ec",
+        "bytes": 72250
+      },
+      "uploadedChecksum": {
+        "md5": "f5e5ee0563114d43b0cfacfc0f21dd8a",
+        "sha256": "ed3e6b2f2ccf21a8c6647d196eed8ffeade2553a91a3715d6643a9b572ea56ec",
+        "cloudinaryEtag": "f5e5ee0563114d43b0cfacfc0f21dd8a",
+        "etagMatchesMd5": true,
+        "assetId": "b6b2b6927fe2725e274817da6cf6571e"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:50.011Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-12",
+      "localPath": "public/virasat/images/vs-moment-12.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-12",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452229/geo-jainism/virasat/images/vs-moment-12.webp",
+      "version": 1795452229,
+      "remoteBytes": 123646,
+      "originalChecksum": {
+        "sha256": "657cfdb8c341ddf8b5d68ed14f647890a7bd9d84656f9f56664b2f89d0831055",
+        "bytes": 123646
+      },
+      "uploadedChecksum": {
+        "md5": "e315a37ec09fbf62fa5913935e9ee214",
+        "sha256": "657cfdb8c341ddf8b5d68ed14f647890a7bd9d84656f9f56664b2f89d0831055",
+        "cloudinaryEtag": "e315a37ec09fbf62fa5913935e9ee214",
+        "etagMatchesMd5": true,
+        "assetId": "7de23e6799328fb441fcc8b374e4fad5"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:50.624Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-13",
+      "localPath": "public/virasat/images/vs-moment-13.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-13",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452229/geo-jainism/virasat/images/vs-moment-13.webp",
+      "version": 1795452229,
+      "remoteBytes": 155592,
+      "originalChecksum": {
+        "sha256": "4e8361d0cf07ca7a5db2a10345127327528e9dd1b214b22a95438916522a1de3",
+        "bytes": 155592
+      },
+      "uploadedChecksum": {
+        "md5": "0533c594033df51c9fea27450a01a202",
+        "sha256": "4e8361d0cf07ca7a5db2a10345127327528e9dd1b214b22a95438916522a1de3",
+        "cloudinaryEtag": "0533c594033df51c9fea27450a01a202",
+        "etagMatchesMd5": true,
+        "assetId": "b9d2952993e1e8420312927e3de19ee2"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:51.037Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-14",
+      "localPath": "public/virasat/images/vs-moment-14.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-14",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452230/geo-jainism/virasat/images/vs-moment-14.webp",
+      "version": 1795452230,
+      "remoteBytes": 109666,
+      "originalChecksum": {
+        "sha256": "cb9dbd7563b7fdd44f88174b1dd0279b466f186ad64a7ba3c27caff347b2e90b",
+        "bytes": 109666
+      },
+      "uploadedChecksum": {
+        "md5": "19948c02a9b83687fbdcb0d2d868f57b",
+        "sha256": "cb9dbd7563b7fdd44f88174b1dd0279b466f186ad64a7ba3c27caff347b2e90b",
+        "cloudinaryEtag": "19948c02a9b83687fbdcb0d2d868f57b",
+        "etagMatchesMd5": true,
+        "assetId": "57e6677dca520462557e380806dcee52"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:51.592Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-15",
+      "localPath": "public/virasat/images/vs-moment-15.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-15",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452230/geo-jainism/virasat/images/vs-moment-15.webp",
+      "version": 1795452230,
+      "remoteBytes": 23650,
+      "originalChecksum": {
+        "sha256": "587d183fabc46b4d752b47f07b18f31eacea38a9e7816c5a791ddae93de6e93e",
+        "bytes": 23650
+      },
+      "uploadedChecksum": {
+        "md5": "ff69304113b3534be134ef5ed2ec1576",
+        "sha256": "587d183fabc46b4d752b47f07b18f31eacea38a9e7816c5a791ddae93de6e93e",
+        "cloudinaryEtag": "ff69304113b3534be134ef5ed2ec1576",
+        "etagMatchesMd5": true,
+        "assetId": "3cda9b67ad0fc8232a553889d0ff488e"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:52.076Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-16",
+      "localPath": "public/virasat/images/vs-moment-16.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-16",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452231/geo-jainism/virasat/images/vs-moment-16.webp",
+      "version": 1795452231,
+      "remoteBytes": 49944,
+      "originalChecksum": {
+        "sha256": "8b0ef4b8aa4daaf5655153e07fab275da156aa9b81cbff516b5a37e84747cc31",
+        "bytes": 49944
+      },
+      "uploadedChecksum": {
+        "md5": "927a76f26d38c6a549d898385f436978",
+        "sha256": "8b0ef4b8aa4daaf5655153e07fab275da156aa9b81cbff516b5a37e84747cc31",
+        "cloudinaryEtag": "927a76f26d38c6a549d898385f436978",
+        "etagMatchesMd5": true,
+        "assetId": "324b3d013531c04619d543e76bce62e1"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:52.878Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-17",
+      "localPath": "public/virasat/images/vs-moment-17.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-17",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452231/geo-jainism/virasat/images/vs-moment-17.webp",
+      "version": 1795452231,
+      "remoteBytes": 75476,
+      "originalChecksum": {
+        "sha256": "f9f684a042499a9055426c436b194aa0a890decf3addc91656a4b71f019f653a",
+        "bytes": 75476
+      },
+      "uploadedChecksum": {
+        "md5": "49a788ac653d030ea98a746db1b263a2",
+        "sha256": "f9f684a042499a9055426c436b194aa0a890decf3addc91656a4b71f019f653a",
+        "cloudinaryEtag": "49a788ac653d030ea98a746db1b263a2",
+        "etagMatchesMd5": true,
+        "assetId": "eb9319db0ef9b65c7fcb5a0b21aaf5c0"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:53.186Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-18",
+      "localPath": "public/virasat/images/vs-moment-18.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-18",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452232/geo-jainism/virasat/images/vs-moment-18.webp",
+      "version": 1795452232,
+      "remoteBytes": 98814,
+      "originalChecksum": {
+        "sha256": "93955ca8e20d7f36a71fc2c7b412bc34f8cc8b10440df6cc5357e6e54ba5f40a",
+        "bytes": 98814
+      },
+      "uploadedChecksum": {
+        "md5": "545c466f420b15f0c93db11603e411a9",
+        "sha256": "93955ca8e20d7f36a71fc2c7b412bc34f8cc8b10440df6cc5357e6e54ba5f40a",
+        "cloudinaryEtag": "545c466f420b15f0c93db11603e411a9",
+        "etagMatchesMd5": true,
+        "assetId": "e8592dcdd98f988c8decd953c1ae113e"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:53.776Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-moment-19",
+      "localPath": "public/virasat/images/vs-moment-19.webp",
+      "publicId": "geo-jainism/virasat/images/vs-moment-19",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452232/geo-jainism/virasat/images/vs-moment-19.webp",
+      "version": 1795452232,
+      "remoteBytes": 26068,
+      "originalChecksum": {
+        "sha256": "2951147a9f4675dd4eec4bcf54557724e6fe88162d6ceb4b229c0931f1a74cdc",
+        "bytes": 26068
+      },
+      "uploadedChecksum": {
+        "md5": "f34a890cc2c75770ffd760c86e58f877",
+        "sha256": "2951147a9f4675dd4eec4bcf54557724e6fe88162d6ceb4b229c0931f1a74cdc",
+        "cloudinaryEtag": "f34a890cc2c75770ffd760c86e58f877",
+        "etagMatchesMd5": true,
+        "assetId": "6e1e7b6acf55187107d0922748bb4548"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:54.016Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/images/vs-tirthankara",
+      "localPath": "public/virasat/images/vs-tirthankara.webp",
+      "publicId": "geo-jainism/virasat/images/vs-tirthankara",
+      "resourceType": "image",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/image/upload/v1795452233/geo-jainism/virasat/images/vs-tirthankara.webp",
+      "version": 1795452233,
+      "remoteBytes": 300846,
+      "originalChecksum": {
+        "sha256": "6ece849a151c9079e35fbc17a90ec3ba705c42451f386431a7264b09de0f5d72",
+        "bytes": 300846
+      },
+      "uploadedChecksum": {
+        "md5": "7df7ef5c67ba84bb5d09f4071db623e4",
+        "sha256": "6ece849a151c9079e35fbc17a90ec3ba705c42451f386431a7264b09de0f5d72",
+        "cloudinaryEtag": "7df7ef5c67ba84bb5d09f4071db623e4",
+        "etagMatchesMd5": true,
+        "assetId": "db709c27e930679b0704f2ea6917ef82"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:43:54.721Z",
+      "error": null,
+      "warnings": []
+    },
+    {
+      "id": "virasat/video/virasat-hero",
+      "localPath": "public/virasat/videos/virasat-hero.mp4",
+      "publicId": "geo-jainism/virasat/video/virasat-hero",
+      "resourceType": "video",
+      "status": "uploaded",
+      "secureUrl": "https://res.cloudinary.com/ebyrkgbk/video/upload/v1795450678/geo-jainism/virasat/video/virasat-hero.mp4",
+      "version": 1795450678,
+      "remoteBytes": 13086777,
+      "originalChecksum": {
+        "sha256": "9337179f31478e66961fadff087b8e4e058d6e54f87a5196c51a7e55b0d0e91a",
+        "bytes": 13086777
+      },
+      "uploadedChecksum": {
+        "md5": "fa127fcb5a961d4cc9bdeb4bdef2abac",
+        "sha256": "9337179f31478e66961fadff087b8e4e058d6e54f87a5196c51a7e55b0d0e91a",
+        "cloudinaryEtag": "fa127fcb5a961d4cc9bdeb4bdef2abac",
+        "etagMatchesMd5": true,
+        "assetId": "2cb78509d90c1247232591eea41ab534"
+      },
+      "preprocessed": null,
+      "uploadedAt": "2026-11-23T16:18:00.543Z",
+      "error": null,
+      "warnings": []
+    }
+  ]
+}

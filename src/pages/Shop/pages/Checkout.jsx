@@ -215,7 +215,7 @@ export default function Checkout() {
               {lines.map((l) => (
                 <li key={l.id} className="flex items-center gap-4">
                   <span className="relative w-14 shrink-0">
-                    <ShopImage k={l.product.images[0]} small className="aspect-[4/5] overflow-hidden" />
+                    <ShopImage k={l.product.images[0]} small sizes="56px" className="aspect-[4/5] overflow-hidden" />
                     <span className="absolute -right-2 -top-2 grid h-5 min-w-5 place-items-center rounded-full bg-gj-charcoal px-1 text-[0.65rem] text-gj-ivory">{l.qty}</span>
                   </span>
                   <span className="min-w-0 flex-1 truncate text-sm">{l.product.name}</span>

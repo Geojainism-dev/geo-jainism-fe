@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ChevronLeft, ChevronRight, Expand } from "lucide-react";
-import { img, imgSm } from "../../data/media";
+import { img, imageProps, SHOP_WIDTHS } from "../../data/media";
 import Overlay from "../common/Overlay";
 import { useShopT } from "../../i18n";
 
@@ -10,7 +10,17 @@ import { useShopT } from "../../i18n";
  * desktop, swipe on touch, and a full-screen lightbox. Optional `extra`
  * renders as an additional "tab" (used for the 3D view).
  */
-export default function Gallery({ product, extra = null, extraLabel = "3D view" }) {
+/**
+ * Main-image `sizes`: the stage is the full column width below 1024px (page padding 20px, 32px from 640px) and, from 1024px, the left
+ * grid column (1.1fr of 1.1fr/1fr, gap 64px, padding 48px, max 1440px) minus the 80px thumbnail column and 16px gap. It is multiplied by the
+ * 1.9x hover zoom so the zoomed view is not upscaled. (QuickView passes its own `stageSizes`.)
+ */
+export const STAGE_SIZES =
+  "(min-width: 1024px) calc(((min(100vw, 1440px) - 96px - 64px) * 1.1 / 2.1 - 96px) * 1.9), (min-width: 640px) calc((100vw - 64px) * 1.9), calc((100vw - 40px) * 1.9)";
+// Thumbnails: 64px wide, 80px (the whole column) from 1024px; 4:5 boxes.
+const THUMB_SIZES = "(min-width: 1024px) 80px, 64px";
+
+export default function Gallery({ product, extra = null, extraLabel = "3D view", stageSizes = STAGE_SIZES }) {
   const reduce = useReducedMotion();
   const { s } = useShopT();
   const images = product.images;
@@ -43,7 +53,7 @@ export default function Gallery({ product, extra = null, extraLabel = "3D view" 
             onClick={() => setI(n)}
             className={`relative aspect-[4/5] w-16 overflow-hidden border transition-colors lg:w-full ${i === n ? "border-gj-charcoal" : "border-transparent opacity-70 hover:opacity-100"}`}
           >
-            <img src={imgSm(k)} alt="" className="h-full w-full object-cover" loading="lazy" />
+            <img {...imageProps(k, { widths: SHOP_WIDTHS.thumb, sizes: THUMB_SIZES })} alt="" className="h-full w-full object-cover" loading="lazy" />
           </button>
         ))}
         {extra && (
@@ -90,7 +100,7 @@ export default function Gallery({ product, extra = null, extraLabel = "3D view" 
               transition={{ duration: reduce ? 0 : 0.45 }}
             >
               <img
-                src={img(images[i])}
+                {...imageProps(images[i], { sizes: stageSizes })}
                 alt={s("gallery.view", "{{name}} — view {{n}}", { name: product.name, n: i + 1 })}
                 className="h-full w-full object-cover transition-transform duration-300 ease-out"
                 style={zoom ? { transform: "scale(1.9)", transformOrigin: `${zoom.x}% ${zoom.y}%` } : undefined}

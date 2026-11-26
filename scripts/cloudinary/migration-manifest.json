@@ -1,0 +1,4963 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-22",
+  "description": "GEO Jainism frontend -> Cloudinary migration manifest. Masters only; -sm.webp variants, unused assets, backend-uploaded media and local icons are excluded (see README.md).",
+  "sourceRoot": "geo-jainism-fe (localPath values are relative to this directory)",
+  "cloudinaryRoot": "geo-jainism",
+  "uploadDefaults": {
+    "image": {
+      "resource_type": "image",
+      "overwrite": false,
+      "unique_filename": false,
+      "use_filename": false,
+      "invalidate": false
+    },
+    "video": {
+      "resource_type": "video",
+      "overwrite": false,
+      "unique_filename": false,
+      "use_filename": false,
+      "invalidate": false
+    },
+    "notes": "Always pass publicId (full path) as public_id. Dynamic-folder accounts: also pass folder as asset_folder. Fixed-folder accounts: public_id alone defines the folder. Never also pass `folder` with a full-path public_id (it would be prefixed twice). Confirm the folder mode in the dashboard first. Do NOT apply incoming transformations - store pristine masters; optimise at delivery."
+  },
+  "transformationStrategies": {
+    "hero-lcp": {
+      "delivery": "f_auto,q_auto,c_limit,w_{w}",
+      "srcsetWidths": [
+        640,
+        960,
+        1280,
+        1600
+      ],
+      "loading": "eager",
+      "fetchpriority": "high"
+    },
+    "hero-lcp-alpha": {
+      "delivery": "f_auto,q_auto,c_limit,w_{w}",
+      "srcsetWidths": [
+        480,
+        768,
+        1024,
+        1536
+      ],
+      "loading": "eager",
+      "fetchpriority": "high",
+      "note": "Transparent PNG master; f_auto serves AVIF/WebP with alpha."
+    },
+    "decorative-alpha": {
+      "delivery": "f_auto,q_auto:eco,c_limit,w_{w}",
+      "srcsetWidths": [
+        480,
+        768,
+        1200
+      ],
+      "loading": "eager|lazy per placement",
+      "note": "Decorative transparency; eco quality is acceptable."
+    },
+    "css-background": {
+      "delivery": "f_auto,q_auto,c_limit,w_{w}",
+      "breakpoints": {
+        "mobile": 828,
+        "tablet": 1280,
+        "desktop": 1920
+      },
+      "note": "Set via inline style / CSS custom property (image-set() or media queries) since static CSS cannot read env vars."
+    },
+    "fullbleed-cover": {
+      "delivery": "f_auto,q_auto,c_limit,w_{w}",
+      "srcsetWidths": [
+        768,
+        1280,
+        1920
+      ],
+      "sizes": "50vw-100vw"
+    },
+    "popup-poster": {
+      "delivery": "f_auto,q_auto,c_limit,w_{w}",
+      "srcsetWidths": [
+        480,
+        720,
+        1024
+      ],
+      "loading": "eager"
+    },
+    "content-responsive": {
+      "delivery": "f_auto,q_auto,c_limit,w_{w}",
+      "srcsetWidths": [
+        480,
+        768,
+        1200,
+        1600
+      ],
+      "loading": "lazy",
+      "decoding": "async"
+    },
+    "carousel-fullbleed": {
+      "delivery": "f_auto,q_auto,c_limit,w_{w}",
+      "srcsetWidths": [
+        768,
+        1280,
+        1920,
+        2560
+      ],
+      "loading": "lazy except first slide",
+      "note": "Caps the 5088-8192 px sources; this is the largest decode-memory win."
+    },
+    "shop-product": {
+      "delivery": "f_auto,q_auto,c_limit,w_{w}",
+      "srcsetWidths": [
+        320,
+        640,
+        1024,
+        1600
+      ],
+      "replaces": "<key>-sm.webp (640w) + <key>.webp (1600w)"
+    },
+    "shop-editorial": {
+      "delivery": "f_auto,q_auto,c_limit,w_{w}",
+      "srcsetWidths": [
+        640,
+        1024,
+        1600
+      ]
+    },
+    "webgl-texture": {
+      "delivery": "f_auto,q_auto,c_limit,w_1024",
+      "note": "Single fixed size for three.js TextureLoader; requires CORS. If f_auto causes issues in the WebGL path, pin f_webp."
+    },
+    "virasat-responsive": {
+      "delivery": "f_auto,q_auto,c_limit,w_{w}",
+      "srcsetWidths": [
+        480,
+        900,
+        1400,
+        1920
+      ],
+      "replaces": "<key>-sm.webp (900w) + <key>.webp (1920w)"
+    },
+    "video-background-and-player": {
+      "backgroundLoop": "f_auto:video,q_auto,vc_auto,w_720,so_0,du_20,ac_none (eager/async-derived at upload)",
+      "poster": "so_2,f_auto,q_auto,w_1280 on resource_type=video, extension .jpg",
+      "fullFilm": "f_auto:video,q_auto (optionally sp_auto adaptive streaming for the modal)",
+      "note": "Use preload=\"metadata\" for the background; keep crossOrigin=\"anonymous\" for the WebGL texture."
+    }
+  },
+  "summary": {
+    "totalAssets": 172,
+    "images": 171,
+    "videos": 1,
+    "totalBytes": 64348094,
+    "byCategory": {
+      "content-photo": {
+        "count": 14,
+        "bytes": 5719819
+      },
+      "landing-content": {
+        "count": 5,
+        "bytes": 3561773
+      },
+      "landing-hero": {
+        "count": 3,
+        "bytes": 4481871
+      },
+      "landing-popup": {
+        "count": 1,
+        "bytes": 941066
+      },
+      "page-hero": {
+        "count": 2,
+        "bytes": 1869284
+      },
+      "shop-3d-texture": {
+        "count": 8,
+        "bytes": 1513374
+      },
+      "shop-category": {
+        "count": 8,
+        "bytes": 2025360
+      },
+      "shop-editorial": {
+        "count": 4,
+        "bytes": 949134
+      },
+      "shop-product": {
+        "count": 72,
+        "bytes": 10955786
+      },
+      "tamil-jain-content": {
+        "count": 16,
+        "bytes": 12327425
+      },
+      "tamil-jain-hero": {
+        "count": 3,
+        "bytes": 955903
+      },
+      "virasat-image": {
+        "count": 35,
+        "bytes": 5960522
+      },
+      "virasat-video": {
+        "count": 1,
+        "bytes": 13086777
+      }
+    },
+    "byFolder": {
+      "geo-jainism/shop/art": 4,
+      "geo-jainism/shop/categories": 8,
+      "geo-jainism/shop/covers": 4,
+      "geo-jainism/shop/editorial": 4,
+      "geo-jainism/shop/products": 72,
+      "geo-jainism/site/about": 1,
+      "geo-jainism/site/auth": 1,
+      "geo-jainism/site/ground-documentation": 4,
+      "geo-jainism/site/journey": 10,
+      "geo-jainism/site/landing": 4,
+      "geo-jainism/site/landing/literature": 5,
+      "geo-jainism/site/tamil-jain": 1,
+      "geo-jainism/site/tamil-jain/century-wall": 7,
+      "geo-jainism/site/tamil-jain/hero": 3,
+      "geo-jainism/site/tamil-jain/hills": 5,
+      "geo-jainism/site/tamil-jain/inscriptions": 3,
+      "geo-jainism/virasat/images": 35,
+      "geo-jainism/virasat/video": 1
+    },
+    "needsPreprocessing": [
+      "geo-jainism/site/tamil-jain/century-wall/01-stone-beds",
+      "geo-jainism/site/tamil-jain/century-wall/03-shaping-classical-tamil-culture",
+      "geo-jainism/site/tamil-jain/century-wall/05-preservation-through-change",
+      "geo-jainism/site/tamil-jain/century-wall/07-continuous-history",
+      "geo-jainism/site/tamil-jain/inscriptions/tamil-brahmi",
+      "geo-jainism/site/tamil-jain/shayanika"
+    ],
+    "publicIdCollisions": {},
+    "duplicatesWithinManifest": [
+      {
+        "sha256": "d819a79b5b8a9dd8ba95511c8b0416cec8c6c5762888f54f954d7d55563066b9",
+        "assets": [
+          "geo-jainism/shop/products/brass-akhand-diya-1",
+          "geo-jainism/shop/categories/cat-spiritual-devotional"
+        ],
+        "bytes": 140070,
+        "recommendation": "upload-separately",
+        "reason": "Category tile and product photo are semantically independent (dummy catalogue); sharing one public ID would silently change both when either is replaced. Storage cost is negligible."
+      },
+      {
+        "sha256": "7f0c747c54947577c8a937740d0ca5af99839fb0a04f9e6270c61da86343183f",
+        "assets": [
+          "geo-jainism/shop/products/pierced-brass-dhoop-box-1",
+          "geo-jainism/shop/categories/cat-home-lifestyle"
+        ],
+        "bytes": 186944,
+        "recommendation": "upload-separately",
+        "reason": "Category tile and product photo are semantically independent (dummy catalogue); sharing one public ID would silently change both when either is replaced. Storage cost is negligible."
+      },
+      {
+        "sha256": "135a94b18a7500b6edac1b19b38118fd5befd9e99f4a7c834c7d12588e8239d0",
+        "assets": [
+          "geo-jainism/shop/products/heritage-postcard-set-1",
+          "geo-jainism/shop/categories/cat-gifts-souvenirs"
+        ],
+        "bytes": 111290,
+        "recommendation": "upload-separately",
+        "reason": "Category tile and product photo are semantically independent (dummy catalogue); sharing one public ID would silently change both when either is replaced. Storage cost is negligible."
+      }
+    ],
+    "duplicatesResolvedByExclusion": [
+      {
+        "excludedLocalPath": "public/Screening (1).png",
+        "sameBytesAs": "geo-jainism/site/landing/screening-popup"
+      },
+      {
+        "excludedLocalPath": "public/temple.png",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/hero/temple"
+      },
+      {
+        "excludedLocalPath": "public/Inscription/Granth-3.jpg",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/inscriptions/grantha"
+      },
+      {
+        "excludedLocalPath": "public/Inscription/TAMIL-BRAHMI -1.jpg",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/inscriptions/tamil-brahmi"
+      },
+      {
+        "excludedLocalPath": "public/Inscription/Vatteluttu-2.jpg",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/inscriptions/vatteluttu"
+      },
+      {
+        "excludedLocalPath": "public/tamiljain/birds.png",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/hero/birds"
+      },
+      {
+        "excludedLocalPath": "public/TJ A journey through time/1 stone beds.jpg",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/century-wall/01-stone-beds"
+      },
+      {
+        "excludedLocalPath": "public/TJ A journey through time/2 hills become monastries.jpg",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/century-wall/02-hills-become-monasteries"
+      },
+      {
+        "excludedLocalPath": "public/TJ A journey through time/3 shaping classic tamil culture.jpg",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/century-wall/03-shaping-classical-tamil-culture"
+      },
+      {
+        "excludedLocalPath": "public/TJ A journey through time/4 artistic brilliance.jpg",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/century-wall/04-artistic-brilliance"
+      },
+      {
+        "excludedLocalPath": "public/TJ A journey through time/5 preservation through change.jpg",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/century-wall/05-preservation-through-change"
+      },
+      {
+        "excludedLocalPath": "public/TJ A journey through time/6- rediscovered .jpg",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/century-wall/06-rediscovered"
+      },
+      {
+        "excludedLocalPath": "public/TJ A journey through time/7 .jpg",
+        "sameBytesAs": "geo-jainism/site/tamil-jain/century-wall/07-continuous-history"
+      },
+      {
+        "excludedLocalPath": "public/virasat/images/vs-inscription.webp",
+        "sameBytesAs": "geo-jainism/shop/editorial/story-inscription"
+      }
+    ]
+  },
+  "assets": [
+    {
+      "id": "site/landing/mahavira",
+      "localPath": "public/mahavira.png",
+      "folder": "geo-jainism/site/landing",
+      "publicId": "geo-jainism/site/landing/mahavira",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 1564910,
+      "width": 2048,
+      "height": 1638,
+      "hasAlpha": true,
+      "sha256": "d2c58f16c2f1b914c04f6b727a79beb54420815ccdd8a9bde4bbad27f58cdd69",
+      "category": "landing-hero",
+      "loadingPriority": "lcp",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Landing Hero (tirthankar image)",
+          "file": "src/pages/Landing/sections/Hero.jsx"
+        },
+        {
+          "page": "all routes",
+          "component": "<link rel=\"preload\"> in SPA shell",
+          "file": "index.html"
+        }
+      ],
+      "transformationStrategy": "hero-lcp-alpha",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Preloaded on every route via index.html - preload must be rewritten to the Cloudinary URL (or scoped to \"/\") when migrated."
+    },
+    {
+      "id": "site/landing/mandala",
+      "localPath": "src/assets/images/landing/mandala.png",
+      "folder": "geo-jainism/site/landing",
+      "publicId": "geo-jainism/site/landing/mandala",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 1259384,
+      "width": 1024,
+      "height": 1024,
+      "hasAlpha": true,
+      "sha256": "6150a3dfec42ca9527f0f5a58c07a38b62e1c216c1e8c990b95726237a41e725",
+      "category": "landing-hero",
+      "loadingPriority": "above-fold",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Landing Hero (rotating mandala)",
+          "file": "src/pages/Landing/sections/Hero.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TamilJain page background mandala",
+          "file": "src/pages/TamilJain/index.jsx"
+        }
+      ],
+      "transformationStrategy": "decorative-alpha",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Vite-imported asset (currently hashed into /assets/)."
+    },
+    {
+      "id": "site/landing/hero-bg",
+      "localPath": "src/assets/images/landing/hero_bg.png",
+      "folder": "geo-jainism/site/landing",
+      "publicId": "geo-jainism/site/landing/hero-bg",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 1657577,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "sha256": "c6211abcd81d945e9262fe66c420714b6babd1516543880d372bef142c64c222",
+      "category": "landing-hero",
+      "loadingPriority": "above-fold",
+      "usage": [
+        {
+          "page": "/",
+          "component": "#hero background (light theme only)",
+          "file": "src/styles/landing.css"
+        }
+      ],
+      "transformationStrategy": "css-background",
+      "preprocess": [
+        "optional: opaque photographic PNG - upload as-is (f_auto handles delivery) or convert to high-quality JPEG to save storage"
+      ],
+      "duplicateOf": null,
+      "notes": "Referenced from CSS url() - needs inline style / CSS custom property to use an env-driven URL."
+    },
+    {
+      "id": "site/landing/screening-popup",
+      "localPath": "public/Screening.png",
+      "folder": "geo-jainism/site/landing",
+      "publicId": "geo-jainism/site/landing/screening-popup",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 941066,
+      "width": 1365,
+      "height": 2048,
+      "hasAlpha": false,
+      "sha256": "ae7d9eed682ad339390edc3c1de3667cd1763a3e1ba84010803232c3d3ef38a8",
+      "category": "landing-popup",
+      "loadingPriority": "above-fold",
+      "usage": [
+        {
+          "page": "/",
+          "component": "ScreeningPopup (shown on load)",
+          "file": "src/components/common/ScreeningPopup.jsx"
+        }
+      ],
+      "transformationStrategy": "popup-poster",
+      "preprocess": [
+        "optional: opaque photographic PNG - upload as-is (f_auto handles delivery) or convert to high-quality JPEG to save storage"
+      ],
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/landing/literature/naladiyar",
+      "localPath": "public/Literature-and-legacy/naladiyar_1.png",
+      "folder": "geo-jainism/site/landing/literature",
+      "publicId": "geo-jainism/site/landing/literature/naladiyar",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 811769,
+      "width": 1535,
+      "height": 1024,
+      "hasAlpha": false,
+      "sha256": "b7a2d826ddeb0d31ae39a08df2c4a5bf5f68f72479ef6e1668a68b81f81704d6",
+      "category": "landing-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Heritage timeline (TIMELINE_ITEMS)",
+          "file": "src/constants/landingData.js -> src/pages/Landing/sections/Heritage.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": [
+        "optional: opaque photographic PNG - upload as-is (f_auto handles delivery) or convert to high-quality JPEG to save storage"
+      ],
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/landing/literature/shilapattikaram",
+      "localPath": "public/Literature-and-legacy/Shilapattikaram_2.png",
+      "folder": "geo-jainism/site/landing/literature",
+      "publicId": "geo-jainism/site/landing/literature/shilapattikaram",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 805246,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "sha256": "bd8c5e563ed149884241ce0b733c1ad54525516b31a09f4501d70f8e7ac37676",
+      "category": "landing-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Heritage timeline (TIMELINE_ITEMS)",
+          "file": "src/constants/landingData.js -> src/pages/Landing/sections/Heritage.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": [
+        "optional: opaque photographic PNG - upload as-is (f_auto handles delivery) or convert to high-quality JPEG to save storage"
+      ],
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/landing/literature/jeevak-chintamani",
+      "localPath": "public/Literature-and-legacy/Jeevak Chintamani_3.png",
+      "folder": "geo-jainism/site/landing/literature",
+      "publicId": "geo-jainism/site/landing/literature/jeevak-chintamani",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 779885,
+      "width": 1402,
+      "height": 1122,
+      "hasAlpha": false,
+      "sha256": "1b817d65648f7dd7839f8738b5712de3f15a59816223b2fc03874d91481302fc",
+      "category": "landing-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Heritage timeline (TIMELINE_ITEMS)",
+          "file": "src/constants/landingData.js -> src/pages/Landing/sections/Heritage.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": [
+        "optional: opaque photographic PNG - upload as-is (f_auto handles delivery) or convert to high-quality JPEG to save storage"
+      ],
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/landing/literature/ratnakar",
+      "localPath": "public/Literature-and-legacy/ratnakar_4.png",
+      "folder": "geo-jainism/site/landing/literature",
+      "publicId": "geo-jainism/site/landing/literature/ratnakar",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 789885,
+      "width": 1402,
+      "height": 1122,
+      "hasAlpha": false,
+      "sha256": "b904eb946f3c033031a95093d27dfe71ffc26f8a2264e5b42dfc41c042833fcb",
+      "category": "landing-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Heritage timeline (TIMELINE_ITEMS)",
+          "file": "src/constants/landingData.js -> src/pages/Landing/sections/Heritage.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": [
+        "optional: opaque photographic PNG - upload as-is (f_auto handles delivery) or convert to high-quality JPEG to save storage"
+      ],
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/landing/literature/chenna-bhaira-devi",
+      "localPath": "public/Literature-and-legacy/ChennaBhairaDevi_5.jpg",
+      "folder": "geo-jainism/site/landing/literature",
+      "publicId": "geo-jainism/site/landing/literature/chenna-bhaira-devi",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 374988,
+      "width": 2048,
+      "height": 1004,
+      "sha256": "97d74b4c6b5afede1a742a54cddd5629d72c746c2e1dec6ba110ad02823c428e",
+      "category": "landing-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Heritage timeline (TIMELINE_ITEMS)",
+          "file": "src/constants/landingData.js -> src/pages/Landing/sections/Heritage.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/ground-documentation/bihar",
+      "localPath": "public/ground-documentation/BIHAR.jpg",
+      "folder": "geo-jainism/site/ground-documentation",
+      "publicId": "geo-jainism/site/ground-documentation/bihar",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 845036,
+      "width": 1536,
+      "height": 2048,
+      "sha256": "a57f4ad4c4a241a6c033532601c540508cc50df08b165068e397d25d21f65b0e",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Challenges (ground documentation cards)",
+          "file": "src/pages/Landing/sections/Challenges.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Higher-resolution originals exist (unused) in src/assets/images/landing/Ground Documentation/ - not in this manifest; see README."
+    },
+    {
+      "id": "site/ground-documentation/gulbarga",
+      "localPath": "public/ground-documentation/GULBARGA.JPG",
+      "folder": "geo-jainism/site/ground-documentation",
+      "publicId": "geo-jainism/site/ground-documentation/gulbarga",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 234674,
+      "width": 2048,
+      "height": 1366,
+      "sha256": "5aa6cbedf92b75ee7992e95533e5467838e9dbcb0ac8da193b0343d50cd6058c",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Challenges (ground documentation cards)",
+          "file": "src/pages/Landing/sections/Challenges.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Higher-resolution originals exist (unused) in src/assets/images/landing/Ground Documentation/ - not in this manifest; see README."
+    },
+    {
+      "id": "site/ground-documentation/lalitpur",
+      "localPath": "public/ground-documentation/Lalitpur.jpg",
+      "folder": "geo-jainism/site/ground-documentation",
+      "publicId": "geo-jainism/site/ground-documentation/lalitpur",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 559582,
+      "width": 1536,
+      "height": 2048,
+      "sha256": "88992a0e5c9c354475d82d6876c666a31eb0332fb0ae5a6a5325475b74204bac",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Challenges (ground documentation cards)",
+          "file": "src/pages/Landing/sections/Challenges.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Higher-resolution originals exist (unused) in src/assets/images/landing/Ground Documentation/ - not in this manifest; see README."
+    },
+    {
+      "id": "site/ground-documentation/tamil-nadu",
+      "localPath": "public/ground-documentation/TAMIL NADU.JPG",
+      "folder": "geo-jainism/site/ground-documentation",
+      "publicId": "geo-jainism/site/ground-documentation/tamil-nadu",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 520757,
+      "width": 2048,
+      "height": 1366,
+      "sha256": "d68d470e8e40a32b2934a884de8434eb6796f26715cbb411fc357a20b52e56f2",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Challenges (ground documentation cards)",
+          "file": "src/pages/Landing/sections/Challenges.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Higher-resolution originals exist (unused) in src/assets/images/landing/Ground Documentation/ - not in this manifest; see README."
+    },
+    {
+      "id": "site/journey/01-rock-sculpture",
+      "localPath": "public/journey/01-rock-sculpture.jpg",
+      "folder": "geo-jainism/site/journey",
+      "publicId": "geo-jainism/site/journey/01-rock-sculpture",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 203625,
+      "width": 679,
+      "height": 1018,
+      "sha256": "37202fe27635eca3a3add1f0440dad27a9f0db52eb176a9301127423d3980753",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Courses / JourneyCarousel via landingData.js (JOURNEY_SLIDES, COURSES)",
+          "file": "src/constants/landingData.js"
+        },
+        {
+          "page": "/about",
+          "component": "About gallery + cards",
+          "file": "src/pages/About/index.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJTemples",
+          "file": "src/pages/TamilJain/sections/TJTemples.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJTimeline",
+          "file": "src/pages/TamilJain/sections/TJTimeline.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJRestored",
+          "file": "src/pages/TamilJain/sections/TJRestored.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Multi-page asset (5 referencing components)."
+    },
+    {
+      "id": "site/journey/02-temple-hill",
+      "localPath": "public/journey/02-temple-hill.jpg",
+      "folder": "geo-jainism/site/journey",
+      "publicId": "geo-jainism/site/journey/02-temple-hill",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 69635,
+      "width": 615,
+      "height": 412,
+      "sha256": "2864d072b04af3ff5ffbff174a63784fc0d5ccc6887208b25709142d6cf405e9",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Courses / JourneyCarousel via landingData.js (JOURNEY_SLIDES, COURSES)",
+          "file": "src/constants/landingData.js"
+        },
+        {
+          "page": "/about",
+          "component": "About gallery + cards",
+          "file": "src/pages/About/index.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJTemples",
+          "file": "src/pages/TamilJain/sections/TJTemples.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Multi-page asset (3 referencing components)."
+    },
+    {
+      "id": "site/journey/03-team-group",
+      "localPath": "public/journey/03-team-group.jpg",
+      "folder": "geo-jainism/site/journey",
+      "publicId": "geo-jainism/site/journey/03-team-group",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 444448,
+      "width": 2036,
+      "height": 1357,
+      "sha256": "77a41a979ed6ab2a32e353552de65e15b6b1d0ad239bcf9493a0f040c7e84fd8",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Courses / JourneyCarousel via landingData.js (JOURNEY_SLIDES)",
+          "file": "src/constants/landingData.js"
+        },
+        {
+          "page": "/about",
+          "component": "About gallery",
+          "file": "src/pages/About/index.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJSilence",
+          "file": "src/pages/TamilJain/sections/TJSilence.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Multi-page asset (3 referencing components)."
+    },
+    {
+      "id": "site/journey/04-hillside",
+      "localPath": "public/journey/04-hillside.jpg",
+      "folder": "geo-jainism/site/journey",
+      "publicId": "geo-jainism/site/journey/04-hillside",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 571636,
+      "width": 1639,
+      "height": 1229,
+      "sha256": "53dcb77a0a0529e615b999355a9d86aaa68f6a31daa881c46f411955da0f64d7",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Courses / JourneyCarousel via landingData.js (JOURNEY_SLIDES, COURSES)",
+          "file": "src/constants/landingData.js"
+        },
+        {
+          "page": "/about",
+          "component": "About gallery + <img>",
+          "file": "src/pages/About/index.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJSilence",
+          "file": "src/pages/TamilJain/sections/TJSilence.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJTemples",
+          "file": "src/pages/TamilJain/sections/TJTemples.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Multi-page asset (4 referencing components)."
+    },
+    {
+      "id": "site/journey/05-rock-carvings",
+      "localPath": "public/journey/05-rock-carvings.jpg",
+      "folder": "geo-jainism/site/journey",
+      "publicId": "geo-jainism/site/journey/05-rock-carvings",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 465061,
+      "width": 1639,
+      "height": 1093,
+      "sha256": "b4296e251ff6b7302b22b1990f1ff2d9e1d2c24e933dd75110615bf42f4a48a5",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Courses / JourneyCarousel via landingData.js (JOURNEY_SLIDES, COURSES)",
+          "file": "src/constants/landingData.js"
+        },
+        {
+          "page": "/about",
+          "component": "About gallery + cards",
+          "file": "src/pages/About/index.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJTemples",
+          "file": "src/pages/TamilJain/sections/TJTemples.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJTimeline",
+          "file": "src/pages/TamilJain/sections/TJTimeline.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJRestored",
+          "file": "src/pages/TamilJain/sections/TJRestored.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Multi-page asset (5 referencing components)."
+    },
+    {
+      "id": "site/journey/06-sheep-site",
+      "localPath": "public/journey/06-sheep-site.jpg",
+      "folder": "geo-jainism/site/journey",
+      "publicId": "geo-jainism/site/journey/06-sheep-site",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 751750,
+      "width": 1872,
+      "height": 1248,
+      "sha256": "b2188b9ac3f83e48e127498b34783ca9dcddad08d57d703f5a360867ae860588",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Courses / JourneyCarousel via landingData.js (JOURNEY_SLIDES)",
+          "file": "src/constants/landingData.js"
+        },
+        {
+          "page": "/about",
+          "component": "About gallery + <img>",
+          "file": "src/pages/About/index.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Multi-page asset (2 referencing components)."
+    },
+    {
+      "id": "site/journey/07-stone-carving",
+      "localPath": "public/journey/07-stone-carving.jpg",
+      "folder": "geo-jainism/site/journey",
+      "publicId": "geo-jainism/site/journey/07-stone-carving",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 333176,
+      "width": 1639,
+      "height": 1093,
+      "sha256": "da00bfbb93d0ee0946f8461fe85d52549854b542aa8aeaa69f6760ba8b9d3cb1",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Courses / JourneyCarousel via landingData.js (JOURNEY_SLIDES, COURSES)",
+          "file": "src/constants/landingData.js"
+        },
+        {
+          "page": "/about",
+          "component": "About gallery",
+          "file": "src/pages/About/index.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJTemples",
+          "file": "src/pages/TamilJain/sections/TJTemples.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJTimeline",
+          "file": "src/pages/TamilJain/sections/TJTimeline.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Multi-page asset (4 referencing components)."
+    },
+    {
+      "id": "site/journey/08-community",
+      "localPath": "public/journey/08-community.jpg",
+      "folder": "geo-jainism/site/journey",
+      "publicId": "geo-jainism/site/journey/08-community",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 296193,
+      "width": 2048,
+      "height": 1366,
+      "sha256": "cdb90f4a5bdf3cc7cf40abcea3760243afe9a2718eb57f843cb418815da47fa4",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Courses / JourneyCarousel via landingData.js (JOURNEY_SLIDES)",
+          "file": "src/constants/landingData.js"
+        },
+        {
+          "page": "/about",
+          "component": "About gallery + <img>",
+          "file": "src/pages/About/index.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJRani",
+          "file": "src/pages/TamilJain/sections/TJRani.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJSilence",
+          "file": "src/pages/TamilJain/sections/TJSilence.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Multi-page asset (4 referencing components)."
+    },
+    {
+      "id": "site/journey/09-temple",
+      "localPath": "public/journey/09-temple.jpg",
+      "folder": "geo-jainism/site/journey",
+      "publicId": "geo-jainism/site/journey/09-temple",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 166179,
+      "width": 729,
+      "height": 1093,
+      "sha256": "7ed1a166992adb65a3e55998fdcbe335b35c5f2dbe9e536bc3e3dd032055bc6a",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Courses / JourneyCarousel via landingData.js (JOURNEY_SLIDES, COURSES)",
+          "file": "src/constants/landingData.js"
+        },
+        {
+          "page": "/about",
+          "component": "About gallery + CSS background",
+          "file": "src/pages/About/index.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJSilence",
+          "file": "src/pages/TamilJain/sections/TJSilence.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJTemples",
+          "file": "src/pages/TamilJain/sections/TJTemples.jsx"
+        },
+        {
+          "page": "/tamil-jain",
+          "component": "TJTimeline",
+          "file": "src/pages/TamilJain/sections/TJTimeline.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Multi-page asset (5 referencing components)."
+    },
+    {
+      "id": "site/journey/10-founder-research",
+      "localPath": "public/journey/10-founder-research.jpg",
+      "folder": "geo-jainism/site/journey",
+      "publicId": "geo-jainism/site/journey/10-founder-research",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 258067,
+      "width": 1639,
+      "height": 1093,
+      "sha256": "ab9c4cc43cea3d1a4f79077d7a7c34076709422064e5a72e9ed3a2204553839e",
+      "category": "content-photo",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/",
+          "component": "Courses / JourneyCarousel via landingData.js (JOURNEY_SLIDES)",
+          "file": "src/constants/landingData.js"
+        },
+        {
+          "page": "/about",
+          "component": "About founder section",
+          "file": "src/pages/About/index.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Multi-page asset (2 referencing components)."
+    },
+    {
+      "id": "site/about/hero-tirthankara",
+      "localPath": "public/hero-tirthankara.jpg",
+      "folder": "geo-jainism/site/about",
+      "publicId": "geo-jainism/site/about/hero-tirthankara",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 411696,
+      "width": 1639,
+      "height": 1093,
+      "sha256": "a1fffe5f1e8750d64e993f6c8459c36cfd4d985423e60e9d7d644e3488050a15",
+      "category": "page-hero",
+      "loadingPriority": "lcp",
+      "usage": [
+        {
+          "page": "/about",
+          "component": "About hero (inline-style CSS background, parallax)",
+          "file": "src/pages/About/index.jsx"
+        },
+        {
+          "page": "all routes (SEO)",
+          "component": "DEFAULT_OG_IMAGE (og:image / twitter:image)",
+          "file": "src/config/seo.js"
+        }
+      ],
+      "transformationStrategy": "css-background",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Also the default social share image. If switched to Cloudinary, use a fixed 1200x630 crop (c_fill,g_auto,w_1200,h_630,f_jpg) - social crawlers do not negotiate f_auto reliably."
+    },
+    {
+      "id": "site/auth/login-bg",
+      "localPath": "public/login-bg.png",
+      "folder": "geo-jainism/site/auth",
+      "publicId": "geo-jainism/site/auth/login-bg",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 1457588,
+      "width": 1536,
+      "height": 1024,
+      "hasAlpha": false,
+      "sha256": "6b583bd642460bac636e22576e570f2d358f43ea7fec5ed381f9ad258acebd2a",
+      "category": "page-hero",
+      "loadingPriority": "above-fold",
+      "usage": [
+        {
+          "page": "/admin/login, /admin/register",
+          "component": "AuthShell side panel background",
+          "file": "src/features/auth/AuthShell.jsx"
+        }
+      ],
+      "transformationStrategy": "fullbleed-cover",
+      "preprocess": [
+        "optional: opaque photographic PNG - upload as-is (f_auto handles delivery) or convert to high-quality JPEG to save storage"
+      ],
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/hero/temple",
+      "localPath": "public/tamiljain/temple.png",
+      "folder": "geo-jainism/site/tamil-jain/hero",
+      "publicId": "geo-jainism/site/tamil-jain/hero/temple",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 533267,
+      "width": 1024,
+      "height": 1536,
+      "hasAlpha": true,
+      "sha256": "77070b38caa41a497446c28cc049bbe75f3251b0258a13ad01adb694c012a0fa",
+      "category": "tamil-jain-hero",
+      "loadingPriority": "lcp",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJCinematicHero (temple, eager + fetchpriority=high)",
+          "file": "src/pages/TamilJain/sections/TJCinematicHero.jsx"
+        }
+      ],
+      "transformationStrategy": "hero-lcp-alpha",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/hero/birds",
+      "localPath": "public/tamiljain/birds-new.png",
+      "folder": "geo-jainism/site/tamil-jain/hero",
+      "publicId": "geo-jainism/site/tamil-jain/hero/birds",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 223120,
+      "width": 1365,
+      "height": 2048,
+      "hasAlpha": true,
+      "sha256": "bd64deaeecb355137ac5c6e36ea5559696d2c4f238966fccb573a353ef480f8d",
+      "category": "tamil-jain-hero",
+      "loadingPriority": "above-fold",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJCinematicHero (4 <img> tags: desktop L/R + mobile L/R)",
+          "file": "src/pages/TamilJain/sections/TJCinematicHero.jsx"
+        }
+      ],
+      "transformationStrategy": "decorative-alpha",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/hero/sky",
+      "localPath": "public/tamiljain/sky-new.png",
+      "folder": "geo-jainism/site/tamil-jain/hero",
+      "publicId": "geo-jainism/site/tamil-jain/hero/sky",
+      "resourceType": "image",
+      "format": "png",
+      "bytes": 199516,
+      "width": 1363,
+      "height": 2048,
+      "hasAlpha": true,
+      "sha256": "b81c5b2f46d307a6075bc8e338e3fbb7bfae76bb70f6aa98daf6c3ce562c14b7",
+      "category": "tamil-jain-hero",
+      "loadingPriority": "above-fold",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": ".tj-sky-full background (450vh scroll root)",
+          "file": "src/styles/tamil-jain.css"
+        }
+      ],
+      "transformationStrategy": "css-background",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/century-wall/01-stone-beds",
+      "localPath": "public/journey-throught-time/1 stone beds.jpg",
+      "folder": "geo-jainism/site/tamil-jain/century-wall",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/01-stone-beds",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 735962,
+      "width": 8192,
+      "height": 5464,
+      "sha256": "a6f58f1d97b67772a48c3f32113b0d298491ab38da43ede374d3042d9229cfef",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJCenturyWall (era carousel background)",
+          "file": "src/pages/TamilJain/sections/TJCenturyWall.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": [
+        "downscale: 8192x5464 = 44.8 MP exceeds 25 MP; resize long edge to 4096 px before upload"
+      ],
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/century-wall/02-hills-become-monasteries",
+      "localPath": "public/journey-throught-time/2 hills become monastries.jpg",
+      "folder": "geo-jainism/site/tamil-jain/century-wall",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/02-hills-become-monasteries",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 765232,
+      "width": 4096,
+      "height": 3072,
+      "sha256": "4e399682839acaaa9e1b2f57de3e4b256bad7f0b02e4777bbf1458ebda230fe4",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJCenturyWall (era carousel background)",
+          "file": "src/pages/TamilJain/sections/TJCenturyWall.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/century-wall/03-shaping-classical-tamil-culture",
+      "localPath": "public/journey-throught-time/3 shaping classic tamil culture.jpg",
+      "folder": "geo-jainism/site/tamil-jain/century-wall",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/03-shaping-classical-tamil-culture",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 571455,
+      "width": 8192,
+      "height": 5464,
+      "sha256": "c049e78f2dc246a9db6cb65853105a789399a9c4be6d5de68dbd178dff571a6a",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJCenturyWall (era carousel background)",
+          "file": "src/pages/TamilJain/sections/TJCenturyWall.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": [
+        "downscale: 8192x5464 = 44.8 MP exceeds 25 MP; resize long edge to 4096 px before upload"
+      ],
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/century-wall/04-artistic-brilliance",
+      "localPath": "public/journey-throught-time/4 artistic brilliance.jpg",
+      "folder": "geo-jainism/site/tamil-jain/century-wall",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/04-artistic-brilliance",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 1518319,
+      "width": 1872,
+      "height": 1248,
+      "sha256": "c28afbfdedb3622be618e505d2cc99075cbea6435f7fdfa507a58abe4baf6d51",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJCenturyWall (era carousel background)",
+          "file": "src/pages/TamilJain/sections/TJCenturyWall.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/century-wall/05-preservation-through-change",
+      "localPath": "public/journey-throught-time/5 preservation through change.jpg",
+      "folder": "geo-jainism/site/tamil-jain/century-wall",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/05-preservation-through-change",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 838918,
+      "width": 8192,
+      "height": 5464,
+      "sha256": "98993eb238b8a033620a5e89c6839e0dd1dd86428431c57be55d26e11517bb70",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJCenturyWall (era carousel background)",
+          "file": "src/pages/TamilJain/sections/TJCenturyWall.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": [
+        "downscale: 8192x5464 = 44.8 MP exceeds 25 MP; resize long edge to 4096 px before upload"
+      ],
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/century-wall/06-rediscovered",
+      "localPath": "public/journey-throught-time/6- rediscovered .jpg",
+      "folder": "geo-jainism/site/tamil-jain/century-wall",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/06-rediscovered",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 777243,
+      "width": 5088,
+      "height": 3392,
+      "sha256": "1e13acd8a288a81fda7ccc00bcff6b989cd67dda856a7924fa8305170c0f696a",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJCenturyWall (era carousel background)",
+          "file": "src/pages/TamilJain/sections/TJCenturyWall.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/century-wall/07-continuous-history",
+      "localPath": "public/journey-throught-time/7 .jpg",
+      "folder": "geo-jainism/site/tamil-jain/century-wall",
+      "publicId": "geo-jainism/site/tamil-jain/century-wall/07-continuous-history",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 763114,
+      "width": 8192,
+      "height": 5464,
+      "sha256": "b200e412e1b66b025cb21d188de69ab91cda10bffe002403c665bd12c7f47436",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJCenturyWall (era carousel background)",
+          "file": "src/pages/TamilJain/sections/TJCenturyWall.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": [
+        "downscale: 8192x5464 = 44.8 MP exceeds 25 MP; resize long edge to 4096 px before upload"
+      ],
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/hills/samanar-malai",
+      "localPath": "public/TJpageCarousel/Samanar Malai.JPG",
+      "folder": "geo-jainism/site/tamil-jain/hills",
+      "publicId": "geo-jainism/site/tamil-jain/hills/samanar-malai",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 553502,
+      "width": 2048,
+      "height": 1366,
+      "sha256": "cc871d65e316b96d510709a4a8fb63e0466c3172de75adb3205ad97045a8ff83",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJThingalur (hill carousel background + thumbnail strip)",
+          "file": "src/pages/TamilJain/sections/TJThingalur.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/hills/vallimalai",
+      "localPath": "public/TJpageCarousel/Vallimalai.jpg",
+      "folder": "geo-jainism/site/tamil-jain/hills",
+      "publicId": "geo-jainism/site/tamil-jain/hills/vallimalai",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 458607,
+      "width": 2048,
+      "height": 1364,
+      "sha256": "64b3e988fbc24e0843f4b40a53fa2e31953cb1fe41ff01d4471c4db7d68aad20",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJThingalur (hill carousel background + thumbnail strip)",
+          "file": "src/pages/TamilJain/sections/TJThingalur.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/hills/thirunathar-kundru",
+      "localPath": "public/TJpageCarousel/THIRUNATHAR KUNDRU .JPG",
+      "folder": "geo-jainism/site/tamil-jain/hills",
+      "publicId": "geo-jainism/site/tamil-jain/hills/thirunathar-kundru",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 671709,
+      "width": 2048,
+      "height": 1366,
+      "sha256": "43b7aaa2f2a761cee4324fe68062f8ec9cc3434f37ae001827cec268e09babd2",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJThingalur (hill carousel background + thumbnail strip)",
+          "file": "src/pages/TamilJain/sections/TJThingalur.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/hills/azhgarmalai",
+      "localPath": "public/TJpageCarousel/Azhgarmalai.JPG",
+      "folder": "geo-jainism/site/tamil-jain/hills",
+      "publicId": "geo-jainism/site/tamil-jain/hills/azhgarmalai",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 826345,
+      "width": 2048,
+      "height": 1536,
+      "sha256": "01efb266b27f1cbb3ff22d9383ddc9446c7904ef0d237e0368efcd7ac9c7eeff",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJThingalur (hill carousel background + thumbnail strip)",
+          "file": "src/pages/TamilJain/sections/TJThingalur.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/hills/kalagumalai",
+      "localPath": "public/TJpageCarousel/Kalagumalai.JPG",
+      "folder": "geo-jainism/site/tamil-jain/hills",
+      "publicId": "geo-jainism/site/tamil-jain/hills/kalagumalai",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 836255,
+      "width": 2048,
+      "height": 1536,
+      "sha256": "eb321846ee3edad0402a3f902dd09d6139182ae22651252c14bb39560349c0d4",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJThingalur (hill carousel background + thumbnail strip)",
+          "file": "src/pages/TamilJain/sections/TJThingalur.jsx"
+        }
+      ],
+      "transformationStrategy": "carousel-fullbleed",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "site/tamil-jain/inscriptions/tamil-brahmi",
+      "localPath": "src/assets/images/Inscription/TAMIL-BRAHMI .jpg",
+      "folder": "geo-jainism/site/tamil-jain/inscriptions",
+      "publicId": "geo-jainism/site/tamil-jain/inscriptions/tamil-brahmi",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 743482,
+      "width": 8192,
+      "height": 5464,
+      "sha256": "fd74148c738832b3a0f27ed15a60a5872e416ebd0e4876955c7768bd3ad6ba8b",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJInscriptions (script cards)",
+          "file": "src/pages/TamilJain/sections/TJInscriptions.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": [
+        "downscale: 8192x5464 = 44.8 MP exceeds 25 MP; resize long edge to 4096 px before upload"
+      ],
+      "duplicateOf": null,
+      "notes": "Vite-imported. Byte-identical copy in public/Inscription/ is unused and excluded."
+    },
+    {
+      "id": "site/tamil-jain/inscriptions/vatteluttu",
+      "localPath": "src/assets/images/Inscription/Vatteluttu.jpg",
+      "folder": "geo-jainism/site/tamil-jain/inscriptions",
+      "publicId": "geo-jainism/site/tamil-jain/inscriptions/vatteluttu",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 734094,
+      "width": 5088,
+      "height": 3392,
+      "sha256": "ecd0362f3fd6a3f55e2c4747fcf7f196a4bf9cf3d0a1a116e5e8a9e1e7c0b1b7",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJInscriptions (script cards)",
+          "file": "src/pages/TamilJain/sections/TJInscriptions.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Vite-imported. Byte-identical copy in public/Inscription/ is unused and excluded."
+    },
+    {
+      "id": "site/tamil-jain/inscriptions/grantha",
+      "localPath": "src/assets/images/Inscription/Granth.jpg",
+      "folder": "geo-jainism/site/tamil-jain/inscriptions",
+      "publicId": "geo-jainism/site/tamil-jain/inscriptions/grantha",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 794075,
+      "width": 2048,
+      "height": 1365,
+      "sha256": "cba2ec3ce15588ec2a94a4a7125bb8e5f73dc8da8fa25e9cff06169bcbf4428c",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJInscriptions (script cards)",
+          "file": "src/pages/TamilJain/sections/TJInscriptions.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Vite-imported. Byte-identical copy in public/Inscription/ is unused and excluded."
+    },
+    {
+      "id": "site/tamil-jain/shayanika",
+      "localPath": "src/assets/images/Shayanika/TJPage Shayanika.jpg",
+      "folder": "geo-jainism/site/tamil-jain",
+      "publicId": "geo-jainism/site/tamil-jain/shayanika",
+      "resourceType": "image",
+      "format": "jpg",
+      "bytes": 739113,
+      "width": 8192,
+      "height": 5464,
+      "sha256": "7a8ba76b451516bc5c5b36531f923c823c334c844a017db7532450e27592bc24",
+      "category": "tamil-jain-content",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/tamil-jain",
+          "component": "TJJainBeds (stone-bed illustration)",
+          "file": "src/pages/TamilJain/sections/TJJainBeds.jsx"
+        }
+      ],
+      "transformationStrategy": "content-responsive",
+      "preprocess": [
+        "downscale: 8192x5464 = 44.8 MP exceeds 25 MP; resize long edge to 4096 px before upload"
+      ],
+      "duplicateOf": null,
+      "notes": "Vite-imported."
+    },
+    {
+      "id": "shop/products/tamil-jain-heritage-field-atlas-1",
+      "localPath": "public/shop-assets/products/tamil-jain-heritage-field-atlas-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/tamil-jain-heritage-field-atlas-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 88520,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "c06e53617b92c22fac87f61e7400df0aba8fda29f2c91c72593a6040e577a8cf",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/tamil-jain-heritage-field-atlas-2",
+      "localPath": "public/shop-assets/products/tamil-jain-heritage-field-atlas-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/tamil-jain-heritage-field-atlas-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 116080,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "fe2c0ed48e59b87148e5fbc46e74325b372b38142fee967d01f250baff5b8cd0",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/tamil-jain-heritage-field-atlas-3",
+      "localPath": "public/shop-assets/products/tamil-jain-heritage-field-atlas-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/tamil-jain-heritage-field-atlas-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 106512,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "f73129542d4cdb86be9ac5657d8b56dacb7b2ef939ecc41226460f4c8d0b5a78",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/tattvartha-sutra-annotated-1",
+      "localPath": "public/shop-assets/products/tattvartha-sutra-annotated-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/tattvartha-sutra-annotated-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 66568,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "a71918ab0de87d1d993f9f8aeab3935e88e5b37fa0d3e26553938c32fda40806",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/tattvartha-sutra-annotated-2",
+      "localPath": "public/shop-assets/products/tattvartha-sutra-annotated-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/tattvartha-sutra-annotated-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 56366,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "3cd37d52cc4e3d7cec96eac3e9c29e60636da3c0ad3b6d080b22c0c069d24012",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/tattvartha-sutra-annotated-3",
+      "localPath": "public/shop-assets/products/tattvartha-sutra-annotated-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/tattvartha-sutra-annotated-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 58644,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "633b87115865765bde39e76931e10dd98bb3a061f7d689eea6577ae36ade67ce",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/naladiyar-verses-of-wisdom-1",
+      "localPath": "public/shop-assets/products/naladiyar-verses-of-wisdom-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/naladiyar-verses-of-wisdom-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 59866,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "6102c9d9aa9a79f15697aea4178dfe477f8118aa55953e72311e7aa424518abd",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/naladiyar-verses-of-wisdom-2",
+      "localPath": "public/shop-assets/products/naladiyar-verses-of-wisdom-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/naladiyar-verses-of-wisdom-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 45966,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "0f04767b66cd5573fb8a33347efd185f851d73d0d56c929c34dd4f1a0cb64542",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/naladiyar-verses-of-wisdom-3",
+      "localPath": "public/shop-assets/products/naladiyar-verses-of-wisdom-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/naladiyar-verses-of-wisdom-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 46848,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "6a6070db5e8592df3c030a88c9b0bfd915031a6dc13401ac8dad5c3007dae84f",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/kalpasutra-miniature-print-1",
+      "localPath": "public/shop-assets/products/kalpasutra-miniature-print-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/kalpasutra-miniature-print-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 102440,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "27b2b2b80960bb07410c5efe1f01836c8478c2ed39b2827ff72fe3e0a46f458a",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/kalpasutra-miniature-print-2",
+      "localPath": "public/shop-assets/products/kalpasutra-miniature-print-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/kalpasutra-miniature-print-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 160486,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "e112aac4d108968d30b6224e344edeff7b8eff3c40b6eb6f1e561ef02b5f3832",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/kalpasutra-miniature-print-3",
+      "localPath": "public/shop-assets/products/kalpasutra-miniature-print-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/kalpasutra-miniature-print-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 151448,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "81beaa6d1dda08568bc1bafce60265ab4f1b31ac764dfacd126a30cf8c6aee82",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/adhai-dvipa-cosmology-print-1",
+      "localPath": "public/shop-assets/products/adhai-dvipa-cosmology-print-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/adhai-dvipa-cosmology-print-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 225394,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "3588dfb1ce3b560864ac1968ee3ce767308dbe1fdd5aa4df75534b6c4a7c666a",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/adhai-dvipa-cosmology-print-2",
+      "localPath": "public/shop-assets/products/adhai-dvipa-cosmology-print-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/adhai-dvipa-cosmology-print-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 830964,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "397d33543ae52bd11c86a23bb39f0f32a5f90787aca287e144802af5266b6684",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/adhai-dvipa-cosmology-print-3",
+      "localPath": "public/shop-assets/products/adhai-dvipa-cosmology-print-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/adhai-dvipa-cosmology-print-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 183598,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "2c794c19e435f654291712e404c87e204bbe5f88a376ba85496c85a466322aa9",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/palitana-dawn-photograph-1",
+      "localPath": "public/shop-assets/products/palitana-dawn-photograph-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/palitana-dawn-photograph-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 113210,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "eb5f7536c949b92f49afda9f2b97b498d2102664bd33803aff8c307f060e5589",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/palitana-dawn-photograph-2",
+      "localPath": "public/shop-assets/products/palitana-dawn-photograph-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/palitana-dawn-photograph-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 239352,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "da3dc7fdbbbfe964ec71fe62b28a52eafbccdcdd75fca3d6b5743448c45b2adb",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/palitana-dawn-photograph-3",
+      "localPath": "public/shop-assets/products/palitana-dawn-photograph-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/palitana-dawn-photograph-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 255960,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "45be6673c6988dc58cbfedfb45985848d2967af3d796e74dd3691b3096a83ccb",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/brass-akhand-diya-1",
+      "localPath": "public/shop-assets/products/brass-akhand-diya-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/brass-akhand-diya-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 140070,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "d819a79b5b8a9dd8ba95511c8b0416cec8c6c5762888f54f954d7d55563066b9",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/brass-akhand-diya-2",
+      "localPath": "public/shop-assets/products/brass-akhand-diya-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/brass-akhand-diya-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 98238,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "f0faa4017b44652bb939c602f6f63763379d19b77fd444acbc44cce8cbcbb062",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/brass-akhand-diya-3",
+      "localPath": "public/shop-assets/products/brass-akhand-diya-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/brass-akhand-diya-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 120554,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "98c259394249c0a0040cbb49496fd74635ef92bc779441f32a8aae916a8118be",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/sandalwood-mala-108-1",
+      "localPath": "public/shop-assets/products/sandalwood-mala-108-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/sandalwood-mala-108-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 101700,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "4f5be886e74cf583226ade44053dd8e750ac0c010eb298e4bb72d2c86d746591",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/sandalwood-mala-108-2",
+      "localPath": "public/shop-assets/products/sandalwood-mala-108-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/sandalwood-mala-108-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 60700,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "8f0a60af1b655a43340a58b765182bfa70ea674aba1098cd00082eea1a24958e",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/sandalwood-mala-108-3",
+      "localPath": "public/shop-assets/products/sandalwood-mala-108-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/sandalwood-mala-108-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 58550,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "60f7f056a365854f367dd3d30429af260e81880504ef82d300f5bbde84320af5",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/chandan-kesar-dhoop-1",
+      "localPath": "public/shop-assets/products/chandan-kesar-dhoop-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/chandan-kesar-dhoop-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 127816,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "c5f6a097c87a65c798c40848234e8872711726fed8d182f17a890926380b0163",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/chandan-kesar-dhoop-2",
+      "localPath": "public/shop-assets/products/chandan-kesar-dhoop-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/chandan-kesar-dhoop-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 64350,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "f80d681ff2932655a0a6fb455b0d84793771c85a8b8398bceccf6e4bcb99ac86",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/chandan-kesar-dhoop-3",
+      "localPath": "public/shop-assets/products/chandan-kesar-dhoop-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/chandan-kesar-dhoop-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 80130,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "4891636121fec5c63acd696699a005909dce4eb846af538f39f7994129e30b8c",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/pierced-brass-dhoop-box-1",
+      "localPath": "public/shop-assets/products/pierced-brass-dhoop-box-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/pierced-brass-dhoop-box-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 186944,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "7f0c747c54947577c8a937740d0ca5af99839fb0a04f9e6270c61da86343183f",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/pierced-brass-dhoop-box-2",
+      "localPath": "public/shop-assets/products/pierced-brass-dhoop-box-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/pierced-brass-dhoop-box-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 237186,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "abcd63f42145314c6cbd4e0ad4a7def2ece7da1634507c1ea1df119ffbf4c3b5",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/pierced-brass-dhoop-box-3",
+      "localPath": "public/shop-assets/products/pierced-brass-dhoop-box-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/pierced-brass-dhoop-box-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 194454,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "af88bca7d5fa712d2aeff220af24b170ba67cbe75cc863f3374d522d64408465",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/temple-border-table-runner-1",
+      "localPath": "public/shop-assets/products/temple-border-table-runner-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/temple-border-table-runner-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 106384,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "2aeef1741cce2e7cbfca59decd5af8d0048d120707995588d230f4080302184e",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/temple-border-table-runner-2",
+      "localPath": "public/shop-assets/products/temple-border-table-runner-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/temple-border-table-runner-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 217406,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "6e127dd0f482f122b3d43bd48e0cef91491b289dfef8545b846ec6cc4affd494",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/temple-border-table-runner-3",
+      "localPath": "public/shop-assets/products/temple-border-table-runner-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/temple-border-table-runner-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 66598,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "0394ee4ad98585a751f35816eceeee215319e6e8c5d0978804521220a965e908",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/hammered-copper-bottle-1",
+      "localPath": "public/shop-assets/products/hammered-copper-bottle-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/hammered-copper-bottle-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 215134,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "6ed19443e66a0c3d440e90258359e79c7b5c8bdc0affad93d348ff3c3f294515",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/hammered-copper-bottle-2",
+      "localPath": "public/shop-assets/products/hammered-copper-bottle-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/hammered-copper-bottle-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 105586,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "db5561152ce21621dbbd1c71e8be84336d402ceeb767c24b6c9f2a9227d88fb8",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/hammered-copper-bottle-3",
+      "localPath": "public/shop-assets/products/hammered-copper-bottle-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/hammered-copper-bottle-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 140710,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "03cbe367d319217739105c2e32a36fe52a34b7d65e163fe999d20107c399dc2d",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/undyed-khadi-stole-1",
+      "localPath": "public/shop-assets/products/undyed-khadi-stole-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/undyed-khadi-stole-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 43136,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "047f2e48e1f60d330b736e07e20c2784a7bd89a503bff0079617015e458c7760",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/undyed-khadi-stole-2",
+      "localPath": "public/shop-assets/products/undyed-khadi-stole-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/undyed-khadi-stole-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 163764,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "e1d52b90b386cdef13c7c7fdaaa3f6fcee24bada77f08077636fbc65a754c96c",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/undyed-khadi-stole-3",
+      "localPath": "public/shop-assets/products/undyed-khadi-stole-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/undyed-khadi-stole-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 17886,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "806a20c49d972073ac957e7158e7a9932fa22fe95cd9f9df002a238fe013e5b7",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/ajrakh-block-print-scarf-1",
+      "localPath": "public/shop-assets/products/ajrakh-block-print-scarf-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/ajrakh-block-print-scarf-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 126616,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "4f3651c4195f5589e81a13d9d11832f49dfea0996ddf33989d48ff3a92664ef1",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/ajrakh-block-print-scarf-2",
+      "localPath": "public/shop-assets/products/ajrakh-block-print-scarf-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/ajrakh-block-print-scarf-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 86516,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "f4de5a03686b63680c481bd1c3b13216a65624bae05e1386e84f3990106dbfe6",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/ajrakh-block-print-scarf-3",
+      "localPath": "public/shop-assets/products/ajrakh-block-print-scarf-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/ajrakh-block-print-scarf-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 119192,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "916af0fcf10edb1f7369b581033c44872dba311bf165b98da6cdbe78e2a13745",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/madhubani-painted-silk-stole-1",
+      "localPath": "public/shop-assets/products/madhubani-painted-silk-stole-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/madhubani-painted-silk-stole-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 939874,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "880eddfdb505682b1fddcb4593021a5eb34a3b34ccc63d22bb30f2aba4714380",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/madhubani-painted-silk-stole-2",
+      "localPath": "public/shop-assets/products/madhubani-painted-silk-stole-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/madhubani-painted-silk-stole-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 711286,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "6907fc20bbad86bcee9cbe4b994576540d22fdb93e8ce7b52a95c133bfbf8cb0",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/madhubani-painted-silk-stole-3",
+      "localPath": "public/shop-assets/products/madhubani-painted-silk-stole-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/madhubani-painted-silk-stole-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 562694,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "8393c18dcb089744a8be870b0b305d277200c154ab99df7d42283d1b31362a20",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/seated-tirthankara-bronze-1",
+      "localPath": "public/shop-assets/products/seated-tirthankara-bronze-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/seated-tirthankara-bronze-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 133074,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "712ad2fc6aab44a3f772f3afc7aca0f50bc75a497315697507ffba29d7d54835",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/seated-tirthankara-bronze-2",
+      "localPath": "public/shop-assets/products/seated-tirthankara-bronze-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/seated-tirthankara-bronze-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 118028,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "01bc215907b741391887f21f82caa14d67baeb910aa7e594467aa1d1adf38cbb",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/seated-tirthankara-bronze-3",
+      "localPath": "public/shop-assets/products/seated-tirthankara-bronze-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/seated-tirthankara-bronze-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 207216,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "55ad108a2392e5199b9894917c626d55cdaed179c5b970297780e44760f2f82c",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/brahmi-inscription-rubbing-1",
+      "localPath": "public/shop-assets/products/brahmi-inscription-rubbing-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/brahmi-inscription-rubbing-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 48852,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "31ed7a349550d00d7005cec210af14eda8c25a4a85d776fda6c848ae13bf0c43",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/brahmi-inscription-rubbing-2",
+      "localPath": "public/shop-assets/products/brahmi-inscription-rubbing-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/brahmi-inscription-rubbing-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 143648,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "4009380a3c75d327366a2505b77a0cb6fad2e2d9a6c83b1ef1c3bf8083f5e7c6",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/brahmi-inscription-rubbing-3",
+      "localPath": "public/shop-assets/products/brahmi-inscription-rubbing-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/brahmi-inscription-rubbing-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 75102,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "d09a1d65774b5019cc1cd7039457dc53874ed1912ece174c0efc7b3112f459b1",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/ranakpur-pillar-miniature-1",
+      "localPath": "public/shop-assets/products/ranakpur-pillar-miniature-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/ranakpur-pillar-miniature-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 169526,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "b8d523a9d792e5dc55311c90afd2e1be31269c48b4bc2ba6e9c71615d71076a3",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/ranakpur-pillar-miniature-2",
+      "localPath": "public/shop-assets/products/ranakpur-pillar-miniature-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/ranakpur-pillar-miniature-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 373142,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "8f6fc8f5b07f63b0e5382a812f000e9b0cbcb8ea471b190274d98ead0c11192c",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/ranakpur-pillar-miniature-3",
+      "localPath": "public/shop-assets/products/ranakpur-pillar-miniature-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/ranakpur-pillar-miniature-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 160114,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "f829ebf702e7c9bbd550cae67ce7173e15f4cef795a8fc5c5f00adbdf9d05cbc",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/ancient-scripts-flashcards-1",
+      "localPath": "public/shop-assets/products/ancient-scripts-flashcards-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/ancient-scripts-flashcards-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 60924,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "ca109b2ab1a2f58a58fa786437d1706cf39586b1f606f1613d9b45775a7d6022",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/ancient-scripts-flashcards-2",
+      "localPath": "public/shop-assets/products/ancient-scripts-flashcards-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/ancient-scripts-flashcards-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 43902,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "4b2cac9868d18b971bc007d3faf58f221c2bb1afe6225f6d04b553c1d2f123d9",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/ancient-scripts-flashcards-3",
+      "localPath": "public/shop-assets/products/ancient-scripts-flashcards-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/ancient-scripts-flashcards-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 50406,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "cb3fafcee850bacbe40d14f5241b404b31b068c683d9c6f2d5f0cee7cf752bb7",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/jain-heritage-sites-wall-map-1",
+      "localPath": "public/shop-assets/products/jain-heritage-sites-wall-map-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/jain-heritage-sites-wall-map-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 53156,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "72424d186b3e289abc95a8ef30501357a03a0183ec8c2847d53915a703ee32c8",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/jain-heritage-sites-wall-map-2",
+      "localPath": "public/shop-assets/products/jain-heritage-sites-wall-map-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/jain-heritage-sites-wall-map-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 46394,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "06318188a6f4161348cb94a81ed525b982ca2a1fec125d2ebb1976868294fdc1",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/jain-heritage-sites-wall-map-3",
+      "localPath": "public/shop-assets/products/jain-heritage-sites-wall-map-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/jain-heritage-sites-wall-map-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 37122,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "d5822347dc78aa1e08cc5fef0ccb8b31c9f7658c447a92dbf53f999a6147fdc1",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/anekantavada-workbook-1",
+      "localPath": "public/shop-assets/products/anekantavada-workbook-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/anekantavada-workbook-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 60482,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "249476e9c54e55e71a696267bb9fa37f6383922a6e534ea7d3e01f735bc865fc",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/anekantavada-workbook-2",
+      "localPath": "public/shop-assets/products/anekantavada-workbook-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/anekantavada-workbook-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 39890,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "ce09652bd2b9bf7f1e4cec0605ce11742939f717aae9fcb19b0b0ce89ae8ca99",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/anekantavada-workbook-3",
+      "localPath": "public/shop-assets/products/anekantavada-workbook-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/anekantavada-workbook-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 39542,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "f43f9d9dba526f8aec4deee51723705be9665b6ac3ba41a678dd7316a92bb5dc",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/heritage-postcard-set-1",
+      "localPath": "public/shop-assets/products/heritage-postcard-set-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/heritage-postcard-set-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 111290,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "135a94b18a7500b6edac1b19b38118fd5befd9e99f4a7c834c7d12588e8239d0",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/heritage-postcard-set-2",
+      "localPath": "public/shop-assets/products/heritage-postcard-set-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/heritage-postcard-set-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 55984,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "b3866e3c874c537ee4941b947a3fd2fd5ed18254ecabdaf247e35f8236dc09a8",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/heritage-postcard-set-3",
+      "localPath": "public/shop-assets/products/heritage-postcard-set-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/heritage-postcard-set-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 394120,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "ba3bcd18118e0519003805f45f8b16a4063a1eef09c73f30af32446e4325123a",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/diwali-gift-hamper-1",
+      "localPath": "public/shop-assets/products/diwali-gift-hamper-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/diwali-gift-hamper-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 289242,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "47edd1b8d4ab440a0c4838b74e11c7450e3a543b00e24171320606be295c3fca",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/diwali-gift-hamper-2",
+      "localPath": "public/shop-assets/products/diwali-gift-hamper-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/diwali-gift-hamper-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 64190,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "9cd4f81c624b901b7672c62ae7573158a2eea8ace90c34cb06426ebe419b7fa2",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/diwali-gift-hamper-3",
+      "localPath": "public/shop-assets/products/diwali-gift-hamper-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/diwali-gift-hamper-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 52240,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "a42b7e67c7823d95202a09f26144b6404f3335f406574754c29422f701ad554e",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/lotus-brass-bookmark-1",
+      "localPath": "public/shop-assets/products/lotus-brass-bookmark-1.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/lotus-brass-bookmark-1",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 58018,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "8540c13d7b8285f7802d79ab86bc0c4d1ca1f9c4c56a172503f0bf38f4e7bcd1",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "ShopImage cards, product Gallery (main + thumbs), SearchOverlay, Cart",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/lotus-brass-bookmark-2",
+      "localPath": "public/shop-assets/products/lotus-brass-bookmark-2.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/lotus-brass-bookmark-2",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 21484,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "3f37b456c3e6de942e14209d14602cf413d91d7b73e001cc6b9e32a7502b5e0e",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/products/lotus-brass-bookmark-3",
+      "localPath": "public/shop-assets/products/lotus-brass-bookmark-3.webp",
+      "folder": "geo-jainism/shop/products",
+      "publicId": "geo-jainism/shop/products/lotus-brass-bookmark-3",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 47002,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "887e51738a08ff737cbea9923d03a9b7f9245ab2bbdb4470590366a910af2a36",
+      "category": "shop-product",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/*",
+          "component": "Product Gallery (ProductDetails)",
+          "file": "src/pages/Shop/data/products.js imgs(slug) -> src/pages/Shop/data/media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Key-based: products/<slug>-<n>. Shop data is a dummy catalogue (see products.js header)."
+    },
+    {
+      "id": "shop/categories/cat-books-literature",
+      "localPath": "public/shop-assets/cat-books-literature.webp",
+      "folder": "geo-jainism/shop/categories",
+      "publicId": "geo-jainism/shop/categories/cat-books-literature",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 88312,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "f186985ee9e18e87db7f319e3661517884afc6cf9e1637727b02e15193065515",
+      "category": "shop-category",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "Category tiles (ShopImage)",
+          "file": "src/pages/Shop/data/categories.js -> media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "shop/categories/cat-art-paintings",
+      "localPath": "public/shop-assets/cat-art-paintings.webp",
+      "folder": "geo-jainism/shop/categories",
+      "publicId": "geo-jainism/shop/categories/cat-art-paintings",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 281142,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "fc7be4ae2fa5696a7b1df7f2b62f3ba8575e3c2dbe3f6f73fe6ea8c997ec9db3",
+      "category": "shop-category",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "Category tiles (ShopImage)",
+          "file": "src/pages/Shop/data/categories.js -> media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "shop/categories/cat-spiritual-devotional",
+      "localPath": "public/shop-assets/cat-spiritual-devotional.webp",
+      "folder": "geo-jainism/shop/categories",
+      "publicId": "geo-jainism/shop/categories/cat-spiritual-devotional",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 140070,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "d819a79b5b8a9dd8ba95511c8b0416cec8c6c5762888f54f954d7d55563066b9",
+      "category": "shop-category",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "Category tiles (ShopImage)",
+          "file": "src/pages/Shop/data/categories.js -> media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": "geo-jainism/shop/products/brass-akhand-diya-1",
+      "notes": null
+    },
+    {
+      "id": "shop/categories/cat-home-lifestyle",
+      "localPath": "public/shop-assets/cat-home-lifestyle.webp",
+      "folder": "geo-jainism/shop/categories",
+      "publicId": "geo-jainism/shop/categories/cat-home-lifestyle",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 186944,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "7f0c747c54947577c8a937740d0ca5af99839fb0a04f9e6270c61da86343183f",
+      "category": "shop-category",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "Category tiles (ShopImage)",
+          "file": "src/pages/Shop/data/categories.js -> media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": "geo-jainism/shop/products/pierced-brass-dhoop-box-1",
+      "notes": null
+    },
+    {
+      "id": "shop/categories/cat-clothing-accessories",
+      "localPath": "public/shop-assets/cat-clothing-accessories.webp",
+      "folder": "geo-jainism/shop/categories",
+      "publicId": "geo-jainism/shop/categories/cat-clothing-accessories",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 138324,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "ab2a5280f39159fbafd0f31439002f2a21fb4133c1fb8d4e065faea7be004e73",
+      "category": "shop-category",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "Category tiles (ShopImage)",
+          "file": "src/pages/Shop/data/categories.js -> media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "shop/categories/cat-heritage-collectibles",
+      "localPath": "public/shop-assets/cat-heritage-collectibles.webp",
+      "folder": "geo-jainism/shop/categories",
+      "publicId": "geo-jainism/shop/categories/cat-heritage-collectibles",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 466776,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "1252e6fbb425996734af9cf14d3de32b80dd684bae1f4b8abc7513a092078fbe",
+      "category": "shop-category",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "Category tiles (ShopImage)",
+          "file": "src/pages/Shop/data/categories.js -> media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "shop/categories/cat-educational",
+      "localPath": "public/shop-assets/cat-educational.webp",
+      "folder": "geo-jainism/shop/categories",
+      "publicId": "geo-jainism/shop/categories/cat-educational",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 612502,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "ec6c4392c9f8a1b895683e5bd41316d391d64f5c45e73c555f3f10e05295411d",
+      "category": "shop-category",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "Category tiles (ShopImage)",
+          "file": "src/pages/Shop/data/categories.js -> media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "shop/categories/cat-gifts-souvenirs",
+      "localPath": "public/shop-assets/cat-gifts-souvenirs.webp",
+      "folder": "geo-jainism/shop/categories",
+      "publicId": "geo-jainism/shop/categories/cat-gifts-souvenirs",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 111290,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "135a94b18a7500b6edac1b19b38118fd5befd9e99f4a7c834c7d12588e8239d0",
+      "category": "shop-category",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "Category tiles (ShopImage)",
+          "file": "src/pages/Shop/data/categories.js -> media.js"
+        }
+      ],
+      "transformationStrategy": "shop-product",
+      "preprocess": null,
+      "duplicateOf": "geo-jainism/shop/products/heritage-postcard-set-1",
+      "notes": null
+    },
+    {
+      "id": "shop/editorial/hero-main",
+      "localPath": "public/shop-assets/hero-main.webp",
+      "folder": "geo-jainism/shop/editorial",
+      "publicId": "geo-jainism/shop/editorial/hero-main",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 413768,
+      "width": 1600,
+      "height": 1067,
+      "hasAlpha": false,
+      "sha256": "b61fabb566927e145b51ca051f623bf32b19c273505c37e567b8b1f61c67dde3",
+      "category": "shop-editorial",
+      "loadingPriority": "lcp",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "ShopHome hero (srcSet + fetchPriority=high)",
+          "file": "src/pages/Shop/pages/ShopHome.jsx (EDITORIAL in media.js)"
+        }
+      ],
+      "transformationStrategy": "hero-lcp",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "shop/editorial/hero-detail",
+      "localPath": "public/shop-assets/hero-detail.webp",
+      "folder": "geo-jainism/shop/editorial",
+      "publicId": "geo-jainism/shop/editorial/hero-detail",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 135380,
+      "width": 1280,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "9f0932e606ec2abc89d490bacb561fd37522a46b05f259c6bf30561166a02b63",
+      "category": "shop-editorial",
+      "loadingPriority": "above-fold",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "ShopHome hero inset (ShopImage small, eager)",
+          "file": "src/pages/Shop/pages/ShopHome.jsx (EDITORIAL in media.js)"
+        }
+      ],
+      "transformationStrategy": "shop-editorial",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "shop/editorial/story-hills",
+      "localPath": "public/shop-assets/story-hills.webp",
+      "folder": "geo-jainism/shop/editorial",
+      "publicId": "geo-jainism/shop/editorial/story-hills",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 255410,
+      "width": 1600,
+      "height": 1100,
+      "hasAlpha": false,
+      "sha256": "1b6a21bdeab3ce4947ce1d194afe5ef419d9b19a4ad8cd875feaf8cb58e293f7",
+      "category": "shop-editorial",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "ShopHome story block A",
+          "file": "src/pages/Shop/pages/ShopHome.jsx (EDITORIAL in media.js)"
+        }
+      ],
+      "transformationStrategy": "shop-editorial",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "shop/editorial/story-inscription",
+      "localPath": "public/shop-assets/story-inscription.webp",
+      "folder": "geo-jainism/shop/editorial",
+      "publicId": "geo-jainism/shop/editorial/story-inscription",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 144576,
+      "width": 1600,
+      "height": 1100,
+      "hasAlpha": false,
+      "sha256": "e76dc2c4ddc87b375cd867e47e9a1fe9999a4c6fc54a8843f22810e9a8bc799b",
+      "category": "shop-editorial",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop",
+          "component": "ShopHome story block B (ShopImage small)",
+          "file": "src/pages/Shop/pages/ShopHome.jsx (EDITORIAL in media.js)"
+        }
+      ],
+      "transformationStrategy": "shop-editorial",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "shop/covers/anekantavada-workbook",
+      "localPath": "public/shop-assets/covers/anekantavada-workbook.webp",
+      "folder": "geo-jainism/shop/covers",
+      "publicId": "geo-jainism/shop/covers/anekantavada-workbook",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 24500,
+      "width": 900,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "cdbeebe9937e655b365e6e7702adc3ec88ed1df28b85b6b85da79574d596c3a4",
+      "category": "shop-3d-texture",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/product/:slug",
+          "component": "ProductStage3D Book cover texture",
+          "file": "src/pages/Shop/pages/ProductDetails.jsx -> src/pages/Shop/components/three/ProductStage3D.jsx"
+        }
+      ],
+      "transformationStrategy": "webgl-texture",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Loaded as a three.js texture - Cloudinary response must be CORS-enabled; verify in testing."
+    },
+    {
+      "id": "shop/covers/naladiyar-verses-of-wisdom",
+      "localPath": "public/shop-assets/covers/naladiyar-verses-of-wisdom.webp",
+      "folder": "geo-jainism/shop/covers",
+      "publicId": "geo-jainism/shop/covers/naladiyar-verses-of-wisdom",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 23362,
+      "width": 900,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "b4493e4616a3abc1bf0846eeebb2f0576bf66637819fe615c9c2d58ba969aa59",
+      "category": "shop-3d-texture",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/product/:slug",
+          "component": "ProductStage3D Book cover texture",
+          "file": "src/pages/Shop/pages/ProductDetails.jsx -> src/pages/Shop/components/three/ProductStage3D.jsx"
+        }
+      ],
+      "transformationStrategy": "webgl-texture",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Loaded as a three.js texture - Cloudinary response must be CORS-enabled; verify in testing."
+    },
+    {
+      "id": "shop/covers/tamil-jain-heritage-field-atlas",
+      "localPath": "public/shop-assets/covers/tamil-jain-heritage-field-atlas.webp",
+      "folder": "geo-jainism/shop/covers",
+      "publicId": "geo-jainism/shop/covers/tamil-jain-heritage-field-atlas",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 56838,
+      "width": 900,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "12cc72fe6ac951eb52990648c66ccbe46bcb9db97391674937d21c6350057d6a",
+      "category": "shop-3d-texture",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/product/:slug",
+          "component": "ProductStage3D Book cover texture",
+          "file": "src/pages/Shop/pages/ProductDetails.jsx -> src/pages/Shop/components/three/ProductStage3D.jsx"
+        }
+      ],
+      "transformationStrategy": "webgl-texture",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Loaded as a three.js texture - Cloudinary response must be CORS-enabled; verify in testing."
+    },
+    {
+      "id": "shop/covers/tattvartha-sutra-annotated",
+      "localPath": "public/shop-assets/covers/tattvartha-sutra-annotated.webp",
+      "folder": "geo-jainism/shop/covers",
+      "publicId": "geo-jainism/shop/covers/tattvartha-sutra-annotated",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 31056,
+      "width": 900,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "fb281baaad79c3d4c24079af62e79a3526fb24e1200df0e1ddee4b94877a6529",
+      "category": "shop-3d-texture",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/product/:slug",
+          "component": "ProductStage3D Book cover texture",
+          "file": "src/pages/Shop/pages/ProductDetails.jsx -> src/pages/Shop/components/three/ProductStage3D.jsx"
+        }
+      ],
+      "transformationStrategy": "webgl-texture",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Loaded as a three.js texture - Cloudinary response must be CORS-enabled; verify in testing."
+    },
+    {
+      "id": "shop/art/adhai-dvipa-cosmology-print",
+      "localPath": "public/shop-assets/art/adhai-dvipa-cosmology-print.webp",
+      "folder": "geo-jainism/shop/art",
+      "publicId": "geo-jainism/shop/art/adhai-dvipa-cosmology-print",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 841706,
+      "width": 1585,
+      "height": 1600,
+      "hasAlpha": false,
+      "sha256": "7d20d9974c47672e4af18b071d4a982507a58c34875adf0c1dab11fbfdb97675",
+      "category": "shop-3d-texture",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/product/:slug",
+          "component": "ProductStage3D Frame artwork texture",
+          "file": "src/pages/Shop/pages/ProductDetails.jsx -> src/pages/Shop/components/three/ProductStage3D.jsx"
+        }
+      ],
+      "transformationStrategy": "webgl-texture",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Loaded as a three.js texture - Cloudinary response must be CORS-enabled; verify in testing."
+    },
+    {
+      "id": "shop/art/brahmi-inscription-rubbing",
+      "localPath": "public/shop-assets/art/brahmi-inscription-rubbing.webp",
+      "folder": "geo-jainism/shop/art",
+      "publicId": "geo-jainism/shop/art/brahmi-inscription-rubbing",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 76352,
+      "width": 1600,
+      "height": 1067,
+      "hasAlpha": false,
+      "sha256": "7cff0520a00358ac4beda404286ae19185771c1ada070f335a958cc9c5559ac6",
+      "category": "shop-3d-texture",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/product/:slug",
+          "component": "ProductStage3D Frame artwork texture",
+          "file": "src/pages/Shop/pages/ProductDetails.jsx -> src/pages/Shop/components/three/ProductStage3D.jsx"
+        }
+      ],
+      "transformationStrategy": "webgl-texture",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Loaded as a three.js texture - Cloudinary response must be CORS-enabled; verify in testing."
+    },
+    {
+      "id": "shop/art/kalpasutra-miniature-print",
+      "localPath": "public/shop-assets/art/kalpasutra-miniature-print.webp",
+      "folder": "geo-jainism/shop/art",
+      "publicId": "geo-jainism/shop/art/kalpasutra-miniature-print",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 196852,
+      "width": 1600,
+      "height": 641,
+      "hasAlpha": false,
+      "sha256": "d5a5af776b4b69d750d86987cb1312edd7251a239c82560c515b5c7df75f35e1",
+      "category": "shop-3d-texture",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/product/:slug",
+          "component": "ProductStage3D Frame artwork texture",
+          "file": "src/pages/Shop/pages/ProductDetails.jsx -> src/pages/Shop/components/three/ProductStage3D.jsx"
+        }
+      ],
+      "transformationStrategy": "webgl-texture",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Loaded as a three.js texture - Cloudinary response must be CORS-enabled; verify in testing."
+    },
+    {
+      "id": "shop/art/palitana-dawn-photograph",
+      "localPath": "public/shop-assets/art/palitana-dawn-photograph.webp",
+      "folder": "geo-jainism/shop/art",
+      "publicId": "geo-jainism/shop/art/palitana-dawn-photograph",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 262708,
+      "width": 1600,
+      "height": 1122,
+      "hasAlpha": false,
+      "sha256": "b78e8edbc3ff6703508e554a2ee0420d9248dd0a072851732f4672823ea901ca",
+      "category": "shop-3d-texture",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/shop/product/:slug",
+          "component": "ProductStage3D Frame artwork texture",
+          "file": "src/pages/Shop/pages/ProductDetails.jsx -> src/pages/Shop/components/three/ProductStage3D.jsx"
+        }
+      ],
+      "transformationStrategy": "webgl-texture",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Loaded as a three.js texture - Cloudinary response must be CORS-enabled; verify in testing."
+    },
+    {
+      "id": "virasat/images/vs-dilwara",
+      "localPath": "public/virasat/images/vs-dilwara.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-dilwara",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 414736,
+      "width": 1600,
+      "height": 1067,
+      "hasAlpha": false,
+      "sha256": "d2548db28fb5b93a7694e6cd5e9bca149968d50d0337f4b860766e0e87b6285f",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Contact section background",
+          "file": "src/pages/Virasat/sections/Contact.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-01",
+      "localPath": "public/virasat/images/vs-event-01.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-01",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 342058,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "adc0d6f4aeef0aa8f866a719355308d9f746142630fc3f319f9a04b8ce39e0a4",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "About section",
+          "file": "src/pages/Virasat/sections/About.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-02",
+      "localPath": "public/virasat/images/vs-event-02.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-02",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 50348,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "79115dde09f4eba73e0233ff30c2d440580ef6db446a30d8a93c6df1055f3382",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "About section",
+          "file": "src/pages/Virasat/sections/About.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-03",
+      "localPath": "public/virasat/images/vs-event-03.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-03",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 122966,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "26042d009ed57997033bdfaa0be8ca8ebae6884a9f7203f29caebde8889948a2",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "About section",
+          "file": "src/pages/Virasat/sections/About.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-04",
+      "localPath": "public/virasat/images/vs-event-04.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-04",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 308346,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "ed501d182d3fed13b2f2ff204ec169d45b4424688cf3cb690caf4a6119367089",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Experience section",
+          "file": "src/pages/Virasat/sections/Experience.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-05",
+      "localPath": "public/virasat/images/vs-event-05.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-05",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 420416,
+      "width": 1920,
+      "height": 1080,
+      "hasAlpha": false,
+      "sha256": "19a2d10f693429a391fc2176a0f3b7adfbd7bfc2826a4271e6c498da2efb1a65",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Experience section",
+          "file": "src/pages/Virasat/sections/Experience.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-06",
+      "localPath": "public/virasat/images/vs-event-06.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-06",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 57322,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "5407c5e8227b4c6acad91fed875f02e0ca1f35c35fe4bda942ca1dffc0b4165f",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Experience section",
+          "file": "src/pages/Virasat/sections/Experience.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-08",
+      "localPath": "public/virasat/images/vs-event-08.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-08",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 561288,
+      "width": 1920,
+      "height": 1440,
+      "hasAlpha": false,
+      "sha256": "c81583e925273d99b4dc656f0bcd578ec0d996403b1c433149c9f85f309f85dd",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Experience section",
+          "file": "src/pages/Virasat/sections/Experience.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-09",
+      "localPath": "public/virasat/images/vs-event-09.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-09",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 160526,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "9106e924dc3cc9d7e76f6b157a78fc135b18d8a37b6351e5e77b659ea74f0ade",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Experience section",
+          "file": "src/pages/Virasat/sections/Experience.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-10",
+      "localPath": "public/virasat/images/vs-event-10.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-10",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 156408,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "9d20a2288b886f6678aa88fd31a39ce57b9ec54202843ae957d771b449ae3b76",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Experience section",
+          "file": "src/pages/Virasat/sections/Experience.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-11",
+      "localPath": "public/virasat/images/vs-event-11.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-11",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 76498,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "78cb1a76ff811da57f0f37ccfea4458526daf76f347a18477c08d62d9ba0cd39",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Experience section",
+          "file": "src/pages/Virasat/sections/Experience.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-12",
+      "localPath": "public/virasat/images/vs-event-12.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-12",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 24704,
+      "width": 1280,
+      "height": 719,
+      "hasAlpha": false,
+      "sha256": "6122f85930f217d67d2ba3e2f70fb1b90835d223739384b1ce1d85c7d372e585",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Experience section",
+          "file": "src/pages/Virasat/sections/Experience.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-13",
+      "localPath": "public/virasat/images/vs-event-13.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-13",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 150954,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "d394dd49b32a34235c3e4124177e6c3dc944f3a1c52397c7c2c7ca1312a69e1f",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Experience section",
+          "file": "src/pages/Virasat/sections/Experience.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-event-14",
+      "localPath": "public/virasat/images/vs-event-14.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-event-14",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 416596,
+      "width": 1920,
+      "height": 1080,
+      "hasAlpha": false,
+      "sha256": "48039dcf13a8de8a26543bfd7542b537dcf5046251576aed3e563ad438a1677d",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Experience section",
+          "file": "src/pages/Virasat/sections/Experience.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-gulbarga",
+      "localPath": "public/virasat/images/vs-gulbarga.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-gulbarga",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 115646,
+      "width": 1920,
+      "height": 1281,
+      "hasAlpha": false,
+      "sha256": "ac4ceb70d9c7919dcc172c37472eed789c1ecb522adfea880a9209327dc61473",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "UpcomingShows event card",
+          "file": "src/pages/Virasat/data/events.js -> sections/UpcomingShows.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-kavi-sajal-jain",
+      "localPath": "public/virasat/images/vs-kavi-sajal-jain.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-kavi-sajal-jain",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 109422,
+      "width": 1280,
+      "height": 1920,
+      "hasAlpha": false,
+      "sha256": "5cfac4391c8f7b71bcb3a9f7a1fa26a52f22dcea1cf9fed14d5b6a6a20bdcdf6",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Founder section",
+          "file": "src/pages/Virasat/sections/Founder.jsx"
+        },
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-01",
+      "localPath": "public/virasat/images/vs-moment-01.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-01",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 162370,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "ee2391cdab05616d7580b2bcabaa2638d951c6d37696718f8927873b1adf4276",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-02",
+      "localPath": "public/virasat/images/vs-moment-02.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-02",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 385518,
+      "width": 1920,
+      "height": 1081,
+      "hasAlpha": false,
+      "sha256": "5bc3d6178985b66376a6ba01c5617886dbdbc2b4e3f4d16d128553053528a988",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-03",
+      "localPath": "public/virasat/images/vs-moment-03.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-03",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 44250,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "61a630a262bc8f0ba7f4dca7bd802ba8746ca2a3d03a8a0ca3cf20b0f42e0990",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-05",
+      "localPath": "public/virasat/images/vs-moment-05.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-05",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 209670,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "2924cb4625567eb5d48028b8a8ac163055fd7f943f428565e02aeda8cc363428",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-06",
+      "localPath": "public/virasat/images/vs-moment-06.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-06",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 89750,
+      "width": 1280,
+      "height": 1920,
+      "hasAlpha": false,
+      "sha256": "77b6e5f32d9d2f2f4bbf0caa2399397a60a05f891c2e9dc22d6af11b22c0f00f",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-07",
+      "localPath": "public/virasat/images/vs-moment-07.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-07",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 276308,
+      "width": 1920,
+      "height": 1081,
+      "hasAlpha": false,
+      "sha256": "358727f1934f541e4963b24b6bd63c03f02db711bc091fd1f5ab6aa78d1ac88d",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-08",
+      "localPath": "public/virasat/images/vs-moment-08.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-08",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 157160,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "a6171cbcc2b929cfd4135b415898837e2f543bdddad61a34169fc94ba5e8f1f5",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-09",
+      "localPath": "public/virasat/images/vs-moment-09.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-09",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 23720,
+      "width": 1280,
+      "height": 719,
+      "hasAlpha": false,
+      "sha256": "c2957c14b712d094ccd122242b7e7fc92d89f4f3c60630024d597dc8ac1bd523",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-10",
+      "localPath": "public/virasat/images/vs-moment-10.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-10",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 87590,
+      "width": 1280,
+      "height": 1920,
+      "hasAlpha": false,
+      "sha256": "c5137514d21475eadb9d285430b97c0e8cf88296016371d4e422e81a3c5759dd",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-11",
+      "localPath": "public/virasat/images/vs-moment-11.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-11",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 72250,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "ed3e6b2f2ccf21a8c6647d196eed8ffeade2553a91a3715d6643a9b572ea56ec",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-12",
+      "localPath": "public/virasat/images/vs-moment-12.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-12",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 123646,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "657cfdb8c341ddf8b5d68ed14f647890a7bd9d84656f9f56664b2f89d0831055",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-13",
+      "localPath": "public/virasat/images/vs-moment-13.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-13",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 155592,
+      "width": 1920,
+      "height": 1280,
+      "hasAlpha": false,
+      "sha256": "4e8361d0cf07ca7a5db2a10345127327528e9dd1b214b22a95438916522a1de3",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-14",
+      "localPath": "public/virasat/images/vs-moment-14.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-14",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 109666,
+      "width": 1280,
+      "height": 1920,
+      "hasAlpha": false,
+      "sha256": "cb9dbd7563b7fdd44f88174b1dd0279b466f186ad64a7ba3c27caff347b2e90b",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-15",
+      "localPath": "public/virasat/images/vs-moment-15.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-15",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 23650,
+      "width": 1280,
+      "height": 719,
+      "hasAlpha": false,
+      "sha256": "587d183fabc46b4d752b47f07b18f31eacea38a9e7816c5a791ddae93de6e93e",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-16",
+      "localPath": "public/virasat/images/vs-moment-16.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-16",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 49944,
+      "width": 1280,
+      "height": 1920,
+      "hasAlpha": false,
+      "sha256": "8b0ef4b8aa4daaf5655153e07fab275da156aa9b81cbff516b5a37e84747cc31",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-17",
+      "localPath": "public/virasat/images/vs-moment-17.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-17",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 75476,
+      "width": 1280,
+      "height": 1920,
+      "hasAlpha": false,
+      "sha256": "f9f684a042499a9055426c436b194aa0a890decf3addc91656a4b71f019f653a",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-18",
+      "localPath": "public/virasat/images/vs-moment-18.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-18",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 98814,
+      "width": 1280,
+      "height": 1920,
+      "hasAlpha": false,
+      "sha256": "93955ca8e20d7f36a71fc2c7b412bc34f8cc8b10440df6cc5357e6e54ba5f40a",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-moment-19",
+      "localPath": "public/virasat/images/vs-moment-19.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-moment-19",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 26068,
+      "width": 1280,
+      "height": 719,
+      "hasAlpha": false,
+      "sha256": "2951147a9f4675dd4eec4bcf54557724e6fe88162d6ceb4b229c0931f1a74cdc",
+      "category": "virasat-image",
+      "loadingPriority": "lazy",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Gallery masonry + Lightbox",
+          "file": "src/pages/Virasat/data/gallery.js -> sections/Gallery.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/images/vs-tirthankara",
+      "localPath": "public/virasat/images/vs-tirthankara.webp",
+      "folder": "geo-jainism/virasat/images",
+      "publicId": "geo-jainism/virasat/images/vs-tirthankara",
+      "resourceType": "image",
+      "format": "webp",
+      "bytes": 300846,
+      "width": 1639,
+      "height": 1093,
+      "hasAlpha": false,
+      "sha256": "6ece849a151c9079e35fbc17a90ec3ba705c42451f386431a7264b09de0f5d72",
+      "category": "virasat-image",
+      "loadingPriority": "above-fold",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Hero poster (reduced-motion fallback, srcSet, fetchPriority=high)",
+          "file": "src/pages/Virasat/data/site.js -> sections/Hero.jsx"
+        }
+      ],
+      "transformationStrategy": "virasat-responsive",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": null
+    },
+    {
+      "id": "virasat/video/virasat-hero",
+      "localPath": "public/virasat/videos/virasat-hero.mp4",
+      "folder": "geo-jainism/virasat/video",
+      "publicId": "geo-jainism/virasat/video/virasat-hero",
+      "resourceType": "video",
+      "format": "mp4",
+      "bytes": 13086777,
+      "width": 720,
+      "height": 400,
+      "durationSeconds": 148.1,
+      "codecs": [
+        "avc1",
+        "mp4a"
+      ],
+      "faststart": true,
+      "sha256": "9337179f31478e66961fadff087b8e4e058d6e54f87a5196c51a7e55b0d0e91a",
+      "category": "virasat-video",
+      "loadingPriority": "above-fold",
+      "usage": [
+        {
+          "page": "/virasat",
+          "component": "Hero background loop (<video autoPlay muted loop preload=\"auto\">)",
+          "file": "src/pages/Virasat/sections/Hero.jsx"
+        },
+        {
+          "page": "/virasat",
+          "component": "WebGL portal VideoTexture (crossOrigin=\"anonymous\")",
+          "file": "src/pages/Virasat/components/three/HeritageModel.jsx"
+        },
+        {
+          "page": "/virasat",
+          "component": "FilmModal full performance with sound/controls",
+          "file": "src/pages/Virasat/sections/Hero.jsx"
+        }
+      ],
+      "transformationStrategy": "video-background-and-player",
+      "preprocess": null,
+      "duplicateOf": null,
+      "notes": "Single 148 s file serves both a muted background loop and the full film - see README video section."
+    }
+  ]
+}

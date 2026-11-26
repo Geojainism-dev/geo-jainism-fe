@@ -1,5 +1,3 @@
-import { img, imgSm } from "./site";
-
 /**
  * Upcoming shows.
  *
@@ -24,8 +22,8 @@ export const EVENTS = [
     venue: "Rajmal, Chhota Girnar",
     city: "UP",
     description: "",
-    image: img("vs-gulbarga"),
-    imageSm: imgSm("vs-gulbarga"),
+    /** Virasat image key (see data/site.js). */
+    imageKey: "vs-gulbarga",
     category: "Featured",
     featured: true,
   },

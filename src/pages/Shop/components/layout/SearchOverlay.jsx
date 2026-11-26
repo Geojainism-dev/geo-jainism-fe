@@ -4,7 +4,7 @@ import { ArrowRight, Search } from "lucide-react";
 import { useShop } from "../../store/ShopStore";
 import { ALL_PRODUCTS, queryProducts } from "../../services/catalog";
 import { CATEGORIES } from "../../data/categories";
-import { imgSm } from "../../data/media";
+import { imageProps, SHOP_WIDTHS } from "../../data/media";
 import { formatINR, unitPrice } from "../../services/pricing";
 import Overlay from "../common/Overlay";
 import { useShopT } from "../../i18n";
@@ -80,7 +80,7 @@ export default function SearchOverlay() {
                   {results.map((p) => (
                     <li key={p.id}>
                       <Link to={`/shop/product/${p.slug}`} onClick={close} className="group flex items-center gap-4 py-3">
-                        <img src={imgSm(p.images[0])} alt="" className="h-16 w-[52px] shrink-0 object-cover" />
+                        <img {...imageProps(p.images[0], { widths: SHOP_WIDTHS.thumb, sizes: "52px" })} alt="" className="h-16 w-[52px] shrink-0 object-cover" />
                         <span className="min-w-0 flex-1">
                           <span className="block truncate font-medium group-hover:text-gj-maroon">{p.name}</span>
                           <span className="block truncate text-sm text-gj-brown/60">{p.subtitle}</span>

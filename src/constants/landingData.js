@@ -1,60 +1,61 @@
+// `asset` = stable Cloudinary asset key (manifest id, see src/lib/cloudinary). An unknown key throws; there is no local fallback.
 export const JOURNEY_SLIDES = [
   {
-    img: "/journey/01-rock-sculpture.jpg",
+    asset: "site/journey/01-rock-sculpture",
     num: "Chapter 01 · Research",
     title: "Ancient Rock-Cut Tirthankaras",
     caption: "From the 3rd century BCE, Tamil Brahmi inscriptions and rock-cut sculptures silently bear witness to a flourishing Jain civilisation — the oldest epigraphic heritage of Jainism in India.",
   },
   {
-    img: "/journey/02-temple-hill.jpg",
+    asset: "site/journey/02-temple-hill",
     num: "Chapter 02 · Heritage",
     title: "Forgotten Temples on the Hills",
     caption: "Hilltop shrines scattered across Tamil Nadu — from Madurai to the distant heights of Chithral and Kalugumalai — stood as strongholds of the Jain faith for two millennia.",
   },
   {
-    img: "/journey/03-team-group.jpg",
+    asset: "site/journey/03-team-group",
     num: "Chapter 03 · The Team",
     title: "23 Days in the Field",
     caption: "From 17 December to 8 January the GEO Jainism team trekked to remote locations, reaching sites no camera had reached before — documenting every inscription in 4K.",
   },
   {
-    img: "/journey/04-hillside.jpg",
+    asset: "site/journey/04-hillside",
     num: "Chapter 04 · Journey",
     title: "Fifty Hills. One Mission.",
     caption: "50+ hills climbed across Tamil Nadu to capture Jain cave shelters, rock-cut figures, and hilltop shrines that have silently watched centuries pass.",
   },
   {
-    img: "/journey/05-rock-carvings.jpg",
+    asset: "site/journey/05-rock-carvings",
     num: "Chapter 05 · Discovery",
     title: "Intricate Stone Carvings",
     caption: "Spectacular Jain rock-cut sculptures survive across the landscape — many converted to worship other deities, their original identity slowly being erased.",
   },
   {
-    img: "/journey/06-sheep-site.jpg",
+    asset: "site/journey/06-sheep-site",
     num: "Chapter 06 · Timeless",
     title: "Heritage & Everyday Life",
     caption: "Grazing flocks pass by sacred stones — a quiet reminder of how ancient Jain monuments have become a living part of the Tamil countryside itself.",
   },
   {
-    img: "/journey/07-stone-carving.jpg",
+    asset: "site/journey/07-stone-carving",
     num: "Chapter 07 · Artistry",
     title: "The Artistry of Jain Masters",
     caption: "Complex carvings depicting Tirthankaras, yakshas and celestial attendants — preserved in stone for over a thousand years, largely unknown to the outside world.",
   },
   {
-    img: "/journey/08-community.jpg",
+    asset: "site/journey/08-community",
     num: "Chapter 08 · Community",
     title: "The Elders Who Remember",
     caption: "Only 25,000–35,000 Tamil Jains remain. We interviewed 50+ elders, priests and scholars — sharing the living memory of a fading tradition before it vanishes.",
   },
   {
-    img: "/journey/09-temple.jpg",
+    asset: "site/journey/09-temple",
     num: "Chapter 09 · Heritage",
     title: "Samanakovil, Vijayamangalam",
     caption: "The iconic Digambar Jain temple of Vijayamangalam — one of Tamil Nadu's great surviving Jain heritage centres, standing resilient through centuries of change.",
   },
   {
-    img: "/journey/10-founder-research.jpg",
+    asset: "site/journey/10-founder-research",
     num: "Chapter 10 · Vision",
     title: "On-Field Documentation",
     caption: "Founder Kavi Sajal Jain examines ancient stonework by torchlight — the quiet, painstaking fieldwork at the heart of everything GEO Jainism does.",
@@ -68,7 +69,7 @@ export const COURSES = [
     desc: " Dive deeper into the rich, often-overlooked world of Jain history, literature, and culture — through structured, research-based series crafted by GEO Jainism.",
     // meta: "10 Episodes · 4K",
     cta: "Start Learning",
-    img: "/journey/01-rock-sculpture.jpg",
+    asset: "site/journey/01-rock-sculpture",
   },
   {
     tag: "Literature",
@@ -76,7 +77,7 @@ export const COURSES = [
     desc: "The oldest Tamil text — written by 8,000 Jain monks. Explore Naldiyar, Silappadikaram, Ratnakara, and the literary soul of Tamil Jainism that shaped an entire civilisation.",
     meta: "6 Episodes · Subtitled",
     cta: "Start Learning",
-    img: "/journey/07-stone-carving.jpg",
+    asset: "site/journey/07-stone-carving",
   },
   {
     tag: "Across Borders",
@@ -84,7 +85,7 @@ export const COURSES = [
     desc: "From the Anarkali Jain Temple of Lahore to Rawalpindi's Jain Kanya Pathshala and the abandoned shrines of Multan — a documented journey into erased heritage.",
     meta: "8 Episodes · HD",
     cta: "Explore",
-    img: "/journey/09-temple.jpg",
+    asset: "site/journey/09-temple",
   },
   {
     tag: "10 Wonders",
@@ -92,7 +93,7 @@ export const COURSES = [
     desc: "Ranthambore · Kumbhalgadh · Bijoliya · Chittorgarh · Ladnun — ten architectural marvels of Jain heritage you have never heard of, filmed on location in cinematic 4K.",
     meta: "10 Episodes · 4K",
     cta: "Start Learning",
-    img: "/journey/04-hillside.jpg",
+    asset: "site/journey/04-hillside",
   },
   {
     tag: "Karnataka · Kerala",
@@ -100,7 +101,7 @@ export const COURSES = [
     desc: "From Gulbarga's lost Jain temples to Kerala's near-forgotten Jain past — field research across Karnataka, Andhra Pradesh, Kerala, Telangana and Goa.",
     meta: "7 Episodes · Field",
     cta: "Explore",
-    img: "/journey/02-temple-hill.jpg",
+    asset: "site/journey/02-temple-hill",
   },
   {
     tag: "Queens & Kings",
@@ -108,7 +109,7 @@ export const COURSES = [
     desc: "The untold story of India's longest-reigning Jain queen — a 54-year rule that controlled the global pepper trade and shielded Jain communities for generations.",
     meta: "Feature Episode · 4K",
     cta: "Watch Story",
-    img: "/journey/05-rock-carvings.jpg",
+    asset: "site/journey/05-rock-carvings",
   },
 ];
 
@@ -118,7 +119,7 @@ export const BLOGS = [
     date: "Jan · 2026",
     title: "The Lost Jain Temples of Gulbarga — On Camera for the First Time",
     excerpt: "A 10-minute journey into the forgotten Jain monuments of Karnataka — ancient structures that have waited centuries for the world to notice them. Captured on camera for the very first time.",
-    img: "/journey/09-temple.jpg",
+    asset: "site/journey/09-temple",
     featured: true,
   },
   {
@@ -126,14 +127,14 @@ export const BLOGS = [
     date: "Dec · 2025",
     title: "Naldiyar: 8,000 Jain Monks, One Ancient Tamil Text",
     excerpt: "Inside the Naldiyar — arguably the oldest Tamil scripture, composed by a community of 8,000 Jain monks. A deep dive into its authorship, verses, and lasting influence.",
-    img: "/journey/07-stone-carving.jpg",
+    asset: "site/journey/07-stone-carving",
   },
   {
     cat: "Heritage",
     date: "Nov · 2025",
     title: "Rani Chennabhairadevi: The Pepper Queen of India",
     excerpt: "A 54-year reign, a global pepper trade, and a Jain queen history almost forgot. The extraordinary story of one of India's most powerful yet least-known monarchs.",
-    img: "/journey/05-rock-carvings.jpg",
+    asset: "site/journey/05-rock-carvings",
   },
 ];
 
@@ -142,7 +143,7 @@ export const TIMELINE_ITEMS = [
     eyebrow: "EXPLORE HOW ANCIENT ETHICS SHAPED SOUTH INDIAN CIVILIZATION.",
     title: "Naladiyar",
     body: "A timeless Tamil classic composed of 400 moral verses by Jain monks, teaching wisdom, discipline, humility, and the deeper values of human life.",
-    img: "/Literature-and-legacy/naladiyar_1.png",
+    asset: "site/landing/literature/naladiyar",
     alt: "Naladiyar",
     caption: "Naladiyar Classic"
   },
@@ -150,7 +151,7 @@ export const TIMELINE_ITEMS = [
     eyebrow: "DISCOVER THE LEGACY OF ONE OF INDIA'S OLDEST LITERARY MASTERPIECES.",
     title: "Silappatikaram",
     body: "One of the greatest Tamil epics, narrating the powerful story of Kannagi — a symbol of justice, truth, and devotion. The text offers a vivid glimpse into the culture, trade, cities, and spiritual life of ancient Tamilakam.",
-    img: "/Literature-and-legacy/Shilapattikaram_2.png",
+    asset: "site/landing/literature/shilapattikaram",
     alt: "Silappatikaram",
     caption: "Silappatikaram Epic"
   },
@@ -158,7 +159,7 @@ export const TIMELINE_ITEMS = [
     eyebrow: "STEP INTO A WORLD WHERE LITERATURE MEETS SPIRITUAL WISDOM.",
     title: "Jivaka Chintamani",
     body: "A celebrated Jain Tamil epic blending philosophy, poetry, romance, and spirituality. It reflects the richness of medieval Tamil literature and the influence of Jain thought on art and storytelling.",
-    img: "/Literature-and-legacy/Jeevak Chintamani_3.png",
+    asset: "site/landing/literature/jeevak-chintamani",
     alt: "Jivaka Chintamani",
     caption: "Jeevak Chintamani Epic"
   },
@@ -166,7 +167,7 @@ export const TIMELINE_ITEMS = [
     eyebrow: "EXPLORE THE VOICE THAT CARRIED JAIN PHILOSOPHY ACROSS GENERATIONS.",
     title: "Ratnakaravarni",
     body: "A renowned Kannada Jain poet and scholar known for preserving spiritual traditions through literature. His works beautifully combine devotion, philosophy, and poetic excellence, leaving a lasting mark on Karnataka's literary heritage.",
-    img: "/Literature-and-legacy/ratnakar_4.png",
+    asset: "site/landing/literature/ratnakar",
     alt: "Ratnakaravarni",
     caption: "Ratnakaravarni Poetry"
   },
@@ -174,7 +175,7 @@ export const TIMELINE_ITEMS = [
     eyebrow: "THE UNTOLD STORY OF INDIA'S LONGEST-REIGNING JAIN QUEEN.",
     title: "Rani Chennabhairadevi: The Pepper Queen",
     body: "The fearless ruler of Gerusoppa who led one of the most prosperous kingdoms of the western coast, strengthening trade, culture, and Jain heritage during the 16th century. Remembered as the \"Pepper Queen,\" she became a symbol of power, resilience, and devotion to Jain traditions.",
-    img: "/Literature-and-legacy/ChennaBhairaDevi_5.jpg",
+    asset: "site/landing/literature/chenna-bhaira-devi",
     alt: "Rani Chennabhairadevi",
     caption: "Rani Chennabhairadevi"
   },

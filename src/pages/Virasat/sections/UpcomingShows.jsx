@@ -1,6 +1,21 @@
 import { useRef, useState } from "react";
 import { CalendarDays, Clock, MapPin } from "lucide-react";
 import { upcomingEvents, featuredEvent, eventDate } from "../data/events";
+import { buildSizes, coverSize } from "@/lib/cloudinary";
+import { coverBox, imageProps } from "../data/site";
+
+// Ticket card: 3:4 arch, 62% of the card (max 250px) below 640px, 44% from 640px, a fixed 230px from 768px; the photo is landscape so cover
+// makes it about twice as wide as the arch. Modal: 450px-ish image column (45% of the modal, max 467px) with a ~500px tall photo from
+// 768px; below that a full-width 16:10 box.
+const showCardSizes = coverBox(
+  { sm: "min(250px, (100vw - 90px) * 0.62)", md: "min(250px, (100vw - 146px) * 0.44)", lg: "230px" },
+  { sm: 1.3333, md: 1.3333, lg: 1.3333 },
+);
+const showModalSizes = (aspect) =>
+  buildSizes(
+    [["(max-width: 767px)", coverSize("(100vw - 34px)", "calc((100vw - 34px) * 0.625)", aspect)]],
+    coverSize("min(467px, (100vw - 34px) * 0.45)", "505px", aspect),
+  );
 import { useVirasat } from "../hooks/useSmoothScroll";
 import { gsap, useGsap, revealWords, revealUp } from "../animations/gsapAnimations";
 import SplitWords from "../components/common/SplitWords";
@@ -23,7 +38,7 @@ function EventDetails({ event, open, onClose }) {
     <Modal open={open} onClose={onClose} label={v("vs.detailsLabel", "{{title}} — event details", { title: event.title })}>
       <div className="grid md:grid-cols-[0.9fr_1.1fr]">
         <div className="relative aspect-[16/10] overflow-hidden bg-vr-ink md:aspect-auto md:min-h-[500px]">
-          <img src={event.imageSm} alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <img {...imageProps(event.imageKey, { sizes: showModalSizes })} alt="" className="absolute inset-0 h-full w-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-t from-vr-ink via-vr-ink/30 to-transparent" />
         </div>
         <div className="flex flex-col gap-6 p-7 text-vr-ivory sm:p-10">
@@ -95,7 +110,7 @@ function ShowRow({ event: raw, onDetails }) {
         >
           <span className="relative block aspect-[3/4] overflow-hidden rounded-t-full">
             <img
-              src={event.imageSm}
+              {...imageProps(event.imageKey, { sizes: showCardSizes })}
               alt=""
               className="h-full w-full object-cover transition-transform duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.07]"
               loading="lazy"

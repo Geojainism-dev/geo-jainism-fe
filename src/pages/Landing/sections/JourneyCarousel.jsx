@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { JOURNEY_SLIDES } from "@/constants/landingData";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
 import { useDarkMode } from "@/hooks";
 import { useTranslation } from "react-i18next";
 
@@ -18,6 +19,31 @@ const PARTICLES = Array.from({ length: 32 }, (_, i) => ({
           : i % 4 === 2 ? "0 0 7px rgba(125,175,110,0.85),0 0 15px rgba(125,175,110,0.35)"
           :               "0 0 7px rgba(232,144,159,0.8),0 0 14px rgba(232,144,159,0.35)",
 }));
+
+// ── Cloudinary delivery ───────────────────────────────────────────────────────
+// Each slide is a full-bleed `object-fit: cover` image filling .jc-full (width 100%, height per breakpoint, see the
+// <style> block below), and the active slide is scaled 1.06. With `cover` the rendered width is
+// max(100vw, boxHeight x imageAspect) - NOT 100vw: a landscape photo in a tall phone-sized box is much wider than the
+// viewport. `sizes` encodes that so the browser does not pick a candidate that is too small. The heights below mirror
+// the CSS clamps in this file; keep them in sync if those change.
+const JC_SRC_WIDTH = 1536; // plain `src` for browsers without srcset support (srcset: WIDTH_LADDERS.medium, capped at native width)
+const JC_ACTIVE_SCALE = 1.06;
+const JC_BOX_HEIGHTS = [
+  ["(max-width: 400px)", "clamp(380px, 76vh, 520px)"],
+  ["(max-width: 640px)", "clamp(420px, 78vh, 580px)"],
+  ["(max-width: 900px)", "clamp(460px, 82vh, 720px)"],
+];
+const JC_DEFAULT_HEIGHT = "clamp(520px, 88vh, 900px)";
+const journeySizes = (aspect) =>
+  buildSizes(
+    JC_BOX_HEIGHTS.map(([mq, h]) => [mq, coverSize("100vw", h, aspect, JC_ACTIVE_SCALE)]),
+    coverSize("100vw", JC_DEFAULT_HEIGHT, aspect, JC_ACTIVE_SCALE),
+  );
+
+// Resolved once. An unknown asset key throws (development and production); there is no local fallback.
+const SLIDE_IMAGES = JOURNEY_SLIDES.map((s) =>
+  getImageProps(s.asset, { widths: WIDTH_LADDERS.medium, srcWidth: JC_SRC_WIDTH, sizes: journeySizes }),
+);
 
 const navBtnStyle = {
   width: "50px", height: "50px", borderRadius: "50%",
@@ -246,8 +272,10 @@ const JourneyCarousel = () => {
             const currentTitle = t(`landingData.journey.${i}.title`, s.title);
             return (
               <img
-                key={s.img}
-                src={s.img}
+                key={s.asset}
+                src={SLIDE_IMAGES[i].src}
+                srcSet={SLIDE_IMAGES[i].srcSet}
+                sizes={SLIDE_IMAGES[i].sizes}
                 alt={currentTitle}
                 loading={i === 0 ? "eager" : "lazy"}
                 style={{

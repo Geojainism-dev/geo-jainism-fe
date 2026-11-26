@@ -7,6 +7,14 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { getImageUrl } from "@/lib/cloudinary";
+
+// Hero layers. Temple: 1024px master, rendered about as wide (object-fit: contain), so no resize. Birds: 4 images (two clipped halves for
+// desktop, two for mobile) that all share ONE 960px-wide URL, so the hidden pair never triggers a second download. Sky: the 1363px master as
+// a cover background of the 370vh scroll root (always scaled beyond its width).
+const TEMPLE = getImageUrl("site/tamil-jain/hero/temple");
+const BIRDS = getImageUrl("site/tamil-jain/hero/birds", { width: 960 });
+const SKY = `url('${getImageUrl("site/tamil-jain/hero/sky")}')`;
 
 export default function TJCinematicHero() {
   const containerRef = useRef(null);
@@ -63,7 +71,7 @@ export default function TJCinematicHero() {
       style={{ height: "370vh" }}
     >
       {/* Sky — pans down to reveal evening tones as hero ends */}
-      <motion.div className="tj-sky-full" style={{ scale: scaleBg, backgroundPositionY: skyPositionY }} />
+      <motion.div className="tj-sky-full" style={{ scale: scaleBg, backgroundPositionY: skyPositionY, backgroundImage: SKY }} />
 
       <div className="tj-stage">
 
@@ -73,8 +81,8 @@ export default function TJCinematicHero() {
         {/* Birds — mid-foreground */}
         {!reduced && (
           <motion.div className="tj-birds-layer" style={{ y: yBirds }}>
-            <img className="tj-bird-left"  src="/tamiljain/birds-new.png" alt="" aria-hidden="true" />
-            <img className="tj-bird-right" src="/tamiljain/birds-new.png" alt="" aria-hidden="true" />
+            <img className="tj-bird-left"  src={BIRDS} alt="" aria-hidden="true" />
+            <img className="tj-bird-right" src={BIRDS} alt="" aria-hidden="true" />
           </motion.div>
         )}
 
@@ -90,7 +98,7 @@ export default function TJCinematicHero() {
             }}
           >
             <img
-              src="/tamiljain/temple.png"
+              src={TEMPLE}
               className="tj-temple"
               alt="Majestic Tamil Jain Temple"
               loading="eager"
@@ -108,9 +116,9 @@ export default function TJCinematicHero() {
           <h1 className="tj-hero-title">
             {t("tamilJain.hero.title1")}<br />
             <span className="tj-title-row2">
-              <img className="tj-mob-bird-l" src="/tamiljain/birds-new.png" aria-hidden="true" alt="" />
+              <img className="tj-mob-bird-l" src={BIRDS} aria-hidden="true" alt="" />
               <em>{t("tamilJain.hero.title2")}</em>
-              <img className="tj-mob-bird-r" src="/tamiljain/birds-new.png" aria-hidden="true" alt="" />
+              <img className="tj-mob-bird-r" src={BIRDS} aria-hidden="true" alt="" />
             </span>
           </h1>
           <p className="tj-hero-sub">{t("tamilJain.hero.sub")}</p>

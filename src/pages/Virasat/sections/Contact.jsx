@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Instagram, Mail, MessageCircle } from "lucide-react";
-import { CONTACT, img, whatsappLink, mailLink } from "../data/site";
+import { CONTACT, imageProps, whatsappLink, mailLink } from "../data/site";
 import { useVirasat } from "../hooks/useSmoothScroll";
 import { useGsap, revealWords, revealUp, parallax } from "../animations/gsapAnimations";
 import SplitWords from "../components/common/SplitWords";
@@ -8,6 +8,10 @@ import Button from "../components/common/Button";
 import Ornament from "../components/common/Ornament";
 import EnquiryForm from "../components/common/EnquiryForm";
 import { useVT } from "../i18n";
+
+// Background: w-full and 130% of the section's height (always much taller than wide), so cover scales it to well beyond its 1600px:
+// the largest candidate is always the one that fits. (It is shown at 25% opacity.)
+const CONTACT_BG_SIZES = "max(100vw, 1600px)";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -30,7 +34,7 @@ export default function Contact() {
   return (
     <section id="contact" ref={ref} className="relative overflow-hidden bg-vr-maroon text-vr-ivory">
       <div className="absolute inset-0 overflow-hidden">
-        <img src={img("vs-dilwara")} alt="" className="h-[130%] w-full object-cover opacity-25" data-speed="0.3" loading="lazy" />
+        <img {...imageProps("vs-dilwara", { sizes: CONTACT_BG_SIZES })} alt="" className="h-[130%] w-full object-cover opacity-25" data-speed="0.3" loading="lazy" />
         <div className="absolute inset-0 bg-gradient-to-b from-vr-maroon via-vr-maroon/80 to-vr-burgundy" />
       </div>
 

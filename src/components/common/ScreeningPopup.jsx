@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { getImageProps, WIDTH_LADDERS } from "@/lib/cloudinary";
+
+// Poster: width min(480px, 92vw), at most 88vh tall (object-fit: contain, 1365x2048). It is only rendered once the popup opens.
+const POSTER = getImageProps("site/landing/screening-popup", { widths: WIDTH_LADDERS.medium, sizes: "min(480px, 92vw, calc(88vh * 0.6665))" });
 
 export default function ScreeningPopup({ onDismiss }) {
   const [open, setOpen] = useState(false);
@@ -44,7 +48,7 @@ export default function ScreeningPopup({ onDismiss }) {
         }}
       >
         <img
-          src="/Screening.png"
+          {...POSTER}
           alt="Screening announcement"
           style={{
             display: "block",

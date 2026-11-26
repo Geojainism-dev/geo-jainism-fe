@@ -7,6 +7,7 @@ import { getProducts, queryProducts, PRICE_BOUNDS, SORTS } from "../services/cat
 import { formatINR } from "../services/pricing";
 import { useAsync } from "../hooks/useAsync";
 import { Breadcrumbs, Button, CardSkeleton, EmptyState } from "../components/common/ui";
+import { CARD_SIZES } from "../data/media";
 import ProductCard from "../components/product/ProductCard";
 import Overlay from "../components/common/Overlay";
 import { useShopT } from "../i18n";
@@ -223,7 +224,7 @@ export default function ProductListing() {
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.4, delay: reduce ? 0 : Math.min(i, 8) * 0.03 }}
                     >
-                      <ProductCard product={p} priority={i < 3} />
+                      <ProductCard product={p} priority={i < 3} sizes={CARD_SIZES.listing} />
                     </motion.li>
                   ))}
                 </AnimatePresence>

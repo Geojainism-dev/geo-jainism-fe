@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import ProductCard from "./ProductCard";
+import { CARD_SIZES } from "../../data/media";
 import { useShopT } from "../../i18n";
 
 /** Horizontally scrolling, snap-aligned product showcase with arrow controls. */
@@ -40,7 +41,7 @@ export default function ProductRail({ products, label }) {
       <div ref={ref} onScroll={update} className="gj-rail -mx-5 flex scroll-px-5 gap-6 overflow-x-auto px-5 pb-2 sm:-mx-8 sm:scroll-px-8 sm:px-8 lg:-mx-12 lg:scroll-px-12 lg:px-12" role="list" aria-label={label}>
         {products.map((p) => (
           <div key={p.id} data-rail-item role="listitem" className="w-[72vw] shrink-0 sm:w-[44vw] md:w-[31vw] lg:w-[23vw] xl:w-[19vw]">
-            <ProductCard product={p} />
+            <ProductCard product={p} sizes={CARD_SIZES.rail} />
           </div>
         ))}
       </div>

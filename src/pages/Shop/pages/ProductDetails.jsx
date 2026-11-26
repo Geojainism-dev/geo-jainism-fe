@@ -8,6 +8,7 @@ import { FREE_SHIPPING_FROM, formatINR, unitPrice } from "../services/pricing";
 import { useAsync } from "../hooks/useAsync";
 import { useShop } from "../store/ShopStore";
 import { Breadcrumbs, Button, CardSkeleton, EmptyState, Reveal, SectionHeader, Skeleton } from "../components/common/ui";
+import { coverTextureUrl, artTextureUrl } from "../data/media";
 import Gallery from "../components/product/Gallery";
 import PurchasePanel from "../components/product/PurchasePanel";
 import ProductCard from "../components/product/ProductCard";
@@ -85,7 +86,11 @@ export default function ProductDetails() {
   const stage =
     product.model != null ? (
       <Suspense fallback={<Skeleton className="h-full w-full" />}>
-        <ProductStage3D product={product} cover={`/shop-assets/covers/${product.slug}.webp`} art={`/shop-assets/art/${product.slug}.webp`} />
+        <ProductStage3D
+          product={product}
+          cover={product.model === "book" ? coverTextureUrl(product.slug) : undefined}
+          art={product.model === "frame" ? artTextureUrl(product.slug) : undefined}
+        />
       </Suspense>
     ) : null;
 
