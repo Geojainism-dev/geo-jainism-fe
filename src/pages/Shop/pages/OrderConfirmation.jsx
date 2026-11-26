@@ -92,7 +92,7 @@ export default function OrderConfirmation() {
             {order.items.map((it) => (
               <li key={it.id} className="flex items-center gap-4">
                 <span className="w-14 shrink-0">
-                  <ShopImage k={it.image} small className="aspect-[4/5] overflow-hidden" />
+                  <ShopImage k={it.image} small sizes="56px" className="aspect-[4/5] overflow-hidden" />
                 </span>
                 <span className="min-w-0 flex-1 text-sm">
                   <span className="block truncate">{it.name}</span>

@@ -5,7 +5,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ArrowRight, Leaf, HandHeart, BookOpen } from "lucide-react";
 import { CATEGORIES } from "../data/categories";
-import { EDITORIAL, img, srcSet } from "../data/media";
+import { buildSizes, coverSize } from "@/lib/cloudinary";
+import { CARD_SIZES, EDITORIAL, imageProps } from "../data/media";
 import { getProducts } from "../services/catalog";
 import { useAsync } from "../hooks/useAsync";
 import { Button, CardSkeleton, Reveal, SectionHeader, ShopImage } from "../components/common/ui";
@@ -75,9 +76,7 @@ function Hero() {
           >
             <img
               data-hero-bg
-              src={img(EDITORIAL.hero)}
-              srcSet={srcSet(EDITORIAL.hero)}
-              sizes="(min-width: 1024px) 58vw, 100vw"
+              {...imageProps(EDITORIAL.hero, { sizes: HERO_SIZES })}
               alt={s("home.heroAlt", "Intricately carved marble ceiling of the Dilwara Jain temples")}
               className="absolute inset-0 h-[115%] w-full object-cover"
               fetchPriority="high"
@@ -92,13 +91,43 @@ function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.5, ease }}
           >
-            <ShopImage k={EDITORIAL.heroDetail} small className="aspect-[4/5] overflow-hidden" alt={s("home.insetAlt", "A hand-cast brass oil lamp")} eager />
+            <ShopImage k={EDITORIAL.heroDetail} small sizes={HERO_INSET_SIZES} className="aspect-[4/5] overflow-hidden" alt={s("home.insetAlt", "A hand-cast brass oil lamp")} eager />
           </motion.figure>
         </div>
       </div>
     </section>
   );
 }
+
+/*
+ * Hero `sizes`. The photo is object-fit: cover in a 4:3 box (5:4 from 1024px) and is 115% of the box height, so it renders about
+ * 1.29x (1.38x from 1024px) as wide as the box. The box is the full width minus page padding (40px, 64px from 640px) below 1024px;
+ * from 1024px it is 7 of 12 columns (gap 24px, padding 48px, max 1440px). The inset is 34% of the box minus its 10px borders.
+ */
+const HERO_SIZES = "(min-width: 1024px) calc((min(100vw, 1440px) - 96px) * 0.8047 - 14px), (min-width: 640px) calc((100vw - 64px) * 1.2933), calc((100vw - 40px) * 1.2933)";
+const HERO_INSET_SIZES = "(min-width: 1024px) calc((min(100vw, 1440px) - 96px) * 0.1983 - 24px), (min-width: 640px) calc((100vw - 64px) * 0.34 - 20px), calc((100vw - 40px) * 0.34 - 20px)";
+
+/*
+ * `sizes` for object-fit: cover boxes whose width follows the page grid (container max 1440px, padding 20/32/48px below 640 / 1024 / above).
+ * A cover image renders max(boxWidth, boxHeight x aspect) wide, so the box height is part of the calculation.
+ *   const sm / md / lg  box width below 640px / 640-1023px / from 1024px;  h(width) its height.
+ */
+const coverBox = (w, h, scale = 1) => (aspect) => buildSizes([["(max-width: 639px)", coverSize(w.sm, h.sm(w.sm), aspect, scale)], ["(max-width: 1023px)", coverSize(w.md, h.md(w.md), aspect, scale)]], coverSize(w.lg, h.lg(w.lg), aspect, scale));
+const ratio = (r) => (w) => `calc(${w} * ${r})`;
+
+// Categories: 2 columns (gap 12px, 20px from 640px), 4 from 1024px (gap 20px). 4:5 boxes below 1024px; from 1024px 5:4, and the "tall"
+// cards render 4:5 (measured: their image is 1.25x the column wide). Hover scale 1.06.
+const CAT_W = { sm: "((100vw - 40px - 12px) / 2)", md: "((100vw - 64px - 20px) / 2)", lg: "((min(100vw, 1440px) - 96px - 60px) / 4)" };
+const catBox = (tall) => coverBox(CAT_W, { sm: ratio(1.25), md: ratio(1.25), lg: tall ? ratio(1.25) : ratio(0.8) }, 1.06);
+const CAT_SIZES = { regular: catBox(false), tall: catBox(true) };
+// Story: left column is 6 of 12 (gap 32px) from 1024px, otherwise the full width; 4:3 box. The small inset is 46% of it minus 10px borders.
+const STORY_COL = { sm: "(100vw - 40px)", md: "(100vw - 64px)", lg: "((min(100vw, 1440px) - 96px) / 2 - 16px)" };
+const STORY_MAIN_SIZES = coverBox(STORY_COL, { sm: ratio(0.75), md: ratio(0.75), lg: ratio(0.75) });
+const STORY_INSET_W = { sm: `(${STORY_COL.sm} * 0.46 - 20px)`, md: `(${STORY_COL.md} * 0.46 - 20px)`, lg: `(${STORY_COL.lg} * 0.46 - 20px)` };
+const STORY_INSET_SIZES = coverBox(STORY_INSET_W, { sm: ratio(0.75), md: ratio(0.75), lg: ratio(0.75) });
+// Gift banner: two columns from 1024px (gap 40px), otherwise the full width; 4:3 box.
+const GIFT_COL = { sm: "(100vw - 40px)", md: "(100vw - 64px)", lg: "((min(100vw, 1440px) - 96px - 40px) / 2)" };
+const GIFT_SIZES = coverBox(GIFT_COL, { sm: ratio(0.75), md: ratio(0.75), lg: ratio(0.75) });
 
 /* Staggered 4 × 3 masonry on desktop: tall cards alternate columns so the grid has no holes. */
 const CAT_POS = [
@@ -137,7 +166,7 @@ function Categories() {
                 small={!isTall(i)}
                 className={`${isTall(i) ? "aspect-[4/5] lg:aspect-auto lg:h-full" : "aspect-[4/5] lg:aspect-[5/4]"} overflow-hidden`}
                 imgClassName="transition-transform duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]"
-                sizes="(min-width: 1024px) 25vw, 50vw"
+                sizes={isTall(i) ? CAT_SIZES.tall : CAT_SIZES.regular}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gj-charcoal/75 via-gj-charcoal/10 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-4 text-gj-ivory sm:p-6">
@@ -172,10 +201,10 @@ function Story() {
       <div className="mx-auto grid max-w-[1440px] gap-12 px-5 py-20 sm:px-8 lg:grid-cols-12 lg:gap-8 lg:px-12 lg:py-28">
         <div className="relative lg:col-span-6">
           <Reveal>
-            <ShopImage k={EDITORIAL.storyB} className="aspect-[4/3] overflow-hidden" sizes="(min-width: 1024px) 45vw, 100vw" alt={s("story.altA", "Samanar Malai hill near Madurai, a Jain heritage site")} />
+            <ShopImage k={EDITORIAL.storyB} className="aspect-[4/3] overflow-hidden" sizes={STORY_MAIN_SIZES} alt={s("story.altA", "Samanar Malai hill near Madurai, a Jain heritage site")} />
           </Reveal>
           <Reveal delay={0.15} className="absolute -bottom-10 right-4 w-[46%] border-[10px] border-gj-sand sm:right-10">
-            <ShopImage k={EDITORIAL.storyA} small className="aspect-[4/3] overflow-hidden" alt={s("story.altB", "A Tamil-Brahmi inscription carved in rock")} />
+            <ShopImage k={EDITORIAL.storyA} small sizes={STORY_INSET_SIZES} className="aspect-[4/3] overflow-hidden" alt={s("story.altB", "A Tamil-Brahmi inscription carved in rock")} />
           </Reveal>
         </div>
         <div className="flex flex-col justify-center lg:col-span-5 lg:col-start-8">
@@ -294,7 +323,7 @@ export default function ShopHome() {
             </Button>
           </Reveal>
           <Reveal delay={0.1}>
-            <ShopImage k="cat-gifts-souvenirs" className="aspect-[4/3] overflow-hidden" sizes="(min-width: 1024px) 45vw, 100vw" alt={s("gift.alt", "A fan of heritage postcards")} />
+            <ShopImage k="cat-gifts-souvenirs" className="aspect-[4/3] overflow-hidden" sizes={GIFT_SIZES} alt={s("gift.alt", "A fan of heritage postcards")} />
           </Reveal>
         </div>
       </section>

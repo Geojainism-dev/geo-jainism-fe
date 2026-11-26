@@ -1,6 +1,15 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
+
+// Image frame: a 280px column beside the text (two-column row); at or below 768px it spans the row (100vw - 40px).
+// Image is 180px tall, object-fit: cover.
+const timelineSizes = (a) =>
+  buildSizes(
+    [["(max-width: 768px)", coverSize("calc(100vw - 40px)", "180px", a)]],
+    coverSize("280px", "180px", a),
+  );
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -17,7 +26,7 @@ export default function TJTimeline() {
       era: t("tamilJain.timeline.entries.0.era", "3rd Century BCE"),
       title: t("tamilJain.timeline.entries.0.title", "Tamil Brahmi Inscriptions"),
       body: t("tamilJain.timeline.entries.0.body", "The oldest epigraphic heritage of Jainism in India — carved into cave walls across Tamil Nadu at Pugalur, Sittannavasal, and Mangulam. These inscriptions bear witness to a flourishing Jain civilisation that shaped Tamil language and culture."),
-      img: "/journey/01-rock-sculpture.jpg",
+      asset: "site/journey/01-rock-sculpture",
       caption: t("tamilJain.timeline.entries.0.caption", "Rock shelter inscriptions, Pugalur"),
       side: "right",
     },
@@ -25,7 +34,7 @@ export default function TJTimeline() {
       era: t("tamilJain.timeline.entries.1.era", "1st–3rd Century CE"),
       title: t("tamilJain.timeline.entries.1.title", "Sangam Literature"),
       body: t("tamilJain.timeline.entries.1.body", "Jain monks authored a significant portion of classical Sangam poetry. Works such as Naladiyar (400 moral verses) and Kural drew deeply on Jain philosophy of non-violence, truth, and compassionate living."),
-      img: "/journey/07-stone-carving.jpg",
+      asset: "site/journey/07-stone-carving",
       caption: t("tamilJain.timeline.entries.1.caption", "Ancient Jain manuscript fragment"),
       side: "left",
     },
@@ -33,7 +42,7 @@ export default function TJTimeline() {
       era: t("tamilJain.timeline.entries.2.era", "5th–8th Century CE"),
       title: t("tamilJain.timeline.entries.2.title", "Silappadikaram & the Golden Age"),
       body: t("tamilJain.timeline.entries.2.body", "One of the greatest Tamil epics narrating the story of Kannagi — authored in the Jain literary tradition. Jain temples and cave shrines flourished across Madurai, Kanchipuram, and the Kaveri delta during this period."),
-      img: "/journey/05-rock-carvings.jpg",
+      asset: "site/journey/05-rock-carvings",
       caption: t("tamilJain.timeline.entries.2.caption", "Cave temple carvings, Madurai region"),
       side: "right",
     },
@@ -41,7 +50,7 @@ export default function TJTimeline() {
       era: t("tamilJain.timeline.entries.3.era", "10th–16th Century CE"),
       title: t("tamilJain.timeline.entries.3.title", "Temple Patronage & Decline"),
       body: t("tamilJain.timeline.entries.3.body", "Jain merchants and queens — including Rani Aaiyabba Devi — commissioned grand stone temples. Later centuries brought conversion pressure, yet many communities maintained their faith in remote hill towns and villages."),
-      img: "/journey/09-temple.jpg",
+      asset: "site/journey/09-temple",
       caption: t("tamilJain.timeline.entries.3.caption", "Samanakovil, Vijayamangalam"),
       side: "left",
     },
@@ -105,7 +114,7 @@ export default function TJTimeline() {
                     <p className="tj-tl-body">{e.body}</p>
                   </div>
                   <div className="tj-tl-img-frame">
-                    <img src={e.img} alt={e.caption} loading="lazy" />
+                    <img {...getImageProps(e.asset, { widths: WIDTH_LADDERS.medium, sizes: timelineSizes })} alt={e.caption} loading="lazy" />
                     <div className="tj-tl-caption">{e.caption}</div>
                   </div>
                 </div>

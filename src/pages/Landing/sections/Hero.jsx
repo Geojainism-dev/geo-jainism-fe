@@ -1,6 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import mandalaImg from "@/assets/images/landing/mandala.png";
+import { getImageProps, getImageUrl, WIDTH_LADDERS } from "@/lib/cloudinary";
+import { HERO_IMAGE } from "../heroMedia";
+
+// Decorative mandala: width clamp(280px, 90vw, 1200px); the master is 1024px wide, so the ladder stops there.
+const MANDALA = getImageProps("site/landing/mandala", { widths: WIDTH_LADDERS.medium, sizes: "clamp(280px, 90vw, 1200px)" });
+// Light-theme background of #hero (landing.css reads it through var(--hero-bg-image)): the 1536px master, always cover-scaled beyond its width.
+const HERO_BG = `url('${getImageUrl("site/landing/hero-bg")}')`;
+// The LCP photograph; index.html preloads exactly this srcset (vite.config.js, ../heroMedia.js).
+const HERO_PHOTO = getImageProps(HERO_IMAGE.key, { widths: HERO_IMAGE.widths, sizes: HERO_IMAGE.sizes });
 import { useTranslation } from "react-i18next";
 
 const Hero = ({ heroReady }) => {
@@ -124,9 +132,9 @@ const Hero = ({ heroReady }) => {
   }, []);
 
   return (
-    <section id="hero">
+    <section id="hero" style={{ "--hero-bg-image": HERO_BG }}>
       <div style={{ position: "absolute", inset: 0, overflow: "hidden", pointerEvents: "none" }} aria-hidden="true">
-        <img src={mandalaImg} className="hero-center-mandala" alt="" aria-hidden="true" />
+        <img {...MANDALA} className="hero-center-mandala" alt="" aria-hidden="true" />
       </div>
 
       <div className="hero-left">
@@ -179,7 +187,7 @@ const Hero = ({ heroReady }) => {
           </div>
           <img
             ref={imgRef}
-            src="/mahavira.png"
+            {...HERO_PHOTO}
             alt="Jain Tirthankar"
             className="tirthankar-img"
             onLoad={() => setImgLoaded(true)}

@@ -1,7 +1,11 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, CalendarDays, MapPin, Play, Volume2, VolumeX } from "lucide-react";
-import { BRAND, HERO_MEDIA, srcSet } from "../data/site";
+import { BRAND, coverBox, HERO_MEDIA, imageProps } from "../data/site";
+
+// Reduced-motion poster: cover. From 1024px the frame is 80% of the width and as tall as the hero (min 100svh); below that it is the full
+// width and 66svh tall.
+const posterSizes = coverBox({ sm: "100vw", md: "100vw", lg: "80vw" }, { sm: "66svh", md: "66svh", lg: "100svh" });
 import { featuredEvent, eventDate } from "../data/events";
 import { useVirasat } from "../hooks/useSmoothScroll";
 import { gsap } from "../animations/gsapAnimations";
@@ -45,9 +49,7 @@ function HeroVideo({ reducedMotion, sectionRef, videoRef, holdRef }) {
     <div className="vr-film-frame absolute inset-x-0 top-0 h-[66svh] overflow-hidden lg:inset-y-0 lg:left-auto lg:h-auto lg:w-[80%]">
       {reducedMotion ? (
         <img
-          src={HERO_MEDIA.poster}
-          srcSet={srcSet(HERO_MEDIA.posterKey)}
-          sizes="(min-width: 1024px) 80vw, 100vw"
+          {...imageProps(HERO_MEDIA.posterKey, { sizes: posterSizes })}
           alt=""
           className="vr-film-grade h-full w-full object-cover"
           fetchPriority="high"

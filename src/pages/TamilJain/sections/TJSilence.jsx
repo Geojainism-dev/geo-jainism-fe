@@ -1,12 +1,21 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
+
+// Image cards: 160px tall, object-fit: cover, in a 2-column grid (gap 14px) in the right column of the 1.1fr / 1fr section grid
+// (max 1300px, padding 80px, gap 100px); at or below 768px the section is one column (padding 20px).
+const silenceSizes = (a) =>
+  buildSizes(
+    [["(max-width: 768px)", coverSize("calc((100vw - 54px) / 2)", "160px", a)]],
+    coverSize("calc(((min(100vw, 1300px) - 260px) / 2.1 - 14px) / 2)", "160px", a),
+  );
 
 const IMGS = [
-  "/journey/03-team-group.jpg",
-  "/journey/09-temple.jpg",
-  "/journey/08-community.jpg",
-  "/journey/04-hillside.jpg",
+  "site/journey/03-team-group",
+  "site/journey/09-temple",
+  "site/journey/08-community",
+  "site/journey/04-hillside",
 ];
 
 export default function TJSilence() {
@@ -59,7 +68,7 @@ export default function TJSilence() {
         {/* Right — image grid + stats */}
         <div>
           <div className="tj-silence-grid">
-            {IMGS.map((src, i) => (
+            {IMGS.map((asset, i) => (
               <motion.div
                 key={i}
                 className="tj-silence-img-card"
@@ -67,7 +76,7 @@ export default function TJSilence() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.3 + i * 0.1 }}
               >
-                <img src={src} alt="" loading="lazy" />
+                <img {...getImageProps(asset, { widths: WIDTH_LADDERS.medium, sizes: silenceSizes })} alt="" loading="lazy" />
               </motion.div>
             ))}
           </div>

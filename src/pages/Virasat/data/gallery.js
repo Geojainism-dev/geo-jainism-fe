@@ -5,8 +5,9 @@ import { img, imgSm } from "./site";
  *
  * Virasat event photography supplied by the client.
  *
- * Images live in /public/virasat/images as <key>.webp (≤1920px) and
- * <key>-sm.webp (≤900px). CC-licensed items are credited in CREDITS.json.
+ * Images are Cloudinary assets "virasat/images/<key>" (≤1920px; see data/site.js).
+ * `key` feeds the responsive tiles, `src` is the full-size file for the lightbox,
+ * `thumb` a 900px one. CC-licensed items are credited in CREDITS.json.
  *
  *  type:    "image" | "video"
  *  span:    "tall" | "wide" | "square" — controls the masonry tile shape
@@ -14,6 +15,7 @@ import { img, imgSm } from "./site";
  */
 export const photo = (key, category, caption, span = "square") => ({
   id: key,
+  key,
   type: "image",
   category,
   caption,

@@ -1,6 +1,14 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
+
+// Card image: 275px tall, object-fit: cover; two-column grid (gap 28px, max 1300px, padding 80px), one column at or below 768px.
+const restoredSizes = (a) =>
+  buildSizes(
+    [["(max-width: 768px)", coverSize("calc(100vw - 40px)", "275px", a)]],
+    coverSize("calc((min(100vw, 1300px) - 188px) / 2)", "275px", a),
+  );
 
 export default function TJRestored() {
   const ref    = useRef(null);
@@ -12,7 +20,7 @@ export default function TJRestored() {
       title: t("tamilJain.restored.cards.0.title", "Converted"),
       subtitle: t("tamilJain.restored.cards.0.subtitle", "Restored & Reclaimed"),
       desc: t("tamilJain.restored.cards.0.desc", "Jain temples converted to worship other deities are being systematically documented — their original Tirthankara images, inscriptions, and architectural features preserved through 4K photography before further erasure."),
-      img: "/journey/05-rock-carvings.jpg",
+      asset: "site/journey/05-rock-carvings",
       tag: t("tamilJain.restored.cards.0.tag", "Converted"),
       tagColor: "#C85A6A",
       stat: "10+", statLabel: t("tamilJain.restored.cards.0.statLabel", "Sites Reclaimed"),
@@ -21,7 +29,7 @@ export default function TJRestored() {
       title: t("tamilJain.restored.cards.1.title", "Ancient Inscriptions"),
       subtitle: t("tamilJain.restored.cards.1.subtitle", "Decoded & Preserved"),
       desc: t("tamilJain.restored.cards.1.desc", "Tamil Brahmi and Grantha script inscriptions found across cave walls are being professionally photographed and translated — many for the first time in recorded history."),
-      img: "/journey/01-rock-sculpture.jpg",
+      asset: "site/journey/01-rock-sculpture",
       tag: t("tamilJain.restored.cards.1.tag", "Documentation"),
       tagColor: "#C8881A",
       stat: "450+", statLabel: t("tamilJain.restored.cards.1.statLabel", "Inscriptions Captured"),
@@ -64,7 +72,7 @@ export default function TJRestored() {
               transition={{ duration: 0.8, delay: i * 0.18 }}
             >
               <div className="tj-restored-img-wrap">
-                <img src={c.img} alt={c.title} loading="lazy" />
+                <img {...getImageProps(c.asset, { widths: WIDTH_LADDERS.medium, sizes: restoredSizes })} alt={c.title} loading="lazy" />
                 <div className="tj-restored-img-overlay" />
                 <span style={{
                   position: "absolute", top: "14px", left: "14px",

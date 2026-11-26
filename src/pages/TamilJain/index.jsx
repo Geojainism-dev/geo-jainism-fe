@@ -3,7 +3,10 @@ import Lenis from "@studio-freight/lenis";
 import "@/styles/tamil-jain.css";
 import { useTheme } from "@/hooks/useTheme";
 import { useLenis } from "@/hooks/useLenis";
-import mandalaImg from "@/assets/images/landing/mandala.png";
+import { getImageProps, WIDTH_LADDERS } from "@/lib/cloudinary";
+
+// Fixed decorative mandala: width clamp(320px, 80vw, 920px); the master is 1024px wide.
+const MANDALA = getImageProps("site/landing/mandala", { widths: WIDTH_LADDERS.medium, sizes: "clamp(320px, 80vw, 920px)" });
 
 import { lazy, Suspense } from "react";
 
@@ -50,7 +53,7 @@ export default function TamilJainPage() {
       <Navbar />
 
       {/* Fixed rotating mandala — shown across all sections in dark mode */}
-      <img src={mandalaImg} className="tj-page-mandala" alt="" aria-hidden="true" />
+      <img {...MANDALA} className="tj-page-mandala" alt="" aria-hidden="true" />
 
       {/* Theme toggle */}
       <ThemeToggle theme={theme} toggleTheme={toggleTheme} />

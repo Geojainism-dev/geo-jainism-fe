@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { Minus, Plus, Star } from "lucide-react";
 import { formatINR, unitPrice, discountPct } from "../../services/pricing";
-import { img, imgSm } from "../../data/media";
+import { imageProps, CARD_SIZES, SHOP_WIDTHS } from "../../data/media";
 import { useShopT } from "../../i18n";
 
 /** Button / link with the shop's variants: primary · gold · outline · light. */
@@ -80,15 +80,17 @@ export function QtyStepper({ value, onChange, max = 10, min = 1, size = "md", la
   );
 }
 
-/** Lazy image that fades in once decoded, over a sand placeholder. */
-export function ShopImage({ k, alt = "", className = "", sizes = "(min-width: 1024px) 25vw, 50vw", eager = false, small = false, imgClassName = "" }) {
+/**
+ * Lazy image that fades in once decoded, over a sand placeholder. Served from Cloudinary through data/media.js.
+ * `small` caps the candidates at 640px (what the old "-sm" files were); pass the real rendered width in `sizes`
+ * (the default only suits a four-up grid). Without `small` the full ladder (640 / 1024 / master 1280) is offered.
+ */
+export function ShopImage({ k, alt = "", className = "", sizes = CARD_SIZES.grid4, eager = false, small = false, imgClassName = "" }) {
   const [loaded, setLoaded] = useState(false);
   return (
     <span className={`block bg-gj-sand ${className}`}>
       <img
-        src={small ? imgSm(k) : img(k)}
-        srcSet={small ? undefined : `${imgSm(k)} 640w, ${img(k)} 1600w`}
-        sizes={small ? undefined : sizes}
+        {...imageProps(k, { widths: small ? SHOP_WIDTHS.small : SHOP_WIDTHS.full, sizes })}
         alt={alt}
         loading={eager ? "eager" : "lazy"}
         decoding="async"

@@ -1,12 +1,33 @@
 import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { img, imgSm, srcSet } from "../data/site";
+import { buildSizes, coverSize } from "@/lib/cloudinary";
+import { imageProps, VIRASAT_WIDTHS } from "../data/site";
+
 import { useVirasat } from "../hooks/useSmoothScroll";
 import { useMediaQuery } from "../hooks/useMotionPrefs";
 import { gsap, useGsap, revealWords, revealUp, revealImages } from "../animations/gsapAnimations";
 import SplitWords from "../components/common/SplitWords";
 import Ornament from "../components/common/Ornament";
 import { useVT } from "../i18n";
+
+// Each act is a lg:w-[86vw] (xl: 78vw) article with a 12-column grid (gap 32px, padding 48px). Main photo: 7 columns (5 for a "tall"
+// act); below 1024px it is the full width in a 16:10 (tall: 4:5) box, from 1024px 62vh (tall: 74vh) high. The photo is scaled 1.04.
+// Second photo (from 1024px only): 58% of 5 columns in a 4:3 box.
+const ACT_A = { md: "86vw", lg: "78vw" };
+const actCol = (a, tall) => (tall ? `calc((${a} - 96px) * 0.4167 - 19px)` : `calc((${a} - 96px) * 0.5833 - 13px)`);
+const actMainSizes = (tall) => (aspect) =>
+  buildSizes(
+    [
+      ["(max-width: 639px)", coverSize("(100vw - 40px)", `calc((100vw - 40px) * ${tall ? 1.25 : 0.625})`, aspect, 1.04)],
+      ["(max-width: 1023px)", coverSize("(100vw - 64px)", `calc((100vw - 64px) * ${tall ? 1.25 : 0.625})`, aspect, 1.04)],
+      ["(max-width: 1279px)", coverSize(actCol(ACT_A.md, tall), tall ? "74vh" : "62vh", aspect, 1.04)],
+    ],
+    coverSize(actCol(ACT_A.lg, tall), tall ? "74vh" : "62vh", aspect, 1.04),
+  );
+const actSecondSizes = (aspect) => {
+  const second = (a) => coverSize(`(${actCol(a, true)} * 0.58)`, `calc(${actCol(a, true)} * 0.58 * 0.75)`, aspect);
+  return buildSizes([["(max-width: 1023px)", coverSize("((100vw - 64px) * 0.58)", "calc((100vw - 64px) * 0.58 * 0.75)", aspect)], ["(max-width: 1279px)", second(ACT_A.md)]], second(ACT_A.lg));
+};
 
 /** Experience categories — not a fixed running order; each evening is curated from them. */
 const ACTS = [
@@ -74,7 +95,7 @@ const ACTS = [
 ];
 
 /** Image that tilts towards the cursor in 3D. */
-function TiltImage({ src, set, alt, className = "", reducedMotion }) {
+function TiltImage({ imageKey, tall = false, alt, className = "", reducedMotion }) {
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const rx = useSpring(useTransform(my, [-0.5, 0.5], [6, -6]), { stiffness: 120, damping: 18 });
@@ -92,7 +113,7 @@ function TiltImage({ src, set, alt, className = "", reducedMotion }) {
   return (
     <div className={`[perspective:1400px] ${className}`} onPointerMove={onMove} onPointerLeave={reset}>
       <motion.figure style={{ rotateX: rx, rotateY: ry }} className="relative h-full w-full overflow-hidden [transform-style:preserve-3d]" data-clip="up">
-        <img src={src} srcSet={set} sizes="(min-width: 1024px) 45vw, 100vw" alt={alt} className="h-full w-full scale-[1.04] object-cover" loading="lazy" />
+        <img {...imageProps(imageKey, { sizes: actMainSizes(tall) })} alt={alt} className="h-full w-full scale-[1.04] object-cover" loading="lazy" />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-vr-ink/50 to-transparent" />
       </motion.figure>
     </div>
@@ -115,8 +136,8 @@ function Act({ act: raw, index, reducedMotion }) {
         {/* one col-span per breakpoint: conflicting spans pushed the copy of a tall act onto a second row */}
         <div className={`relative ${act.tall ? "lg:col-span-5 lg:col-start-2" : "lg:col-span-7"}`}>
           <TiltImage
-            src={img(act.main)}
-            set={srcSet(act.main)}
+            imageKey={act.main}
+            tall={!!act.tall}
             alt={act.mainAlt}
             reducedMotion={reducedMotion}
             className={act.tall ? "aspect-[4/5] lg:h-[74vh] lg:aspect-auto" : "aspect-[16/10] lg:h-[62vh] lg:aspect-auto"}
@@ -133,7 +154,7 @@ function Act({ act: raw, index, reducedMotion }) {
         <div className={`relative flex flex-col gap-6 ${act.tall ? "lg:col-span-5 lg:col-start-8" : "lg:col-span-5"}`}>
           <figure className="relative hidden w-[58%] self-end overflow-hidden lg:block" data-hx="80">
             <div className="aspect-[4/3] overflow-hidden" data-clip="left">
-              <img src={imgSm(act.second)} alt={act.secondAlt} className="h-full w-full object-cover" loading="lazy" />
+              <img {...imageProps(act.second, { widths: VIRASAT_WIDTHS.small, sizes: actSecondSizes })} alt={act.secondAlt} className="h-full w-full object-cover" loading="lazy" />
             </div>
           </figure>
           <p className="vr-eyebrow text-vr-gold">

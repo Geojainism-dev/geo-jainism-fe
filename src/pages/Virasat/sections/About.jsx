@@ -1,5 +1,13 @@
 import { useRef } from "react";
-import { BRAND, ART_FORMS, ART_FORMS_DEVA, img, imgSm, srcSet } from "../data/site";
+import { BRAND, ART_FORMS, ART_FORMS_DEVA, coverBox, imageProps, PAGE } from "../data/site";
+
+// Photo `sizes`, from the layout (12 columns, gap 40px from 1024px; see PAGE in data/site.js). All cover boxes.
+// Main photo: 4:3 figure, 88% of 7 columns from 1024px; the image is 118% of the figure's height.
+const aboutMainSizes = coverBox({ sm: PAGE.sm, md: PAGE.md, lg: `calc(${PAGE.lg} * 0.5133 - 15px)` }, { sm: 0.885, md: 0.885, lg: 0.885 });
+// Inset: 3:4, 52% of the column (minus its 10px borders); from 1024px 40% of 7 columns.
+const aboutInsetSizes = coverBox({ sm: `calc(${PAGE.sm} * 0.52 - 20px)`, md: `calc(${PAGE.md} * 0.52 - 20px)`, lg: `calc(${PAGE.lg} * 0.2333 - 27px)` }, { sm: 1.3333, md: 1.3333, lg: 1.3333 });
+// Ensemble: 4:5 figure (4 of 12 columns from 1024px, full width below); the image is 120% of its height.
+const aboutEnsembleSizes = coverBox({ sm: PAGE.sm, md: PAGE.md, lg: `calc(${PAGE.lg} / 3 - 27px)` }, { sm: 1.5, md: 1.5, lg: 1.5 });
 import { useVirasat } from "../hooks/useSmoothScroll";
 import { useGsap, revealWords, revealUp, revealImages, parallax } from "../animations/gsapAnimations";
 import SectionHeading from "../components/common/SectionHeading";
@@ -120,9 +128,7 @@ export default function About() {
           <div className="relative lg:col-span-7">
             <figure className="relative ml-auto aspect-[4/3] w-full overflow-hidden lg:w-[88%]" data-clip="up">
               <img
-                src={img("vs-event-01")}
-                srcSet={srcSet("vs-event-01")}
-                sizes="(min-width: 1024px) 52vw, 100vw"
+                {...imageProps("vs-event-01", { sizes: aboutMainSizes })}
                 alt={v("va.alt1", "Poetry and song before an epic backdrop on the Virasat stage")}
                 className="h-[118%] w-full object-cover"
                 data-speed="-0.15"
@@ -134,7 +140,7 @@ export default function About() {
               data-speed="0.25"
             >
               <div className="aspect-[3/4] overflow-hidden" data-clip="right">
-                <img src={imgSm("vs-event-02")} alt={v("va.alt2", "Addressing a full hall at Virasat")} className="h-full w-full object-cover" loading="lazy" />
+                <img {...imageProps("vs-event-02", { sizes: aboutInsetSizes })} alt={v("va.alt2", "Addressing a full hall at Virasat")} className="h-full w-full object-cover" loading="lazy" />
               </div>
             </figure>
             <figcaption className="mt-6 text-right text-xs uppercase tracking-[0.25em] text-vr-charcoal/50 lg:mt-8" data-reveal>
@@ -148,7 +154,7 @@ export default function About() {
 
       <div className="relative mx-auto grid max-w-[1600px] gap-14 px-5 py-24 sm:px-8 lg:grid-cols-12 lg:gap-10 lg:px-12 lg:py-32">
         <figure className="relative aspect-[4/5] overflow-hidden lg:col-span-4" data-clip="down">
-          <img src={imgSm("vs-event-03")} alt={v("va.alt3", "The Virasat ensemble")} className="h-[120%] w-full object-cover" data-speed="-0.2" loading="lazy" />
+          <img {...imageProps("vs-event-03", { sizes: aboutEnsembleSizes })} alt={v("va.alt3", "The Virasat ensemble")} className="h-[120%] w-full object-cover" data-speed="-0.2" loading="lazy" />
         </figure>
         <div className="flex flex-col justify-center gap-14 lg:col-span-7 lg:col-start-6">
           {PILLARS.map((p, i) => (

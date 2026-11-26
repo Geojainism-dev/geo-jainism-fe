@@ -37,7 +37,7 @@ export default function Wishlist() {
             {wishlist.map((p) => (
               <motion.li key={p.id} layout={!reduce} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: reduce ? 1 : 0.96 }} className="flex gap-5 border border-gj-brown/12 bg-gj-paper p-4">
                 <Link to={`/shop/product/${p.slug}`} className="w-28 shrink-0 sm:w-32">
-                  <ShopImage k={p.images[0]} small className="aspect-[4/5] overflow-hidden" alt={p.name} />
+                  <ShopImage k={p.images[0]} small sizes="(min-width: 640px) 128px, 112px" className="aspect-[4/5] overflow-hidden" alt={p.name} />
                 </Link>
                 <div className="flex min-w-0 flex-1 flex-col">
                   <div className="flex items-start justify-between gap-2">

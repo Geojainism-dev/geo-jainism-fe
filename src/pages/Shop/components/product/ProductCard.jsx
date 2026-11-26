@@ -4,6 +4,7 @@ import { Eye, Heart, ShoppingBag } from "lucide-react";
 import { useShop } from "../../store/ShopStore";
 import { categoryBySlug } from "../../data/categories";
 import { discountPct } from "../../services/pricing";
+import { CARD_SIZES } from "../../data/media";
 import { Price, Rating, ShopImage } from "../common/ui";
 import { useShopT } from "../../i18n";
 
@@ -12,7 +13,7 @@ import { useShopT } from "../../i18n";
  * hover, with wishlist, quick view and add-to-bag. On touch devices the
  * actions stay visible.
  */
-function ProductCard({ product, priority = false, size = "md" }) {
+function ProductCard({ product, priority = false, size = "md", sizes = size === "lg" ? "(min-width: 1024px) 33vw, 80vw" : CARD_SIZES.grid4 }) {
   const { addToCart, toggleWishlist, inWishlist, setQuickView } = useShop();
   const saved = inWishlist(product.id);
   const soldOut = product.stock <= 0;
@@ -24,8 +25,8 @@ function ProductCard({ product, priority = false, size = "md" }) {
     <article className="gj-card group relative flex flex-col">
       <div className="gj-card__media relative aspect-[4/5] overflow-hidden bg-gj-sand">
         <Link to={to} className="absolute inset-0" aria-label={product.name}>
-          <ShopImage k={product.images[0]} eager={priority} className="absolute inset-0" sizes={size === "lg" ? "(min-width: 1024px) 33vw, 80vw" : "(min-width: 1280px) 22vw, (min-width: 768px) 30vw, 50vw"} />
-          {product.images[1] && <ShopImage k={product.images[1]} className="gj-card__alt absolute inset-0 !bg-transparent" small />}
+          <ShopImage k={product.images[0]} eager={priority} className="absolute inset-0" sizes={sizes} />
+          {product.images[1] && <ShopImage k={product.images[1]} className="gj-card__alt absolute inset-0 !bg-transparent" sizes={sizes} small />}
         </Link>
 
         <div className="pointer-events-none absolute left-3 top-3 flex flex-col items-start gap-1.5">

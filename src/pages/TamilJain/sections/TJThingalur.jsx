@@ -1,6 +1,16 @@
 import React, { useRef, useState, useCallback } from "react";
 import { motion, useInView, useReducedMotion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
+
+// Background: full-bleed 100vw x max(100vh, 600px) (100svh / 540px <=768px), object-fit: cover, Ken Burns starts at 1.07.
+const tngBgSizes = (aspect) =>
+  buildSizes(
+    [["(max-width: 768px)", coverSize("100vw", "max(100svh, 540px)", aspect, 1.07)]],
+    coverSize("100vw", "max(100vh, 600px)", aspect, 1.07),
+  );
+// Thumbnails (desktop only, hidden <=1100px): 64x86 button with a 2px border, object-fit: cover, hover scale 1.04.
+const tngThumbSizes = (aspect) => coverSize("60px", "82px", aspect, 1.04);
 
 const bgVariants = {
   enter:  { opacity: 0 },
@@ -26,35 +36,35 @@ export default function TJThingalur() {
 
   const HILLS = [
     {
-      src: "/TJpageCarousel/Samanar Malai.JPG",
+      asset: "site/tamil-jain/hills/samanar-malai",
       name: t("tamilJain.thingalur.hills.0.name", "Samanar Malai"),
       region: t("regions.madurai", "Madurai"),
       num: "01",
       desc: t("tamilJain.thingalur.hills.0.desc", "A magnificent Jain cave complex near Madurai, featuring ancient rock-cut beds, Tamil-Brahmi inscriptions, and exquisite stone sculptures carved over two millennia ago."),
     },
     {
-      src: "/TJpageCarousel/Vallimalai.jpg",
+      asset: "site/tamil-jain/hills/vallimalai",
       name: t("tamilJain.thingalur.hills.1.name", "Vallimalai"),
       region: t("regions.vellore", "Vellore"),
       num: "02",
       desc: t("tamilJain.thingalur.hills.1.desc", "A sacred Jain hillock in the Vellore district, home to ancient cave shrines, rock-cut beds, and a revered Mahavira temple that continues to draw pilgrims today."),
     },
     {
-      src: "/TJpageCarousel/THIRUNATHAR KUNDRU .JPG",
+      asset: "site/tamil-jain/hills/thirunathar-kundru",
       name: t("tamilJain.thingalur.hills.2.name", "Thirunathar Kundru"),
       region: t("regions.ariyalur", "Ariyalur"),
       num: "03",
       desc: t("tamilJain.thingalur.hills.2.desc", "An ancient Jain sacred hill bearing rock-cut monastic shelters and inscriptions that speak of a thriving Jain community that once called this hill home."),
     },
     {
-      src: "/TJpageCarousel/Azhgarmalai.JPG",
+      asset: "site/tamil-jain/hills/azhgarmalai",
       name: t("tamilJain.thingalur.hills.3.name", "Azhgarmalai"),
       region: t("regions.karur", "Karur"),
       num: "04",
       desc: t("tamilJain.thingalur.hills.3.desc", "A revered Jain hill site in the Karur region, featuring ancient caves, natural rock-cut beds, and monolithic sculptures that stand witness to centuries of devotion."),
     },
     {
-      src: "/TJpageCarousel/Kalagumalai.JPG",
+      asset: "site/tamil-jain/hills/kalagumalai",
       name: t("tamilJain.thingalur.hills.4.name", "Kalagumalai"),
       region: t("regions.thoothukudi", "Thoothukudi"),
       num: "05",
@@ -101,7 +111,7 @@ export default function TJThingalur() {
             exit="exit"
             transition={{ duration: 0.85, ease: [0.16, 1, 0.3, 1] }}
           >
-            <img className="tj-tng-bg-img" src={hill.src} alt="" aria-hidden="true" />
+            <img className="tj-tng-bg-img" {...getImageProps(hill.asset, { widths: WIDTH_LADDERS.medium, sizes: tngBgSizes })} alt="" aria-hidden="true" />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -192,7 +202,7 @@ export default function TJThingalur() {
             whileHover={{ scale: 1.04 }}
             transition={{ duration: 0.3 }}
           >
-            <img src={h.src} alt={h.name} loading="lazy" />
+            <img {...getImageProps(h.asset, { widths: WIDTH_LADDERS.thumb, sizes: tngThumbSizes })} alt={h.name} loading="lazy" />
             <div className="tj-tng-thumb-overlay">
               <span className="tj-tng-thumb-label">{h.name}</span>
             </div>

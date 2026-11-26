@@ -1,8 +1,23 @@
 import React from "react";
 import { COURSES } from "@/constants/landingData";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
 import { useDarkMode } from "@/hooks";
 import { useTranslation } from "react-i18next";
 import styles from "./Courses.module.css";
+
+// Card image: object-fit: cover; box height follows the CSS in this file (300px; 260px <=860; 220px <=600; 190px <=400).
+// Card width: half of the content column (two-column grid) above 860px, the full column at or below it.
+const COURSE_CONTENT = "calc(min(100vw, 1200px) - 2 * clamp(16px, 4vw, 40px))";
+const COURSE_CARD_COL = `calc((${COURSE_CONTENT} - clamp(40px, 6vw, 100px)) / 2)`;
+const courseImageSizes = (aspect) =>
+  buildSizes(
+    [
+      ["(max-width: 400px)", coverSize(COURSE_CONTENT, "190px", aspect)],
+      ["(max-width: 600px)", coverSize(COURSE_CONTENT, "220px", aspect)],
+      ["(max-width: 860px)", coverSize(COURSE_CONTENT, "260px", aspect)],
+    ],
+    coverSize(COURSE_CARD_COL, "300px", aspect),
+  );
 
 const PARTICLE_COLORS = ["#F4A535", "#F7D580", "#7DAF6E", "#A8D4A0"];
 const PARTICLES = Array.from({ length: 36 }, (_, i) => ({
@@ -298,7 +313,7 @@ const Courses = () => {
               {/* Image */}
               <div className="courses-card-img" style={{ position: "relative", height: "300px", overflow: "hidden" }}>
                 <img
-                  src={course.img} alt={localizedTitle} loading="lazy"
+                  {...getImageProps(course.asset, { widths: WIDTH_LADDERS.medium, sizes: courseImageSizes })} alt={localizedTitle} loading="lazy"
                   style={{ width: "100%", height: "100%", objectFit: "cover", transition: "transform 1.4s ease", display: "block" }}
                   onMouseEnter={e => e.currentTarget.style.transform = "scale(1.06)"}
                   onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}

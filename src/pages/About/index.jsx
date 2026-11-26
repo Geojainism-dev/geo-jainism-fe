@@ -18,8 +18,38 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import * as THREE from "three";
 import "@/styles/about.css";
+import { getImageProps, getImageUrl, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
 
 gsap.registerPlugin(ScrollTrigger);
+
+/* ── Cloudinary delivery for the Journey photographs ──
+   Most are object-fit: cover, so the rendered width is max(boxWidth, boxHeight x aspect) - see coverSize().
+   The sizes below mirror the layout in this file and in about.css. Hover/parallax zooms are transient and ignored. */
+const ABT_CONTENT_1000 = "min(1000px, calc(100vw - 2 * clamp(24px, 8vw, 100px)))"; // SP padding + MW max width
+const ABT_CONTENT_960 = "min(960px, calc(100vw - 2 * clamp(24px, 8vw, 100px)))";   // founder section (maxWidth 960)
+// CSS backgrounds cannot carry a srcset: one URL per background, capped at each image's native width.
+const ABT_CINEMATIC_BG_WIDTH = 1920; // CinematicBreak: box is 144% of the section (inset -22%), parallax
+const ABT_STATS_BG_WIDTH = 1280;     // Stats section: decorative background at 5-6% opacity
+// Work trio: 3 columns (gap clamp(12px, 2vw, 24px)) above 820px, one column at or below it.
+const trioSizes = (a) =>
+  buildSizes(
+    [["(max-width: 820px)", coverSize(ABT_CONTENT_1000, "clamp(180px, 22vw, 280px)", a)]],
+    coverSize(`calc((${ABT_CONTENT_1000} - 2 * clamp(12px, 2vw, 24px)) / 3)`, "clamp(180px, 22vw, 280px)", a),
+  );
+// Gallery marquee tile: clamp(160px, 20vw, 260px) x clamp(110px, 16vw, 190px).
+const gallerySizes = (a) => coverSize("clamp(160px, 20vw, 260px)", "clamp(110px, 16vw, 190px)", a);
+// Founder portrait: grid 1fr / 1.15fr (gap clamp(36px, 6vw, 88px)), one column at or below 820px.
+const founderSizes = (a) =>
+  buildSizes(
+    [["(max-width: 820px)", coverSize(ABT_CONTENT_960, "clamp(360px, 50vw, 580px)", a)]],
+    coverSize(`calc((${ABT_CONTENT_960} - clamp(36px, 6vw, 88px)) / 2.15)`, "clamp(360px, 50vw, 580px)", a),
+  );
+// Featured film card: grid 1.3fr / 1fr (gap clamp(32px, 5vw, 76px)), one column at or below 820px.
+const filmCardSizes = (a) =>
+  buildSizes(
+    [["(max-width: 820px)", coverSize(ABT_CONTENT_1000, "clamp(160px, 22vw, 260px)", a)]],
+    coverSize(`calc((${ABT_CONTENT_1000} - clamp(32px, 5vw, 76px)) * 1.3 / 2.3)`, "clamp(160px, 22vw, 260px)", a),
+  );
 
 /* ── Reveal wrapper (Framer Motion) ── */
 const fadeV = {
@@ -283,7 +313,7 @@ export default function AboutPage() {
 
           {/* Cinematic break — ancient rock carvings */}
           <CinematicBreak
-            src="/journey/06-sheep-site.jpg"
+            src={getImageUrl("site/journey/06-sheep-site", { width: ABT_CINEMATIC_BG_WIDTH })}
             sub="Documentary · Heritage · Field Research"
             quote="Ancient stone speaks — if only someone<br/>is willing to <em style='font-style:italic;color:#F4A535'>listen.</em>"
             isDark={isDark}
@@ -295,7 +325,7 @@ export default function AboutPage() {
 
           {/* Cinematic break — the hillside */}
           <CinematicBreak
-            src="/journey/04-hillside.jpg"
+            src={getImageUrl("site/journey/04-hillside", { width: ABT_CINEMATIC_BG_WIDTH })}
             sub="111 Ancient Sites · South India"
             quote="Every hilltop holds a temple.<br/>Every temple holds a <em style='font-style:italic;color:#E8909F'>story.</em>"
             isDark={isDark}
@@ -332,7 +362,7 @@ function HeroSection({ isDark, grain }) {
       style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "flex-end", justifyContent: "center", textAlign: "center", overflow: "hidden", paddingBottom: "0" }}
     >
       {/* Parallax BG — face pushed to top so text overlaps body, not face */}
-      <motion.div style={{ position: "absolute", inset: "-12%", backgroundImage: "url('/hero-tirthankara.jpg')", backgroundSize: "cover", backgroundPosition: "center 15%", y: bgY, scale: bgScale, zIndex: 0 }} />
+      <motion.div style={{ position: "absolute", inset: "-12%", backgroundImage: `url('${getImageUrl("site/about/hero-tirthankara")}')`, backgroundSize: "cover", backgroundPosition: "center 15%", y: bgY, scale: bgScale, zIndex: 0 }} />
 
       {/* Overlay — lighter than before */}
       <div aria-hidden style={{ position: "absolute", inset: 0, background: "linear-gradient(180deg,rgba(0,0,0,0.12) 0%,rgba(0,0,0,0.08) 42%,rgba(0,0,0,0.28) 100%)", zIndex: 1 }} />
@@ -523,7 +553,7 @@ function StatsSection({ isDark, C, SP, MW }) {
   return (
     <section style={{ ...SP, paddingTop: "88px", paddingBottom: "88px", borderBottom: `1px solid ${C.border}`, position: "relative", overflow: "hidden" }} ref={ref}>
       {/* Subtle BG image */}
-      <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: "url('/journey/09-temple.jpg')", backgroundSize: "cover", backgroundPosition: "center", opacity: isDark ? 0.06 : 0.05 }} />
+      <div aria-hidden style={{ position: "absolute", inset: 0, backgroundImage: `url('${getImageUrl("site/journey/09-temple", { width: ABT_STATS_BG_WIDTH })}')`, backgroundSize: "cover", backgroundPosition: "center", opacity: isDark ? 0.06 : 0.05 }} />
       <div aria-hidden style={{ position: "absolute", inset: 0, background: isDark ? "rgba(6,13,8,0.88)" : "rgba(253,248,240,0.88)" }} />
 
       <div style={{ ...MW, display: "flex", justifyContent: "center", alignItems: "stretch", flexWrap: "wrap", gap: 0, position: "relative", zIndex: 1 }} className="abt-stats-row">
@@ -562,21 +592,21 @@ function WorkSection({ isDark, C, SP, MW }) {
       num: "01", word: t("about.work.card1.word", "Research"),
       stat: "111", statLabel: t("about.work.card1.statLabel", "Ancient Sites"),
       body: t("about.work.card1.body", "Decades of on-ground scholarship — from Tamil cave temples to Bihar's forgotten rock inscriptions."),
-      img: "/journey/01-rock-sculpture.jpg",
+      asset: "site/journey/01-rock-sculpture",
       accent: "#E8909F",
     },
     {
       num: "02", word: t("about.work.card2.word", "Document"),
       stat: "4K", statLabel: t("about.work.card2.statLabel", "Cinematic Coverage"),
       body: t("about.work.card2.body", "Drone, ground and macro footage across India's most remote Jain heritage landscapes."),
-      img: "/journey/02-temple-hill.jpg",
+      asset: "site/journey/02-temple-hill",
       accent: "#F4A535",
     },
     {
       num: "03", word: t("about.work.card3.word", "Preserve"),
       stat: "10K", statLabel: t("about.work.card3.statLabel", "Years of History"),
       body: t("about.work.card3.body", "So the children of Tamil Jains, a thousand years from now, know exactly who they were."),
-      img: "/journey/05-rock-carvings.jpg",
+      asset: "site/journey/05-rock-carvings",
       accent: "#7DAF6E",
     },
   ];
@@ -621,7 +651,7 @@ function WorkSection({ isDark, C, SP, MW }) {
                 {/* Image with stat overlay */}
                 <div style={{ position: "relative", height: "clamp(180px,22vw,280px)", overflow: "hidden" }}>
                   <motion.img
-                    src={item.img} alt={item.word} loading="lazy"
+                    {...getImageProps(item.asset, { widths: WIDTH_LADDERS.medium, sizes: trioSizes })} alt={item.word} loading="lazy"
                     style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
                     whileHover={{ scale: 1.06, transition: { duration: 0.7 } }}
                   />
@@ -676,11 +706,11 @@ function GalleryStrip({ isDark, C }) {
   const [paused, setPaused] = useState(false);
   const { t } = useTranslation();
   const IMGS = [
-    "/journey/01-rock-sculpture.jpg", "/journey/02-temple-hill.jpg",
-    "/journey/03-team-group.jpg",     "/journey/04-hillside.jpg",
-    "/journey/05-rock-carvings.jpg",  "/journey/06-sheep-site.jpg",
-    "/journey/07-stone-carving.jpg",  "/journey/08-community.jpg",
-    "/journey/09-temple.jpg",         "/journey/10-founder-research.jpg",
+    "site/journey/01-rock-sculpture", "site/journey/02-temple-hill",
+    "site/journey/03-team-group",     "site/journey/04-hillside",
+    "site/journey/05-rock-carvings",  "site/journey/06-sheep-site",
+    "site/journey/07-stone-carving",  "site/journey/08-community",
+    "site/journey/09-temple",         "site/journey/10-founder-research",
   ];
   const fadeEdge = isDark ? "#060D08" : "#FDF8F0";
 
@@ -710,10 +740,10 @@ function GalleryStrip({ isDark, C }) {
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}
         >
-          {[...IMGS, ...IMGS].map((src, i) => (
+          {[...IMGS, ...IMGS].map((asset, i) => (
             <div key={i} style={{ width: "clamp(160px,20vw,260px)", height: "clamp(110px,16vw,190px)", flexShrink: 0, overflow: "hidden", borderRadius: "2px", position: "relative" }}>
               <img
-                src={src} alt="" loading="lazy"
+                {...getImageProps(asset, { widths: WIDTH_LADDERS.small, sizes: gallerySizes })} alt="" loading="lazy"
                 style={{ width: "100%", height: "100%", objectFit: "cover", display: "block", transition: "transform 0.5s ease, filter 0.5s ease" }}
                 onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.08)"; e.currentTarget.style.filter = "brightness(1.1) contrast(1.05)"; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.filter = "none"; }}
@@ -809,7 +839,7 @@ function FounderSection({ isDark, C, SP, grain }) {
         <R dir="left">
           <div ref={photoRef} style={{ position: "relative", overflow: "hidden", borderRadius: "2px" }}>
             <motion.img
-              src="/journey/10-founder-research.jpg"
+              {...getImageProps("site/journey/10-founder-research", { widths: WIDTH_LADDERS.medium, sizes: founderSizes })}
               alt="Kavi Sajal Jain — Founder"
               loading="lazy"
               style={{ width: "100%", height: "clamp(360px,50vw,580px)", objectFit: "cover", objectPosition: "center 20%", display: "block", y: photoY }}
@@ -900,7 +930,7 @@ function UpcomingSection({ isDark, C, SP, MW }) {
             <div style={{ background: C.cardBg, border: `1px solid ${C.cardBdr}`, borderTop: `3px solid ${isDark ? C.gold : C.rose}`, borderRadius: "2px", backdropFilter: "blur(12px)", position: "relative", overflow: "hidden" }}>
               {/* Image panel */}
               <div style={{ position: "relative", height: "clamp(160px,22vw,260px)", overflow: "hidden" }}>
-                <img src="/journey/08-community.jpg" alt="Tamil Jain community" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
+                <img {...getImageProps("site/journey/08-community", { widths: WIDTH_LADDERS.medium, sizes: filmCardSizes })} alt="Tamil Jain community" style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
                 <div aria-hidden style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom,transparent 30%,rgba(0,0,0,0.65) 100%)" }} />
                 <div style={{ position: "absolute", bottom: "16px", left: "20px" }}>
                   <div style={{ display: "flex", gap: "5px", marginBottom: "8px", opacity: 0.55 }}>

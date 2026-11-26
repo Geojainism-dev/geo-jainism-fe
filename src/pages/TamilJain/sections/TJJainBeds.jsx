@@ -1,7 +1,17 @@
 import React, { useRef } from "react";
 import { motion, useInView, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import imgShayanika from "@/assets/images/Shayanika/TJPage Shayanika.jpg";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
+
+// Image column: 46fr of the 46fr/54fr grid (full width <=768px); the image is 115% of the column height, object-fit: cover.
+// The column is as tall as the text panel (min-height max(88vh, 560px); 360px <=768px) and the panel is usually taller than that,
+// so 900px is used as a conservative floor. On narrow, tall columns cover needs more than 2048px, hence the extra 3072 rung.
+const bedsSizes = (aspect) =>
+  buildSizes(
+    [["(max-width: 768px)", coverSize("100vw", "414px", aspect)]],
+    coverSize("46vw", "calc(max(88vh, 900px) * 1.15)", aspect),
+  );
+const BEDS_IMAGE = getImageProps("site/tamil-jain/shayanika", { widths: [...WIDTH_LADDERS.medium, 3072], sizes: bedsSizes });
 
 export default function TJJainBeds() {
   const sectionRef = useRef(null);
@@ -31,7 +41,7 @@ export default function TJJainBeds() {
       {/* LEFT — full-bleed image */}
       <div className="tj-beds-v3-img-col" ref={imageRef}>
         <motion.img
-          src={imgShayanika}
+          {...BEDS_IMAGE}
           alt="Jain rock-cut stone beds, Tamil Nadu"
           className="tj-beds-v3-img"
           style={{ y: imgY }}

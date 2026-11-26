@@ -1,7 +1,20 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDarkMode } from "@/hooks";
 import { JOURNEY_SLIDES } from "@/constants/landingData";
+import { getImageProps, coverSize, buildSizes, WIDTH_LADDERS } from "@/lib/cloudinary";
 import { useTranslation } from "react-i18next";
+
+// (Not currently mounted.) Main frame: width min(82vw, 1300px) (95vw <=640px), 16:9, object-fit: cover.
+// Thumbnails: 64x40 (52x33 <=480px), scaled 1.10 when active.
+const TRAILER_FRAME = "min(82vw, 1300px)";
+const TRAILER_FRAME_MOBILE = "95vw";
+const trailerMainSizes = (aspect) =>
+  buildSizes(
+    [["(max-width: 640px)", coverSize(TRAILER_FRAME_MOBILE, `calc(${TRAILER_FRAME_MOBILE} * 0.5625)`, aspect)]],
+    coverSize(TRAILER_FRAME, `calc(${TRAILER_FRAME} * 0.5625)`, aspect),
+  );
+const trailerThumbSizes = (aspect) =>
+  buildSizes([["(max-width: 480px)", coverSize("52px", "33px", aspect, 1.1)]], coverSize("64px", "40px", aspect, 1.1));
 
 /* ── Secondary palette ─────────────────────────────────────────── */
 const LOTUS      = "#F2C4CE";
@@ -365,7 +378,7 @@ export default function Trailer() {
             {/* Main image — key forces remount + fade animation on slide change */}
             <img
               key={slideIdx}
-              src={slide.img}
+              {...getImageProps(slide.asset, { widths: WIDTH_LADDERS.medium, sizes: trailerMainSizes })}
               alt={currentTitle}
               loading={slideIdx === 0 ? "eager" : "lazy"}
               style={{
@@ -513,7 +526,7 @@ export default function Trailer() {
                 }}
               >
                 <img
-                  src={s.img}
+                  {...getImageProps(s.asset, { widths: WIDTH_LADDERS.thumb, sizes: trailerThumbSizes })}
                   alt={tempTitle}
                   loading="lazy"
                   style={{

@@ -449,7 +449,7 @@
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: url('/tamiljain/sky-new.png');
+  /* background-image is set inline (TJCinematicHero.jsx) from the Cloudinary asset map */
   background-size: cover;
   background-position: center 20%;
   /* overridden by JS scroll animation */

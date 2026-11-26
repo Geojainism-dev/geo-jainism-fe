@@ -14,7 +14,7 @@ export function CartLine({ line, compact = false, onNavigate }) {
   return (
     <li className="flex gap-4 py-5">
       <Link to={to} onClick={onNavigate} className={`${compact ? "w-20" : "w-24 sm:w-28"} shrink-0`}>
-        <ShopImage k={product.images[0]} small className="aspect-[4/5] overflow-hidden" alt={product.name} />
+        <ShopImage k={product.images[0]} small sizes={compact ? "80px" : "(min-width: 640px) 112px, 96px"} className="aspect-[4/5] overflow-hidden" alt={product.name} />
       </Link>
       <div className="flex min-w-0 flex-1 flex-col">
         <div className="flex items-start justify-between gap-3">

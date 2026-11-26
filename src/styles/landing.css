@@ -133,7 +133,7 @@ html {
 }
 
 .landing-root:not([data-theme="dark"]) #hero {
-  background-image: url('../assets/images/landing/hero_bg.png');
+  background-image: var(--hero-bg-image); /* set inline on #hero (Hero.jsx) from the Cloudinary asset map */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
